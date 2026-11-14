@@ -30,7 +30,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: ['ecaade2023'],
     image: 'assets/figures/ecaade-results.png',
     imageAlt: 'Results figure from the eCAADe 2023 paper: bar graphs of colour scores for each transparency level.',
-    pos: { x: 700, y: 760 },
+    pos: { x: 900, y: 700 },
   },
   {
     id: 'iss',
@@ -55,7 +55,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: ['iss2026'],
     image: 'assets/figures/iss-teaser.png',
     imageAlt: 'The Unity cooperative-cooking game with one glowing physiological halo per teammate in the status bar, annotated.',
-    pos: { x: 980, y: 560 },
+    pos: { x: 1150, y: 560 },
   },
   {
     id: 'bioterrarium',
@@ -80,7 +80,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: [],
     image: 'assets/projects/bioterrarium-hero.webp',
     imageAlt: 'The BioTerrarium: a glass-enclosed ecosystem with glowing crystal vegetation, fog, and a small lighthouse.',
-    pos: { x: 760, y: 980 },
+    pos: { x: 660, y: 900 },
   },
 
   // ── The four computational-design projects (core constellation) ───────────
@@ -108,7 +108,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: ['genenv-decoding'],
     image: 'assets/projects/zla-hero.webp',
     imageAlt: 'Zoning Literacy Assistant interface: example questions, a lot width and depth form, and the bylaw excerpt it answers from.',
-    pos: { x: 1700, y: 1830 },
+    pos: { x: 2420, y: 1560 },
   },
   {
     id: 'pmg',
@@ -134,7 +134,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: ['genenv-decoding'],
     image: 'assets/projects/pmg-hero.webp',
     imageAlt: 'Parametric Massing Generator in urban block mode: a 3×3 grid of white massing volumes with a plan view inset.',
-    pos: { x: 2620, y: 1350 },
+    pos: { x: 1800, y: 1700 },
   },
   {
     id: 'vcm',
@@ -159,7 +159,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: [],
     image: 'assets/projects/vcm-hero.webp',
     imageAlt: 'Stepped massing trimmed diagonally where the protected view corridor’s sloped ceiling crosses it, with the corridor triangle shown from its apex.',
-    pos: { x: 3320, y: 2020 },
+    pos: { x: 3040, y: 1420 },
   },
   {
     id: 'ema',
@@ -184,7 +184,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: ['liu-tian-2025'],
     image: 'assets/projects/ema-hero.webp',
     imageAlt: 'Plan of a corridor-trimmed massing footprint with its winter-solstice shadow reaching a park point, beside a stepped section.',
-    pos: { x: 3960, y: 560 },
+    pos: { x: 3660, y: 1160 },
   },
 
   // ── Proposed doctoral work ────────────────────────────────────────────────
@@ -206,7 +206,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     genenvConnection: 'A focused contribution within the funded Human-AI Co-Design program — not a separate AI application beside it.',
     links: [],
     citationIds: ['genenv-hacd', 'xu-chi2025', 'compositional-chi2025', 'earlyarchi-chi2026', 'energai-2025'],
-    pos: { x: 3310, y: 1010 },
+    pos: { x: 4080, y: 940 },
   },
 ] as const;
 

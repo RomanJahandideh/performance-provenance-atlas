@@ -1,11 +1,9 @@
 # Presentation Script
 
-Spoken script per scene (same text as the in-app notes, `N`). Targets total **17:30** inside the
-20-minute slot, leaving margin for transitions and interruptions. Timings were tightened from the
-original deck notes (which summed to ~20:35) — pacing is Roman's to adjust in
-`src/data/scenes.ts`.
-
-Cumulative targets appear in the HUD; the drift readout tells you ahead/behind live.
+Spoken script per scene (same text as the in-app notes, `N`). The per-scene targets below total
+**≈17:30** inside the 20-minute slot, leaving margin for transitions and interruptions — pace
+yourself by rehearsing with a phone timer; the app itself deliberately shows no clock. Scrolling
+drives everything: speak each paragraph roughly as its drawing plays.
 
 ---
 

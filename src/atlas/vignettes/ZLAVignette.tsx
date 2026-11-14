@@ -1,28 +1,32 @@
-import { useAppState } from '../../state/store';
+import { useSceneP, win } from '../useSceneP';
 import { iso, pts, isoBoxFaces } from '../iso';
 
 const CLAUSES = ['USES', 'LOT / FRONTAGE', 'SETBACKS', 'HEIGHT', 'STOREYS', 'FSR', 'DIMENSIONS', 'OUTDOOR SPACE', 'PARKING', 'TREE RETENTION'];
 
-export function ZLAVignette({ active }: { active: boolean }) {
-  const step = useAppState((s) => s.stepIndex);
-  const sceneIndex = useAppState((s) => s.sceneIndex);
-  const zlaCase = useAppState((s) => s.ix.zlaCase);
-  if (!active) return null;
-  const inScene = sceneIndex === 4;
-  const on = (n: number) => !inScene || step >= n;
-
+/**
+ * The scroll runs the three cases live: a grounded answer, the deliberate
+ * NOT-COVERED stop, and the deterministic site check with the FSR flip.
+ */
+export function ZLAVignette() {
+  const p = useSceneP('zla');
+  const on = p >= 0;
+  if (!on) return null;
+  const flow = on ? win(p, 0.02, 0.18) : 1;
+  const zlaCase: 'supported' | 'laneway' | 'site' = !on ? 'site' : p < 0.45 ? 'supported' : p < 0.71 ? 'laneway' : 'site';
+  const showCase = !on || p >= 0.2;
+  const rental = !on || p >= 0.86;
   const retrievedIdx = zlaCase === 'supported' ? 3 : zlaCase === 'laneway' ? 0 : -1;
   const stopped = zlaCase === 'laneway';
 
   return (
     <g aria-hidden>
-      {/* ── Regulatory archive: ten clause slabs ── */}
-      <g transform="translate(1380,1588)">
+      {/* ── Regulatory archive ── */}
+      <g transform="translate(2100,1318)">
         <text y={-20} fontSize={12} className="map-coord">
           REGULATORY ARCHIVE · 10 ADDRESSABLE CLAUSES
         </text>
         {CLAUSES.map((c, i) => {
-          const hi = on(1) && i === retrievedIdx;
+          const hi = showCase && i === retrievedIdx;
           return (
             <g key={c} transform={`translate(0,${i * 52})`}>
               <polygon
@@ -40,11 +44,12 @@ export function ZLAVignette({ active }: { active: boolean }) {
       </g>
 
       {/* ── Pipeline ── */}
-      <g className={`vg-step ${on(0) ? 'is-on' : ''}`} transform="translate(1380,1398)">
+      <g transform="translate(2100,1128)">
         {['RETRIEVE', 'ANSWER', 'VERIFY'].map((t, i) => {
           const dead = stopped && i > 0;
+          const vis = !on || flow * 3 >= i + 0.4;
           return (
-            <g key={t} transform={`translate(${i * 190},0)`}>
+            <g key={t} transform={`translate(${i * 190},0)`} className={`vg-step ${vis ? 'is-on' : ''}`}>
               <rect width={150} height={44} fill={dead ? 'rgba(11,50,102,0.2)' : 'rgba(11,50,102,0.5)'} stroke={dead ? 'var(--muted)' : 'var(--cyan)'} strokeWidth={1.2} strokeDasharray={dead ? '6 6' : undefined} />
               <text x={75} y={27} textAnchor="middle" fontSize={11.5} className="map-coord" fill={dead ? 'var(--muted)' : 'var(--cyan)'}>
                 {t}
@@ -53,24 +58,38 @@ export function ZLAVignette({ active }: { active: boolean }) {
                 {i === 0 ? 'selects clauses' : i === 1 ? 'sees only retrieved text' : 'checks its own evidence'}
               </text>
               {i < 2 && (
-                <line x1={150} y1={22} x2={190} y2={22} stroke={stopped && i >= 0 ? 'var(--muted)' : 'var(--cyan)'} strokeWidth={1.6} strokeDasharray="6 5" className={stopped ? '' : 'flow-dash'} markerEnd="url(#arrowCyan)" opacity={stopped && i >= 0 ? 0.35 : 1} />
+                <line
+                  x1={150}
+                  y1={22}
+                  x2={190}
+                  y2={22}
+                  stroke={dead || (stopped && i === 0) ? 'var(--muted)' : 'var(--cyan)'}
+                  strokeWidth={1.6}
+                  strokeDasharray="6 5"
+                  className={stopped ? '' : 'flow-dash'}
+                  markerEnd="url(#arrowCyan)"
+                  opacity={stopped && i >= 0 ? 0.35 : 1}
+                />
               )}
             </g>
           );
         })}
-        <text x={0} y={92} fontSize={11} className="map-annotation">
-          three separate model calls — synthesis never sees the whole bylaw, and retrieval can stop the pipeline
-        </text>
+        {stopped && (
+          <g transform="translate(168,10)">
+            <line x1={0} y1={0} x2={22} y2={24} stroke="var(--orange)" strokeWidth={2.4} />
+            <line x1={22} y1={0} x2={0} y2={24} stroke="var(--orange)" strokeWidth={2.4} />
+          </g>
+        )}
       </g>
 
-      {/* ── Case panel ── */}
-      <g transform="translate(2130,1430)">
-        {zlaCase === 'supported' && on(1) && (
+      {/* ── Case area ── */}
+      <g transform="translate(2850,1160)">
+        {zlaCase === 'supported' && showCase && (
           <g className="vg-step is-on">
             <text fontSize={12} className="map-coord">
               Q: “WHAT IS THE MAXIMUM BUILDING HEIGHT?”
             </text>
-            <rect y={14} width={380} height={96} fill="rgba(11,50,102,0.45)" stroke="var(--cyan)" strokeWidth={1.2} />
+            <rect y={14} width={400} height={96} fill="rgba(11,50,102,0.45)" stroke="var(--cyan)" strokeWidth={1.2} />
             <text x={14} y={40} fontSize={12.5} className="map-annotation">
               11.5 m and three storeys (R1-1 base provisions)
             </text>
@@ -78,9 +97,9 @@ export function ZLAVignette({ active }: { active: boolean }) {
               grounded ✓ · supporting sentence quoted from C04 HEIGHT
             </text>
             <text x={14} y={84} fontSize={11} className="map-annotation" fill="var(--muted)">
-              verification pass: evidence supports answer · no missed clause
+              verification: evidence supports answer · no missed clause
             </text>
-            <line x1={-40} y1={60} x2={-560} y2={330} stroke="var(--yellow)" strokeWidth={1.2} strokeDasharray="5 6" markerEnd="url(#arrowYellow)" />
+            <line x1={-40} y1={60} x2={-595} y2={330} stroke="var(--yellow)" strokeWidth={1.2} strokeDasharray="5 6" markerEnd="url(#arrowYellow)" />
           </g>
         )}
         {zlaCase === 'laneway' && (
@@ -103,9 +122,7 @@ export function ZLAVignette({ active }: { active: boolean }) {
             </text>
           </g>
         )}
-        {zlaCase === 'site' && (
-          <SitePlan rental={step >= 3 || !inScene} />
-        )}
+        {zlaCase === 'site' && <SitePlan rental={rental} />}
       </g>
     </g>
   );
@@ -136,12 +153,11 @@ function SitePlan({ rental }: { rental: boolean }) {
       </g>
       <g transform="translate(16,262)" fontSize={11.5}>
         <text className="map-annotation">(10 − 2×1.2) × (37 − 4.9 − 10.7)</text>
-        <text y={20} className="map-annotation">= 7.6 × 21.4 = <tspan fill="var(--cyan)">162.6 m² footprint</tspan></text>
-        <text y={48} className="map-annotation">
-          FSR {rental ? '1.00 (rental condition ON)' : '0.70 (base)'} → <tspan fill="var(--cyan)">{rental ? 'two floors' : 'one floor'}</tspan>
+        <text y={20} className="map-annotation">
+          = 7.6 × 21.4 = <tspan fill="var(--cyan)">162.6 m² footprint</tspan>
         </text>
-        <text y={70} className="map-annotation" fill="var(--muted)">
-          computed in code — the model only explains these numbers
+        <text y={44} className="map-annotation">
+          FSR {rental ? '1.00 — rental condition ON' : '0.70 — base'} → <tspan fill="var(--cyan)">{rental ? 'two floors' : 'one floor'}</tspan>
         </text>
       </g>
     </g>

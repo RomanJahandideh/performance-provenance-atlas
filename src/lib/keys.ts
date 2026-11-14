@@ -1,15 +1,5 @@
-import {
-  advance,
-  retreat,
-  goToScene,
-  getState,
-  setState,
-  toggleMode,
-  toggleTimer,
-  resetPresentation,
-  closeAllPanels,
-  toggleReducedMotion,
-} from '../state/store';
+import { getState, setState, closeAllPanels, toggleReducedMotion } from '../state/store';
+import { scrollStep, scrollToScene } from './scroll';
 import { SCENES, MAIN_SCENES } from '../data/scenes';
 
 function toggleFullscreen() {
@@ -27,33 +17,32 @@ export function handleKey(e: KeyboardEvent): void {
     case 'ArrowDown':
     case 'ArrowRight':
       e.preventDefault();
-      advance();
+      scrollStep(1);
       break;
     case ' ':
       e.preventDefault();
-      if (e.shiftKey) retreat();
-      else advance();
+      scrollStep(e.shiftKey ? -1 : 1);
       break;
     case 'ArrowUp':
     case 'ArrowLeft':
       e.preventDefault();
-      retreat();
+      scrollStep(-1);
       break;
     case 'PageDown':
       e.preventDefault();
-      goToScene(s.sceneIndex + 1);
+      scrollToScene(Math.min(SCENES.length - 1, s.sceneIndex + 1));
       break;
     case 'PageUp':
       e.preventDefault();
-      goToScene(s.sceneIndex - 1);
+      scrollToScene(Math.max(0, s.sceneIndex - 1));
       break;
     case 'Home':
       e.preventDefault();
-      goToScene(0);
+      scrollToScene(0);
       break;
     case 'End':
       e.preventDefault();
-      goToScene(MAIN_SCENES.length - 1);
+      scrollToScene(MAIN_SCENES.length - 1);
       break;
     case 'f':
     case 'F':
@@ -77,19 +66,10 @@ export function handleKey(e: KeyboardEvent): void {
     case 'M':
       setState({ chapterMapOpen: !s.chapterMapOpen });
       break;
-    case 'd':
-    case 'D':
-    case 'e':
-    case 'E':
-      toggleMode();
-      break;
-    case 't':
-    case 'T':
-      toggleTimer();
-      break;
     case 'r':
     case 'R':
-      resetPresentation();
+      closeAllPanels();
+      scrollToScene(0, 0);
       break;
     case 'x':
     case 'X':
@@ -102,10 +82,9 @@ export function handleKey(e: KeyboardEvent): void {
       closeAllPanels();
       break;
     default: {
-      // 1–9 → scenes 1–9; 0 → scene 10 (Why GenEnv).
       if (/^[0-9]$/.test(e.key)) {
         const n = e.key === '0' ? 10 : Number(e.key);
-        if (n - 1 < SCENES.length) goToScene(n - 1);
+        if (n - 1 < SCENES.length) scrollToScene(n - 1);
       }
     }
   }

@@ -1,30 +1,43 @@
 import { useEffect } from 'react';
 import { AtlasMap } from './atlas/AtlasMap';
-import { SceneSections } from './scenes/SceneSections';
+import { StorySections } from './scenes/StorySections';
+import { StoryLayer } from './ui/StoryLayer';
 import { TopHUD, ProgressRail } from './ui/hud';
-import { AwardSheet, ChapterMap, ExploreBar, HelpOverlay, LegendPanel, MiniMap, NotesDock, ProjectSheet, SourceDrawer } from './ui/overlays';
+import { ChapterMap, HelpOverlay, LegendPanel, NotesDock, SourceDrawer } from './ui/overlays';
 import { handleKey } from './lib/keys';
-import { getState, goToScene, prefersReducedMotion, subscribe, useAppState } from './state/store';
+import { measureSections, scrollToScene, startScrollEngine, stopScrollEngine } from './lib/scroll';
+import { getState, prefersReducedMotion, subscribe } from './state/store';
 import { SCENES } from './data/scenes';
 
 export default function App() {
-  const mode = useAppState((s) => s.mode);
-
   // Global keyboard controls.
   useEffect(() => {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
-  // URL hashes: #scene-<id> deep-links a scene; the hash follows navigation.
+  // The scroll engine drives scene, progress, and camera.
+  useEffect(() => {
+    measureSections();
+    startScrollEngine();
+    return stopScrollEngine;
+  }, []);
+
+  // Reflect reduced motion on <html>.
+  useEffect(() => {
+    const apply = () => document.documentElement.setAttribute('data-reduced', String(prefersReducedMotion()));
+    apply();
+    return subscribe(apply);
+  }, []);
+
+  // URL hashes: #scene-<id> deep-links; the hash follows the active scene.
   useEffect(() => {
     const fromHash = () => {
       const id = window.location.hash.replace(/^#scene-/, '');
       const idx = SCENES.findIndex((s) => s.id === id);
-      if (idx >= 0 && idx !== getState().sceneIndex) goToScene(idx);
+      if (idx >= 0 && idx !== getState().sceneIndex) scrollToScene(idx);
     };
-    // After first paint the sections exist, so the initial hash can resolve.
-    const t = window.setTimeout(fromHash, 60);
+    const t = window.setTimeout(fromHash, 80);
     window.addEventListener('hashchange', fromHash);
     const off = subscribe(() => {
       const s = SCENES[getState().sceneIndex];
@@ -39,31 +52,18 @@ export default function App() {
     };
   }, []);
 
-  // Reflect reduced motion on <html> so CSS can flatten every transition.
-  useEffect(() => {
-    const apply = () => document.documentElement.setAttribute('data-reduced', String(prefersReducedMotion()));
-    apply();
-    return subscribe(apply);
-  }, []);
-
   return (
     <>
       <AtlasMap />
-      <SceneSections />
-      {mode === 'explore' && (
-        <main style={{ position: 'fixed', inset: 0, pointerEvents: 'none' }} aria-label="Explore mode — the map is interactive" />
-      )}
+      <StorySections />
+      <StoryLayer />
       <TopHUD />
       <ProgressRail />
-      <MiniMap />
-      <ExploreBar />
       <NotesDock />
       <SourceDrawer />
       <LegendPanel />
       <ChapterMap />
       <HelpOverlay />
-      <ProjectSheet />
-      <AwardSheet />
     </>
   );
 }

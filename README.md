@@ -8,7 +8,7 @@ foundations (Tabriz → Istanbul → SFU), the perception/embodied-systems distr
 computational-urban-design prototypes, a synthesis chain, the proposed doctoral direction
 (*performance provenance*), and an attributed GenEnv context territory.
 
-- **11 main scenes** (≈17:30 speaking inside a 20:00 slot) + 1 appendix scene outside the timing
+- **11 main scenes** + 1 appendix scene; **scrolling itself tells the story** — the camera travels, the drawings demonstrate the projects live, and large unboxed text fades through (no clicks required, no timer, no panel scrollbars)
 - Every displayed research number comes from `src/data/evidence.ts` (single source of truth)
 - Status is drawn, not badged — plinths, hatching, wireframes, dashed footprints (press `L`)
 - Works fully offline; no API keys, no external requests at runtime
@@ -29,14 +29,12 @@ subpath — GitHub Pages, Netlify, or a local folder.
 ## Presenting (interview checklist)
 
 1. `npm run build && npm run preview` — present from the production build, not the dev server.
-2. Open `http://localhost:4173`, press `F` for full screen.
-3. `?` shows all controls; `L` opens the legend; `N` shows speaker notes (toggle off before sharing
-   your screen if the audience sees your display).
-4. The 20-minute timer starts automatically on your first forward navigation (or press `T`).
-   The HUD shows elapsed / target and whether you are ahead (−) or behind (+).
-5. Advance with `↓` / `→` / `Space` — steps first, then the next scene. `R` restarts everything.
-6. The appendix scene (after Conversation) is outside the timed route — use it only if asked.
-7. Rehearse offline once: disconnect the network; everything must still work (external links are
+2. Open the site and press `F` for full screen — then simply **scroll**: the story, the camera,
+   and the live project demonstrations are all scroll-driven (arrow keys and `Space` scroll too).
+3. `?` shows the controls; `L` opens the legend; `N` shows your speaker notes.
+4. `R` restarts from the opening; `PageDown`/`PageUp` jump whole scenes.
+5. The appendix scene (after Conversation) is outside the main route — use it only if asked.
+6. Rehearse offline once: disconnect the network; everything must still work (external links are
    the only thing that won't open).
 
 Full key map: `docs/PRESENTATION_CONTROLS.md`. Scene-by-scene script: `docs/PRESENTATION_SCRIPT.md`.

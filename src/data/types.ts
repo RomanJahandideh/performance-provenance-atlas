@@ -91,10 +91,36 @@ export interface ResearchParcel {
   pos?: { x: number; y: number };
 }
 
-export interface SceneStep {
-  id: string;
-  /** What this step reveals or changes on the map. */
+/** One large typographic stat shown on the story layer (no boxes). */
+export interface StoryStat {
+  value: string;
   label: string;
+  color?: 'yellow' | 'cyan' | 'orange' | 'coral' | 'red' | 'ink';
+}
+
+/** A story block: fades in/out over a scroll-progress window. Content must fit without scrolling. */
+export interface StoryBlock {
+  id: string;
+  /** Visible while scene progress is inside [p0, p1]. */
+  p0: number;
+  p1: number;
+  side: 'left' | 'right' | 'center' | 'bottom';
+  kicker?: string;
+  title?: string;
+  lines?: string[];
+  stats?: StoryStat[];
+  /** One orange honesty line, prefixed ▨. */
+  caveat?: string;
+  image?: { src: string; alt: string; credit?: string };
+  links?: { label: string; url: string }[];
+}
+
+/** Camera keyframe inside a scene (p = scene progress 0..1). */
+export interface CameraKey {
+  p: number;
+  x: number;
+  y: number;
+  w: number;
 }
 
 export interface Scene {
@@ -102,16 +128,13 @@ export interface Scene {
   index: number;
   chapter: string;
   title: string;
-  kicker: string;
-  /** The one claim the scene argues (large type). */
-  statement: string;
-  /** Camera target in world coordinates. */
-  camera: { x: number; y: number; w: number };
-  steps: SceneStep[];
-  /** Spoken script (presenter notes). */
+  /** Section height driving how long the scene's story lasts. */
+  lengthVh: number;
+  /** Camera keyframes over scene progress (first at p=0, last ≤1). */
+  camera: CameraKey[];
+  blocks: StoryBlock[];
+  /** Spoken script (presenter notes, N key). */
   script: string[];
-  targetSeconds: number;
-  /** Scenes after index 10 are appendix: excluded from the 20-minute timing. */
   appendix?: boolean;
   citationIds: string[];
   evidenceIds: string[];

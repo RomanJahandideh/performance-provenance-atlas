@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { camera } from '../lib/camera';
-import { WORLD, GRID, COL_W, ROW_H, SCALE_LABELS, AGENCY_LABELS, DISTRICTS } from '../data/atlas';
+import { WORLD, GRID, COL_W, SCALE_LABELS, DISTRICTS } from '../data/atlas';
 import { SCENES } from '../data/scenes';
 import { useAppState } from '../state/store';
 import { ResearchRoute } from './ResearchRoute';
@@ -16,7 +16,7 @@ import { PhDSite } from './PhDSite';
 import { GenEnvTerritory } from './GenEnvTerritory';
 import { OpeningTitle } from './OpeningTitle';
 
-/** Which map layers stay bright in which scene (everything else drops to context). */
+/** Which map layers stay bright in which scene (everything else drops to quiet context). */
 const BRIGHT: Record<string, string[]> = {
   opening: ['*'],
   trajectory: ['foundations', 'route'],
@@ -32,157 +32,68 @@ const BRIGHT: Record<string, string[]> = {
   'appendix-links': ['*'],
 };
 
-function dimmed(layer: string, sceneId: string, explore: boolean): boolean {
-  if (explore) return false;
+function dimmed(layer: string, sceneId: string): boolean {
   const bright = BRIGHT[sceneId] ?? ['*'];
   return !(bright.includes('*') || bright.includes(layer));
 }
 
 export function AtlasMap() {
   const svgRef = useRef<SVGSVGElement>(null);
-  const mode = useAppState((s) => s.mode);
   const sceneIndex = useAppState((s) => s.sceneIndex);
   const scene = SCENES[sceneIndex] ?? SCENES[0]!;
-  const explore = mode === 'explore';
-  const [detail, setDetail] = useState(true);
 
-  // Attach the imperative camera and keep viewport aspect fresh.
   useEffect(() => {
     if (svgRef.current) camera.attach(svgRef.current);
     const onResize = () => camera.measure();
     window.addEventListener('resize', onResize);
-    const off = camera.onChange((c) => setDetail(c.w < 2600));
-    return () => {
-      window.removeEventListener('resize', onResize);
-      off();
-    };
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  // Fly to the active scene's camera target in presentation mode.
-  useEffect(() => {
-    if (mode === 'present') {
-      camera.flyTo({ cx: scene.camera.x, cy: scene.camera.y, w: scene.camera.w });
-    }
-  }, [scene, mode]);
-
-  // Explore-mode pan / zoom.
-  useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg || !explore) return;
-    let dragging = false;
-    let last = { x: 0, y: 0 };
-    const down = (e: PointerEvent) => {
-      dragging = true;
-      last = { x: e.clientX, y: e.clientY };
-      svg.setPointerCapture(e.pointerId);
-    };
-    const move = (e: PointerEvent) => {
-      if (!dragging) return;
-      camera.panBy(e.clientX - last.x, e.clientY - last.y, svg.clientWidth);
-      last = { x: e.clientX, y: e.clientY };
-    };
-    const up = () => (dragging = false);
-    const wheel = (e: WheelEvent) => {
-      e.preventDefault();
-      camera.zoomAt(e.deltaY > 0 ? 1.12 : 0.89, e.clientX, e.clientY, svg.clientWidth, svg.clientHeight);
-    };
-    svg.addEventListener('pointerdown', down);
-    svg.addEventListener('pointermove', move);
-    svg.addEventListener('pointerup', up);
-    svg.addEventListener('wheel', wheel, { passive: false });
-    return () => {
-      svg.removeEventListener('pointerdown', down);
-      svg.removeEventListener('pointermove', move);
-      svg.removeEventListener('pointerup', up);
-      svg.removeEventListener('wheel', wheel);
-    };
-  }, [explore]);
-
-  const dim = (layer: string) => dimmed(layer, scene.id, explore);
-  const showDetail = detail || explore;
+  const dim = (layer: string) => dimmed(layer, scene.id);
 
   return (
-    <div className="atlas-stage" data-mode={mode} aria-hidden={false}>
-      <svg ref={svgRef} role="img" aria-label="Parametric research atlas: a mapped territory of Roman Jahandideh's research, from foundations in architecture and landscape through computational urban design prototypes to a proposed PhD on performance provenance, with the GenEnv Lab research context as an attributed neighbouring territory.">
+    <div className="atlas-stage" aria-hidden={false}>
+      <svg
+        ref={svgRef}
+        role="img"
+        aria-label="Parametric research atlas: a mapped territory of Roman Jahandideh's research, from foundations in architecture and landscape, through four computational urban-design prototypes, to a proposed PhD on performance provenance, beside an attributed GenEnv research territory."
+      >
         <Defs />
 
-        {/* ── Construction grid ── */}
+        {/* ── Construction grid (quiet) ── */}
         <rect x={-800} y={-800} width={WORLD.w + 1600} height={WORLD.h + 1600} fill="url(#grid24)" />
         <rect x={-800} y={-800} width={WORLD.w + 1600} height={WORLD.h + 1600} fill="url(#grid96)" />
         <rect x={0} y={0} width={WORLD.w} height={WORLD.h} fill="none" stroke="var(--line-major)" strokeWidth={1.4} />
         <CoordinateLabels />
 
-        {/* ── Semantic grid region + axes ── */}
+        {/* ── Semantic frame: one clean axis each way ── */}
         <g className="map-layer">
-          <rect
-            x={GRID.x0}
-            y={GRID.y0}
-            width={GRID.x1 - GRID.x0}
-            height={GRID.y1 - GRID.y0}
-            fill="none"
-            stroke="var(--line-major)"
-            strokeWidth={1.2}
-          />
-          {Array.from({ length: GRID.cols - 1 }, (_, i) => (
-            <line
-              key={`c${i}`}
-              x1={GRID.x0 + (i + 1) * COL_W}
-              y1={GRID.y0}
-              x2={GRID.x0 + (i + 1) * COL_W}
-              y2={GRID.y1}
-              stroke="var(--line-major)"
-              strokeWidth={0.8}
-              strokeDasharray="2 10"
-            />
-          ))}
-          {Array.from({ length: GRID.rows - 1 }, (_, i) => (
-            <line
-              key={`r${i}`}
-              x1={GRID.x0}
-              y1={GRID.y0 + (i + 1) * ROW_H}
-              x2={GRID.x1}
-              y2={GRID.y0 + (i + 1) * ROW_H}
-              stroke="var(--line-major)"
-              strokeWidth={0.8}
-              strokeDasharray="2 10"
-            />
-          ))}
+          <rect x={GRID.x0} y={GRID.y0} width={GRID.x1 - GRID.x0} height={GRID.y1 - GRID.y0} fill="none" stroke="var(--line-major)" strokeWidth={1} strokeDasharray="20 14" opacity={0.55} />
           {SCALE_LABELS.map((l, i) => (
-            <text key={l} x={GRID.x0 + (i + 0.5) * COL_W} y={GRID.y1 + 54} textAnchor="middle" fontSize={17} className="map-label">
+            <text key={l} x={GRID.x0 + (i + 0.5) * COL_W} y={GRID.y1 + 56} textAnchor="middle" fontSize={16} className="map-label">
               {l}
             </text>
           ))}
-          <text x={GRID.x0 + (GRID.x1 - GRID.x0) / 2} y={GRID.y1 + 100} textAnchor="middle" fontSize={13} className="map-coord">
-            HORIZONTAL AXIS — SPATIAL SCALE →
+          <line x1={GRID.x0} y1={GRID.y1 + 86} x2={GRID.x1} y2={GRID.y1 + 86} stroke="var(--muted)" strokeWidth={1} markerEnd="url(#arrowMuted)" opacity={0.6} />
+          <text x={GRID.x0} y={GRID.y1 + 112} fontSize={12} className="map-coord">
+            SPATIAL SCALE →
           </text>
-          {AGENCY_LABELS.map((l, i) => (
-            <text
-              key={l}
-              x={GRID.x0 - 30}
-              y={GRID.y1 - (i + 0.5) * ROW_H}
-              textAnchor="middle"
-              fontSize={13}
-              className="map-label"
-              transform={`rotate(-90 ${GRID.x0 - 30} ${GRID.y1 - (i + 0.5) * ROW_H})`}
-            >
-              {l}
-            </text>
-          ))}
+          <line x1={GRID.x0 - 56} y1={GRID.y1} x2={GRID.x0 - 56} y2={GRID.y0} stroke="var(--muted)" strokeWidth={1} markerEnd="url(#arrowMuted)" opacity={0.6} />
           <text
-            x={GRID.x0 - 74}
+            x={GRID.x0 - 70}
             y={GRID.y0 + (GRID.y1 - GRID.y0) / 2}
             textAnchor="middle"
-            fontSize={13}
+            fontSize={12}
             className="map-coord"
-            transform={`rotate(-90 ${GRID.x0 - 74} ${GRID.y0 + (GRID.y1 - GRID.y0) / 2})`}
+            transform={`rotate(-90 ${GRID.x0 - 70} ${GRID.y0 + (GRID.y1 - GRID.y0) / 2})`}
           >
-            VERTICAL AXIS — COMPUTATIONAL AGENCY →
+            COMPUTATIONAL AGENCY →
           </text>
         </g>
 
         {/* ── Districts ── */}
         {DISTRICTS.map((d) => (
-          <g key={d.id} className="map-layer" data-dim={dim(d.id === 'perception-embodied' ? 'cluster' : d.id)}>
+          <g key={d.id} className="map-layer" data-dim={dim(d.id === 'foundations' ? 'foundations' : d.id)}>
             <polygon
               points={d.points.map((p) => `${p.x},${p.y}`).join(' ')}
               fill={d.id === 'genenv' ? 'rgba(242,207,85,0.03)' : d.id === 'phd' ? 'rgba(242,207,85,0.02)' : 'rgba(11,50,102,0.10)'}
@@ -191,13 +102,7 @@ export function AtlasMap() {
               strokeDasharray={d.id === 'phd' ? '3 10' : d.id === 'genenv' ? undefined : '18 10'}
             />
             {d.id === 'genenv' && (
-              <polygon
-                points={d.points.map((p) => `${p.x},${p.y}`).join(' ')}
-                fill="none"
-                stroke="var(--muted)"
-                strokeWidth={0.8}
-                transform="translate(7,7)"
-              />
+              <polygon points={d.points.map((p) => `${p.x},${p.y}`).join(' ')} fill="none" stroke="var(--muted)" strokeWidth={0.8} transform="translate(7,7)" />
             )}
             <text x={d.labelPos.x} y={d.labelPos.y} fontSize={15} className="district-label">
               {d.name}
@@ -218,32 +123,32 @@ export function AtlasMap() {
           <ResearchRoute />
         </g>
         <g className="map-layer" data-dim={dim('foundations')}>
-          <CampusAwards detail={showDetail} />
+          <CampusAwards />
         </g>
         <g className="map-layer" data-dim={dim('cluster')}>
-          <FoundationCluster active={scene.id === 'foundation'} />
+          <FoundationCluster />
         </g>
-        <g className="map-layer" data-dim={dim('chain')} data-hide={!explore && !['synthesis', 'conversation', 'appendix-links'].includes(scene.id)}>
-          <SynthesisChain active={scene.id === 'synthesis'} />
+        <g className="map-layer" data-dim={dim('chain')} data-hide={!['synthesis', 'conversation', 'appendix-links'].includes(scene.id)}>
+          <SynthesisChain />
         </g>
         <Parcels dim={dim} />
         <g className="map-layer" data-dim={dim('pmg')}>
-          <PMGVignette active={scene.id === 'pmg' || explore} />
+          <PMGVignette />
         </g>
         <g className="map-layer" data-dim={dim('zla')}>
-          <ZLAVignette active={scene.id === 'zla' || explore} />
+          <ZLAVignette />
         </g>
         <g className="map-layer" data-dim={dim('vcm')}>
-          <VCMVignette active={scene.id === 'vcm' || explore} />
+          <VCMVignette />
         </g>
         <g className="map-layer" data-dim={dim('ema')}>
-          <EMAVignette active={scene.id === 'ema' || explore} />
+          <EMAVignette />
         </g>
         <g className="map-layer" data-dim={dim('phd')}>
-          <PhDSite active={scene.id === 'phd'} />
+          <PhDSite />
         </g>
         <g className="map-layer" data-dim={dim('genenv')}>
-          <GenEnvTerritory active={scene.id === 'genenv' || explore} />
+          <GenEnvTerritory />
         </g>
         <OpeningTitle />
       </svg>
@@ -258,7 +163,7 @@ function Defs() {
         <path d="M24 0H0V24" fill="none" stroke="var(--line-fine)" strokeWidth={0.6} />
       </pattern>
       <pattern id="grid96" width={96} height={96} patternUnits="userSpaceOnUse">
-        <path d="M96 0H0V96" fill="none" stroke="var(--line-major)" strokeWidth={0.7} opacity={0.5} />
+        <path d="M96 0H0V96" fill="none" stroke="var(--line-major)" strokeWidth={0.7} opacity={0.45} />
       </pattern>
       <pattern id="hatchOrange" width={9} height={9} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <line x1={0} y1={0} x2={0} y2={9} stroke="var(--orange)" strokeWidth={1.4} opacity={0.65} />
@@ -331,9 +236,6 @@ function ScaleBar() {
       </text>
       <text x={192} y={24} fontSize={12} className="map-coord" textAnchor="middle">
         192 u
-      </text>
-      <text x={230} y={2} fontSize={11} className="map-coord">
-        1 MODULE = 96 UNITS
       </text>
     </g>
   );
