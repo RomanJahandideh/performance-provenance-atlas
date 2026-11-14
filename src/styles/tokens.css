@@ -1,0 +1,36 @@
+/* ─── Parametric Research Atlas · design tokens ───
+   Colour encodes meaning (see docs/MAPPING_LANGUAGE.md):
+   yellow = provenance/route/evidence · cyan = verified computational output
+   orange = assumption/placeholder/proxy · white = executed deterministic geometry
+   grey dashed = written-but-not-executed · dotted yellow = proposed PhD work
+   red = falsified / failed check · coral = human decision · lime = environmental
+   magenta = external literature · proposal blue = doctoral framing text */
+:root {
+  --bg: #07182e;
+  --bg-raise: #0b2240;
+  --blueprint: #0b3266;
+  --ink: #f2efe7;
+  --ink-dim: #c9d2dc;
+  --muted: #98a7b8;
+  --line-fine: rgba(152, 167, 184, 0.08);
+  --line-major: rgba(152, 167, 184, 0.22);
+  --yellow: #f2cf55;
+  --cyan: #70d7ce;
+  --orange: #e8924a;
+  --coral: #f47b5c;
+  --lime: #cbe56b;
+  --proposal: #89a7ff;
+  --magenta: #d895e8;
+  --red: #e05252;
+  --geom: #edf2f7;
+
+  --font-head: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Consolas', monospace;
+
+  --panel-bg: rgba(7, 24, 46, 0.88);
+  --panel-border: rgba(152, 167, 184, 0.28);
+  --shadow: 0 18px 50px rgba(2, 8, 18, 0.55);
+
+  --ease: cubic-bezier(0.45, 0.02, 0.18, 1);
+}
