@@ -11,7 +11,7 @@ export const SCENES: readonly Scene[] = [
     index: 0,
     chapter: '01',
     title: 'From Spatial Design to Accountable Co-Design',
-    lengthVh: 240,
+    lengthVh: 140,
     camera: [{ p: 0, x: 2400, y: 1380, w: 5000 }],
     blocks: [
       {
@@ -50,7 +50,7 @@ export const SCENES: readonly Scene[] = [
     index: 1,
     chapter: '02',
     title: 'Research Trajectory',
-    lengthVh: 330,
+    lengthVh: 200,
     camera: [
       { p: 0, x: 620, y: 2120, w: 1700 },
       { p: 0.3, x: 660, y: 1620, w: 1600 },
@@ -118,7 +118,7 @@ export const SCENES: readonly Scene[] = [
     index: 2,
     chapter: '03',
     title: 'Perception and Interactive Environments',
-    lengthVh: 300,
+    lengthVh: 170,
     camera: [{ p: 0, x: 830, y: 830, w: 1800 }],
     blocks: [
       {
@@ -175,31 +175,99 @@ export const SCENES: readonly Scene[] = [
     evidenceIds: ['ecaade-design', 'ecaade-finding', 'iss-study1', 'iss-study2', 'iss-tradeoff', 'bio-pipeline', 'bio-study'],
   },
   {
-    id: 'pmg',
+    id: 'zla',
     index: 3,
     chapter: '04',
+    title: 'Zoning Literacy Assistant',
+    lengthVh: 180,
+    camera: [{ p: 0, x: 1940, y: 1570, w: 1950 }],
+    blocks: [
+      {
+        id: 'z1',
+        p0: 0.0,
+        p1: 0.2,
+        side: 'bottom',
+        kicker: 'PROJECT 1 OF 4 · THE REGULATORY ARCHIVE',
+        title: 'Zoning Literacy Assistant',
+        lines: [
+          'Ten addressable clauses. Three separate model calls — retrieve → answer → verify — and synthesis only ever sees the retrieved text.',
+          'Retrieval and interpretation can be uncertain; deterministic arithmetic is repeatable. Refusal is a designed behaviour.',
+        ],
+      },
+      {
+        id: 'z2',
+        p0: 0.22,
+        p1: 0.44,
+        side: 'bottom',
+        lines: ['A supported question comes back grounded, quoting the exact clause that carries it.'],
+      },
+      {
+        id: 'z3',
+        p0: 0.46,
+        p1: 0.7,
+        side: 'bottom',
+        title: 'The deliberate failure case',
+        lines: ['The bylaw permits a laneway house but never states its storeys — so the pipeline stops. Restraint becomes observable, not claimed.'],
+        stats: [{ value: 'NOT COVERED', label: '“not covered by the provided source” — instead of a guess', color: 'orange' }],
+      },
+      {
+        id: 'z4',
+        p0: 0.72,
+        p1: 1,
+        side: 'bottom',
+        lines: ['Site arithmetic never touches the model — same inputs, same result; the model only explains numbers the code produced.'],
+        stats: [
+          { value: '162.6 m²', label: '(10−2×1.2) × (37−4.9−10.7), in code', color: 'cyan' },
+          { value: '1 → 2 floors', label: 'FSR 0.70 → 1.00 · rental condition', color: 'yellow' },
+        ],
+        caveat: 'Prototype knowledge base: ten clauses of R1-1 — not the complete Vancouver zoning code.',
+        links: [
+          { label: 'Live system', url: 'https://romanjahandideh.github.io/zoning-literacy-assistant/' },
+          { label: 'GitHub', url: 'https://github.com/RomanJahandideh/zoning-literacy-assistant' },
+        ],
+      },
+    ],
+    script: [
+      'MAX 1:15 · core ≈95 words — My first project is about trustworthy regulatory knowledge. A general-purpose language model will happily give a confident answer even when the information is not there. So I separated the system into retrieval, synthesis, and independent verification: it finds the relevant clauses, answers only from those clauses, then checks whether the evidence supports the answer — or whether a clause was missed.',
+      'When the source does not contain enough information, it stops instead of guessing: “Not covered by the provided source.” Refusing an unsupported answer is designed behaviour, not a failure.',
+      '[OPTIONAL] A second mode computes site feasibility in deterministic code — same inputs, same result — and the AI only explains those numbers. [SKIP IF SHORT ON TIME] The prototype uses a simplified ten-clause R1-1 knowledge base, not the complete Vancouver code.',
+      'TRANSITION — Once regulation becomes structured and traceable, the next question is how it becomes editable spatial geometry.',
+    ],
+    citationIds: ['genenv-decoding'],
+    evidenceIds: ['zla-ten-clauses', 'zla-pipeline', 'zla-laneway', 'zla-deterministic-example'],
+  },
+  {
+    id: 'pmg',
+    index: 4,
+    chapter: '05',
     title: 'Parametric Massing Generator',
-    lengthVh: 360,
-    camera: [{ p: 0, x: 1950, y: 1480, w: 1950 }],
+    lengthVh: 200,
+    camera: [{ p: 0, x: 2570, y: 1340, w: 1950 }],
     blocks: [
       {
         id: 'p1',
         p0: 0.0,
         p1: 0.3,
         side: 'bottom',
-        kicker: 'PROJECT 1 OF 4 · REGULATION → EDITABLE GEOMETRY',
+        kicker: 'PROJECT 2 OF 4 · REGULATION → EDITABLE GEOMETRY',
         title: 'Parametric Massing Generator',
-        lines: ['Bylaw text parses into eight structured constraints — each carrying its exact source phrase and a confidence level.'],
+        lines: [
+          'Bylaw text parses into eight structured constraints — each carrying its exact source phrase and a confidence level.',
+          'AI interprets, extracts, reviews, and classifies · deterministic code offsets, clips, and computes every area.',
+        ],
       },
       {
         id: 'p2',
         p0: 0.32,
         p1: 0.56,
         side: 'bottom',
-        lines: ['Deterministic half-plane clipping turns the constraints into an editable envelope — the Vancouver R1-1 preset keeps the conditional rule explicit.'],
+        lines: [
+          'Half-plane clipping turns the constraints into an editable envelope: parcel = input · setback = parameter · FSR = constraint · footprint = parcel − setbacks = rule · envelope = output.',
+          'Parametric design stores relationships, not only a final shape — watch the rental condition add a storey.',
+        ],
         stats: [
           { value: '4.9 · 1.2 · 10.7 m', label: 'front · side · rear setbacks', color: 'cyan' },
-          { value: '0.70 → 1.00', label: 'FSR under the rental condition', color: 'yellow' },
+          { value: '0.70 → 1.00', label: 'FSR, rental condition → +1 storey', color: 'yellow' },
         ],
       },
       {
@@ -223,76 +291,20 @@ export const SCENES: readonly Scene[] = [
       },
     ],
     script: [
-      'First of the four computational projects. The massing generator reads bylaw-style text and returns eight structured constraints, each carrying the exact phrase it came from and a confidence level.',
-      'The geometry is deterministic: half-plane clipping computes the envelope; the R1-1 preset keeps the rental condition explicit — zero point seven to one point zero.',
-      'The same tested method handles irregular parcels and an AI-classified urban block. An independent second call reviews the result, and every revision stays visible. Deterministic code computes the form; AI extracts, critiques, and explains.',
+      'MAX 1:35 · core ≈130 words — The Massing Generator moves from regulatory language to spatial form. AI extracts eight structured constraints and keeps the supporting phrase and a confidence level for every value, and a separate reviewer checks the interpretation. Then deterministic code takes over: it offsets the parcel, applies the setbacks, computes footprint and floor area, and generates the massing.',
+      'It is procedural because it follows a defined sequence, parametric because changing one value updates the dependent geometry — parametric design stores relationships, not just a final shape — and generative because it can produce alternatives. Watch the rental condition: the floor-space ratio moves from zero point seven to one point zero, and the envelope gains a storey.',
+      '[OPTIONAL] The same clipping method scales from rectangular lots to irregular parcels and AI-classified urban blocks. My real interest is not automatic form generation — it is keeping source, parameter, geometry, and revision connected.',
+      'TRANSITION — A regulation-compliant envelope still does not tell us whether the geometry performs well, or what simplifying a constraint costs.',
     ],
     citationIds: ['genenv-decoding'],
     evidenceIds: ['pmg-eight-constraints', 'pmg-source-confidence', 'pmg-review-pass', 'pmg-three-modes', 'pmg-r11-preset', 'pmg-geometry-method'],
-  },
-  {
-    id: 'zla',
-    index: 4,
-    chapter: '05',
-    title: 'Zoning Literacy Assistant',
-    lengthVh: 340,
-    camera: [{ p: 0, x: 2560, y: 1430, w: 1950 }],
-    blocks: [
-      {
-        id: 'z1',
-        p0: 0.0,
-        p1: 0.2,
-        side: 'bottom',
-        kicker: 'PROJECT 2 OF 4 · THE REGULATORY ARCHIVE',
-        title: 'Zoning Literacy Assistant',
-        lines: ['Ten addressable clauses. Three separate model calls — retrieve → answer → verify — and synthesis only ever sees the retrieved text.'],
-      },
-      {
-        id: 'z2',
-        p0: 0.22,
-        p1: 0.44,
-        side: 'bottom',
-        lines: ['A supported question comes back grounded, quoting the exact clause that carries it.'],
-      },
-      {
-        id: 'z3',
-        p0: 0.46,
-        p1: 0.7,
-        side: 'bottom',
-        title: 'The deliberate failure case',
-        lines: ['The bylaw permits a laneway house but never states its storeys — so the pipeline stops. Restraint becomes observable, not claimed.'],
-        stats: [{ value: 'NOT COVERED', label: 'instead of a plausible guess', color: 'orange' }],
-      },
-      {
-        id: 'z4',
-        p0: 0.72,
-        p1: 1,
-        side: 'bottom',
-        lines: ['Site arithmetic never touches the model — the model only explains numbers the code produced.'],
-        stats: [
-          { value: '162.6 m²', label: '(10−2×1.2) × (37−4.9−10.7), in code', color: 'cyan' },
-          { value: '1 → 2 floors', label: 'FSR 0.70 → 1.00 · rental condition', color: 'yellow' },
-        ],
-        links: [
-          { label: 'Live system', url: 'https://romanjahandideh.github.io/zoning-literacy-assistant/' },
-          { label: 'GitHub', url: 'https://github.com/RomanJahandideh/zoning-literacy-assistant' },
-        ],
-      },
-    ],
-    script: [
-      'The zoning assistant is for people who do not speak planning language. Retrieval selects clauses, synthesis sees only the retrieved text, verification checks the answer against its own evidence.',
-      'The deliberate failure case matters most: the excerpt permits a laneway house but never states its storey limit — so the system stops and says “not covered”.',
-      'And site arithmetic never touches the model: for a ten-by-thirty-seven lot, code computes one-sixty-two-point-six square metres, and the rental condition moves the scheme from one floor to two.',
-    ],
-    citationIds: ['genenv-decoding'],
-    evidenceIds: ['zla-ten-clauses', 'zla-pipeline', 'zla-laneway', 'zla-deterministic-example'],
   },
   {
     id: 'vcm',
     index: 5,
     chapter: '06',
     title: 'Vancouver View Corridor Massing',
-    lengthVh: 360,
+    lengthVh: 200,
     camera: [{ p: 0, x: 3020, y: 1430, w: 1950 }],
     blocks: [
       {
@@ -333,6 +345,7 @@ export const SCENES: readonly Scene[] = [
         p1: 0.84,
         side: 'bottom',
         lines: [
+          'Performance-informed design: geometry proposes an alternative; evaluation provides evidence about its consequences — computational, with no AI needed for this calculation.',
           'Seven orientations, swept live: total area holds within 0.02% while floors reshuffle 18 → 17. Under a linear ceiling, volume follows the footprint centroid — orientation becomes a free design variable.',
         ],
       },
@@ -350,10 +363,10 @@ export const SCENES: readonly Scene[] = [
       },
     ],
     script: [
-      'A protected view corridor is not a flat height limit — it is a ceiling that rises with distance from the viewpoint.',
-      'The shortcut caps the site at the lowest corridor elevation: ten floors, eighteen thousand three hundred sixty square metres. Trimming floor by floor: eighteen floors, twenty-five thousand six hundred eight — thirty-nine point five percent more, recovered purely by doing the geometry precisely.',
-      'Across seven orientations the volume holds within two hundredths of a percent while floors reshuffle — the centroid explains it, so orientation becomes a free design variable.',
-      'Two honest flags stay on the drawing: placeholder elevations, and an unexecuted Grasshopper step. The AI layer only interprets the verified results.',
+      'MAX 1:35 · core ≈105 words — The View Corridor project moves from generation to evidence. Vancouver’s protected views create sloped, three-dimensional ceilings — not flat height limits. I compared the conservative flat-cap shortcut with precise floor-by-floor clipping: ten floors and eighteen thousand three hundred sixty square metres against eighteen floors and twenty-five thousand six hundred eight — a thirty-nine point five percent recovery, from precision alone.',
+      'This is performance-informed design in the simplest sense: geometry proposes an alternative, and evaluation provides evidence about its consequences — no AI is needed for the core calculation.',
+      '[OPTIONAL] A rotation study showed total area holds within two hundredths of a percent while the floor configuration reshuffles — so orientation could serve silhouette or program instead of yield. [SKIP IF SHORT ON TIME] The honest flags: real corridor plan geometry and verified clipping, but placeholder elevation values and an unexecuted Rhino-dependent step.',
+      'TRANSITION — The final project extends this evidence-based approach to several competing objectives, where no single design wins everywhere.',
     ],
     citationIds: [],
     evidenceIds: ['vcm-corridor', 'vcm-flat-cap', 'vcm-trimmed', 'vcm-gfa-recovery', 'vcm-rotation-study', 'vcm-placeholders', 'vcm-gh-unexecuted'],
@@ -363,7 +376,7 @@ export const SCENES: readonly Scene[] = [
     index: 6,
     chapter: '07',
     title: 'Environmental Massing Agents',
-    lengthVh: 380,
+    lengthVh: 220,
     camera: [{ p: 0, x: 3680, y: 1170, w: 1950 }],
     blocks: [
       {
@@ -382,14 +395,20 @@ export const SCENES: readonly Scene[] = [
         p0: 0.3,
         p1: 0.42,
         side: 'bottom',
-        lines: ['Agents propose, interpret, critique, and redirect. They cannot invent a number.'],
+        lines: [
+          'Agents propose, interpret, critique, and redirect. They cannot invent a number.',
+          'Generative design = alternatives from encoded rules · optimization = searching them against defined objectives.',
+        ],
       },
       {
         id: 'e3',
         p0: 0.44,
         p1: 0.64,
         side: 'bottom',
-        lines: ['Four falsifiable hypotheses, written before any run, anchored to an exhaustive reference grid:'],
+        lines: [
+          'Four falsifiable hypotheses, written before any run, anchored to an exhaustive reference grid.',
+          'Deterministic evaluation repeats exactly · stochastic search varies by seed · the wind heuristic approximates — it is not CFD.',
+        ],
         stats: [
           { value: '1,080', label: 'designs in the reference grid' },
           { value: '5 + 5', label: 'seeds · NSGA-II vs random' },
@@ -401,7 +420,10 @@ export const SCENES: readonly Scene[] = [
         p0: 0.66,
         p1: 0.8,
         side: 'bottom',
-        lines: ['After removing dominant variables, wind and corridor yield collapse to one clean trade-off: r = −1.000 across the ten-member Pareto set.'],
+        lines: [
+          'Pareto-optimal = cannot improve one objective without worsening another: a trade-off, not an automatically perfect design.',
+          'After removing dominant variables, wind and corridor yield collapse to one clean trade-off: r = −1.000 across the ten-member Pareto set.',
+        ],
       },
       {
         id: 'e5',
@@ -423,10 +445,10 @@ export const SCENES: readonly Scene[] = [
       },
     ],
     script: [
-      'This is the strongest technical bridge to GenEnv, extending the lab’s MCP-driven parametric modelling. Six functional roles over a real MCP server; deterministic evaluators score every objective.',
-      'I wrote four falsifiable hypotheses before running anything: a one-thousand-eighty-design reference grid, five seeds each, two hundred evaluations.',
-      'The strict speed hypothesis failed — and I kept it on the record. What held was reliability: four of five seeds versus one of five. Timber weakly dominated in all two hundred matched geometries; the floor formula held within one floor across nineteen orientations; wind and yield collapse to a clean trade-off.',
-      'The limitations are equally explicit — proxies and placeholders declared. What I verified is what I claim.',
+      'MAX 2:15 · core ≈150 words — Environmental Massing Agents extends the workflow into multi-objective exploration. A Generator proposes design parameters; four Critics examine the solar, carbon, wind, and yield results; an Orchestrator directs the next iteration. The crucial rule: the agents never calculate the scores. Deterministic evaluators provide the evidence; the agents interpret it and suggest directions.',
+      'Three terms, briefly: generative design produces alternatives from encoded rules; optimization searches among them against defined objectives; and a Pareto-optimal design simply cannot improve one objective without worsening another — a trade-off, not an automatically perfect answer.',
+      'I compared NSGA-II with random sampling: five seeds each, an equal two-hundred-evaluation budget, against an exhaustive reference grid. My hypothesis predicted faster directed search — it was not supported. What the experiment showed instead was reliability: four of five runs reached the threshold, against one of five. Reporting that distinction matters — it separates what I expected from what the results support.',
+      '[OPTIONAL] Timber weakly dominated in all two hundred matched comparisons; the floor formula held within one floor; the remaining wind–yield trade-off is a clean line. [SKIP IF SHORT ON TIME] Limitations live in the evidence drawer: simplified solar, benchmark carbon, heuristic wind, placeholder corridor values, no live unscripted LLM run.',
     ],
     citationIds: ['liu-tian-2025'],
     evidenceIds: ['ema-roles', 'ema-reference-grid', 'ema-search-setup', 'ema-h1-not-confirmed', 'ema-reliability', 'ema-h2-timber', 'ema-h3-floor-formula', 'ema-h4-pareto', 'ema-limitations'],
@@ -436,7 +458,7 @@ export const SCENES: readonly Scene[] = [
     index: 7,
     chapter: '08',
     title: 'One Connected Research Infrastructure',
-    lengthVh: 240,
+    lengthVh: 120,
     camera: [{ p: 0, x: 2900, y: 1380, w: 4300 }],
     blocks: [
       {
@@ -459,8 +481,7 @@ export const SCENES: readonly Scene[] = [
       },
     ],
     script: [
-      'Zooming out, the four projects stop being separate demonstrations: regulation and evidence, evidence into editable geometry, geometry into verified performance, and critique over all of it.',
-      'The common contribution is the accountable path that keeps sources, geometry, performance, uncertainty, and human decisions connected.',
+      'MAX 0:20 · ≈60 words — Together, these projects form one developing research direction. The Zoning Literacy Assistant establishes trustworthy regulatory knowledge. The Parametric Massing Generator converts that knowledge into editable geometry. The View Corridor project evaluates geometry against measurable evidence. And the Environmental Massing Agents let specialized agents discuss verified trade-offs — while the final judgment stays with the designer.',
     ],
     citationIds: [],
     evidenceIds: [],
@@ -470,7 +491,7 @@ export const SCENES: readonly Scene[] = [
     index: 8,
     chapter: '09',
     title: 'Proposed Direction: Performance Provenance',
-    lengthVh: 360,
+    lengthVh: 200,
     camera: [{ p: 0, x: 3820, y: 1070, w: 2150 }],
     blocks: [
       {
@@ -516,7 +537,7 @@ export const SCENES: readonly Scene[] = [
     index: 9,
     chapter: '10',
     title: 'Why GenEnv',
-    lengthVh: 260,
+    lengthVh: 140,
     camera: [{ p: 0, x: 4360, y: 900, w: 1850 }],
     blocks: [
       {
@@ -554,7 +575,7 @@ export const SCENES: readonly Scene[] = [
     index: 10,
     chapter: '11',
     title: 'Conversation',
-    lengthVh: 240,
+    lengthVh: 120,
     camera: [{ p: 0, x: 2400, y: 1380, w: 5000 }],
     blocks: [
       {
@@ -588,7 +609,7 @@ export const SCENES: readonly Scene[] = [
     index: 11,
     chapter: 'A',
     title: 'Evidence and Links',
-    lengthVh: 200,
+    lengthVh: 110,
     camera: [{ p: 0, x: 2400, y: 1380, w: 5000 }],
     blocks: [
       {

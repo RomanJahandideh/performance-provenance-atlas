@@ -40,7 +40,7 @@ export function PMGVignette() {
   const review = !on || p >= 0.86;
 
   return (
-    <g aria-hidden transform="translate(-820,350)">
+    <g aria-hidden transform="translate(-200,210)">
       {/* ── Parsed constraint table ── */}
       <g transform="translate(1870,1010)">
         <text y={-16} fontSize={12} className="map-coord">
@@ -83,11 +83,15 @@ export function PMGVignette() {
       </g>
 
       {/* ── Envelope drawing ── */}
-      <g transform="translate(3030,1280)">
+      <g transform="translate(3030,1180)">
         <text x={-130} y={-320} fontSize={12} className="map-coord" opacity={p >= 0.3 ? 1 : 0} style={{ transition: 'opacity .4s' }}>
           DETERMINISTIC ENVELOPE · HALF-PLANE CLIPPING
         </text>
-        {mode !== 'block' ? <Envelope irregular={mode === 'irregular'} planes={planes} extrude={extrude} /> : <UrbanBlock grow={on ? win(p, 0.72, 0.86) : 1} />}
+        {mode !== 'block' ? (
+          <Envelope irregular={mode === 'irregular'} planes={planes} extrude={extrude} fsr={p >= 0.52} />
+        ) : (
+          <UrbanBlock grow={on ? win(p, 0.72, 0.86) : 1} />
+        )}
       </g>
 
       {/* ── Reviewer stamp ── */}
@@ -110,7 +114,7 @@ export function PMGVignette() {
   );
 }
 
-function Envelope({ irregular, planes, extrude }: { irregular: boolean; planes: number; extrude: number }) {
+function Envelope({ irregular, planes, extrude, fsr }: { irregular: boolean; planes: number; extrude: number; fsr: boolean }) {
   const lot = irregular
     ? [iso(0, 0), iso(LOT_W, 0), iso(LOT_W, LOT_D * 0.72), iso(LOT_W * 0.55, LOT_D), iso(0, LOT_D)]
     : [iso(0, 0), iso(LOT_W, 0), iso(LOT_W, LOT_D), iso(0, LOT_D)];
@@ -132,11 +136,32 @@ function Envelope({ irregular, planes, extrude }: { irregular: boolean; planes: 
         <polygon points={mass.right} fill="rgba(237,242,247,0.26)" stroke="var(--geom)" strokeWidth={1.2} />
         <polygon points={mass.top} fill="rgba(112,215,206,0.18)" stroke="var(--geom)" strokeWidth={1.2} />
         {extrude > 0.55 && <polygon points={isoBoxFaces(BW, bd, FLOOR_H).top} fill="none" stroke="var(--geom)" strokeWidth={0.8} strokeOpacity={0.6} />}
-        {extrude > 0.9 && (
+        {extrude > 0.9 && !fsr && (
           <>
             <polygon points={third.top} fill="none" stroke="var(--muted)" strokeWidth={1.2} strokeDasharray="7 6" />
             <text x={iso(BW, bd * 0.4, FLOOR_H * 3 + 14).x} y={iso(BW, bd * 0.4, FLOOR_H * 3 + 14).y} fontSize={11} className="map-annotation" fill="var(--muted)">
-              3rd storey headroom · 11.5 m cap
+              FSR 0.70 · 3rd storey headroom under the 11.5 m cap
+            </text>
+          </>
+        )}
+        {extrude > 0.9 && fsr && (
+          <>
+            {/* the rental condition adds the third storey: FSR 0.70 → 1.00 */}
+            <polygon
+              points={pts([iso(0, bd, FLOOR_H * 2), iso(BW, bd, FLOOR_H * 2), iso(BW, bd, FLOOR_H * 3), iso(0, bd, FLOOR_H * 3)])}
+              fill="rgba(242,207,85,0.10)"
+              stroke="var(--yellow)"
+              strokeWidth={1.2}
+            />
+            <polygon
+              points={pts([iso(BW, 0, FLOOR_H * 2), iso(BW, bd, FLOOR_H * 2), iso(BW, bd, FLOOR_H * 3), iso(BW, 0, FLOOR_H * 3)])}
+              fill="rgba(242,207,85,0.16)"
+              stroke="var(--yellow)"
+              strokeWidth={1.2}
+            />
+            <polygon points={third.top} fill="rgba(242,207,85,0.22)" stroke="var(--yellow)" strokeWidth={1.2} />
+            <text x={iso(BW, bd * 0.4, FLOOR_H * 3 + 14).x} y={iso(BW, bd * 0.4, FLOOR_H * 3 + 14).y} fontSize={11} className="map-annotation" fill="var(--yellow)">
+              FSR 0.70 → 1.00 (rental condition) · +1 storey
             </text>
           </>
         )}

@@ -74,3 +74,11 @@ Flagged:
 1. Photography award naming (above).
 2. “Eight constraints” presentation (portfolio-sourced count vs README wording).
 3. The speaking script trims the deck’s per-scene timings to fit 17:30 — review pacing.
+
+## 2026-11-15 project-section revision
+
+- Project order is now ZLA → PMG → VCM → EMA (narration and map route both follow it).
+- New in-section wording checked against the READMEs: the ZLA refusal is shown as "Not covered by the provided source." (the README's behaviour is a "not covered" stop); the PMG FSR 0.70 → 1.00 moment is drawn as +1 storey on the representative R1-1 envelope, consistent with the ZLA checker's 1 → 2 floors at 10 × 37 m. Treat it as illustrative, not a site-specific result.
+- Concept lines added inside sections (parametric relationships, performance-informed design, generative vs optimization, Pareto, deterministic vs stochastic vs heuristic). These are definitions, not claims about the projects.
+- All 4 portfolio pages, 4 GitHub repos, and 2 live demos returned HTTP 200 on 2026-11-15.
+- Still needs Roman's confirmation: whether "procedural / parametric / generative" is the framing he wants for PMG, and the ten-clause wording ("simplified ten-clause R1-1 knowledge base").

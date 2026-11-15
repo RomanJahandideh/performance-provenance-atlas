@@ -108,7 +108,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: ['genenv-decoding'],
     image: 'assets/projects/zla-hero.webp',
     imageAlt: 'Zoning Literacy Assistant interface: example questions, a lot width and depth form, and the bylaw excerpt it answers from.',
-    pos: { x: 2420, y: 1560 },
+    pos: { x: 1800, y: 1700 },
   },
   {
     id: 'pmg',
@@ -134,7 +134,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     citationIds: ['genenv-decoding'],
     image: 'assets/projects/pmg-hero.webp',
     imageAlt: 'Parametric Massing Generator in urban block mode: a 3×3 grid of white massing volumes with a plan view inset.',
-    pos: { x: 1800, y: 1700 },
+    pos: { x: 2420, y: 1560 },
   },
   {
     id: 'vcm',

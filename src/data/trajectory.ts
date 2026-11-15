@@ -38,8 +38,8 @@ export const ROUTE_POINTS: readonly { x: number; y: number; label?: string }[] =
   { x: 900, y: 700 }, // eCAADe
   { x: 1150, y: 560 }, // ISS
   { x: 1380, y: 1180 }, // grid entry
-  { x: 1800, y: 1700, label: 'PMG' },
-  { x: 2420, y: 1560, label: 'ZLA' },
+  { x: 1800, y: 1700, label: 'ZLA' },
+  { x: 2420, y: 1560, label: 'PMG' },
   { x: 3040, y: 1420, label: 'VCM' },
   { x: 3660, y: 1160, label: 'EMA' },
   { x: 4080, y: 940, label: 'PROVENANCE' },
@@ -51,8 +51,8 @@ export const ROUTE_TARGETS: Record<string, [startFrac: number, endFrac: number]>
   opening: [0, 0],
   trajectory: [0, 3 / 12],
   foundation: [3 / 12, 6 / 12],
-  pmg: [6 / 12, 7 / 12],
-  zla: [7 / 12, 8 / 12],
+  zla: [6 / 12, 7 / 12],
+  pmg: [7 / 12, 8 / 12],
   vcm: [8 / 12, 9 / 12],
   ema: [9 / 12, 10 / 12],
   synthesis: [10 / 12, 10 / 12],

@@ -19,7 +19,7 @@ export function ZLAVignette() {
   const stopped = zlaCase === 'laneway';
 
   return (
-    <g aria-hidden>
+    <g aria-hidden transform="translate(-620,140)">
       {/* ── Regulatory archive ── */}
       <g transform="translate(2100,1318)">
         <text y={-20} fontSize={12} className="map-coord">
@@ -111,14 +111,14 @@ export function ZLAVignette() {
             <text x={14} y={44} fontSize={16} className="map-label" fill="var(--orange)" style={{ letterSpacing: '0.2em' }}>
               NOT COVERED
             </text>
-            <text x={14} y={68} fontSize={11.5} className="map-annotation">
-              the clause permits a laneway house but never
+            <text x={14} y={66} fontSize={12} className="map-annotation" fill="var(--ink)">
+              “Not covered by the provided source.”
             </text>
-            <text x={14} y={86} fontSize={11.5} className="map-annotation">
-              states its storey limit — so the pipeline stops
+            <text x={14} y={88} fontSize={11.5} className="map-annotation">
+              the clause permits a laneway house but never states
             </text>
-            <text x={14} y={104} fontSize={11.5} className="map-annotation">
-              instead of letting a second call guess
+            <text x={14} y={106} fontSize={11.5} className="map-annotation">
+              its storey limit — the pipeline stops instead of guessing
             </text>
           </g>
         )}
