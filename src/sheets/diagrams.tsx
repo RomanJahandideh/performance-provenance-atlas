@@ -880,6 +880,133 @@ function Provenance() {
   );
 }
 
+// ── eCAADe figure 1, redrawn as vectors: four transparency levels ─────────────
+function Spheres() {
+  const t = useT(2400, 300);
+  const levels = [10, 40, 60, 90];
+  return (
+    <Svg vb="0 0 1000 320">
+      <defs>
+        <radialGradient id="sph" cx="38%" cy="32%" r="70%">
+          <stop offset="0%" stopColor="#e8f6ff" />
+          <stop offset="45%" stopColor="#5fb4f5" />
+          <stop offset="100%" stopColor="#1f5fc4" />
+        </radialGradient>
+        <pattern id="checker" width={24} height={24} patternUnits="userSpaceOnUse">
+          <rect width={24} height={24} fill="rgba(255,255,255,0.10)" />
+          <rect width={12} height={12} fill="rgba(255,255,255,0.22)" />
+          <rect x={12} y={12} width={12} height={12} fill="rgba(255,255,255,0.22)" />
+        </pattern>
+      </defs>
+      <rect x={20} y={20} width={960} height={230} fill="url(#checker)" />
+      {levels.map((lv, i) => {
+        const cx = 140 + i * 240;
+        const on = win(t, i * 0.18, i * 0.18 + 0.35);
+        return (
+          <g key={lv} opacity={on}>
+            <circle cx={cx} cy={135} r={88 * (0.85 + 0.15 * on)} fill="url(#sph)" fillOpacity={1 - lv / 100} stroke={W5} strokeWidth={1.2} />
+            <Label x={cx} y={300} anchor="middle" size={26} fill={W} weight={600}>
+              {lv}%
+            </Label>
+          </g>
+        );
+      })}
+    </Svg>
+  );
+}
+
+// ── eCAADe figure 2, redrawn as vectors: twelve colour conditions ──────────────
+function Colours() {
+  const t = useT(2400, 300);
+  const rows = [
+    [['Red', '#9a0403'], ['Magenta', '#7101ec'], ['Yellow', '#576216'], ['Green', '#299609'], ['Blue', '#1d37fe'], ['Cyan', '#208567']],
+    [['Dark red', '#30121a'], ['Dark magenta', '#3a1950'], ['Dark yellow', '#15150d'], ['Dark green', '#17230d'], ['Dark blue', '#0001bd'], ['Dark cyan', '#1b2b2a']],
+  ];
+  return (
+    <Svg vb="0 0 1000 440">
+      {rows.map((row, r) =>
+        row.map(([name, hex], i) => {
+          const cx = 90 + i * 164;
+          const cy = 90 + r * 210;
+          const on = win(t, (r * 6 + i) * 0.05, (r * 6 + i) * 0.05 + 0.3);
+          return (
+            <g key={name} opacity={on}>
+              <circle cx={cx} cy={cy} r={62} fill={hex} stroke={W5} strokeWidth={1.2} />
+              <Label x={cx} y={cy + 96} anchor="middle" size={19} fill={W}>
+                {name}
+              </Label>
+            </g>
+          );
+        }),
+      )}
+    </Svg>
+  );
+}
+
+// ── The path, drawn as one horizontal line toward GenEnv ──────────────────────
+function Journey() {
+  const t = useT(2600, 300);
+  const stops = [
+    { a: 'Making things', b: 'Childhood' },
+    { a: 'NODET', b: '2004 to 2011' },
+    { a: 'Architecture', b: 'Tabriz, 2011 to 2016' },
+    { a: 'Landscape', b: 'ITU, 2020 to 2024' },
+    { a: 'Computation', b: 'SFU, since 2025' },
+    { a: 'GenEnv', b: 'next' },
+  ];
+  const x0 = 150;
+  const dx = 260;
+  const y = 135;
+  const end = x0 + dx * (stops.length - 1);
+  const reach = x0 + (end - x0) * t;
+  return (
+    <Svg vb="0 0 1600 270">
+      <line x1={x0} y1={y} x2={end} y2={y} stroke={W2} strokeWidth={3} />
+      <line x1={x0} y1={y} x2={Math.min(reach, end - dx)} y2={y} stroke={W} strokeWidth={3} />
+      <line x1={end - dx} y1={y} x2={Math.max(end - dx, reach)} y2={y} stroke={Y} strokeWidth={3} strokeDasharray="10 9" />
+      {stops.map((s, i) => {
+        const x = x0 + i * dx;
+        const on = reach >= x - 1 || t >= 1 ? 1 : 0.2;
+        const last = i === stops.length - 1;
+        return (
+          <g key={s.a} opacity={on}>
+            <circle cx={x} cy={y} r={last ? 20 : 11} fill={last ? 'none' : W} stroke={last ? Y : W} strokeWidth={3} />
+            {last && <circle cx={x} cy={y} r={8} fill={Y} />}
+            <Label x={x} y={y - 44} anchor="middle" size={24} fill={last ? Y : W} weight={600}>
+              {s.a}
+            </Label>
+            <Label x={x} y={y + 58} anchor="middle" size={18} fill={W5}>
+              {s.b.toUpperCase()}
+            </Label>
+          </g>
+        );
+      })}
+    </Svg>
+  );
+}
+
+/** Width over height of every diagram's viewBox, so layouts can size them exactly. */
+export const DIAGRAM_RATIO: Record<DiagramId, number> = {
+  site: 760 / 600,
+  depth: 700 / 820,
+  pipeline: 1160 / 540,
+  notcovered: 560 / 860,
+  sitecheck: 560 / 860,
+  constraints: 560 / 860,
+  envelope: 560 / 860,
+  block: 430 / 560,
+  corridor: 1160 / 860,
+  rotation: 560 / 860,
+  agents: 700 / 860,
+  seeds: 560 / 860,
+  pareto: 560 / 420,
+  chain: 1780 / 560,
+  provenance: 1160 / 860,
+  spheres: 1000 / 320,
+  colours: 1000 / 440,
+  journey: 1600 / 270,
+};
+
 const MAP: Record<DiagramId, () => ReactElement> = {
   site: Site,
   depth: Depth,
@@ -896,6 +1023,9 @@ const MAP: Record<DiagramId, () => ReactElement> = {
   pareto: Pareto,
   chain: Chain,
   provenance: Provenance,
+  spheres: Spheres,
+  colours: Colours,
+  journey: Journey,
 };
 
 export function Diagram({ id }: { id: DiagramId }) {

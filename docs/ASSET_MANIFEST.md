@@ -31,7 +31,7 @@ Full metadata: `docs/commons-credits.json`.
 | `photos/tabriz-1.jpg` | Tabriz-Islamic-Art-University.jpg | Zahra Multimedia | CC BY-SA 4.0 |
 | `photos/tabriz-2.jpg` | دانشگاه هنر اسلامی تبریز در فصل بهار.jpg | Ashkan najar | CC BY-SA 4.0 |
 | `photos/tabriz-3.jpg` | نمایی از راه های دانشگاه هنر اسلامی تبریز.jpg | Ashkan najar | CC BY-SA 4.0 |
-| `photos/itu-1.jpg` | Taşkışla Building, Istanbul (12339046873).jpg | SALTOnline | No known restrictions (exported, unused) |
+| `photos/itu-1.jpg` | Taşkışla Building, Istanbul (12339046873).jpg | SALTOnline | No known restrictions (used on the "Why I turned to computation" slide) |
 | `photos/itu-2.jpg` | ITU Taşkışla Campus.JPG | CeeGee | CC BY-SA 3.0 |
 | `photos/sfu-1.jpg` | SFU Surrey (2025).jpg | Northwest | CC BY 4.0 |
 | `photos/sfu-2.jpg` | Simon Fraser University-Surrey Campus Grand Hall 2024.jpg | Canmenwalker | CC BY 4.0 |

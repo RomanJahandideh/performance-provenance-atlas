@@ -101,77 +101,56 @@ export type DiagramId =
   | 'seeds'
   | 'pareto'
   | 'chain'
-  | 'provenance';
+  | 'provenance'
+  | 'spheres'
+  | 'colours'
+  | 'journey';
 
 /**
- * One panel on a sheet. Sheets are a 12 × 6 grid; `col` / `row` are CSS grid
- * lines (e.g. '1 / 5'). Panels on one sheet never share cells.
+ * Slide compositions. Each is a fixed arrangement of horizontal bands and
+ * planes; media are always shown whole, never cropped or upscaled.
  */
-export interface Panel {
-  col: string;
-  row: string;
-  kind: 'text' | 'image' | 'diagram' | 'facts' | 'list' | 'card';
-  /** Mono header strip, like a drawing-sheet label. */
-  label?: string;
-  // text
-  kicker?: string;
-  title?: string;
-  lines?: string[];
-  caveat?: string;
-  links?: { label: string; url: string }[];
-  // image
+export type LayoutId = 'cover' | 'cantilever' | 'statement' | 'band' | 'gallery' | 'figure' | 'figure-left' | 'columns' | 'questions';
+
+/** One image or vector diagram on a slide. */
+export interface Media {
   src?: string;
-  alt?: string;
-  fit?: 'cover' | 'contain';
-  credit?: string;
-  // diagram
   diagram?: DiagramId;
-  // facts
-  facts?: { label: string; value: string; tone?: Tone; num?: boolean }[];
-  // list
-  items?: { key: string; text: string; tone?: Tone }[];
-  // card
-  note?: string;
+  alt?: string;
+  caption?: string;
+  credit?: string;
 }
 
-/** A region of the board in grid lines, e.g. { col: '1 / 7', row: '1 / 4' }. */
-export interface Focus {
-  col: string;
-  row: string;
+export interface Fact {
+  label: string;
+  value: string;
+  tone?: Tone;
 }
 
-/** One scroll inside a sheet: what the side column says and where the board zooms. */
-export interface SheetStep {
-  /** Omit to show the whole board. */
-  focus?: Focus;
+/** One scroll: one complete slide. */
+export interface Slide {
+  id: string;
+  /** Story chapter, shown in the bottom navigation and in the transition curtain. */
+  chapter: string;
+  /** Chapter whose sources the drawer shows. */
+  scene: string;
+  layout: LayoutId;
+  kicker?: string;
   title: string;
   lines?: string[];
-  facts?: { label: string; value: string; tone?: Tone }[];
+  facts?: Fact[];
   caveat?: string;
   links?: { label: string; url: string }[];
-  /** Extra spoken notes (N key). Defaults to the on-screen lines. */
+  media?: Media[];
+  columns?: { head: string; title: string; text: string; media?: Media }[];
+  questions?: string[];
+  /** Spoken notes (N key). Defaults to the on-screen lines. */
   notes?: string[];
 }
 
-/** A presentation sheet: one topic, one board, several scroll steps. */
-export interface Sheet {
-  id: string;
-  /** Chapter whose sources the drawer shows. */
-  scene: string;
-  /** Section label shown above the title, e.g. "Education". */
-  section: string;
-  title: string;
-  cols: number;
-  rows: number;
-  panels: Panel[];
-  steps: SheetStep[];
-}
-
-/** One scroll position, flattened across all sheets. */
+/** One scroll position. */
 export interface Step {
   id: string;
-  sheetIndex: number;
-  stepInSheet: number;
   scene: string;
   title: string;
   notes: string[];

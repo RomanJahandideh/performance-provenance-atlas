@@ -14,7 +14,7 @@ export function NotesDock() {
   return (
     <aside className={`notes-dock ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="Speaker notes">
       <h3>
-        SPEAKER NOTES · SHEET {stepIndex + 1} / {STEPS.length} · {(step.title ?? step.id).toUpperCase()}
+        SPEAKER NOTES · {(step.title ?? step.id).toUpperCase()}
       </h3>
       {step.notes.map((p, i) => (
         <p key={i}>{p}</p>

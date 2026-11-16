@@ -1,10 +1,12 @@
 # Presentation Controls
 
-The talk is **11 sheets and 40 scroll steps**. Each sheet is one board about one topic
-(childhood and school, architecture, awards, landscape, SFU, publications, prototypes,
-direction, fit, questions). A blue curtain with the next sheet's title sweeps across between
-sheets, and the text on the slides is the full script. The first step of a sheet shows the whole board. Each next scroll zooms the board
-to one part and fades the rest, while the column on the left explains that part.
+The talk is **28 slides, one per scroll**, told as one story toward the Generative
+Environments Lab: making things as a child, NODET, architecture, landscape, SFU, current
+research, and why GenEnv. Nothing zooms; each scroll draws a new composed slide (long
+horizontal rules, image bands, cantilevered text planes), and a curtain with the chapter
+name sweeps across when the chapter changes. Images are never cropped or drawn larger than
+their own pixels, and figures from the papers are redrawn as vectors where the originals
+were low resolution. The bottom bar shows the chapters; click one to jump to it.
 
 | Input | Action |
 |---|---|
@@ -12,7 +14,7 @@ to one part and fades the rest, while the column on the left explains that part.
 | down, right, Space, PageDown | next step |
 | up, left, Shift+Space, PageUp | previous step |
 | Home / End | first / last step |
-| bottom bar | ticks grouped by sheet; click one to jump |
+| bottom bar | chapters; click one to jump |
 | `#step-N` in the URL | open at step N |
 | F | full screen |
 | N | speaker notes |
