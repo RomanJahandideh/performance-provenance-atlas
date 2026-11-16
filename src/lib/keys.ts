@@ -52,10 +52,6 @@ export function handleKey(e: KeyboardEvent): void {
     case 'C':
       setState({ drawerOpen: !s.drawerOpen });
       break;
-    case 'l':
-    case 'L':
-      setState({ legendOpen: !s.legendOpen });
-      break;
     case 'm':
     case 'M':
       setState({ chapterMapOpen: !s.chapterMapOpen });

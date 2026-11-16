@@ -1,9 +1,9 @@
 # Presentation Controls
 
-**One scroll = one step. Exactly 20 steps.** The page itself never scrolls. Each wheel gesture,
-trackpad swipe, or key press moves exactly one step. Arriving at a step flies the map camera and
-plays that step's drawing automatically, in about three seconds. You never need to keep
-scrolling to see something.
+**One scroll = one sheet. Exactly 20 sheets.** Each sheet is laid out like an architectural
+presentation board: a 12 × 6 grid of framed panels (photos, drawings, facts) with a title block
+at the bottom. One wheel gesture, trackpad swipe, or key press moves exactly one sheet, and the
+new sheet's panels draw themselves in, one after another, in about 2–5 seconds.
 
 | Input | Action |
 |---|---|
@@ -16,8 +16,7 @@ scrolling to see something.
 | `F` | full screen |
 | `N` | speaker notes for the current step |
 | `S` or `C` | sources + evidence drawer |
-| `L` | map legend |
-| `M` | grid of all 20 steps |
+| `M` | grid of all 20 sheets |
 | `R` | restart at step 1 |
 | `X` | reduced motion (drawings jump to their final state) |
 | `Esc` | close any panel |

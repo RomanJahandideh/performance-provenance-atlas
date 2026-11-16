@@ -1,11 +1,22 @@
 import { useEffect } from 'react';
-import { AtlasMap } from './atlas/AtlasMap';
-import { StepLayer, Preload } from './ui/StepLayer';
-import { TopHUD, ProgressRail } from './ui/hud';
-import { ChapterMap, HelpOverlay, LegendPanel, NotesDock, SourceDrawer } from './ui/overlays';
+import { Sheet } from './sheets/Sheet';
+import { ChapterMap, HelpOverlay, NotesDock, SourceDrawer } from './ui/overlays';
 import { handleKey } from './lib/keys';
 import { startStepper, stopStepper } from './lib/stepper';
 import { prefersReducedMotion, subscribe } from './state/store';
+import { STEPS } from './data/steps';
+
+/** Preload every image once so sheets never pop in during the talk. */
+function Preload() {
+  const srcs = Array.from(new Set(STEPS.flatMap((s) => s.panels.flatMap((p) => (p.src ? [p.src] : [])))));
+  return (
+    <div aria-hidden style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
+      {srcs.map((s) => (
+        <img key={s} src={s} alt="" />
+      ))}
+    </div>
+  );
+}
 
 export default function App() {
   useEffect(() => {
@@ -25,13 +36,9 @@ export default function App() {
 
   return (
     <>
-      <AtlasMap />
-      <StepLayer />
-      <TopHUD />
-      <ProgressRail />
+      <Sheet />
       <NotesDock />
       <SourceDrawer />
-      <LegendPanel />
       <ChapterMap />
       <HelpOverlay />
       <Preload />

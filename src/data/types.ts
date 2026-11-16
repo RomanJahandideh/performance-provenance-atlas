@@ -84,44 +84,64 @@ export interface Scene {
   evidenceIds: string[];
 }
 
-/** One large typographic stat (no boxes). */
-export interface StoryStat {
-  value: string;
-  label: string;
-  color?: 'yellow' | 'cyan' | 'orange' | 'coral' | 'red' | 'ink';
-}
+export type Tone = 'yellow' | 'cyan' | 'orange' | 'coral' | 'red' | 'ink';
 
-export interface StepImage {
-  src: string;
-  alt: string;
-  /** 'cover' fills its frame (photos); 'contain' shows the whole board on dark. */
-  fit?: 'cover' | 'contain';
-  caption?: string;
-}
+export type DiagramId =
+  | 'site'
+  | 'depth'
+  | 'pipeline'
+  | 'notcovered'
+  | 'sitecheck'
+  | 'constraints'
+  | 'envelope'
+  | 'block'
+  | 'corridor'
+  | 'rotation'
+  | 'agents'
+  | 'seeds'
+  | 'pareto'
+  | 'chain'
+  | 'provenance';
 
 /**
- * One of exactly 20 presentation steps. One scroll / key / swipe = one step.
- * Each step plays its own animation (scene progress p[0] → p[1]) on arrival.
+ * One panel on a sheet. Sheets are a 12 × 6 grid; `col` / `row` are CSS grid
+ * lines (e.g. '1 / 5'). Panels on one sheet never share cells.
  */
-export interface Step {
-  id: string;
-  /** Map chapter whose drawings and sources this step uses. */
-  scene: string;
-  kind: 'map' | 'images';
-  /** Scene progress animated on arrival. */
-  p: [number, number];
-  /** Map camera target (world units). */
-  camera: { x: number; y: number; w: number };
-  layout?: 'single' | 'pair' | 'trio' | 'board';
-  images?: StepImage[];
+export interface Panel {
+  col: string;
+  row: string;
+  kind: 'text' | 'image' | 'diagram' | 'facts' | 'list' | 'card';
+  /** Mono header strip, like a drawing-sheet label. */
+  label?: string;
+  // text
   kicker?: string;
   title?: string;
   lines?: string[];
-  stats?: StoryStat[];
   caveat?: string;
   links?: { label: string; url: string }[];
-  /** Where the text sits on map steps. */
-  textAt?: 'bottom' | 'center' | 'left';
-  /** Spoken notes for this step (N key). */
+  // image
+  src?: string;
+  alt?: string;
+  fit?: 'cover' | 'contain';
+  credit?: string;
+  // diagram
+  diagram?: DiagramId;
+  // facts
+  facts?: { label: string; value: string; tone?: Tone; num?: boolean }[];
+  // list
+  items?: { key: string; text: string; tone?: Tone }[];
+  // card
+  note?: string;
+}
+
+/** One of exactly 20 sheets. One scroll / key / swipe = one sheet. */
+export interface Step {
+  id: string;
+  /** Chapter whose sources the drawer shows. */
+  scene: string;
+  /** Short title for the title block and the notes. */
+  title: string;
+  panels: Panel[];
+  /** Spoken notes for this sheet (N key). */
   notes: string[];
 }

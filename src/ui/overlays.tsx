@@ -1,4 +1,4 @@
-import { SCENES } from '../data/scenes';
+import { sceneById } from '../data/scenes';
 import { STEPS } from '../data/steps';
 import { CITATIONS, cite } from '../data/citations';
 import { ev } from '../data/evidence';
@@ -27,8 +27,8 @@ export function NotesDock() {
 /** ── Source / evidence drawer (S or C) ──────────────────────────────────── */
 export function SourceDrawer() {
   const open = useAppState((s) => s.drawerOpen);
-  const sceneIndex = useAppState((s) => s.sceneIndex);
-  const scene = SCENES[sceneIndex] ?? SCENES[0]!;
+  const stepIndex = useAppState((s) => s.stepIndex);
+  const scene = sceneById((STEPS[stepIndex] ?? STEPS[0]!).scene);
   const sceneCitations = scene.citationIds.map(cite);
   const rest = CITATIONS.filter((c) => !scene.citationIds.includes(c.id));
   const evidence = scene.evidenceIds.map(ev);
@@ -74,94 +74,6 @@ export function SourceDrawer() {
           </div>
         ))}
       </div>
-    </aside>
-  );
-}
-
-/** ── Map legend (L) ─────────────────────────────────────────────────────── */
-export function LegendPanel() {
-  const open = useAppState((s) => s.legendOpen);
-  return (
-    <aside className={`legend-panel ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="Map legend">
-      <h3>MAP LEGEND — STATUS IS DRAWN, NOT BADGED</h3>
-      <div className="legend-row">
-        <svg width="46" height="22">
-          <rect x="3" y="4" width="34" height="12" fill="rgba(237,242,247,0.5)" stroke="var(--geom)" />
-          <rect x="1" y="17" width="40" height="3" fill="rgba(112,215,206,0.4)" />
-        </svg>
-        published / accepted — solid mass on an evidence plinth, DOI tick
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="22">
-          <pattern id="lg-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="6" stroke="var(--orange)" strokeWidth="1.2" />
-          </pattern>
-          <rect x="3" y="4" width="34" height="14" fill="url(#lg-hatch)" stroke="var(--geom)" strokeDasharray="6 4" />
-        </svg>
-        under revision — hatched translucent volume, open boundary
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="22">
-          <rect x="3" y="4" width="34" height="14" fill="none" stroke="var(--geom)" />
-          <rect x="0" y="1" width="6" height="6" fill="var(--bg)" stroke="var(--cyan)" />
-          <rect x="34" y="1" width="6" height="6" fill="var(--bg)" stroke="var(--cyan)" />
-        </svg>
-        working prototype / verified computation — wireframe with control points
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="22">
-          <rect x="3" y="6" width="34" height="12" fill="none" stroke="var(--yellow)" strokeWidth="1.6" strokeDasharray="2 6" />
-          <line x1="3" y1="6" x2="3" y2="0" stroke="var(--yellow)" />
-          <line x1="37" y1="6" x2="37" y2="0" stroke="var(--yellow)" />
-        </svg>
-        proposed PhD work — dotted yellow footprint with survey stakes
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="22">
-          <rect x="1" y="12" width="42" height="7" fill="rgba(242,207,85,0.25)" stroke="var(--yellow)" />
-          <rect x="8" y="3" width="28" height="10" fill="rgba(152,167,184,0.25)" stroke="var(--muted)" />
-        </svg>
-        external funded research (GenEnv) — yellow foundation, attributed, not mine
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="22">
-          <line x1="2" y1="11" x2="42" y2="11" stroke="var(--muted)" strokeWidth="1.6" strokeDasharray="7 5" />
-        </svg>
-        written but not executed — grey dashed
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="22">
-          <rect x="4" y="5" width="36" height="12" fill="rgba(224,82,82,0.12)" stroke="var(--red)" />
-        </svg>
-        falsified hypothesis — red, kept visible
-      </div>
-      <p className="legend-sub">COLOUR = MEANING</p>
-      <div className="legend-row">
-        <svg width="46" height="10">
-          <line x1="2" y1="5" x2="42" y2="5" stroke="var(--yellow)" strokeWidth="3" />
-        </svg>
-        provenance · route · evidence
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="10">
-          <line x1="2" y1="5" x2="42" y2="5" stroke="var(--cyan)" strokeWidth="3" />
-        </svg>
-        verified computational output
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="10">
-          <line x1="2" y1="5" x2="42" y2="5" stroke="var(--orange)" strokeWidth="3" />
-        </svg>
-        assumption · placeholder · proxy
-      </div>
-      <div className="legend-row">
-        <svg width="46" height="10">
-          <line x1="2" y1="5" x2="42" y2="5" stroke="var(--coral)" strokeWidth="3" />
-        </svg>
-        human decision · judgment
-      </div>
-      <p className="legend-sub">AXES</p>
-      <div className="legend-row">x — spatial scale: clause → district · y — computational agency: deterministic → negotiation · height — evidence maturity</div>
     </aside>
   );
 }
@@ -213,8 +125,7 @@ export function HelpOverlay() {
     ['F', 'full screen'],
     ['N', 'speaker notes'],
     ['S or C', 'sources + evidence drawer'],
-    ['L', 'map legend'],
-    ['M', 'chapter map'],
+    ['M', 'all 20 sheets'],
     ['R', 'restart from the opening'],
     ['X', 'reduced-motion toggle'],
     ['Esc', 'close any panel'],
