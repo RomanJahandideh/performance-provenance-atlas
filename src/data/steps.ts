@@ -31,7 +31,7 @@ export const STEPS: readonly Step[] = [
         label: 'Presenter',
         facts: [
           { label: 'Name', value: 'Roman Jahandideh' },
-          { label: 'Program', value: 'MA, Interactive Arts + Technology' },
+          { label: 'Program', value: 'MSc, Interactive Arts + Technology' },
           { label: 'University', value: 'Simon Fraser University' },
         ],
       },
@@ -233,7 +233,7 @@ export const STEPS: readonly Step[] = [
         row: '5 / 7',
         label: 'Degree',
         facts: [
-          { label: 'Degree', value: 'MA' },
+          { label: 'Degree', value: 'MSc' },
           { label: 'Period', value: '2025 – now' },
           { label: 'Lab', value: 'iViz Lab' },
         ],

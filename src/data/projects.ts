@@ -199,7 +199,7 @@ export const PARCELS: readonly ResearchParcel[] = [
     status: 'proposed',
     date: '2027 →',
     researchQuestion: 'How can human–AI co-design systems preserve traceable provenance between design intent, regulatory evidence, parametric geometry, environmental performance, AI critique, and human judgment across iterative urban-design workflows?',
-    inputs: ['The four prototypes as working substrate', 'GenEnv’s editable/traceable framing', 'HCI evaluation methods from my MA research'],
+    inputs: ['The four prototypes as working substrate', 'GenEnv’s editable/traceable framing', 'HCI evaluation methods from my MSc research'],
     process: ['Research-through-design + system development', 'Technical validation of geometry and evaluators', 'Controlled comparison of provenance/interface conditions', 'Think-aloud sessions · interviews · thematic analysis'],
     evidenceIds: [],
     limitations: ['A direction for discussion — not a finalized proposal, and not a topic Professor Liu has approved. Studies, cases, and participant numbers remain provisional.'],

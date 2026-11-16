@@ -47,7 +47,7 @@ counterpart: `src/data/evidence.ts` (the UI reads only from there).
 
 | Claim | Source | Status |
 |---|---|---|
-| Tabriz Islamic Art University B.Arch 2011–2016; ITU Master’s Landscape Architecture 2020–2024; SFU MA IAT 2025–present | CV + deck | **Verified** (CV shorthand “Tabriz Art University”) |
+| Tabriz Islamic Art University B.Arch 2011–2016; ITU Master’s Landscape Architecture 2020–2024; SFU MSc IAT 2025–present (Master of Science, confirmed by Roman 2026-11-15) | CV + deck | **Verified** (CV shorthand “Tabriz Art University”) |
 | Best Dissertation (Zangar Museum) 2016; Second Prize landscape 2013; Sixth Prize Sustainable Cabin (Memar News) 2018 | CV + deck + board images | **Verified** |
 | Abstract Photography Award 2018 | Deck + portfolio sheet; **not in the academic CV** | **Discrepancy flagged**: the portfolio board says “Abstract Photo of City — 2018 Winner”, photograph “A Tunnel To Heaven”; the deck says “The Ghost of Playground”. The UI shows the board’s wording and notes the deck label. **Needs Roman’s confirmation.** |
 | TCPS 2: CORE 2022 certificate | Deck (not re-verified against certificate file) | Reported; not displayed prominently |
