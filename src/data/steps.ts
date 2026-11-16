@@ -126,7 +126,7 @@ export const SLIDES: readonly Slide[] = [
       'After graduating I entered architecture and design competitions. This one asked for temporary housing for people after a natural disaster.',
       'The panels fold out on hinges, and two people can lift them into place.',
     ],
-    facts: [{ label: 'Memar News competition, 2018', value: 'Sixth prize' }],
+    facts: [{ label: 'Memar News national competition, 2018', value: 'Sixth prize in Iran', tone: 'yellow' }],
     media: [
       { src: 'assets/portfolio/p101.jpg', caption: 'Cabins in the valley', alt: 'Portfolio page: foldable A-frame cabins in a mountain valley.' },
       { src: 'assets/portfolio/p102.jpg', caption: 'Plans and assembly', alt: 'Portfolio page: cabin plans and the stages of unfolding.' },
