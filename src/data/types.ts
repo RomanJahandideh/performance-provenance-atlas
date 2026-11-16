@@ -134,14 +134,45 @@ export interface Panel {
   note?: string;
 }
 
-/** One of exactly 20 sheets. One scroll / key / swipe = one sheet. */
-export interface Step {
+/** A region of the board in grid lines, e.g. { col: '1 / 7', row: '1 / 4' }. */
+export interface Focus {
+  col: string;
+  row: string;
+}
+
+/** One scroll inside a sheet: what the side column says and where the board zooms. */
+export interface SheetStep {
+  /** Omit to show the whole board. */
+  focus?: Focus;
+  title: string;
+  lines?: string[];
+  facts?: { label: string; value: string; tone?: Tone }[];
+  caveat?: string;
+  links?: { label: string; url: string }[];
+  /** Spoken notes (N key). */
+  notes: string[];
+}
+
+/** A presentation sheet: one topic, one board, several scroll steps. */
+export interface Sheet {
   id: string;
   /** Chapter whose sources the drawer shows. */
   scene: string;
-  /** Short title for the title block and the notes. */
+  /** Section label shown above the title, e.g. "Education". */
+  section: string;
   title: string;
+  cols: number;
+  rows: number;
   panels: Panel[];
-  /** Spoken notes for this sheet (N key). */
+  steps: SheetStep[];
+}
+
+/** One scroll position, flattened across all sheets. */
+export interface Step {
+  id: string;
+  sheetIndex: number;
+  stepInSheet: number;
+  scene: string;
+  title: string;
   notes: string[];
 }

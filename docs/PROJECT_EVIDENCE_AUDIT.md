@@ -82,3 +82,11 @@ Flagged:
 - Concept lines added inside sections (parametric relationships, performance-informed design, generative vs optimization, Pareto, deterministic vs stochastic vs heuristic). These are definitions, not claims about the projects.
 - All 4 portfolio pages, 4 GitHub repos, and 2 live demos returned HTTP 200 on 2026-11-15.
 - Still needs Roman's confirmation: whether "procedural / parametric / generative" is the framing he wants for PMG, and the ten-clause wording ("simplified ten-clause R1-1 knowledge base").
+
+## 2026-11-15 sheet restructure
+
+- eCAADe 2023 venue confirmed on ecaade.org: eCAADe 41 "Digital Design Reconsidered", Graz University of Technology, Austria, 20 to 23 September 2023. Volume 1, pages 149 to 158 come from the paper PDF itself.
+- ISS details from the camera-ready LaTeX: Companion Proceedings of ISS 2026, Turin, Italy, 23 to 26 November 2026, poster track.
+- Zangar supervisor (Prof. Parisa Hashempour) and the "three governments over about a century" concept come from portfolio pages 16 to 18.
+- **Needs Roman's confirmation:** the landscape competition second prize is dated April 2015 on portfolio page 5 but 2013 in the CV. The sheets show it without a year.
+- Fit sheet quotes GenEnv's own homepage statement (interpret complex environments, reason through constraints, work within professional design tools, keep outcomes editable, traceable and open to human judgment). "132 participants" = 60 (eCAADe) + 36 + 36 (ISS).

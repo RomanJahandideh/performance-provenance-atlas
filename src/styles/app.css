@@ -72,14 +72,53 @@ html[data-reduced='true'] *, html[data-reduced='true'] *::before, html[data-redu
   padding: 7px 14px;
 }
 
-.sheet-grid {
+/* Body: side text column + zooming board */
+.sheet-body {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(6, minmax(0, 1fr));
-  gap: 18px;
-  padding: 26px 56px 22px;
+  grid-template-columns: minmax(340px, 30%) minmax(0, 1fr);
+  gap: 32px;
+  padding: 24px 56px 20px;
   min-height: 0;
 }
+.side { display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+.side-inner { display: flex; flex-direction: column; min-height: 0; }
+.side-facts { display: flex; flex-direction: column; gap: 14px; margin: 14px 0 4px; animation: rise 0.6s var(--ease) both; animation-delay: 0.45s; }
+.side-facts .fact-value { font-size: clamp(18px, 1.5vw, 26px); }
+.side-steps { display: flex; gap: 8px; margin-top: 28px; }
+.side-steps span { width: 26px; height: 3px; background: rgba(255, 255, 255, 0.25); transition: background 0.3s; }
+.side-steps span.done { background: rgba(242, 207, 85, 0.5); }
+.side-steps span.on { background: var(--yellow); }
+.tp-title--sheet { font-size: clamp(38px, 3.8vw, 72px); }
+
+.board-viewport {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(8, 26, 66, 0.35);
+}
+.board {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  transform-origin: 0 0;
+  transition: transform 1.15s cubic-bezier(0.65, 0, 0.25, 1);
+  will-change: transform;
+}
+.board .panel { transition: opacity 0.6s var(--ease), border-color 0.6s var(--ease); }
+.board .panel.is-dim { opacity: 0.18; }
+.board .panel.is-focus { border-color: var(--yellow); }
+.board .panel-head { font-size: 10px; padding: 6px 10px; }
+html[data-reduced='true'] .board { transition: none; }
+.board .pb-card { padding: 10px 16px; gap: 6px; }
+.board .pb-card h3 { font-size: clamp(14px, 1.25vw, 24px); line-height: 1.1; }
+.board .pb-card p { font-size: clamp(11px, 0.85vw, 15px); }
+.board .pb-list { padding: 8px 14px; }
+.board .li-text { font-size: clamp(12px, 0.95vw, 16px); }
+.board .li-key { font-size: 10.5px; min-width: 76px; }
+.board .fact-label { font-size: 9.5px; }
 
 .sheet-foot {
   display: flex;
@@ -88,7 +127,8 @@ html[data-reduced='true'] *, html[data-reduced='true'] *::before, html[data-redu
   padding: 0 56px;
   border-top: 1px solid var(--line);
 }
-.rail { display: flex; gap: 5px; flex: 1; }
+.rail { display: flex; gap: 14px; flex: 1; }
+.rail-group { display: flex; gap: 3px; }
 .rail-tick { flex: 1; height: 4px; background: rgba(255, 255, 255, 0.22); transition: background 0.3s; }
 .rail-tick[data-done='true'] { background: rgba(242, 207, 85, 0.55); }
 .rail-tick[data-active='true'] { background: var(--yellow); }
@@ -172,15 +212,13 @@ html[data-reduced='true'] *, html[data-reduced='true'] *::before, html[data-redu
 .pb-facts {
   position: absolute;
   inset: 0;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  align-content: center;
-  gap: 14px;
-  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding: 12px 16px;
 }
-.panel[data-rows='3'] .pb-facts,
-.panel[data-rows='4'] .pb-facts { grid-auto-flow: row; grid-auto-columns: unset; align-content: space-evenly; }
+.pb-facts .fact-value { font-size: clamp(13px, 1.05vw, 18px); }
 .fact { display: flex; flex-direction: column; gap: 5px; min-width: 0; animation: rise 0.6s var(--ease) both; }
 .fact-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
 .fact-value { font-family: var(--font-display); font-weight: 600; font-size: clamp(16px, 1.25vw, 21px); line-height: 1.2; }
@@ -308,6 +346,12 @@ html[data-reduced='true'] *, html[data-reduced='true'] *::before, html[data-redu
 
 /* ─── Smaller laptop screens ──────────────────────────────────────────── */
 @media (max-width: 1500px) {
+  .sheet-body { padding: 18px 36px 14px; gap: 24px; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); }
+  .board { gap: 7px; padding: 10px; }
+  .board .pb-card { padding: 6px 12px; gap: 3px; }
+  .board .pb-card h3 { font-size: 12.5px; }
+  .board .pb-card p { font-size: 10.5px; line-height: 1.3; }
+  .board .panel-head { font-size: 9px; padding: 4px 8px; }
   .sheet-grid { gap: 14px; padding: 20px 36px 16px; }
   .sheet-top, .sheet-foot { padding: 0 36px; }
   .tb-proj { display: none; }
