@@ -149,8 +149,8 @@ export interface SheetStep {
   facts?: { label: string; value: string; tone?: Tone }[];
   caveat?: string;
   links?: { label: string; url: string }[];
-  /** Spoken notes (N key). */
-  notes: string[];
+  /** Extra spoken notes (N key). Defaults to the on-screen lines. */
+  notes?: string[];
 }
 
 /** A presentation sheet: one topic, one board, several scroll steps. */

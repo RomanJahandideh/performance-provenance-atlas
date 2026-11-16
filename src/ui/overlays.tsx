@@ -87,7 +87,7 @@ export function ChapterMap() {
     <div className="overlay-screen" role="dialog" aria-modal="true" aria-label="All 20 steps" onClick={() => setState({ chapterMapOpen: false })}>
       <div className="overlay-card" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-head" style={{ padding: 0, border: 'none' }}>
-          <span className="drawer-title">ALL 20 STEPS</span>
+          <span className="drawer-title">ALL {STEPS.length} STEPS</span>
           <button className="hud-btn" onClick={() => setState({ chapterMapOpen: false })}>
             ESC ✕
           </button>

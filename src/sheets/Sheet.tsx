@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import type { Focus, Panel as PanelT, Sheet as SheetT, SheetStep } from '../data/types';
 import { SHEETS, STEPS } from '../data/steps';
 import { setState, useAppState } from '../state/store';
@@ -41,6 +41,39 @@ function boardTransform(sheet: SheetT, f?: Focus): string {
   const tx = clamp(0.5 - s * ((x0 + x1) / 2));
   const ty = clamp(0.5 - s * ((y0 + y1) / 2));
   return `translate(${(tx * 100).toFixed(3)}%, ${(ty * 100).toFixed(3)}%) scale(${s.toFixed(4)})`;
+}
+
+/** Counts a numeric value up from zero; plain text values render as they are. */
+function CountUp({ value }: { value: string }) {
+  const m = /^(\d[\d,]*\.?\d*)(\D*)$/.exec(value);
+  const target = m ? Number(m[1]!.replace(/,/g, '')) : NaN;
+  const decimals = m && m[1]!.includes('.') ? m[1]!.split('.')[1]!.length : 0;
+  const reduced = typeof document !== 'undefined' && document.documentElement.dataset.reduced === 'true';
+  const [v, setV] = useState(m && !reduced ? 0 : target);
+  useEffect(() => {
+    if (!m || reduced) return;
+    let raf = 0;
+    const t0 = performance.now();
+    const tick = (t: number) => {
+      const k = Math.min(1, (t - t0) / 1100);
+      setV(target * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) raf = requestAnimationFrame(tick);
+    };
+    const delay = window.setTimeout(() => (raf = requestAnimationFrame(tick)), 350);
+    return () => {
+      window.clearTimeout(delay);
+      cancelAnimationFrame(raf);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+  if (!m) return <>{value}</>;
+  const shown = v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  return (
+    <>
+      {m[1]!.includes(',') || target >= 10000 ? shown : shown.replace(/,/g, '')}
+      {m[2]}
+    </>
+  );
 }
 
 function Ticks() {
@@ -154,11 +187,11 @@ function SideText({ sheet, step, stepInSheet }: { sheet: SheetT; step: SheetStep
         ))}
         {step.facts && (
           <div className="side-facts">
-            {step.facts.map((f) => (
-              <div key={f.label} className="fact">
+            {step.facts.map((f, i) => (
+              <div key={f.label} className="fact" style={{ animationDelay: `${0.45 + i * 0.1}s` }}>
                 <span className="fact-label">{f.label}</span>
                 <span className="fact-value" style={{ color: TONE[f.tone ?? 'ink'] }}>
-                  {f.value}
+                  <CountUp value={f.value} />
                 </span>
               </div>
             ))}
@@ -214,6 +247,12 @@ export function Sheet() {
       <div className="sheet-body" key={sheet.id}>
         <SideText sheet={sheet} step={step} stepInSheet={flat.stepInSheet} />
         <Board sheet={sheet} step={step} stepIndex={stepIndex} />
+        {flat.sheetIndex > 0 && (
+          <div className="wipe" aria-hidden="true">
+            <span className="wipe-num">{n}</span>
+            <span className="wipe-label">{sheet.title}</span>
+          </div>
+        )}
       </div>
 
       <footer className="sheet-foot">

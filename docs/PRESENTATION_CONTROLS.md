@@ -1,8 +1,9 @@
 # Presentation Controls
 
-The talk is **10 sheets and 36 scroll steps**. Each sheet is one board about one topic
-(education, dissertation, awards, landscape, publications, prototypes, direction, fit,
-questions). The first step of a sheet shows the whole board. Each next scroll zooms the board
+The talk is **11 sheets and 40 scroll steps**. Each sheet is one board about one topic
+(childhood and school, architecture, awards, landscape, SFU, publications, prototypes,
+direction, fit, questions). A blue curtain with the next sheet's title sweeps across between
+sheets, and the text on the slides is the full script. The first step of a sheet shows the whole board. Each next scroll zooms the board
 to one part and fades the rest, while the column on the left explains that part.
 
 | Input | Action |
