@@ -1,173 +1,101 @@
 # Presentation Script
 
-The spoken script per scene — identical to the in-app notes (`N`). Scrolling drives the
-drawings; speak each paragraph roughly as its drawing plays. `[OPTIONAL]` passages add depth
-when time allows; `[SKIP IF SHORT ON TIME]` passages go first when behind. Timing math:
-`docs/TIMING_AUDIT.md`. The app deliberately shows no clock — rehearse with a phone timer.
+One section per step, generated from `src/data/steps.ts` (the same text as the `N` notes).
+Total narration: **1021 words ≈ 9.3 min** at 110 wpm. With pauses and
+the drawings, that lands around 13–16 minutes — inside the 20-minute slot.
 
----
+## 01 · Performance Provenance — 71 words (~39 s)
 
-## 01 · From Spatial Design to Accountable Co-Design (≈50 s)
+Thank you for meeting with me. I began by designing spaces and studying how people perceive them. My recent work asks a related question at a different level: when computational and AI systems take part in spatial design, how can their decisions stay visible, testable, and open to human revision?
 
-Thank you for meeting with me. I began by designing spaces and studying how people perceive
-them. My recent work asks a related question at a different level: when computational and AI
-systems participate in spatial design, how can their decisions remain visible, testable, and
-open to human revision?
+I will walk through where I trained, four prototypes I built, and a direction I would like to discuss with you.
 
-Everything I will show sits on this one map. Left to right is spatial scale; bottom to top is
-computational agency. The yellow route is my trajectory through it — and it ends at a proposed
-site called performance provenance.
+## 02 · Tabriz Islamic Art University — 27 words (~15 s)
 
-## 02 · Research Trajectory (≈55 s)
+My degrees look different, but they build one research profile. I trained as an architect at Tabriz Islamic Art University: spatial composition, public life, and visual communication.
 
-My degrees look different, but they build one research profile. At Tabriz I trained as an
-architect — the awards here, including the Zangar Museum dissertation prize, taught me to make
-and defend a spatial idea before I had a codebase.
+## 03 · Zangar Museum — 37 words (~20 s)
 
-At Istanbul Technical University I added landscape systems, and began testing perception inside
-virtual environments.
+This is my final architecture thesis, the Zangar Museum. It won the Best Dissertation Award. Projects like this taught me to argue for a spatial idea with drawings, models, and images — long before I had a codebase.
 
-At SFU, in the iViz Lab, I learned to build complete interactive systems and evaluate them with
-HCI methods.
+## 04 · Design and photography awards — 45 words (~25 s)
 
-The constant question: how does an environment communicate, and how do people interpret and act
-on it?
+Competitions pushed me to communicate fast: a foldable cabin for disaster areas, which placed sixth, and a winning entry in an abstract city-photography competition. Photography taught me how framing, contrast, and ambiguity change what people see — a question that came back in my VR experiments.
 
-## 03 · Perception and Interactive Environments (≈1:00)
+## 05 · Istanbul Technical University — 25 words (~14 s)
 
-Three systems anchor this district. The published eCAADe study: sixty participants, two hundred
-sixty-four pairwise depth judgments each. At high transparency the familiar rules reversed.
+At Istanbul Technical University I studied landscape architecture: dynamic systems, water, and site conditions. It is also where I began testing perception inside virtual environments.
 
-The accepted ACM ISS paper renders a teammate's heart rate and variability as one label-free
-halo — readable above chance, support three point nine seconds faster, while numbers stayed
-more trusted. BioTerrarium runs the loop the other way: the wearable drives the environment in
-under two hundred milliseconds; its manuscript is under revision, so the analysis stays
-provisional.
+## 06 · Transparency reverses depth — 46 words (~25 s)
 
-These projects taught me to treat an environment as a responsive system. The four that follow
-transfer that thinking to computational urban design.
+My published eCAADe study: sixty participants, two hundred sixty-four pairwise depth judgments each, across transparency, hue, and luminance in VR. Watch the spheres: at high transparency the familiar rule reverses — cool and dark colours read as nearer. Visual rules for opaque graphics do not simply transfer.
 
-## 04 · Zoning Literacy Assistant — MAX 1:15 · core ≈95 words
+## 07 · Simon Fraser University · iViz Lab — 26 words (~14 s)
 
-My first project is about trustworthy regulatory knowledge. A general-purpose language model
-will happily give a confident answer even when the information is not there. So I separated the
-system into retrieval, synthesis, and independent verification: it finds the relevant clauses,
-answers only from those clauses, then checks whether the evidence supports the answer — or
-whether a clause was missed.
+At SFU, in the iViz Lab, I learned to build complete interactive systems — Unity, C#, physiological sensing, multiplayer networking — and to evaluate them with HCI methods.
 
-When the source does not contain enough information, it stops instead of guessing: "Not covered
-by the provided source." Refusing an unsupported answer is designed behaviour, not a failure.
+## 08 · Bodies in the loop — 92 words (~50 s)
 
-[OPTIONAL] A second mode computes site feasibility in deterministic code — same inputs, same
-result — and the AI only explains those numbers. [SKIP IF SHORT ON TIME] The prototype uses a
-simplified ten-clause R1-1 knowledge base, not the complete Vancouver code.
+My accepted ACM ISS paper shows a remote teammate’s heart rate as one label-free halo. In live three-player teams, support came almost four seconds faster than with no cue — but plain numbers stayed more trusted. A real trade-off.
 
-TRANSITION — Once regulation becomes structured and traceable, the next question is how it
-becomes editable spatial geometry.
+BioTerrarium runs the loop the other way: an Apple Watch drives fog, light, and plants in under two hundred milliseconds. Its manuscript is under revision, so I treat the analysis as provisional. These projects taught me to treat an environment as a responsive system — and the next four move that thinking into urban design.
 
-## 05 · Parametric Massing Generator — MAX 1:35 · core ≈130 words
+## 09 · Zoning Literacy Assistant — 51 words (~28 s)
 
-The Massing Generator moves from regulatory language to spatial form. AI extracts eight
-structured constraints and keeps the supporting phrase and a confidence level for every value,
-and a separate reviewer checks the interpretation. Then deterministic code takes over: it
-offsets the parcel, applies the setbacks, computes footprint and floor area, and generates the
-massing.
+My first project is about trustworthy regulatory knowledge. A general-purpose language model will happily answer confidently even when the information is not there. So I split the system into retrieval, answering, and independent verification: it finds the clauses, answers only from those, then checks whether the evidence really supports the answer.
 
-It is procedural because it follows a defined sequence, parametric because changing one value
-updates the dependent geometry — parametric design stores relationships, not just a final shape
-— and generative because it can produce alternatives. Watch the rental condition: the
-floor-space ratio moves from zero point seven to one point zero, and the envelope gains a
-storey.
+## 10 · When the rule is silent, it says so — 68 words (~37 s)
 
-[OPTIONAL] The same clipping method scales from rectangular lots to irregular parcels and
-AI-classified urban blocks. My real interest is not automatic form generation — it is keeping
-source, parameter, geometry, and revision connected.
+When the source does not contain the answer — here, how many storeys a laneway house may have — it stops: “not covered by the provided source.” Refusing is designed behaviour, not a failure. Site arithmetic is done in ordinary code, so the same inputs always give the same result; the AI only explains it.
 
-TRANSITION — A regulation-compliant envelope still does not tell us whether the geometry
-performs well, or what simplifying a constraint costs.
+Once regulation is structured and traceable, the next question is how it becomes editable geometry.
 
-## 06 · Vancouver View Corridor Massing — MAX 1:35 · core ≈105 words
+## 11 · Parametric Massing Generator — 56 words (~31 s)
 
-The View Corridor project moves from generation to evidence. Vancouver's protected views create
-sloped, three-dimensional ceilings — not flat height limits. I compared the conservative
-flat-cap shortcut with precise floor-by-floor clipping: ten floors and eighteen thousand three
-hundred sixty square metres against eighteen floors and twenty-five thousand six hundred eight —
-a thirty-nine point five percent recovery, from precision alone.
+The Massing Generator moves from regulatory language to form. AI extracts eight constraints and keeps the source phrase and a confidence level for each. Then deterministic code applies them: setbacks, footprint, floor area, and the massing. It is parametric because changing one value updates everything that depends on it — watch the rental condition add a storey.
 
-This is performance-informed design in the simplest sense: geometry proposes an alternative, and
-evaluation provides evidence about its consequences — no AI is needed for the core calculation.
+## 12 · Same method, bigger sites — 54 words (~29 s)
 
-[OPTIONAL] A rotation study showed total area holds within two hundredths of a percent while the
-floor configuration reshuffles — so orientation could serve silhouette or program instead of
-yield. [SKIP IF SHORT ON TIME] The honest flags: real corridor plan geometry and verified
-clipping, but placeholder elevation values and an unexecuted Rhino-dependent step.
+The same clipping method scales to irregular parcels and AI-classified urban blocks, and a separate reviewer checks the interpretation. My interest is not automatic form generation — it is keeping source, parameter, geometry, and revision connected.
 
-TRANSITION — The final project extends this evidence-based approach to several competing
-objectives, where no single design wins everywhere.
+But a compliant envelope does not tell us whether the geometry performs well, or what simplifying a rule costs.
 
-## 07 · Environmental Massing Agents — MAX 2:15 · core ≈150 words
+## 13 · Vancouver View Corridor Massing — 58 words (~32 s)
 
-Environmental Massing Agents extends the workflow into multi-objective exploration. A Generator
-proposes design parameters; four Critics examine the solar, carbon, wind, and yield results; an
-Orchestrator directs the next iteration. The crucial rule: the agents never calculate the
-scores. Deterministic evaluators provide the evidence; the agents interpret it and suggest
-directions.
+Vancouver’s protected views create sloped ceilings, not flat height limits. The usual shortcut caps the whole site at the lowest point: ten floors, about eighteen thousand square metres. Trimming floor by floor against the real slope gives eighteen floors and over twenty-five thousand — thirty-nine and a half percent more, from precision alone. Geometry proposes; evaluation provides the evidence.
 
-Three terms, briefly: generative design produces alternatives from encoded rules; optimization
-searches among them against defined objectives; and a Pareto-optimal design simply cannot
-improve one objective without worsening another — a trade-off, not an automatically perfect
-answer.
+## 14 · Orientation becomes a free choice — 45 words (~25 s)
 
-I compared NSGA-II with random sampling: five seeds each, an equal two-hundred-evaluation
-budget, against an exhaustive reference grid. My hypothesis predicted faster directed search —
-it was not supported. What the experiment showed instead was reliability: four of five runs
-reached the threshold, against one of five. Reporting that distinction matters — it separates
-what I expected from what the results support.
+Rotating the footprint barely changes total area, so orientation can serve silhouette or program instead of yield. Honest flags: the corridor geometry is real, but the elevation values are placeholders.
 
-[OPTIONAL] Timber weakly dominated in all two hundred matched comparisons; the floor formula
-held within one floor; the remaining wind–yield trade-off is a clean line. [SKIP IF SHORT ON
-TIME] Limitations live in the evidence drawer: simplified solar, benchmark carbon, heuristic
-wind, placeholder corridor values, no live unscripted LLM run.
+The last project extends this to several competing objectives, where no single design wins everywhere.
 
-## 08 · Synthesis — MAX 0:20 · ≈60 words, read briskly
+## 15 · Environmental Massing Agents — 49 words (~27 s)
 
-Together, these projects form one developing research direction. The Zoning Literacy Assistant
-establishes trustworthy regulatory knowledge. The Parametric Massing Generator converts that
-knowledge into editable geometry. The View Corridor project evaluates geometry against
-measurable evidence. And the Environmental Massing Agents let specialized agents discuss
-verified trade-offs — while the final judgment stays with the designer.
+Environmental Massing Agents extends the workflow to many objectives at once. A Generator proposes designs; four Critics read the solar, carbon, wind, and floor-area results; an Orchestrator picks the next direction. The key rule: the agents never calculate the scores. Ordinary code provides the evidence; the agents interpret it.
 
-## 09 · Proposed Direction: Performance Provenance (≈55 s)
+## 16 · The honest result — 63 words (~34 s)
 
-The dotted site is the direction I would like to discuss: performance provenance for human–AI
-co-design of urban environments.
+I compared a genetic optimizer, NSGA-II, with random search: five runs each, two hundred evaluations, against a full grid of one thousand eighty designs. I expected it to be faster — it was not. What it showed was reliability: four of five runs reached the target, against one of five. Reporting that difference matters: it separates what I expected from what the results support.
 
-As the spine lights up, each link is one thing the record keeps — intent, the applicable rule,
-the editable change, the computation, the result, its uncertainty, the AI's interpretation, and
-the human decision — demonstrated here with the real corridor revision.
+## 17 · Rule → geometry → performance → judgment — 26 words (~14 s)
 
-The system grows from my prototypes; the methods are a mixed program of research-through-design,
-technical validation, controlled comparison, and qualitative work — deliberately provisional. I
-want to shape this with you, not arrive with it closed.
+Together these form one direction: trustworthy regulatory knowledge, editable geometry, measurable evidence, and agents that discuss verified trade-offs — while the final judgment stays with the designer.
 
-## 10 · Why GenEnv (≈40 s)
+## 18 · Performance Provenance — 70 words (~38 s)
 
-The destination territory is drawn with its own boundary because it is not mine. The NSERC
-Discovery project runs twenty-twenty-six to twenty-thirty-one; I verified the title, holder, and
-term on NSERC's funding-decisions page.
+This is the direction I would like to discuss: performance provenance. As the chain lights up, each link is something the record keeps — the intent, the rule, the change, the calculation, the result and its uncertainty, the AI’s reading, and the designer’s decision.
 
-What I bring is the combination this program needs: spatial design plus computational
-prototyping plus human-centred evaluation. What I hope to learn is how to grow these prototypes
-into a coherent doctoral contribution with Professor Liu and the GenEnv team.
+Methods would combine building the system, technical validation, controlled comparison, and interviews — deliberately left open. I want to shape this with you, not arrive with it closed.
 
-## 11 · Conversation (≈25 s)
+## 19 · Why GenEnv — 62 words (~34 s)
 
-I would rather end with questions than conclusions: which part contributes most meaningfully;
-whether to grow the infrastructure through an existing GenEnv case or a new focused problem; and
-what I should strengthen first.
+This territory is drawn separately because it is not mine. GenEnv’s funded NSERC program, running 2026 to 2031, aims for AI-assisted design that stays editable, traceable, and open to human judgment.
+
+I bring spatial design, computational prototyping, and human-centred evaluation. I would be excited to learn from Professor Liu and the team how to grow these prototypes into a coherent doctoral contribution.
+
+## 20 · Three questions — 50 words (~27 s)
+
+I would rather end with questions than conclusions. Which part of this direction could contribute most to GenEnv’s current work? Would it grow best through an existing GenEnv case, or a new focused problem? And what should I strengthen before I begin?
 
 Thank you — I would really value your thoughts.
-
-## Appendix (untimed)
-
-Backup material: verified links to the papers, repositories, GenEnv, and the program.

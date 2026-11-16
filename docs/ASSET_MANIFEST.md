@@ -1,36 +1,53 @@
 # Asset Manifest
 
-All assets ship locally (`public/assets/`); nothing loads from the network at runtime.
-Images were resized/compressed for projector use (longest side ≤1400px).
+All assets ship locally in `public/assets/`; nothing loads from the network at runtime.
+Images are resized for projector use (≤1600 px wide) and preloaded on page load.
 
-| File | Shows | Origin | Credit / note |
+## Roman's own work — `Architecture and Design Portfolio.pdf`
+
+Extracted from the embedded page images (1299 × 866) and cropped to the artwork only.
+
+| File | Portfolio page | Shows |
+|---|---|---|
+| `photos/zangar-night.jpg` | p. 19 (portfolio p. 10) | Zangar Museum, night aerial (cropped to the building, without the printed text) |
+| `photos/zangar-aerial.jpg` | p. 30 (portfolio p. 21) | Zangar Museum, plaza and screen façade |
+| `photos/cabin-board.jpg` | p. 101 (portfolio p. 89) | Temporary residence against natural disasters — foldable A-frame cabins (Sixth Prize, 2018) |
+| `photos/cabin-detail.jpg` | p. 102 (portfolio p. 90) | Cabin plans and assembly stages (exported, currently unused) |
+| `photos/photo-ghost-of-playground.jpg` | p. 106 (portfolio p. 93) | "The Ghost of Playground" — Abstract Photo of City, 2018 Winner |
+| `photos/photo-tunnel-to-heaven.jpg` | p. 105 (portfolio p. 92) | "A Tunnel To Heaven" — Abstract Photo of City, 2018 Winner |
+| `photos/landscape-raingarden-3d.jpg` | p. 122 (portfolio p. 109) | Landscape project: rain gardens, permeable paving, storage tanks |
+| `photos/landscape-section-sketch.jpg` | p. 124 (portfolio p. 111) | Landscape section sketch (exported, currently unused) |
+
+Both photographs appear on separate "Abstract Photo of City — 2018 Winner" pages in the portfolio,
+which resolves the earlier naming question: the deck's "Ghost of Playground" and the portfolio's
+"A Tunnel To Heaven" are both from that competition.
+
+## Campus photographs — Wikimedia Commons (open licences)
+
+Full metadata: `docs/commons-credits.json`.
+
+| File | Commons file | Author | Licence |
 |---|---|---|---|
-| `deck/campus-tabriz.jpeg` | Historic brick courtyard building with fountain (Tabriz) | Interview deck, slide 2 | Photo: Morteza Kholghi on Unsplash (as credited in the deck) |
-| `deck/campus-itu.jpeg` | ITU Taşkışla aerial | Interview deck, slide 2 | Photo: Anıl İnşaat ITU Taşkışla project page (as credited in the deck) |
-| `deck/campus-sfu.jpeg` | SFU Surrey atrium | Interview deck, slide 2 | Photo: Simon Fraser University (as credited in the deck) |
-| `deck/award-zangar.jpeg` | Zangar Museum dissertation board | Interview deck, slide 3 | Roman Jahandideh's own board |
-| `deck/award-cabin.jpeg` | Sustainable cabin competition board | Interview deck, slide 3 | Roman Jahandideh's own board |
-| `deck/award-photography.jpeg` | Photography competition sheet (“Abstract Photo of City — 2018 Winner”, photograph “A Tunnel To Heaven”) | Interview deck, slide 3 | Roman's own sheet. Deck text says “The Ghost of Playground” — discrepancy flagged in PROJECT_EVIDENCE_AUDIT.md |
-| `projects/pmg-hero.webp` | Massing generator, urban block mode | Portfolio repo `assets/images/projects/` | Roman's own screenshot |
-| `projects/zla-hero.webp` | Zoning Literacy Assistant UI | Portfolio repo | Roman's own screenshot |
-| `projects/vcm-hero.webp` | Corridor-trimmed stepped massing | Portfolio repo | Roman's own render |
-| `projects/ema-hero.webp` | EMA plan/shadow/section | Portfolio repo | Roman's own figure |
-| `projects/bioterrarium-hero.webp` | BioTerrarium environment | Portfolio repo | Roman's own screenshot |
-| `projects/bioterrarium-zones.webp` | Four regulation zones | Portfolio repo | Roman's own figure (currently unused spare) |
-| `figures/ecaade-results.png` | eCAADe results bar graphs | Portfolio repo (`immersive-virtual-landscapes-paper/page-6-figure-1.png`, identical to deck copy) | From Roman's published paper |
-| `figures/iss-teaser.png` | ISS annotated teaser (cooking game + halos) | Interview deck copy of the camera-ready teaser | From Roman's accepted manuscript |
-| `favicon.svg` | Atlas mark | Drawn for this site | Original |
+| `photos/tabriz-1.jpg` | Tabriz-Islamic-Art-University.jpg | Zahra Multimedia | CC BY-SA 4.0 |
+| `photos/tabriz-2.jpg` | دانشگاه هنر اسلامی تبریز در فصل بهار.jpg | Ashkan najar | CC BY-SA 4.0 |
+| `photos/tabriz-3.jpg` | نمایی از راه های دانشگاه هنر اسلامی تبریز.jpg | Ashkan najar | CC BY-SA 4.0 |
+| `photos/itu-1.jpg` | Taşkışla Building, Istanbul (12339046873).jpg | SALTOnline | No known restrictions (exported, unused) |
+| `photos/itu-2.jpg` | ITU Taşkışla Campus.JPG | CeeGee | CC BY-SA 3.0 |
+| `photos/sfu-1.jpg` | SFU Surrey (2025).jpg | Northwest | CC BY 4.0 |
+| `photos/sfu-2.jpg` | Simon Fraser University-Surrey Campus Grand Hall 2024.jpg | Canmenwalker | CC BY 4.0 |
 
-## Fonts (self-hosted via npm, OFL-licensed)
+## From the interview deck and earlier work
 
-Inter Tight 600/700 · Inter 400/500/600 · IBM Plex Mono 400/500 (`@fontsource/*`).
+| File | Shows | Credit |
+|---|---|---|
+| `deck/campus-itu.jpeg` | ITU Taşkışla aerial | Anıl İnşaat (as credited in the deck) |
+| `deck/campus-sfu.jpeg` | SFU Surrey at dusk | Simon Fraser University (as credited in the deck) |
+| `figures/iss-teaser.png` | ISS ’26 cooperative game with heartbeat halos | Roman's accepted paper |
+| `projects/bioterrarium-hero.webp` | BioTerrarium environment | Roman's portfolio |
+| `projects/*-hero.webp` | Prototype screenshots | Roman's portfolio |
 
-## Placeholders / missing assets
+## Credits on screen
 
-- **Second Prize, landscape design competition (2013)** — no image in the supplied materials;
-  the award sheet shows a clearly-labelled placeholder instead of stock imagery.
-- No SFU/iViz lab-interior, ISS environment-detail, or BioTerrarium gallery images are embedded
-  beyond the above; candidates exist in the portfolio repo (`bioterrarium-env-2/3/4.webp`,
-  `remote-teammates-body/` figures) and can be added via `src/data/*` + this manifest.
-- BioTerrarium demo video (YouTube `eQTvM0gaBxc`) is intentionally not embedded (offline rule);
-  the portfolio link carries it.
+The CC BY / CC BY-SA licences ask for attribution. The authors and licences are recorded in this
+file and in `commons-credits.json`. If the site is made public, add a one-line credit to the
+campus steps or link this file from the closing step (see "Decisions" in the README).

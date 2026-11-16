@@ -1,24 +1,25 @@
 import { SCENES } from '../data/scenes';
+import { STEPS } from '../data/steps';
 import { CITATIONS, cite } from '../data/citations';
 import { ev } from '../data/evidence';
-import { scrollToScene } from '../lib/scroll';
+import { goToStep } from '../lib/stepper';
 import { setState, useAppState } from '../state/store';
 
 /** ── Speaker notes (N) ──────────────────────────────────────────────────── */
 export function NotesDock() {
   const open = useAppState((s) => s.notesOpen);
-  const sceneIndex = useAppState((s) => s.sceneIndex);
-  const scene = SCENES[sceneIndex] ?? SCENES[0]!;
-  const next = SCENES[sceneIndex + 1];
+  const stepIndex = useAppState((s) => s.stepIndex);
+  const step = STEPS[stepIndex] ?? STEPS[0]!;
+  const next = STEPS[stepIndex + 1];
   return (
     <aside className={`notes-dock ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="Speaker notes">
       <h3>
-        SPEAKER NOTES — {scene.chapter} {scene.title.toUpperCase()}
+        SPEAKER NOTES — STEP {stepIndex + 1} / {STEPS.length} · {(step.title ?? step.id).toUpperCase()}
       </h3>
-      {scene.script.map((p, i) => (
+      {step.notes.map((p, i) => (
         <p key={i}>{p}</p>
       ))}
-      <p className="notes-meta">NEXT → {next ? `${next.chapter} · ${next.title}` : 'END'}</p>
+      <p className="notes-meta">NEXT → {next ? `${stepIndex + 2} · ${next.title ?? next.id}` : 'END'}</p>
     </aside>
   );
 }
@@ -35,7 +36,7 @@ export function SourceDrawer() {
   return (
     <aside className={`drawer ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="Sources and evidence">
       <div className="drawer-head">
-        <span className="drawer-title">SOURCES + EVIDENCE — {scene.chapter}</span>
+        <span className="drawer-title">SOURCES + EVIDENCE — {scene.title.toUpperCase()}</span>
         <button className="hud-btn" onClick={() => setState({ drawerOpen: false })} aria-label="Close drawer">
           ESC ✕
         </button>
@@ -168,33 +169,30 @@ export function LegendPanel() {
 /** ── Chapter map (M) ────────────────────────────────────────────────────── */
 export function ChapterMap() {
   const open = useAppState((s) => s.chapterMapOpen);
-  const sceneIndex = useAppState((s) => s.sceneIndex);
+  const stepIndex = useAppState((s) => s.stepIndex);
   if (!open) return null;
   return (
-    <div className="overlay-screen" role="dialog" aria-modal="true" aria-label="Chapter map" onClick={() => setState({ chapterMapOpen: false })}>
+    <div className="overlay-screen" role="dialog" aria-modal="true" aria-label="All 20 steps" onClick={() => setState({ chapterMapOpen: false })}>
       <div className="overlay-card" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-head" style={{ padding: 0, border: 'none' }}>
-          <span className="drawer-title">CHAPTER MAP</span>
+          <span className="drawer-title">ALL 20 STEPS</span>
           <button className="hud-btn" onClick={() => setState({ chapterMapOpen: false })}>
             ESC ✕
           </button>
         </div>
         <div className="chapter-grid">
-          {SCENES.map((s, i) => (
+          {STEPS.map((s, i) => (
             <button
               key={s.id}
               className="chapter-cell"
-              data-active={i === sceneIndex}
+              data-active={i === stepIndex}
               onClick={() => {
                 setState({ chapterMapOpen: false });
-                scrollToScene(i);
+                goToStep(i);
               }}
             >
-              <span className="n">
-                {s.chapter}
-                {s.appendix ? ' · APPENDIX' : ''}
-              </span>
-              <span className="t">{s.title}</span>
+              <span className="n">{String(i + 1).padStart(2, '0')}</span>
+              <span className="t">{s.title ?? s.id}</span>
             </button>
           ))}
         </div>
@@ -208,11 +206,10 @@ export function HelpOverlay() {
   const open = useAppState((s) => s.helpOpen);
   if (!open) return null;
   const rows: [string, string][] = [
-    ['scroll', 'tells the story — camera, drawings, and text follow'],
-    ['↓ ↑ · ← → · Space', 'scroll the story forward / back'],
-    ['PgDn / PgUp', 'next / previous scene'],
-    ['Home / End', 'first / last main scene'],
-    ['1–9, 0', 'jump to a scene (0 = Why GenEnv)'],
+    ['one scroll / swipe', 'one step — 20 steps in total'],
+    ['↓ → Space PgDn', 'next step'],
+    ['↑ ← Shift+Space PgUp', 'previous step'],
+    ['Home / End', 'first / last step'],
     ['F', 'full screen'],
     ['N', 'speaker notes'],
     ['S or C', 'sources + evidence drawer'],

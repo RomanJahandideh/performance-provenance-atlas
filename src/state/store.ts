@@ -1,8 +1,11 @@
 import { useSyncExternalStore } from 'react';
 
 export interface AppState {
+  /** Current step, 0..19. */
+  stepIndex: number;
+  /** Map chapter the current step uses (index into SCENES). */
   sceneIndex: number;
-  /** Scroll progress inside the active scene, 0..1, quantized. */
+  /** Animated progress of that chapter's drawing, 0..1. */
   sceneP: number;
   notesOpen: boolean;
   drawerOpen: boolean;
@@ -14,8 +17,9 @@ export interface AppState {
 }
 
 const initialState: AppState = {
+  stepIndex: 0,
   sceneIndex: 0,
-  sceneP: 0,
+  sceneP: 1,
   notesOpen: false,
   drawerOpen: false,
   legendOpen: false,
@@ -68,4 +72,8 @@ export function toggleReducedMotion() {
 
 export function closeAllPanels() {
   setState({ notesOpen: false, drawerOpen: false, legendOpen: false, chapterMapOpen: false, helpOpen: false });
+}
+
+export function anyPanelOpen(): boolean {
+  return state.notesOpen || state.drawerOpen || state.legendOpen || state.chapterMapOpen || state.helpOpen;
 }

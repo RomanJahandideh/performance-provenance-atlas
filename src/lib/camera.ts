@@ -1,4 +1,6 @@
+import gsap from 'gsap';
 import { WORLD } from '../data/atlas';
+import { prefersReducedMotion } from '../state/store';
 
 export interface CameraRect {
   cx: number;
@@ -6,19 +8,16 @@ export interface CameraRect {
   w: number;
 }
 
-/**
- * Imperative camera: the scroll engine writes it every frame and it sets the
- * SVG viewBox directly, outside React renders.
- */
+/** Imperative camera: tweens a target and writes the SVG viewBox directly. */
 class Camera {
   current: CameraRect = { cx: WORLD.w / 2, cy: WORLD.h / 2, w: WORLD.w + 200 };
   private svg: SVGSVGElement | null = null;
+  private tween: gsap.core.Tween | null = null;
   aspect = 16 / 9;
 
   attach(svg: SVGSVGElement) {
     this.svg = svg;
     this.measure();
-    this.apply();
   }
 
   measure() {
@@ -30,32 +29,30 @@ class Camera {
     if (!this.svg) return;
     const w = this.current.w;
     const h = w / this.aspect;
-    const x = this.current.cx - w / 2;
-    const y = this.current.cy - h / 2;
-    this.svg.setAttribute('viewBox', `${x.toFixed(1)} ${y.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`);
+    this.svg.setAttribute(
+      'viewBox',
+      `${(this.current.cx - w / 2).toFixed(1)} ${(this.current.cy - h / 2).toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`,
+    );
   }
 
-  /** Immediate set from a {x,y,w} target. */
-  set(target: { x: number; y: number; w: number }) {
-    this.current.cx = target.x;
-    this.current.cy = target.y;
-    this.current.w = target.w;
-    this.clamp();
-    this.apply();
-  }
-
-  /** Immediate set with raw rect fields (scroll-engine damping). */
-  setRaw(target: Partial<CameraRect>) {
-    Object.assign(this.current, target);
-    this.clamp();
-    this.apply();
-  }
-
-  private clamp() {
-    const margin = 600;
-    this.current.cx = Math.max(-margin, Math.min(WORLD.w + margin, this.current.cx));
-    this.current.cy = Math.max(-margin, Math.min(WORLD.h + margin, this.current.cy));
-    this.current.w = Math.max(500, Math.min(WORLD.w * 1.6, this.current.w));
+  /** Glide to a target; any new target interrupts the running glide. */
+  flyTo(target: { x: number; y: number; w: number }, instant = false) {
+    this.tween?.kill();
+    if (instant || prefersReducedMotion()) {
+      this.current = { cx: target.x, cy: target.y, w: target.w };
+      this.apply();
+      return;
+    }
+    const dist = Math.hypot(target.x - this.current.cx, target.y - this.current.cy);
+    const zoom = Math.abs(Math.log(target.w / this.current.w));
+    this.tween = gsap.to(this.current, {
+      cx: target.x,
+      cy: target.y,
+      w: target.w,
+      duration: Math.min(1.4, 0.6 + dist / 5000 + zoom * 0.3),
+      ease: 'power2.inOut',
+      onUpdate: () => this.apply(),
+    });
   }
 }
 

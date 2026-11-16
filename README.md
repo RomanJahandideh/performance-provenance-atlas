@@ -8,7 +8,7 @@ foundations (Tabriz → Istanbul → SFU), the perception/embodied-systems distr
 computational-urban-design prototypes, a synthesis chain, the proposed doctoral direction
 (*performance provenance*), and an attributed GenEnv context territory.
 
-- **11 main scenes** + 1 appendix scene; **scrolling itself tells the story** — the camera travels, the drawings demonstrate the projects live, and large unboxed text fades through (no clicks required, no timer, no panel scrollbars)
+- **Exactly 20 steps: one scroll = one step.** The page never scrolls freely; each step flies the map camera and plays its drawing on its own. Photo steps (campuses, Zangar Museum, competitions) fill the screen with images.
 - Every displayed research number comes from `src/data/evidence.ts` (single source of truth)
 - Status is drawn, not badged — plinths, hatching, wireframes, dashed footprints (press `L`)
 - Works fully offline; no API keys, no external requests at runtime
@@ -29,12 +29,10 @@ subpath — GitHub Pages, Netlify, or a local folder.
 ## Presenting (interview checklist)
 
 1. `npm run build && npm run preview` — present from the production build, not the dev server.
-2. Open the site and press `F` for full screen — then simply **scroll**: the story, the camera,
-   and the live project demonstrations are all scroll-driven (arrow keys and `Space` scroll too).
+2. Open the site and press `F` for full screen. Then scroll once per step (or press `↓` / `Space`). There are 20 steps, and the bottom bar shows where you are.
 3. `?` shows the controls; `L` opens the legend; `N` shows your speaker notes.
-4. `R` restarts from the opening; `PageDown`/`PageUp` jump whole scenes.
-5. The appendix scene (after Conversation) is outside the main route — use it only if asked.
-6. Rehearse offline once: disconnect the network; everything must still work (external links are
+4. `R` restarts at step 1; `M` shows all 20 steps.
+5. Rehearse offline once: disconnect the network; everything must still work (external links are
    the only thing that won't open).
 
 Full key map: `docs/PRESENTATION_CONTROLS.md`. Scene-by-scene script: `docs/PRESENTATION_SCRIPT.md`.
@@ -74,7 +72,7 @@ docs/           evidence audit, claim matrix, script, controls, mapping language
 
 | File | What it holds |
 |---|---|
-| `docs/PRESENTATION_SCRIPT.md` | Spoken script per scene with target timings |
+| `docs/PRESENTATION_SCRIPT.md` | Spoken script per step with word counts |
 | `docs/PRESENTATION_CONTROLS.md` | Keyboard + presenter controls |
 | `docs/PROJECT_EVIDENCE_AUDIT.md` | Every claim → source → verification status → limitation |
 | `docs/CLAIM_STATUS_MATRIX.md` | Implemented / tested / published / accepted / revised / proposed / placeholder / unexecuted |
