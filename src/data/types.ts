@@ -110,7 +110,7 @@ export type DiagramId =
  * Slide compositions. Each is a fixed arrangement of horizontal bands and
  * planes; media are always shown whole, never cropped or upscaled.
  */
-export type LayoutId = 'cover' | 'cantilever' | 'statement' | 'band' | 'gallery' | 'figure' | 'figure-left' | 'columns' | 'questions';
+export type LayoutId = 'title' | 'cover' |'cantilever' | 'statement' | 'band' | 'gallery' | 'figure' | 'figure-left' | 'columns' | 'questions';
 
 /** One image or vector diagram on a slide. */
 export interface Media {
@@ -138,6 +138,8 @@ export interface Slide {
   kicker?: string;
   title: string;
   lines?: string[];
+  /** Why the work is useful to designers, shown as a highlighted line. */
+  use?: string;
   facts?: Fact[];
   caveat?: string;
   links?: { label: string; url: string }[];

@@ -31,6 +31,8 @@ export const IMG: Record<string, [number, number]> = {
   'assets/photos/sfu-1.jpg': [1600, 900],
   'assets/photos/sfu-2.jpg': [1600, 1200],
   'assets/photos/tabriz-1.jpg': [1600, 2133],
+  'assets/photos/teach-iat313.jpg': [1280, 960],
+  'assets/photos/teach-iat343.jpg': [1280, 960],
   'assets/photos/tabriz-2.jpg': [1600, 1156],
   'assets/photos/tabriz-3.jpg': [1600, 1067],
   'assets/photos/zangar-aerial.jpg': [1003, 575],

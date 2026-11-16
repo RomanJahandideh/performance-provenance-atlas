@@ -32,8 +32,10 @@
   font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow);
 }
 .kicker::before { content: ''; width: 36px; height: 2px; background: var(--yellow); flex: none; }
-.title { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 2.9vw, 56px); line-height: 1.06; letter-spacing: -0.015em; overflow: hidden; padding-bottom: 0.08em; }
-.title--big { font-size: clamp(44px, 4.2vw, 82px); letter-spacing: -0.025em; line-height: 1.02; }
+.title { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 2.9vw, 56px); line-height: 1.08; letter-spacing: -0.005em; word-spacing: 0.1em; overflow: hidden; padding-bottom: 0.08em; }
+.title--big { font-size: clamp(44px, 4.2vw, 82px); letter-spacing: -0.01em; word-spacing: 0.12em; line-height: 1.04; }
+.use { margin-top: 18px; padding: 2px 0 2px 18px; border-left: 3px solid var(--yellow); color: var(--ink); }
+.use-label { display: block; margin-bottom: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--yellow); }
 .title span { display: inline-block; }
 .line { margin: 0 0 14px; font-size: clamp(17px, 1.15vw, 22px); line-height: 1.5; color: var(--ink-dim); max-width: 64ch; }
 .caveat { margin: 6px 0 0; font-size: clamp(14px, 0.9vw, 16px); line-height: 1.45; color: var(--orange); max-width: 60ch; }
@@ -64,7 +66,7 @@
 .fig-media { position: relative; border: 1px solid var(--line-strong); background: rgba(8, 26, 66, 0.5); overflow: hidden; }
 .fig-media img { display: block; width: 100%; height: 100%; user-select: none; }
 .fig-media .dg { display: block; width: 100%; height: 100%; }
-.fig figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; height: 34px; padding-top: 11px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); white-space: nowrap; overflow: hidden; }
+.fig figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 40px 12px; height: 34px; padding-top: 11px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); white-space: nowrap; overflow: hidden; }
 .fig figcaption em { font-style: normal; letter-spacing: 0.06em; text-transform: none; color: var(--muted); font-size: 11px; }
 
 /* ── compositions ── */
@@ -97,6 +99,16 @@
 .l-statement .body { grid-column: 1 / 8; grid-row: 4; }
 .l-statement .body .line { font-size: clamp(19px, 1.35vw, 25px); }
 .l-statement .facts--col { grid-column: 9 / 13; grid-row: 4; }
+
+/* Opening: only the question, revealed in order, one long rule under it. */
+.l-title { grid-template-rows: minmax(0, 1.1fr) auto auto auto minmax(0, 1fr); }
+.l-title .head { grid-column: 1 / 11; grid-row: 2; }
+.l-title .title--big { font-size: clamp(52px, 5.4vw, 104px); }
+.l-title .rule { grid-row: 3; margin: 48px -72px; }
+.l-title .body { grid-column: 7 / 13; grid-row: 4; }
+.l-title .body .line { font-size: clamp(19px, 1.35vw, 25px); }
+.is-entering .l-title .title span { animation-duration: 1.1s; }
+.is-entering .l-title .rule { animation-delay: calc(var(--base) + 0.7s); animation-duration: 1.4s; }
 
 .l-figure { grid-template-rows: minmax(0, 1fr); }
 .l-figure .area-media { grid-column: 1 / 9; grid-row: 1; align-items: center; }
@@ -182,6 +194,9 @@
   .l-gallery .rule { margin-left: -48px; margin-right: -48px; }
   .l-statement .rule { margin-left: -48px; margin-right: -48px; }
   .l-columns .rule { margin-left: -48px; margin-right: -48px; }
+  .l-title .rule { margin: 32px -48px; }
+  .l-title .title--big { font-size: 56px; }
+  .use { margin-top: 12px; }
   .slide { column-gap: 28px; }
   .line { font-size: 16px; margin-bottom: 10px; }
   .title { font-size: 32px; }

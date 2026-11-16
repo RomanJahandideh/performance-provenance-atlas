@@ -148,6 +148,12 @@ function Lines({ s, from = 0 }: { s: Slide; from?: number }) {
           {l}
         </p>
       ))}
+      {s.use && (
+        <p className="line use" style={{ '--d': `${0.35 + (from + (s.lines?.length ?? 0)) * 0.12 + 0.1}s` } as CSSProperties}>
+          <span className="use-label">For designers</span>
+          {s.use}
+        </p>
+      )}
     </>
   );
 }
@@ -175,6 +181,16 @@ const Rule = ({ className = '' }: { className?: string }) => <i className={`rule
 function SlideView({ s }: { s: Slide }) {
   const media = s.media ?? [];
   switch (s.layout) {
+    case 'title':
+      return (
+        <div className="slide l-title">
+          <Head s={s} big />
+          <Rule className="rule--bleed" />
+          <div className="body">
+            <Lines s={s} from={4} />
+          </div>
+        </div>
+      );
     case 'cover':
       return (
         <div className="slide l-cover">

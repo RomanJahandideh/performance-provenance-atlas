@@ -1,14 +1,12 @@
 # Presentation Script
 
 Generated from `src/data/steps.ts`. This is the text on the slides, which is also what the `N` notes show. One section per scroll.
-Total: **28 slides, 1282 words, about 11.7 minutes** of speaking at 110 words per minute.
+Total: **28 slides, 1306 words, about 11.9 minutes** of speaking at 110 words per minute.
 
 
-## 01 · GenEnv · Designing environments with people and AI (38 words)
+## 01 · GenEnv · Designing environments with people and AI (22 words)
 
-GenEnv asks how people and AI can design constructed environments together, with performance in view.
-
-This is the path that brought me to that question, from making things as a child to the research I am doing now.
+How I came to the question GenEnv is asking: how people and AI can design constructed environments together, with performance in view.
 
 ## 02 · Making · It started with making things (36 words)
 
@@ -22,11 +20,11 @@ For elementary and high school I studied at NODET, Iran’s national schools for
 
 This is where I started learning hard algebra, physics, chemistry and differential calculus, from elementary school on.
 
-## 04 · Designing places · From making things to designing places (38 words)
+## 04 · Designing places · From making things to designing places (37 words)
 
 I love creating things that are completely new, so I chose architecture. It gave me the agency to make new things that have new effects on society.
 
-At Tabriz Islamic Art University I won several interschool design competitions.
+At Tabriz Art University I won several interschool design competitions.
 
 ## 05 · Designing places · Zangar Museum (31 words)
 
@@ -56,9 +54,9 @@ Long exposures of the city at night. The blur hides objects and leaves only ligh
 
 Competitions like these kept me focused on form and aesthetics.
 
-## 10 · Reading environments · Why landscape (46 words)
+## 10 · Reading environments · Why landscape architecture (48 words)
 
-I was so into form and aesthetic theory that I had forgotten how society and nature shape design.
+In Tabriz I was so into form and aesthetic theory that I had forgotten how society and nature shape design.
 
 That is why I chose landscape architecture at Istanbul Technical University, where our focus was developing systems that help architects and landscape designers design with more effective tools.
 
@@ -86,11 +84,11 @@ GIS and VR showed me that environments can be analyzed, tested and measured as d
 
 I felt a deep need to learn coding and how to develop systems myself before continuing my research in design and architecture. That led me to SFU.
 
-## 15 · Building systems · Learning to build (40 words)
+## 15 · Building systems · Learning to build (79 words)
 
-In 2025 I started a Master of Science at SFU’s School of Interactive Arts and Technology.
+In 2025 I started a Master of Science at SFU’s School of Interactive Arts and Technology. I studied AI systems and learned to build prototypes and complete systems with Python, JavaScript, Unity and C#, and parametric tools with Grasshopper and Ladybug.
 
-I studied AI systems and learned how to develop prototypes and complete systems, coding in Python, JavaScript, Unity and C#, and running user studies.
+I also teach. As a teaching assistant for IAT 313 Narrative and New Media, IAT 343 Animation and IAT 102 Graphic Design, I teach interactive environments, 3D modeling and animation. Last week I ran a workshop on Unity.
 
 ## 16 · Building systems · Two research areas (55 words)
 

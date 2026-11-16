@@ -92,3 +92,5 @@ Flagged:
 - Fit sheet quotes GenEnv's own homepage statement (interpret complex environments, reason through constraints, work within professional design tools, keep outcomes editable, traceable and open to human judgment). "132 participants" = 60 (eCAADe) + 36 + 36 (ISS).
 
 - 2026-11-16: Roman confirmed the Tabriz Art University landscape design competition second prize was in 2015 (portfolio p.5); the CV year 2013 is wrong.
+
+2026-11-16: Teaching assistant courses taken from romanjahandideh.com teaching section: IAT 313 Narrative and New Media, IAT 343 Animation, IAT 102 Graphic Design. Teaching photos copied from the site (Teaching/IAT3431.webp, IAT3131.webp). Unity workshop "last week" stated by Roman on 2026-11-16 (deck says November 2026). University name shown as "Tabriz Art University" at Roman's request.

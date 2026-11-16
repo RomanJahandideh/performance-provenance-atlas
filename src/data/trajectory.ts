@@ -9,7 +9,7 @@ export interface CampusAnchor {
 }
 
 export const CAMPUSES: readonly CampusAnchor[] = [
-  { id: 'tabriz', institution: 'Tabriz Islamic Art University', degree: 'B.Arch · Architecture', period: '2011 – 2016', pos: { x: 480, y: 2160 } },
+  { id: 'tabriz', institution: 'Tabriz Art University', degree: 'B.Arch · Architecture', period: '2011 – 2016', pos: { x: 480, y: 2160 } },
   { id: 'itu', institution: 'Istanbul Technical University', degree: 'Master’s · Landscape Architecture', period: '2020 – 2024', pos: { x: 560, y: 1640 } },
   { id: 'sfu', institution: 'Simon Fraser University', degree: 'MSc · Interactive Arts + Technology', period: '2025 – present', pos: { x: 720, y: 1120 } },
 ] as const;

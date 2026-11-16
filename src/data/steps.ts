@@ -14,19 +14,10 @@ export const SLIDES: readonly Slide[] = [
     id: 'opening',
     chapter: 'GenEnv',
     scene: 'opening',
-    layout: 'cover',
+    layout: 'title',
     kicker: 'PhD interview · Generative Environments Lab · UBC SALA',
     title: 'Designing environments with people and AI',
-    lines: [
-      'GenEnv asks how people and AI can design constructed environments together, with performance in view.',
-      'This is the path that brought me to that question, from making things as a child to the research I am doing now.',
-    ],
-    media: [
-      { src: 'assets/photos/childhood.jpg', caption: 'Making', alt: 'Roman as a child in a kitchen, opening a drawer.' },
-      { src: 'assets/portfolio/p019.jpg', caption: 'Designing places', alt: 'Night render of the Zangar Museum.' },
-      { src: 'assets/portfolio/p122.jpg', caption: 'Reading environments', alt: 'Housing units with rain gardens on Büyükada.' },
-      { src: 'assets/projects/pmg-hero.webp', caption: 'AI for design', alt: 'AI-assisted massing on an urban block.' },
-    ],
+    lines: ['How I came to the question GenEnv is asking: how people and AI can design constructed environments together, with performance in view.'],
   },
 
   // ── Making ─────────────────────────────────────────────────────────────────
@@ -68,14 +59,14 @@ export const SLIDES: readonly Slide[] = [
     title: 'From making things to designing places',
     lines: [
       'I love creating things that are completely new, so I chose architecture. It gave me the agency to make new things that have new effects on society.',
-      'At Tabriz Islamic Art University I won several interschool design competitions.',
+      'At Tabriz Art University I won several interschool design competitions.',
     ],
     facts: [
       { label: 'Degree', value: 'B.Arch' },
       { label: 'Years', value: '2011 to 2016' },
       { label: 'Thesis', value: 'Best Dissertation award', tone: 'yellow' },
     ],
-    media: [{ src: 'assets/photos/tabriz-2.jpg', caption: 'Tabriz Islamic Art University', credit: 'Ashkan najar · CC BY-SA 4.0', alt: 'Brick buildings and a blossoming tree on the campus.' }],
+    media: [{ src: 'assets/photos/tabriz-2.jpg', caption: 'Tabriz Art University', credit: 'Ashkan najar · CC BY-SA 4.0', alt: 'Brick buildings and a blossoming tree on the campus.' }],
   },
   {
     id: 'zangar',
@@ -168,16 +159,19 @@ export const SLIDES: readonly Slide[] = [
     chapter: 'Reading environments',
     scene: 'trajectory',
     layout: 'cantilever',
-    title: 'Why landscape',
+    title: 'Why landscape architecture',
     lines: [
-      'I was so into form and aesthetic theory that I had forgotten how society and nature shape design.',
+      'In Tabriz I was so into form and aesthetic theory that I had forgotten how society and nature shape design.',
       'That is why I chose landscape architecture at Istanbul Technical University, where our focus was developing systems that help architects and landscape designers design with more effective tools.',
     ],
     facts: [
       { label: 'Degree', value: 'Master’s, Landscape Architecture' },
       { label: 'Years', value: '2020 to 2024' },
     ],
-    media: [{ src: 'assets/photos/itu-2.jpg', caption: 'Istanbul Technical University', credit: 'CeeGee · CC BY-SA 3.0', alt: 'The Taşkışla building of Istanbul Technical University.' }],
+    media: [
+      { src: 'assets/photos/tabriz-1.jpg', caption: 'Tabriz Art University', credit: 'Zahra Multimedia · CC BY-SA 4.0', alt: 'A brick tower on the Tabriz Art University campus at sunset.' },
+      { src: 'assets/photos/itu-2.jpg', caption: 'Istanbul Technical University', credit: 'CeeGee · CC BY-SA 3.0', alt: 'The Taşkışla building of Istanbul Technical University.' },
+    ],
   },
   {
     id: 'buyukada',
@@ -222,10 +216,11 @@ export const SLIDES: readonly Slide[] = [
       'In the Virtual Landscape Lab with Dr. Ikhwan Kim, I tested how people judge depth in VR.',
       'When objects became very transparent, cool and dark colours looked closer than warm and bright ones. That is the opposite of the usual rule.',
     ],
+    use: 'A VR design tool that knows this can help designers choose colour and transparency so a landscape reads the way they intend.',
     facts: [
       { label: 'Participants', value: '60' },
       { label: 'Judgments each', value: '264' },
-      { label: 'Published', value: 'eCAADe 41, Graz, 2023', tone: 'cyan' },
+      { label: 'Education and Research in Computer Aided Architectural Design in Europe', value: 'eCAADe 41, Graz, 2023', tone: 'cyan' },
     ],
     links: [{ label: 'DOI', url: 'https://doi.org/10.52842/conf.ecaade.2023.1.149' }],
     media: [
@@ -255,14 +250,22 @@ export const SLIDES: readonly Slide[] = [
     id: 'sfu',
     chapter: 'Building systems',
     scene: 'trajectory',
-    layout: 'cantilever',
+    layout: 'band',
+    kicker: 'Building systems · SFU',
     title: 'Learning to build',
     lines: [
-      'In 2025 I started a Master of Science at SFU’s School of Interactive Arts and Technology.',
-      'I studied AI systems and learned how to develop prototypes and complete systems, coding in Python, JavaScript, Unity and C#, and running user studies.',
+      'In 2025 I started a Master of Science at SFU’s School of Interactive Arts and Technology. I studied AI systems and learned to build prototypes and complete systems with Python, JavaScript, Unity and C#, and parametric tools with Grasshopper and Ladybug.',
+      'I also teach. As a teaching assistant for IAT 313 Narrative and New Media, IAT 343 Animation and IAT 102 Graphic Design, I teach interactive environments, 3D modeling and animation. Last week I ran a workshop on Unity.',
     ],
-    facts: [{ label: 'Degree', value: 'MSc, Interactive Arts and Technology' }],
-    media: [{ src: 'assets/photos/sfu-2.jpg', caption: 'SFU Surrey', credit: 'Canmenwalker · CC BY 4.0', alt: 'The Grand Hall atrium of SFU Surrey under its timber roof.' }],
+    facts: [
+      { label: 'Degree', value: 'MSc, Interactive Arts and Technology' },
+      { label: 'Teaching assistant', value: 'Three courses', tone: 'yellow' },
+      { label: 'Workshop', value: 'Unity, November 2026' },
+    ],
+    media: [
+      { src: 'assets/photos/teach-iat343.jpg', caption: 'Teaching Maya · IAT 343', alt: 'Roman teaching 3D modeling in Maya in front of a projected screen.' },
+      { src: 'assets/photos/teach-iat313.jpg', caption: 'Lab session · IAT 313', alt: 'Roman working with students at their laptops in a lab session.' },
+    ],
   },
   {
     id: 'iviz',
@@ -293,10 +296,11 @@ export const SLIDES: readonly Slide[] = [
       'A teammate’s heart rate shown as a glowing halo instead of numbers.',
       'People recognised the halo states well above chance, and teams helped each other faster with it.',
     ],
+    use: 'Design tools face the same question: how to show performance data so designers read it quickly and still trust it.',
     facts: [
       { label: 'Halo states recognised', value: '66.3%' },
       { label: 'Faster help', value: '3.90 s', tone: 'cyan' },
-      { label: 'Accepted', value: 'ACM ISS 2026, Turin', tone: 'cyan' },
+      { label: 'ACM International Conference on Interactive Surfaces and Spaces', value: 'ISS 2026, Turin', tone: 'cyan' },
     ],
     caveat: 'Players still trusted plain numbers more than the halo.',
     links: [{ label: 'DOI', url: 'https://doi.org/10.1145/3845796.3859311' }],
@@ -315,6 +319,7 @@ export const SLIDES: readonly Slide[] = [
       'In BioTerrarium an Apple Watch changes the fog, light and plants of a game world in under 200 milliseconds.',
       'The player’s physiological state becomes a force that shapes the environment around them.',
     ],
+    use: 'It gives designers a way to test environments that respond to the people inside them.',
     facts: [
       { label: 'Study', value: '24 people, two conditions' },
       { label: 'Status', value: 'Under revision', tone: 'orange' },
@@ -337,6 +342,7 @@ export const SLIDES: readonly Slide[] = [
       'My ongoing projects ask how AI can work with designers on real constraints: zoning, protected views and environmental performance.',
       'In each one, AI reads and suggests, code calculates, and the designer decides.',
     ],
+    use: 'I find this the most useful kind of tool: it makes design easier by taking over the searching and checking, so designers can spend their time on design decisions.',
     media: [{ diagram: 'chain', caption: 'From rule to decision' }],
   },
   {
@@ -350,6 +356,7 @@ export const SLIDES: readonly Slide[] = [
       'The Zoning Literacy Assistant finds the bylaw clauses that matter, answers only from them and checks its own answer.',
       'If the bylaw is silent, it says “not covered” and stops. Site areas are calculated in code, and the AI only explains them.',
     ],
+    use: 'Designers get the rules that apply to their site without reading the whole bylaw, and never an invented one.',
     facts: [
       { label: 'Bylaw clauses', value: '10' },
       { label: 'Footprint, in code', value: '162.6 m²', tone: 'cyan' },
@@ -372,6 +379,7 @@ export const SLIDES: readonly Slide[] = [
       'In the Parametric Massing Generator, AI reads the bylaw and pulls out eight rules, each with its source sentence.',
       'Code turns them into a building envelope the designer can edit. Change one value and everything that depends on it updates.',
     ],
+    use: 'Designers start from the legal envelope instead of drawing it by hand, and can see which rule shapes each face.',
     facts: [
       { label: 'Rules extracted', value: '8' },
       { label: 'Rental condition', value: '+1 storey', tone: 'yellow' },
@@ -397,6 +405,7 @@ export const SLIDES: readonly Slide[] = [
       'Vancouver’s protected views are a sloped limit, not a flat cap. Checking each floor against the slope gives 18 floors instead of 10.',
       'Turning the footprint barely changes the area, so its angle can follow the program instead.',
     ],
+    use: 'Designers see early how much they can build under a protected view, before the form is fixed.',
     facts: [
       { label: 'Floors', value: '10 → 18', tone: 'cyan' },
       { label: 'Floor area gained', value: '+39.5%', tone: 'yellow' },
@@ -419,6 +428,7 @@ export const SLIDES: readonly Slide[] = [
       'Six AI roles suggest and critique designs for sun, carbon, wind and floor area, but code calculates every score.',
       'I expected guided search to be faster. It was not, but it was more reliable. I report both.',
     ],
+    use: 'Designers get performance feedback while the massing is still open to change.',
     facts: [
       { label: 'Faster search', value: 'Not confirmed', tone: 'red' },
       { label: 'Runs that hit the target', value: '4/5 vs 1/5', tone: 'cyan' },
@@ -426,7 +436,7 @@ export const SLIDES: readonly Slide[] = [
     caveat: 'Wind is a rough estimate, not CFD. Carbon uses benchmarks, not a full LCA. The live AI loop has not been run yet.',
     links: [{ label: 'GitHub', url: 'https://github.com/RomanJahandideh/environmental-massing-agents' }],
     media: [
-      { diagram: 'seeds', caption: 'Guided search against random search' },
+      { diagram: 'seeds', caption: 'Two searches' },
       { src: 'assets/projects/ema-hero.webp', caption: 'Winter shadow and section', alt: 'Plan with a winter shadow beside a stepped section.' },
     ],
   },
@@ -524,7 +534,7 @@ export const STEPS: readonly Step[] = SLIDES.map((s) => ({
   id: s.id,
   scene: s.scene,
   title: s.title,
-  notes: s.notes ?? [...(s.lines ?? []), ...(s.caveat ? [s.caveat] : [])],
+  notes: s.notes ?? [...(s.lines ?? []), ...(s.use ? [s.use] : []), ...(s.caveat ? [s.caveat] : [])],
 }));
 
 export const STEP_COUNT = STEPS.length;
