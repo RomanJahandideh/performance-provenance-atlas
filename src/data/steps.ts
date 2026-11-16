@@ -1,12 +1,13 @@
 import type { Step } from './types';
 
 /**
- * The presentation as 20 architectural sheets. One scroll = one sheet.
+ * The presentation as 20 sheets. One scroll = one sheet.
  * Every sheet is a 12-column × 6-row panel grid; panels never share cells.
  * Image credits: docs/ASSET_MANIFEST.md.
+ * Writing rule: plain sentences, no dashes.
  */
 export const STEPS: readonly Step[] = [
-  // 01 ───────────────────────────────────────────────────────────────────────
+  // 01
   {
     id: 'title',
     scene: 'opening',
@@ -19,8 +20,8 @@ export const STEPS: readonly Step[] = [
         kicker: 'PhD interview · GenEnv Lab · UBC SALA',
         title: 'Performance Provenance',
         lines: [
-          'Evidence-bearing human–AI co-design for performance-aware constructed environments.',
-          'From spatial design, through interactive research systems, to four computational prototypes — and a direction I would like to discuss.',
+          'Human and AI design together, with every decision backed by evidence you can check.',
+          'This talk covers my background in architecture, landscape and interactive systems, four computational prototypes, and a PhD direction I would like to discuss.',
         ],
       },
       { kind: 'diagram', col: '8 / 13', row: '1 / 5', label: 'Fig. 01 · Research site plan', diagram: 'site' },
@@ -37,12 +38,12 @@ export const STEPS: readonly Step[] = [
       },
     ],
     notes: [
-      'Thank you for meeting with me. I began by designing spaces and studying how people perceive them. My recent work asks a related question at a different level: when computational and AI systems take part in spatial design, how can their decisions stay visible, testable, and open to human revision?',
-      'I will walk through where I trained, four prototypes I built, and a direction I would like to discuss with you.',
+      'Thank you for meeting with me. I started out designing buildings and landscapes, and then I began studying how people perceive space. My recent work asks a related question: when AI tools help with spatial design, how do we keep their decisions visible, testable and easy for a designer to change?',
+      'I will go through where I studied, four prototypes I built, and a PhD direction I would like to talk about with you.',
     ],
   },
 
-  // 02 ───────────────────────────────────────────────────────────────────────
+  // 02
   {
     id: 'tabriz',
     scene: 'trajectory',
@@ -52,9 +53,9 @@ export const STEPS: readonly Step[] = [
         kind: 'text',
         col: '1 / 5',
         row: '1 / 5',
-        kicker: '01 — Education · Tabriz',
+        kicker: '01 · Education · Tabriz',
         title: 'Tabriz Islamic Art University',
-        lines: ['Where I learned to make, draw, and defend a spatial idea — composition, public life, and visual communication.'],
+        lines: ['I studied architecture here. I learned to develop a spatial idea, draw it, and explain it to others.'],
       },
       {
         kind: 'facts',
@@ -63,7 +64,7 @@ export const STEPS: readonly Step[] = [
         label: 'Degree',
         facts: [
           { label: 'Degree', value: 'B.Arch' },
-          { label: 'Period', value: '2011 – 2016' },
+          { label: 'Years', value: '2011 to 2016' },
           { label: 'Field', value: 'Architecture' },
         ],
       },
@@ -72,11 +73,11 @@ export const STEPS: readonly Step[] = [
       { kind: 'image', col: '10 / 13', row: '4 / 7', label: 'Courtyard', src: 'assets/photos/tabriz-3.jpg', alt: 'Brick hall and stone path on the Tabriz Islamic Art University campus.', credit: 'Ashkan najar · CC BY-SA 4.0' },
     ],
     notes: [
-      'My degrees look different, but they build one research profile. I trained as an architect at Tabriz Islamic Art University: spatial composition, public life, and visual communication.',
+      'My degrees are in different fields, but they connect. I trained as an architect at Tabriz Islamic Art University, where I worked on spatial composition, public space and visual communication.',
     ],
   },
 
-  // 03 ───────────────────────────────────────────────────────────────────────
+  // 03
   {
     id: 'zangar',
     scene: 'trajectory',
@@ -86,11 +87,11 @@ export const STEPS: readonly Step[] = [
         kind: 'text',
         col: '1 / 5',
         row: '1 / 7',
-        kicker: '02 — Thesis · Best Dissertation 2016',
+        kicker: '02 · Thesis · Best Dissertation 2016',
         title: 'Zangar Museum',
         lines: [
-          'My final architecture thesis: a museum about a century of Tabriz’s history, shaped by three sharp-edged forms.',
-          'It ranked first among the graduating class.',
+          'My final architecture thesis. It is a museum about a hundred years of Tabriz history, built from three sharp, angled forms.',
+          'It was ranked first in my graduating class.',
         ],
       },
       { kind: 'image', col: '5 / 13', row: '1 / 5', label: 'Fig. 02 · Aerial view', src: 'assets/photos/zangar-aerial.jpg', alt: 'Zangar Museum render: white faceted volumes, a patterned screen façade, and stepped landscape terraces.' },
@@ -107,11 +108,11 @@ export const STEPS: readonly Step[] = [
       },
     ],
     notes: [
-      'This is my final architecture thesis, the Zangar Museum. It won the Best Dissertation Award. Projects like this taught me to argue for a spatial idea with drawings, models, and images — long before I had a codebase.',
+      'This is my final thesis project, the Zangar Museum, which won the Best Dissertation Award. Projects like this taught me how to argue for a design with drawings, models and images, years before I started writing code.',
     ],
   },
 
-  // 04 ───────────────────────────────────────────────────────────────────────
+  // 04
   {
     id: 'competitions',
     scene: 'trajectory',
@@ -121,9 +122,9 @@ export const STEPS: readonly Step[] = [
         kind: 'text',
         col: '1 / 5',
         row: '1 / 4',
-        kicker: '03 — Competitions',
-        title: 'Design + photography awards',
-        lines: ['Competitions taught me to communicate fast — and photography taught me how framing changes what people see.'],
+        kicker: '03 · Competitions',
+        title: 'Design and photography awards',
+        lines: ['Competitions taught me to explain an idea quickly. Photography taught me how framing changes what people notice.'],
       },
       {
         kind: 'facts',
@@ -131,22 +132,22 @@ export const STEPS: readonly Step[] = [
         row: '4 / 7',
         label: 'Results',
         facts: [
-          { label: 'Disaster cabin · 2018', value: '6th', num: true },
-          { label: 'Abstract Photo of City · 2018', value: 'Winner', num: true, tone: 'yellow' },
+          { label: 'Disaster cabin, 2018', value: '6th', num: true },
+          { label: 'Abstract Photo of City, 2018', value: 'Winner', num: true, tone: 'yellow' },
           { label: 'Landscape design', value: '2nd', num: true },
         ],
       },
-      { kind: 'image', col: '5 / 10', row: '1 / 5', label: 'Fig. 03 · Temporary residence against natural disasters', src: 'assets/photos/cabin-board.jpg', alt: 'Competition board: foldable A-frame emergency cabins in a mountain valley.', fit: 'contain' },
+      { kind: 'image', col: '5 / 10', row: '1 / 5', label: 'Fig. 03 · Temporary housing after natural disasters', src: 'assets/photos/cabin-board.jpg', alt: 'Competition board: foldable A-frame emergency cabins in a mountain valley.', fit: 'contain' },
       { kind: 'image', col: '5 / 10', row: '5 / 7', label: 'Assembly stages', src: 'assets/photos/cabin-detail.jpg', alt: 'Cabin plans and the stages of unfolding the panels.' },
       { kind: 'image', col: '10 / 13', row: '1 / 4', label: '“The Ghost of Playground”', src: 'assets/photos/photo-ghost-of-playground.jpg', alt: 'Abstract long-exposure photograph in amber and violet.', fit: 'contain' },
       { kind: 'image', col: '10 / 13', row: '4 / 7', label: '“A Tunnel To Heaven”', src: 'assets/photos/photo-tunnel-to-heaven.jpg', alt: 'Abstract long-exposure photograph in gold and black.', fit: 'contain' },
     ],
     notes: [
-      'Competitions pushed me to communicate fast: a foldable cabin for disaster areas, which placed sixth, and a winning entry in an abstract city-photography competition. Photography taught me how framing, contrast, and ambiguity change what people see — a question that came back in my VR experiments.',
+      'I also took part in competitions. This foldable cabin for disaster areas placed sixth, and my photographs won an abstract city photography competition. Photography taught me how framing, contrast and blur change what people see, which became important later in my VR experiments.',
     ],
   },
 
-  // 05 ───────────────────────────────────────────────────────────────────────
+  // 05
   {
     id: 'itu',
     scene: 'trajectory',
@@ -155,44 +156,35 @@ export const STEPS: readonly Step[] = [
       {
         kind: 'text',
         col: '1 / 5',
-        row: '1 / 5',
-        kicker: '04 — Education · Istanbul',
+        row: '1 / 4',
+        kicker: '04 · Education · Istanbul · 2020 to 2024',
         title: 'Istanbul Technical University',
-        lines: ['Landscape systems, water, and site — and my first experiments on how people perceive virtual space.'],
+        lines: ['Master’s in Landscape Architecture. I designed with water, slope and planting, and ran my first experiments on how people perceive virtual space.'],
       },
-      {
-        kind: 'facts',
-        col: '1 / 5',
-        row: '5 / 7',
-        label: 'Degree',
-        facts: [
-          { label: 'Degree', value: 'Master’s' },
-          { label: 'Period', value: '2020 – 2024' },
-          { label: 'Field', value: 'Landscape Architecture' },
-        ],
-      },
-      { kind: 'image', col: '5 / 10', row: '1 / 7', label: 'Taşkışla campus', src: 'assets/photos/itu-2.jpg', alt: 'The Taşkışla building of Istanbul Technical University.', credit: 'CeeGee · CC BY-SA 3.0' },
-      { kind: 'image', col: '10 / 13', row: '1 / 4', label: 'Aerial', src: 'assets/deck/campus-itu.jpeg', alt: 'Aerial view of ITU Taşkışla with red-tiled roofs among trees.' },
-      { kind: 'image', col: '10 / 13', row: '4 / 7', label: 'Landscape work · rain gardens', src: 'assets/photos/landscape-raingarden-3d.jpg', alt: 'Diagram of two neighbourhood units with rain gardens, permeable paving, and storage tanks.', fit: 'contain' },
+      { kind: 'image', col: '1 / 5', row: '4 / 7', label: 'Taşkışla campus', src: 'assets/photos/itu-2.jpg', alt: 'The Taşkışla building of Istanbul Technical University.', credit: 'CeeGee · CC BY-SA 3.0' },
+      { kind: 'image', col: '5 / 9', row: '1 / 4', label: 'Fig. 04 · Rain garden units, Büyükada', src: 'assets/photos/landscape-raingarden-3d.jpg', alt: 'Diagram of two neighbourhood units with rain gardens, permeable paving and storage tanks on a 4% slope.', fit: 'contain' },
+      { kind: 'image', col: '9 / 13', row: '1 / 4', label: 'Top view of two connected units', src: 'assets/photos/landscape-topview.jpg', alt: 'Top view of two housing units with rain gardens and connected storage tanks.', fit: 'contain' },
+      { kind: 'image', col: '5 / 9', row: '4 / 7', label: 'Unit 1 · plan and section', src: 'assets/photos/landscape-unit1.jpg', alt: 'Unit 1 board: model, plan, and a section showing rain gardens, rooftop water storage and permeable paving.', fit: 'contain' },
+      { kind: 'image', col: '9 / 13', row: '4 / 7', label: 'Bioretention sketch', src: 'assets/photos/landscape-bioretention.jpg', alt: 'Hand sketch of a bioretention basin under a tree, showing water flow, gravel bed and underdrain pipe.', fit: 'contain' },
     ],
     notes: [
-      'At Istanbul Technical University I studied landscape architecture: dynamic systems, water, and site conditions. It is also where I began testing perception inside virtual environments.',
+      'At Istanbul Technical University I did my master’s in landscape architecture. This project on Büyükada collects rainwater from roofs and streets into rain gardens and storage tanks down the slope. It is also where I started testing how people perceive virtual environments.',
     ],
   },
 
-  // 06 ───────────────────────────────────────────────────────────────────────
+  // 06
   {
     id: 'ecaade',
     scene: 'foundation',
-    title: 'Transparency reverses depth',
+    title: 'Transparency changes perceived depth',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 4',
-        kicker: '05 — Published · eCAADe 2023',
-        title: 'Transparency reverses depth',
-        lines: ['In VR, at high transparency, cool and dark colours read as nearer — the familiar rule flips.'],
+        kicker: '05 · Published · eCAADe 2023',
+        title: 'Transparency changes depth',
+        lines: ['In VR, when objects become very transparent, cool and dark colours look closer than warm and bright ones. That is the opposite of the usual rule.'],
       },
       {
         kind: 'facts',
@@ -209,23 +201,23 @@ export const STEPS: readonly Step[] = [
       { kind: 'image', col: '10 / 13', row: '1 / 7', label: 'Published results', src: 'assets/figures/ecaade-results.png', alt: 'Results figure from the eCAADe 2023 paper: colour scores at each transparency level.', fit: 'contain' },
     ],
     notes: [
-      'My published eCAADe study: sixty participants, two hundred sixty-four pairwise depth judgments each, across transparency, hue, and luminance in VR. At high transparency the familiar rule reverses — cool and dark colours read as nearer. Visual rules for opaque graphics do not simply transfer.',
+      'This is my published eCAADe study. Sixty participants each made 264 depth judgments in VR, comparing transparency, colour and brightness. At high transparency the usual rule reversed, and cool, dark colours looked closer. So rules that work for solid objects do not always carry over to transparent ones.',
     ],
   },
 
-  // 07 ───────────────────────────────────────────────────────────────────────
+  // 07
   {
     id: 'sfu',
     scene: 'trajectory',
-    title: 'Simon Fraser University · iViz Lab',
+    title: 'Simon Fraser University',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 5',
-        kicker: '06 — Education · Vancouver',
+        kicker: '06 · Education · Vancouver',
         title: 'Simon Fraser University',
-        lines: ['In the iViz Lab I build complete interactive systems — Unity, sensing, networking — and test them with people.'],
+        lines: ['In the iViz Lab I build full interactive systems with Unity, sensors and networking, and I test them with people.'],
       },
       {
         kind: 'facts',
@@ -234,7 +226,7 @@ export const STEPS: readonly Step[] = [
         label: 'Degree',
         facts: [
           { label: 'Degree', value: 'MSc' },
-          { label: 'Period', value: '2025 – now' },
+          { label: 'Since', value: '2025' },
           { label: 'Lab', value: 'iViz Lab' },
         ],
       },
@@ -243,24 +235,24 @@ export const STEPS: readonly Step[] = [
       { kind: 'image', col: '10 / 13', row: '4 / 7', label: 'Campus at dusk', src: 'assets/deck/campus-sfu.jpeg', alt: 'SFU Surrey campus building at dusk.' },
     ],
     notes: [
-      'At SFU, in the iViz Lab, I learned to build complete interactive systems — Unity, C#, physiological sensing, multiplayer networking — and to evaluate them with HCI methods.',
+      'At SFU I am doing my Master of Science in the iViz Lab. There I learned to build complete interactive systems in Unity and C#, with physiological sensors and multiplayer networking, and to evaluate them with user studies.',
     ],
   },
 
-  // 08 ───────────────────────────────────────────────────────────────────────
+  // 08
   {
     id: 'body',
     scene: 'foundation',
-    title: 'Bodies in the loop',
+    title: 'Reading the body',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 4',
-        kicker: '07 — Accepted · ACM ISS ’26',
-        title: 'Bodies in the loop',
-        lines: ['A teammate’s heartbeat as a label-free halo — and a world that reacts to your body.'],
-        caveat: 'Plain numbers stayed more trusted than the halo · BioTerrarium results are provisional (under revision).',
+        kicker: '07 · Accepted · ACM ISS 2026',
+        title: 'Reading the body',
+        lines: ['A teammate’s heart rate shown as a glowing halo instead of numbers, and a game world that changes with your own body.'],
+        caveat: 'Players still trusted plain numbers more than the halo. The BioTerrarium paper is under revision, so its results are not final.',
       },
       {
         kind: 'facts',
@@ -268,21 +260,21 @@ export const STEPS: readonly Step[] = [
         row: '4 / 7',
         label: 'Evidence',
         facts: [
-          { label: 'Faster teammate support', value: '3.90 s', num: true, tone: 'cyan' },
-          { label: 'Heart-rate recognition', value: '66.3%', num: true },
-          { label: 'Wearable → world', value: '<200 ms', num: true, tone: 'cyan' },
+          { label: 'Faster help from teammates', value: '3.90 s', num: true, tone: 'cyan' },
+          { label: 'Heart rate recognised', value: '66.3%', num: true },
+          { label: 'Watch to game world', value: '<200 ms', num: true, tone: 'cyan' },
         ],
       },
       { kind: 'image', col: '5 / 10', row: '1 / 7', label: 'Fig. 07 · Reading a remote teammate’s body', src: 'assets/figures/iss-teaser.png', alt: 'The cooperative cooking game with one glowing heartbeat halo per remote teammate.', fit: 'contain' },
       { kind: 'image', col: '10 / 13', row: '1 / 7', label: 'BioTerrarium · under revision', src: 'assets/projects/bioterrarium-hero.webp', alt: 'BioTerrarium: a glass-enclosed world of glowing crystal plants, fog, and a lighthouse.' },
     ],
     notes: [
-      'My accepted ACM ISS paper shows a remote teammate’s heart rate as one label-free halo. In live three-player teams, support came almost four seconds faster than with no cue — but plain numbers stayed more trusted. A real trade-off.',
-      'BioTerrarium runs the loop the other way: an Apple Watch drives fog, light, and plants in under two hundred milliseconds. Its manuscript is under revision, so I treat the analysis as provisional. These projects taught me to treat an environment as a responsive system — and the next four move that thinking into urban design.',
+      'My paper accepted at ACM ISS shows a remote teammate’s heart rate as a glowing halo instead of a number. In live three-player games, teammates helped each other almost four seconds faster than with no cue. But players still trusted plain numbers more, so it is a trade-off.',
+      'BioTerrarium goes the other direction. An Apple Watch changes the fog, light and plants of a game world in under 200 milliseconds. That paper is under revision, so I treat its results as preliminary. These projects taught me to think of an environment as something that responds, and the next four projects bring that idea into urban design.',
     ],
   },
 
-  // 09 ── Zoning Literacy Assistant ──────────────────────────────────────────
+  // 09 · Zoning Literacy Assistant
   {
     id: 'zla-1',
     scene: 'zla',
@@ -294,7 +286,7 @@ export const STEPS: readonly Step[] = [
         row: '1 / 5',
         kicker: 'Project 1 of 4 · Regulation',
         title: 'Zoning Literacy Assistant',
-        lines: ['It finds the relevant bylaw clauses, answers only from them, then checks its own answer.'],
+        lines: ['It finds the bylaw clauses that matter, answers only from those clauses, and then checks its own answer.'],
       },
       {
         kind: 'facts',
@@ -307,7 +299,7 @@ export const STEPS: readonly Step[] = [
           { label: 'Status', value: 'Prototype' },
         ],
       },
-      { kind: 'diagram', col: '5 / 13', row: '1 / 5', label: 'Fig. 09 · Retrieve → answer → verify', diagram: 'pipeline' },
+      { kind: 'diagram', col: '5 / 13', row: '1 / 5', label: 'Fig. 09 · Find, answer, check', diagram: 'pipeline' },
       { kind: 'image', col: '5 / 9', row: '5 / 7', label: 'Live system', src: 'assets/projects/zla-hero.webp', alt: 'The Zoning Literacy Assistant interface with example questions and a lot form.' },
       {
         kind: 'list',
@@ -317,29 +309,29 @@ export const STEPS: readonly Step[] = [
         items: [
           { key: 'AI', text: 'finds clauses and explains them' },
           { key: 'Code', text: 'calculates every area and floor', tone: 'cyan' },
-          { key: 'Rule', text: 'no evidence → no answer', tone: 'yellow' },
+          { key: 'Rule', text: 'no evidence means no answer', tone: 'yellow' },
         ],
       },
     ],
     notes: [
-      'My first project is about trustworthy regulatory knowledge. A general-purpose language model will happily answer confidently even when the information is not there. So I split the system into retrieval, answering, and independent verification: it finds the clauses, answers only from those, then checks whether the evidence really supports the answer.',
+      'My first project is about reliable zoning answers. A general AI chatbot will often give a confident answer even when the bylaw does not say anything. So I split the system into three steps: it finds the relevant clauses, answers using only those, and then checks whether the clauses really support the answer.',
     ],
   },
 
-  // 10 ───────────────────────────────────────────────────────────────────────
+  // 10
   {
     id: 'zla-2',
     scene: 'zla',
-    title: 'When the rule is silent, it says so',
+    title: 'Saying “not covered”',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 5',
         kicker: 'Project 1 of 4 · Regulation',
-        title: 'When the rule is silent, it says so',
-        lines: ['Asked something the bylaw doesn’t cover, the system stops instead of guessing.'],
-        caveat: 'Prototype knowledge base: ten clauses of Vancouver R1-1, not the full zoning code.',
+        title: 'Saying “not covered”',
+        lines: ['If the bylaw does not answer a question, the system says so and stops.'],
+        caveat: 'The prototype uses ten clauses of Vancouver’s R1-1 zone, not the full zoning bylaw.',
         links: [
           { label: 'Live system', url: 'https://romanjahandideh.github.io/zoning-literacy-assistant/' },
           { label: 'GitHub', url: 'https://github.com/RomanJahandideh/zoning-literacy-assistant' },
@@ -351,20 +343,20 @@ export const STEPS: readonly Step[] = [
         row: '5 / 7',
         label: 'Results',
         facts: [
-          { label: 'Laneway storeys?', value: 'Not covered', num: true, tone: 'orange' },
+          { label: 'Laneway house storeys?', value: 'Not covered', num: true, tone: 'orange' },
           { label: 'Footprint, in code', value: '162.6 m²', num: true, tone: 'cyan' },
         ],
       },
-      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 10 · Unsupported question', diagram: 'notcovered' },
+      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 10 · A question the bylaw cannot answer', diagram: 'notcovered' },
       { kind: 'diagram', col: '9 / 13', row: '1 / 7', label: 'Fig. 11 · Site check, 10 × 37 m lot', diagram: 'sitecheck' },
     ],
     notes: [
-      'When the source does not contain the answer — here, how many storeys a laneway house may have — it stops: “not covered by the provided source.” Refusing is designed behaviour, not a failure. Site arithmetic is done in ordinary code, so the same inputs always give the same result; the AI only explains it.',
-      'Once regulation is structured and traceable, the next question is how it becomes editable geometry.',
+      'Here someone asks how many storeys a laneway house can have. The bylaw allows laneway houses but never gives a storey limit, so the system answers “not covered by the provided source” and stops. That refusal is on purpose. The site calculations are done in normal code, so the same lot always gives the same numbers, and the AI only explains them.',
+      'Once the rules are clear and traceable, the next question is how to turn them into building form.',
     ],
   },
 
-  // 11 ── Parametric Massing Generator ───────────────────────────────────────
+  // 11 · Parametric Massing Generator
   {
     id: 'pmg-1',
     scene: 'pmg',
@@ -376,7 +368,7 @@ export const STEPS: readonly Step[] = [
         row: '1 / 5',
         kicker: 'Project 2 of 4 · Geometry',
         title: 'Parametric Massing Generator',
-        lines: ['AI reads the bylaw into eight constraints. Code turns them into an editable building envelope.'],
+        lines: ['AI reads the bylaw and pulls out eight rules. Code turns those rules into a building envelope you can edit.'],
       },
       {
         kind: 'facts',
@@ -384,32 +376,32 @@ export const STEPS: readonly Step[] = [
         row: '5 / 7',
         label: 'Rental condition',
         facts: [
-          { label: 'Floor-space ratio', value: '0.70 → 1.00', num: true, tone: 'yellow' },
+          { label: 'Floor space ratio', value: '0.70 → 1.00', num: true, tone: 'yellow' },
           { label: 'Envelope', value: '+1 storey', num: true },
         ],
       },
-      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 12 · Bylaw → 8 constraints', diagram: 'constraints' },
+      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 12 · Bylaw to eight rules', diagram: 'constraints' },
       { kind: 'diagram', col: '9 / 13', row: '1 / 7', label: 'Fig. 13 · Envelope, Vancouver R1-1', diagram: 'envelope' },
     ],
     notes: [
-      'The Massing Generator moves from regulatory language to form. AI extracts eight constraints and keeps the source phrase and a confidence level for each. Then deterministic code applies them: setbacks, footprint, floor area, and the massing. It is parametric because changing one value updates everything that depends on it — watch the rental condition add a storey.',
+      'The Massing Generator goes from bylaw text to building form. The AI pulls out eight rules, like setbacks and height, and keeps the original sentence and a confidence level for each one. Then normal code applies those rules to the lot and builds the massing. Because it is parametric, changing one value updates everything that depends on it. Here, the rental condition raises the floor space ratio and adds a storey.',
     ],
   },
 
-  // 12 ───────────────────────────────────────────────────────────────────────
+  // 12
   {
     id: 'pmg-2',
     scene: 'pmg',
-    title: 'Same method, bigger sites',
+    title: 'From one lot to a whole block',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 5',
         kicker: 'Project 2 of 4 · Geometry',
-        title: 'Same method, bigger sites',
-        lines: ['From a single lot to irregular parcels and whole blocks — and an independent reviewer checks every result.'],
-        caveat: 'Research prototype, not code-compliance advice.',
+        title: 'From one lot to a whole block',
+        lines: ['The same method works on irregular lots and full city blocks. A second AI call checks every result.'],
+        caveat: 'This is a research prototype and not advice on code compliance.',
         links: [
           { label: 'Live system', url: 'https://romanjahandideh.github.io/parametric-massing-generator/' },
           { label: 'GitHub', url: 'https://github.com/RomanJahandideh/parametric-massing-generator' },
@@ -419,34 +411,34 @@ export const STEPS: readonly Step[] = [
         kind: 'list',
         col: '1 / 5',
         row: '5 / 7',
-        label: 'Parametric, in one line each',
+        label: 'How parametric works here',
         items: [
-          { key: 'Input', text: 'the parcel boundary' },
-          { key: 'Rule', text: 'footprint = parcel − setbacks', tone: 'cyan' },
+          { key: 'Input', text: 'the lot boundary' },
+          { key: 'Rule', text: 'footprint = lot minus setbacks', tone: 'cyan' },
           { key: 'Output', text: 'an editable envelope', tone: 'yellow' },
         ],
       },
       { kind: 'image', col: '5 / 10', row: '1 / 7', label: 'Fig. 14 · Urban block mode (live system)', src: 'assets/projects/pmg-hero.webp', alt: 'A 3×3 grid of white massing volumes on an urban block with a plan inset.' },
-      { kind: 'diagram', col: '10 / 13', row: '1 / 5', label: 'AI-classified block', diagram: 'block' },
+      { kind: 'diagram', col: '10 / 13', row: '1 / 5', label: 'Block uses, sorted by AI', diagram: 'block' },
       {
         kind: 'list',
         col: '10 / 13',
         row: '5 / 7',
         label: 'Every result',
         items: [
-          { key: '✓', text: 'source phrase kept' },
-          { key: '✓', text: 'reviewed by a 2nd AI call' },
-          { key: '✓', text: 'revision history saved' },
+          { key: '✓', text: 'keeps its source sentence' },
+          { key: '✓', text: 'is checked by a 2nd AI call' },
+          { key: '✓', text: 'is saved in the history' },
         ],
       },
     ],
     notes: [
-      'The same clipping method scales to irregular parcels and AI-classified urban blocks, and a separate reviewer checks the interpretation. My interest is not automatic form generation — it is keeping source, parameter, geometry, and revision connected.',
-      'But a compliant envelope does not tell us whether the geometry performs well, or what simplifying a rule costs.',
+      'The same method works for irregular lots and for whole city blocks, where the AI sorts each parcel by use. A separate AI call reviews the result. What interests me most is not generating forms automatically. It is keeping the source, the rule, the geometry and every change connected.',
+      'But a building that meets the rules may still not perform well. The next project looks at that.',
     ],
   },
 
-  // 13 ── Vancouver View Corridor Massing ────────────────────────────────────
+  // 13 · Vancouver View Corridor Massing
   {
     id: 'vcm-1',
     scene: 'vcm',
@@ -458,39 +450,39 @@ export const STEPS: readonly Step[] = [
         row: '1 / 4',
         kicker: 'Project 3 of 4 · Performance',
         title: 'View Corridor Massing',
-        lines: ['A protected view is a sloped ceiling, not a flat height limit. Modelling it precisely recovers real floor area.'],
+        lines: ['A protected view in Vancouver is a sloped limit, not a flat height cap. Measuring it floor by floor gives back real floor area.'],
       },
       {
         kind: 'facts',
         col: '1 / 5',
         row: '4 / 7',
-        label: 'Flat cap → floor by floor',
+        label: 'Flat cap vs floor by floor',
         facts: [
           { label: 'Floors', value: '10 → 18', num: true, tone: 'cyan' },
           { label: 'Floor area, m²', value: '18,360 → 25,608', num: true },
-          { label: 'Area recovered', value: '+39.5%', num: true, tone: 'yellow' },
+          { label: 'Area gained', value: '+39.5%', num: true, tone: 'yellow' },
         ],
       },
-      { kind: 'diagram', col: '5 / 13', row: '1 / 7', label: 'Fig. 15 · Section — Creekside Park view J1 (City open data)', diagram: 'corridor' },
+      { kind: 'diagram', col: '5 / 13', row: '1 / 7', label: 'Fig. 15 · Section through Creekside Park view J1 (City open data)', diagram: 'corridor' },
     ],
     notes: [
-      'Vancouver’s protected views create sloped ceilings, not flat height limits. The usual shortcut caps the whole site at the lowest point: ten floors, about eighteen thousand square metres. Trimming floor by floor against the real slope gives eighteen floors and over twenty-five thousand — thirty-nine and a half percent more, from precision alone. Geometry proposes; evaluation provides the evidence.',
+      'Vancouver’s protected views work like a sloped ceiling over the city, not a flat height limit. The usual shortcut caps the whole building at the lowest point, which gives ten floors and about 18,000 square metres. Checking each floor against the real slope gives eighteen floors and about 25,600 square metres, which is 39.5 percent more. The geometry proposes a design, and the calculation tells us what it achieves.',
     ],
   },
 
-  // 14 ───────────────────────────────────────────────────────────────────────
+  // 14
   {
     id: 'vcm-2',
     scene: 'vcm',
-    title: 'Orientation becomes a free choice',
+    title: 'Orientation is a free choice',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 5',
         kicker: 'Project 3 of 4 · Performance',
-        title: 'Orientation becomes a free choice',
-        lines: ['Turning the footprint barely changes total area — so the form can follow program, not just yield.'],
+        title: 'Orientation is a free choice',
+        lines: ['Turning the footprint barely changes the total floor area, so the angle can be chosen for the program or the view.'],
         links: [{ label: 'GitHub', url: 'https://github.com/RomanJahandideh/vancouver-view-corridor-massing' }],
       },
       {
@@ -499,12 +491,12 @@ export const STEPS: readonly Step[] = [
         row: '5 / 7',
         label: 'Rotation study',
         facts: [
-          { label: 'Rotations tested', value: '7', num: true },
+          { label: 'Angles tested', value: '7', num: true },
           { label: 'Area change', value: '0.02%', num: true, tone: 'cyan' },
           { label: 'Floors', value: '18 → 17', num: true },
         ],
       },
-      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 16 · Footprint 0° → 90°', diagram: 'rotation' },
+      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 16 · Footprint turned from 0° to 90°', diagram: 'rotation' },
       { kind: 'image', col: '9 / 13', row: '1 / 4', label: 'Trimmed massing', src: 'assets/projects/vcm-hero.webp', alt: 'Stepped massing trimmed diagonally by the protected view corridor’s sloped ceiling.' },
       {
         kind: 'list',
@@ -512,20 +504,20 @@ export const STEPS: readonly Step[] = [
         row: '4 / 7',
         label: 'What is real',
         items: [
-          { key: 'Real', text: 'City corridor geometry', tone: 'ink' },
-          { key: 'Tested', text: 'clipping + floor maths', tone: 'cyan' },
-          { key: 'Placeholder', text: 'base elevation + slope', tone: 'orange' },
-          { key: 'Not run', text: 'one Rhino-only step', tone: 'orange' },
+          { key: 'Real', text: 'City view corridor shape', tone: 'ink' },
+          { key: 'Tested', text: 'clipping and floor maths', tone: 'cyan' },
+          { key: 'Placeholder', text: 'base height and slope', tone: 'orange' },
+          { key: 'Not run', text: 'one step that needs Rhino', tone: 'orange' },
         ],
       },
     ],
     notes: [
-      'Rotating the footprint barely changes total area, so orientation can serve silhouette or program instead of yield. Honest flags: the corridor geometry is real, but the elevation values are placeholders.',
-      'The last project extends this to several competing objectives, where no single design wins everywhere.',
+      'When I rotate the building footprint, the total floor area hardly changes, so the angle can be chosen for the program or the skyline instead. To be clear about the data, the corridor shape is real, but the base height and slope values are placeholders.',
+      'The last project looks at several goals at once, where no single design is best at everything.',
     ],
   },
 
-  // 15 ── Environmental Massing Agents ───────────────────────────────────────
+  // 15 · Environmental Massing Agents
   {
     id: 'ema-1',
     scene: 'ema',
@@ -537,7 +529,7 @@ export const STEPS: readonly Step[] = [
         row: '1 / 5',
         kicker: 'Project 4 of 4 · Critique',
         title: 'Environmental Massing Agents',
-        lines: ['Six AI roles propose and critique designs. Ordinary code calculates every score — the agents never invent a number.'],
+        lines: ['Six AI roles suggest and critique designs. Normal code calculates every score, so the agents never make up a number.'],
       },
       {
         kind: 'list',
@@ -545,42 +537,42 @@ export const STEPS: readonly Step[] = [
         row: '5 / 7',
         label: 'Who does what',
         items: [
-          { key: 'AI', text: 'proposes, critiques, redirects' },
-          { key: 'Code', text: 'calculates solar, carbon, wind, area', tone: 'cyan' },
+          { key: 'AI', text: 'suggests, critiques, redirects' },
+          { key: 'Code', text: 'calculates sun, carbon, wind, area', tone: 'cyan' },
           { key: 'Designer', text: 'decides', tone: 'coral' },
         ],
       },
-      { kind: 'diagram', col: '5 / 10', row: '1 / 7', label: 'Fig. 17 · Six roles over shared evaluators', diagram: 'agents' },
-      { kind: 'image', col: '10 / 13', row: '1 / 4', label: 'Shadow + section', src: 'assets/projects/ema-hero.webp', alt: 'Plan with a trimmed footprint and its winter shadow, beside a stepped section.', fit: 'contain' },
+      { kind: 'diagram', col: '5 / 10', row: '1 / 7', label: 'Fig. 17 · Six roles around shared calculators', diagram: 'agents' },
+      { kind: 'image', col: '10 / 13', row: '1 / 4', label: 'Shadow and section', src: 'assets/projects/ema-hero.webp', alt: 'Plan with a trimmed footprint and its winter shadow, beside a stepped section.', fit: 'contain' },
       {
         kind: 'facts',
         col: '10 / 13',
         row: '4 / 7',
         label: 'Experiment',
         facts: [
-          { label: 'Reference grid', value: '1,080', num: true },
-          { label: 'Budget per run', value: '200', num: true },
+          { label: 'Designs in full grid', value: '1,080', num: true },
+          { label: 'Tries per run', value: '200', num: true },
         ],
       },
     ],
     notes: [
-      'Environmental Massing Agents extends the workflow to many objectives at once. A Generator proposes designs; four Critics read the solar, carbon, wind, and floor-area results; an Orchestrator picks the next direction. The key rule: the agents never calculate the scores. Ordinary code provides the evidence; the agents interpret it.',
+      'Environmental Massing Agents looks at several goals at once. One AI agent proposes designs, four agents review sunlight, carbon, wind and floor area, and one coordinates the next step. The important rule is that the agents never calculate the scores themselves. Normal code calculates them, and the agents interpret them.',
     ],
   },
 
-  // 16 ───────────────────────────────────────────────────────────────────────
+  // 16
   {
     id: 'ema-2',
     scene: 'ema',
-    title: 'The honest result',
+    title: 'What the test showed',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 4',
         kicker: 'Project 4 of 4 · Critique',
-        title: 'The honest result',
-        lines: ['I expected directed search to be faster. It wasn’t — it was more reliable.'],
+        title: 'What the test showed',
+        lines: ['I expected the guided search to be faster than random search. It was not faster, but it was more reliable.'],
         links: [{ label: 'GitHub', url: 'https://github.com/RomanJahandideh/environmental-massing-agents' }],
       },
       {
@@ -590,64 +582,64 @@ export const STEPS: readonly Step[] = [
         label: 'Hypotheses',
         facts: [
           { label: 'Faster search', value: 'Not confirmed', num: true, tone: 'red' },
-          { label: 'Runs reaching target', value: '4/5 vs 1/5', num: true, tone: 'cyan' },
-          { label: 'Timber dominates', value: '200/200', num: true },
+          { label: 'Runs that hit the target', value: '4/5 vs 1/5', num: true, tone: 'cyan' },
+          { label: 'Timber came out ahead', value: '200/200', num: true },
         ],
       },
-      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 18 · NSGA-II vs random, 5 runs each', diagram: 'seeds' },
-      { kind: 'diagram', col: '9 / 13', row: '1 / 4', label: 'Fig. 19 · Wind ↔ floor-area trade-off', diagram: 'pareto' },
+      { kind: 'diagram', col: '5 / 9', row: '1 / 7', label: 'Fig. 18 · Guided vs random search, 5 runs each', diagram: 'seeds' },
+      { kind: 'diagram', col: '9 / 13', row: '1 / 4', label: 'Fig. 19 · Wind vs floor area', diagram: 'pareto' },
       {
         kind: 'list',
         col: '9 / 13',
         row: '4 / 7',
         label: 'Limits',
         items: [
-          { key: 'Wind', text: 'a heuristic, not CFD', tone: 'orange' },
+          { key: 'Wind', text: 'a rough estimate, not CFD', tone: 'orange' },
           { key: 'Carbon', text: 'benchmarks, not a full LCA', tone: 'orange' },
-          { key: 'LLM', text: 'live unscripted loop not run', tone: 'orange' },
+          { key: 'LLM', text: 'live AI loop not yet run', tone: 'orange' },
         ],
       },
     ],
     notes: [
-      'I compared a genetic optimizer, NSGA-II, with random search: five runs each, two hundred evaluations, against a full grid of one thousand eighty designs. I expected it to be faster — it was not. What it showed was reliability: four of five runs reached the target, against one of five. Reporting that difference matters: it separates what I expected from what the results support.',
+      'I compared a guided search method, NSGA-II, with random search. Each ran five times with 200 tries, checked against a full grid of 1,080 designs. I expected the guided search to be faster, and it was not. It was more reliable, though: four out of five runs reached the target, compared with one out of five for random search. I think it is important to report what I expected and what actually happened.',
     ],
   },
 
-  // 17 ───────────────────────────────────────────────────────────────────────
+  // 17
   {
     id: 'synthesis',
     scene: 'synthesis',
-    title: 'One connected path',
+    title: 'How the four projects connect',
     panels: [
       {
         kind: 'text',
         col: '1 / 13',
         row: '1 / 3',
         kicker: 'Four projects · one path',
-        title: 'Rule → geometry → performance → judgment',
-        lines: ['Each project adds one link. The designer keeps the final say.'],
+        title: 'Rule → geometry → performance → decision',
+        lines: ['Each project adds one link. The designer always makes the final decision.'],
       },
       { kind: 'diagram', col: '1 / 13', row: '3 / 7', label: 'Fig. 20 · The chain the four projects build', diagram: 'chain' },
     ],
     notes: [
-      'Together these form one direction: trustworthy regulatory knowledge, editable geometry, measurable evidence, and agents that discuss verified trade-offs — while the final judgment stays with the designer.',
+      'Together these projects build one chain. The Zoning Assistant gives reliable rules, the Massing Generator turns them into editable form, the View Corridor project measures what that form achieves, and the agents discuss the trade-offs. The designer makes the final decision.',
     ],
   },
 
-  // 18 ───────────────────────────────────────────────────────────────────────
+  // 18
   {
     id: 'phd',
     scene: 'phd',
-    title: 'Performance Provenance — proposed direction',
+    title: 'Performance Provenance',
     panels: [
       {
         kind: 'text',
         col: '1 / 5',
         row: '1 / 5',
-        kicker: 'Proposed direction — for discussion',
+        kicker: 'Proposed direction · for discussion',
         title: 'Performance Provenance',
-        lines: ['A record that keeps every AI-assisted design change tied to its rule, its evidence, and the human decision.'],
-        caveat: 'Example built from the real corridor study · scope and methods to refine with the supervisor.',
+        lines: ['A record that links every AI-assisted design change to its rule, its evidence and the designer’s decision.'],
+        caveat: 'This example uses the corridor study. The scope and methods would be shaped with my supervisor.',
       },
       {
         kind: 'list',
@@ -655,20 +647,20 @@ export const STEPS: readonly Step[] = [
         row: '5 / 7',
         label: 'Possible methods',
         items: [
-          { key: 'Build', text: 'the system from these prototypes' },
-          { key: 'Test', text: 'with and without provenance' },
-          { key: 'Ask', text: 'designers, in interviews', tone: 'coral' },
+          { key: 'Build', text: 'a system from these prototypes' },
+          { key: 'Compare', text: 'design with and without the record' },
+          { key: 'Interview', text: 'designers who use it', tone: 'coral' },
         ],
       },
       { kind: 'diagram', col: '5 / 13', row: '1 / 7', label: 'Fig. 21 · What the record keeps for one design change', diagram: 'provenance' },
     ],
     notes: [
-      'This is the direction I would like to discuss: performance provenance. As the chain lights up, each link is something the record keeps — the intent, the rule, the change, the calculation, the result and its uncertainty, the AI’s reading, and the designer’s decision.',
-      'Methods would combine building the system, technical validation, controlled comparison, and interviews — deliberately left open. I want to shape this with you, not arrive with it closed.',
+      'This is the direction I would like to discuss: performance provenance. Each line here is something the record would keep for one design change: the goal, the rule, the change, the calculation, the result, what is uncertain, what the AI said, and what the designer decided.',
+      'The methods could include building the system, testing it technically, comparing design with and without it, and interviewing designers. I have left this open on purpose, because I would like to shape it with you.',
     ],
   },
 
-  // 19 ───────────────────────────────────────────────────────────────────────
+  // 19
   {
     id: 'genenv',
     scene: 'genenv',
@@ -678,11 +670,11 @@ export const STEPS: readonly Step[] = [
         kind: 'text',
         col: '1 / 5',
         row: '1 / 5',
-        kicker: 'GenEnv research — not my projects',
+        kicker: 'GenEnv research · not my projects',
         title: 'Why GenEnv',
         lines: [
-          'GenEnv builds AI-assisted design that stays editable, traceable, and open to human judgment.',
-          'I bring spatial design, working prototypes, and user studies — and I want to learn to grow them into a doctoral contribution.',
+          'GenEnv builds AI design tools that stay editable, traceable and open to human judgment.',
+          'I bring design training, working prototypes and user studies, and I want to learn how to grow them into a PhD.',
         ],
       },
       {
@@ -692,22 +684,22 @@ export const STEPS: readonly Step[] = [
         label: 'Funded program',
         facts: [
           { label: 'Funder', value: 'NSERC Discovery' },
-          { label: 'Term', value: '2026 – 2031' },
+          { label: 'Years', value: '2026 to 2031' },
           { label: 'PI', value: 'Xun Liu' },
         ],
       },
-      { kind: 'card', col: '5 / 9', row: '1 / 4', label: 'GenEnv · NSERC', title: 'Human-AI Co-Design', note: 'Performance-aware, editable design proposals — the program this interview is for.' },
-      { kind: 'card', col: '9 / 13', row: '1 / 4', label: 'GenEnv · SSHRC', title: 'Decoding Urban Form', note: 'Agentic AI that turns Vancouver zoning into traceable 3D massing.' },
-      { kind: 'card', col: '5 / 9', row: '4 / 7', label: 'GenEnv · open tool', title: 'Grasshopper MCP v2', note: 'Language models that drive Rhino / Grasshopper through MCP.' },
+      { kind: 'card', col: '5 / 9', row: '1 / 4', label: 'GenEnv · NSERC', title: 'Human-AI Co-Design', note: 'Editable design proposals that account for performance. This is the program the position belongs to.' },
+      { kind: 'card', col: '9 / 13', row: '1 / 4', label: 'GenEnv · SSHRC', title: 'Decoding Urban Form', note: 'AI agents that turn Vancouver zoning into traceable 3D massing.' },
+      { kind: 'card', col: '5 / 9', row: '4 / 7', label: 'GenEnv · open tool', title: 'Grasshopper MCP v2', note: 'Language models that control Rhino and Grasshopper through MCP.' },
       { kind: 'card', col: '9 / 13', row: '4 / 7', label: 'LACF · Yuhao Lu (PI) with GenEnv', title: 'Digital Thermal Sandbox', note: 'Testing planting and materials against urban heat.' },
     ],
     notes: [
-      'These four are GenEnv’s projects, not mine. The funded NSERC program, running 2026 to 2031, aims for AI-assisted design that stays editable, traceable, and open to human judgment — and my prototypes sit closest to Decoding Urban Form and the Grasshopper MCP work.',
-      'I bring spatial design, computational prototyping, and human-centred evaluation. I would be excited to learn from Professor Liu and the team how to grow these prototypes into a coherent doctoral contribution.',
+      'These four are GenEnv’s projects, not mine. The NSERC program runs from 2026 to 2031 and aims for AI design tools that stay editable, traceable and open to human judgment. My prototypes are closest to Decoding Urban Form and the Grasshopper MCP work.',
+      'I bring design training, computational prototyping and user studies. I would really like to learn from Professor Liu and the team how to grow these prototypes into a PhD.',
     ],
   },
 
-  // 20 ───────────────────────────────────────────────────────────────────────
+  // 20
   {
     id: 'thanks',
     scene: 'conversation',
@@ -720,20 +712,20 @@ export const STEPS: readonly Step[] = [
         kicker: 'Thank you',
         title: 'Three questions',
         lines: [
-          '1 — Which part of this could contribute most to GenEnv’s current work?',
-          '2 — Grow it through an existing GenEnv case, or a new focused design problem?',
-          '3 — What should I strengthen before starting?',
+          '1. Which part of this could help GenEnv’s current work the most?',
+          '2. Should it start from an existing GenEnv case or a new design problem?',
+          '3. What should I strengthen before starting a PhD?',
         ],
         links: [
           { label: 'romanjahandideh.com', url: 'https://romanjahandideh.com' },
           { label: 'github.com/RomanJahandideh', url: 'https://github.com/RomanJahandideh' },
         ],
       },
-      { kind: 'diagram', col: '8 / 13', row: '1 / 7', label: 'Fig. 22 · The route, complete', diagram: 'site' },
+      { kind: 'diagram', col: '8 / 13', row: '1 / 7', label: 'Fig. 22 · The full route', diagram: 'site' },
     ],
     notes: [
-      'I would rather end with questions than conclusions. Which part of this direction could contribute most to GenEnv’s current work? Would it grow best through an existing GenEnv case, or a new focused problem? And what should I strengthen before I begin?',
-      'Thank you — I would really value your thoughts.',
+      'I would like to end with questions. Which part of this could help GenEnv’s current work the most? Should it start from an existing GenEnv case or a new design problem? And what should I strengthen before I start?',
+      'Thank you. I would really value your thoughts.',
     ],
   },
 ] as const;

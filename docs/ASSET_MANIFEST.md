@@ -51,3 +51,12 @@ Full metadata: `docs/commons-credits.json`.
 The CC BY / CC BY-SA licences ask for attribution. The authors and licences are recorded in this
 file and in `commons-credits.json`. If the site is made public, add a one-line credit to the
 campus steps or link this file from the closing step (see "Decisions" in the README).
+
+## Added 2026-11-15: more ITU landscape boards (portfolio PDF)
+
+| File | Portfolio page | Shows |
+|---|---|---|
+| `photos/landscape-topview.jpg` | p. 123 (portfolio p. 110) | Top view of two connected housing units with rain gardens |
+| `photos/landscape-unit1.jpg` | p. 130 (portfolio p. 117) | Unit 1: model, plan and storm-water section |
+| `photos/landscape-bioretention.jpg` | p. 127 (portfolio p. 114) | Bioretention sketch |
+| `photos/landscape-unit2.jpg` | p. 131 (portfolio p. 118) | Unit 2 board (exported, not used yet) |

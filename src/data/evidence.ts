@@ -56,7 +56,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'pmg-geometry-method',
     project: 'pmg',
-    claim: 'Buildable footprints are computed by inward polygon offsetting through half-plane clipping (Sutherland–Hodgman); geometry and floor-area arithmetic are deterministic code, not model output.',
+    claim: 'Buildable footprints are computed by inward polygon offsetting through half-plane clipping (Sutherland-Hodgman); geometry and floor-area arithmetic are deterministic code, not model output.',
     status: 'verified-computation',
     source: 'GitHub README; method also described on the portfolio page.',
     presentationLabel: 'deterministic half-plane clipping',
@@ -76,7 +76,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'zla-pipeline',
     project: 'zla',
-    claim: 'Three separate model calls — retrieval, synthesis, verification — with synthesis seeing only the retrieved clause text, and a hard stop reporting “not covered” when retrieval finds nothing relevant.',
+    claim: 'Three separate model calls, retrieval, synthesis, verification, with synthesis seeing only the retrieved clause text, and a hard stop reporting “not covered” when retrieval finds nothing relevant.',
     status: 'verified-computation',
     source: 'GitHub README (verified 2026-11-13).',
     presentationLabel: 'retrieve → answer → verify',
@@ -84,7 +84,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'zla-laneway',
     project: 'zla',
-    claim: 'The deliberately unsupported question — laneway-house storeys — returns “not covered”, because the clause permits a laneway house but does not state its height or storey limits.',
+    claim: 'The deliberately unsupported question, laneway-house storeys, returns “not covered”, because the clause permits a laneway house but does not state its height or storey limits.',
     status: 'verified-computation',
     source: 'GitHub README and portfolio page.',
     presentationLabel: 'laneway storeys → NOT COVERED',
@@ -135,7 +135,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'vcm-rotation-study',
     project: 'vcm',
-    claim: 'A fixed-area footprint swept across seven rotation angles (0°–90°): total GFA varies by only 0.02%, while floor count changes from 18 to 17.',
+    claim: 'A fixed-area footprint swept across seven rotation angles (0°-90°): total GFA varies by only 0.02%, while floor count changes from 18 to 17.',
     value: 7,
     unit: 'orientations',
     status: 'verified-computation',
@@ -173,7 +173,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'ema-roles',
     project: 'ema',
-    claim: 'Six functional roles: one Generator; four domain Critics (solar access, embodied carbon, pedestrian wind, view-corridor/zoning yield); one Orchestrator — coordinated through a real MCP server.',
+    claim: 'Six functional roles: one Generator; four domain Critics (solar access, embodied carbon, pedestrian wind, view-corridor/zoning yield); one Orchestrator, coordinated through a real MCP server.',
     value: 6,
     unit: 'roles',
     status: 'verified-computation',
@@ -226,7 +226,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
     value: '200/200',
     unit: 'matched comparisons',
     status: 'verified-computation',
-    source: 'GitHub README (verified 2026-11-13). Dominance across objectives — not a carbon-only claim.',
+    source: 'GitHub README (verified 2026-11-13). Dominance across objectives, not a carbon-only claim.',
     presentationLabel: 'timber weakly dominates: 200/200',
   },
   {
@@ -306,7 +306,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
     claim: 'The result is a trade-off, not a win for ambience: Icon Cue had lower workload (3.55 vs 3.85) and perceived invasiveness (3.19 vs 4.39), but Numeric Cue scored higher on coordination usefulness (5.50 vs 5.30) and trust (5.55 vs 5.24).',
     status: 'accepted',
     source: 'Camera-ready manuscript, Study 2 results.',
-    limitation: 'No statistically significant Icon–Numeric difference in teammate awareness; 12 team-level units without a priori power analysis.',
+    limitation: 'No statistically significant Icon-Numeric difference in teammate awareness; 12 team-level units without a priori power analysis.',
     presentationLabel: 'ambient ↔ numeric: a measured trade-off',
   },
 
@@ -329,7 +329,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
     unit: 'participants',
     status: 'under-revision',
     source: 'Manuscript (read in part) and CV; submitted to SIGGRAPH 2026, not accepted after review, being reworked.',
-    limitation: 'Manuscript under revision — analysis treated as provisional, not an established result.',
+    limitation: 'Manuscript under revision, analysis treated as provisional, not an established result.',
     presentationLabel: 'n = 24 · PANAS · FSS · MAAS · UNDER REVISION',
   },
 
@@ -337,9 +337,9 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'genenv-nserc',
     project: 'genenv',
-    claim: 'NSERC Discovery Grant (RGPIN 2026, 5-year term): “Human-AI Co-Design Framework for Performance-Aware Constructed Environments” — Liu, Xun, The University of British Columbia, School of Architecture and Landscape Architecture.',
+    claim: 'NSERC Discovery Grant (RGPIN 2026, 5-year term): “Human-AI Co-Design Framework for Performance-Aware Constructed Environments”, Liu, Xun, The University of British Columbia, School of Architecture and Landscape Architecture.',
     status: 'external-funded',
-    source: 'NSERC funding-decisions page result/939, read in full 2026-11-13; GenEnv site lists the program as 2026–2031, work in progress, recruiting.',
+    source: 'NSERC funding-decisions page result/939, read in full 2026-11-13; GenEnv site lists the program as 2026 to 2031, work in progress, recruiting.',
     presentationLabel: 'NSERC Discovery · 2026 · 5 years',
   },
   {

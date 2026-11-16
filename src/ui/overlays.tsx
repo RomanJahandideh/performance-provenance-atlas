@@ -14,7 +14,7 @@ export function NotesDock() {
   return (
     <aside className={`notes-dock ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="Speaker notes">
       <h3>
-        SPEAKER NOTES — STEP {stepIndex + 1} / {STEPS.length} · {(step.title ?? step.id).toUpperCase()}
+        SPEAKER NOTES · SHEET {stepIndex + 1} / {STEPS.length} · {(step.title ?? step.id).toUpperCase()}
       </h3>
       {step.notes.map((p, i) => (
         <p key={i}>{p}</p>
@@ -36,7 +36,7 @@ export function SourceDrawer() {
   return (
     <aside className={`drawer ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="Sources and evidence">
       <div className="drawer-head">
-        <span className="drawer-title">SOURCES + EVIDENCE — {scene.title.toUpperCase()}</span>
+        <span className="drawer-title">SOURCES AND EVIDENCE · {scene.title.toUpperCase()}</span>
         <button className="hud-btn" onClick={() => setState({ drawerOpen: false })} aria-label="Close drawer">
           ESC ✕
         </button>
@@ -118,7 +118,7 @@ export function HelpOverlay() {
   const open = useAppState((s) => s.helpOpen);
   if (!open) return null;
   const rows: [string, string][] = [
-    ['one scroll / swipe', 'one step — 20 steps in total'],
+    ['one scroll / swipe', 'one sheet, 20 sheets in total'],
     ['↓ → Space PgDn', 'next step'],
     ['↑ ← Shift+Space PgUp', 'previous step'],
     ['Home / End', 'first / last step'],

@@ -239,7 +239,7 @@ function Pipeline() {
         <polyline points="1020,244 1020,212 706,212 706,240" fill="none" stroke={Y} strokeWidth={1.6} strokeDasharray="5 6" markerEnd="url(#arY)" />
       </g>
       <Label x={30} y={500} size={14}>
-        THREE SEPARATE AI CALLS · THE ANSWER CAN ONLY USE WHAT RETRIEVAL FOUND
+        THREE SEPARATE AI CALLS. THE ANSWER CAN ONLY USE THE CLAUSES THAT WERE FOUND.
       </Label>
     </Svg>
   );
@@ -285,7 +285,7 @@ function NotCovered() {
         <g key={s} opacity={0.5 * win(t, 0.4, 0.55)}>
           <Box x={110} y={360 + i * 110} w={340} h={84} stroke={W2} fill="none" dash="6 6" />
           <Label x={280} y={408 + i * 110} anchor="middle" size={17} fill={W5}>
-            {s} — not reached
+            {s}: not reached
           </Label>
         </g>
       ))}
@@ -355,7 +355,7 @@ function SiteCheck() {
           → {floors === 2 ? 'two floors' : 'one floor'}
         </Label>
         <Label x={0} y={210} size={13}>
-          COMPUTED IN CODE · AI ONLY EXPLAINS IT
+          COMPUTED IN CODE. THE AI ONLY EXPLAINS IT.
         </Label>
       </g>
     </Svg>
@@ -468,7 +468,7 @@ function Envelope() {
           {third > 0.5 ? 'rental condition → +1 storey' : 'base · two storeys'}
         </Label>
         <Label x={0} y={96} size={13}>
-          SETBACKS, FOOTPRINT, AREA — ALL COMPUTED BY CODE
+          SETBACKS, FOOTPRINT AND AREA ARE COMPUTED BY CODE
         </Label>
       </g>
     </Svg>
@@ -553,7 +553,7 @@ function Corridor() {
       <line x1={gx0} y1={c0} x2={gx0 + (gx1 - gx0) * draw} y2={c0 + (c1 - c0) * draw} stroke={Y} strokeWidth={2.6} />
       <g opacity={win(t, 0.12, 0.2)} transform={`rotate(-25.9 ${gx0 + 90} ${ceilAt(gx0 + 90) - 16})`}>
         <Label x={gx0 + 90} y={ceilAt(gx0 + 90) - 16} size={15} fill={Y}>
-          view corridor — the ceiling rises with distance
+          the protected view rises away from the viewpoint
         </Label>
       </g>
       {/* flat cap line */}
@@ -581,13 +581,13 @@ function Corridor() {
           FLOORS
         </Label>
         <Label x={0} y={56} size={56} fill={trim > 0 ? C : W} weight={700}>
-          {flat > 0 ? floors : '—'}
+          {flat > 0 ? floors : '0'}
         </Label>
         <Label x={190} y={0} size={14}>
           FLOOR AREA
         </Label>
         <Label x={190} y={56} size={56} fill={trim > 0 ? C : W} weight={700}>
-          {flat > 0 ? `${area.toLocaleString()} m²` : '—'}
+          {flat > 0 ? `${area.toLocaleString()} m²` : '0 m²'}
         </Label>
       </g>
       <g opacity={win(t, 0.86, 1)} transform="translate(90,230)">
@@ -596,7 +596,7 @@ function Corridor() {
         </Label>
       </g>
       <Label x={40} y={780} size={14}>
-        CORRIDOR GEOMETRY: CITY OF VANCOUVER OPEN DATA · BASE ELEVATION + SLOPE: PLACEHOLDERS
+        CORRIDOR SHAPE FROM CITY OF VANCOUVER OPEN DATA. BASE HEIGHT AND SLOPE ARE PLACEHOLDERS.
       </Label>
     </Svg>
   );
@@ -627,7 +627,7 @@ function Rotation() {
         <line x1={0} y1={36} x2={480} y2={36} stroke={W2} strokeWidth={6} />
         <line x1={0} y1={36} x2={480 * t} y2={36} stroke={C} strokeWidth={6} />
         <Label x={480} y={70} anchor="end" size={16} fill={C}>
-          changes only 0.02%
+          changes by only 0.02%
         </Label>
         <Label x={0} y={130} size={13}>
           FLOOR COUNT
@@ -636,13 +636,13 @@ function Rotation() {
           {t > 0.55 ? '17' : '18'}
         </Label>
         <Label x={90} y={186} size={16} fill={W5}>
-          floors · the layout reshuffles
+          floors, arranged differently
         </Label>
         <Label x={0} y={260} size={14} fill={W5}>
-          So orientation can follow program,
+          So the angle can be chosen for program,
         </Label>
         <Label x={0} y={286} size={14} fill={W5}>
-          silhouette, or light — not just yield.
+          silhouette or daylight instead.
         </Label>
       </g>
     </Svg>
@@ -684,7 +684,7 @@ function Agents() {
           EVALUATORS
         </Label>
         <Label x={cx} y={cy + 36} anchor="middle" size={13} fill={W5}>
-          the only source of scores
+          where every score comes from
         </Label>
       </g>
       {roles.map((ro, i) => {
@@ -705,7 +705,7 @@ function Agents() {
         );
       })}
       <Label x={cx} y={820} anchor="middle" size={14} fill={W5}>
-        AGENTS READ SCORES — THEY NEVER CALCULATE THEM
+        AGENTS READ THE SCORES. CODE CALCULATES THEM.
       </Label>
     </Svg>
   );
@@ -740,7 +740,7 @@ function Seeds() {
       <rect x={left} y={top} width={right - left} height={bottom - top} fill={FILL} stroke={W2} />
       <line x1={left} y1={target} x2={right} y2={target} stroke={Y} strokeWidth={2} strokeDasharray="10 7" />
       <Label x={left} y={top - 14} size={13} fill={Y}>
-        - - TARGET · 95% OF THE BEST DESIGNS
+        TARGET: 95% OF THE BEST DESIGNS (DASHED LINE)
       </Label>
       {[0, 1, 2, 3, 4].map((i) => track(100 + i * 36, i < 4, i, C))}
       {[0, 1, 2, 3, 4].map((i) => track(320 + i * 36, i === 2, i, W5))}
@@ -755,10 +755,10 @@ function Seeds() {
       </Label>
       <g opacity={win(t, 0.85, 1)}>
         <Label x={left} y={800} size={15} fill={R} weight={600}>
-          Not faster —
+          Not faster,
         </Label>
         <Label x={left + 120} y={800} size={15} fill={C} weight={600}>
-          but more reliable.
+          but more reliable
         </Label>
       </g>
     </Svg>
@@ -801,7 +801,7 @@ function Chain() {
     { n: 'GEOMETRY', p: 'Massing Generator' },
     { n: 'PERFORMANCE', p: 'View Corridor' },
     { n: 'CRITIQUE', p: 'Massing Agents' },
-    { n: 'JUDGMENT', p: 'the designer' },
+    { n: 'DECISION', p: 'the designer' },
   ];
   const x0 = 110;
   const step = 290;
@@ -833,7 +833,7 @@ function Chain() {
         );
       })}
       <Label x={x0 - 58} y={500} size={15} fill={W5}>
-        EACH PROJECT ADDS ONE LINK — THE FINAL DECISION STAYS WITH THE DESIGNER
+        EACH PROJECT ADDS ONE LINK. THE DESIGNER MAKES THE FINAL DECISION.
       </Label>
     </Svg>
   );
