@@ -154,7 +154,7 @@ export const SLIDES: readonly Slide[] = [
     ],
     facts: [
       { label: 'Abstract Photo of City, 2018', value: 'Winner', tone: 'yellow' },
-      { label: 'Landscape design, Tabriz Art University', value: 'Second prize' },
+      { label: 'Landscape design, Tabriz Art University, 2015', value: 'Second prize' },
     ],
     media: [
       { src: 'assets/portfolio/p105.jpg', caption: 'A Tunnel To Heaven', alt: 'Portfolio page: winning photograph “A Tunnel To Heaven”.' },
