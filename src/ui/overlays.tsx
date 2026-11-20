@@ -68,10 +68,12 @@ export function SourceDrawer() {
               {c.authors} · {c.venue} · {c.year}
             </p>
             <p className="cit-supports">{c.supports}</p>
-            <p className={`cit-verify ${c.verification.includes('blocked') || c.verification.includes('not yet') ? 'flag' : ''}`}>{c.verification}</p>
-            <a href={c.url} target="_blank" rel="noopener noreferrer">
-              {c.doi ? `doi:${c.doi}` : c.url} ↗
-            </a>
+            <p className={`cit-verify ${c.verification.includes('blocked') || c.verification.includes('not yet') || c.verification.includes('Not independently verified') ? 'flag' : ''}`}>{c.verification}</p>
+            {c.url && (
+              <a href={c.url} target="_blank" rel="noopener noreferrer">
+                {c.doi ? `doi:${c.doi}` : c.url} ↗
+              </a>
+            )}
           </div>
         ))}
       </div>

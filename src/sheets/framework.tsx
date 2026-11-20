@@ -800,19 +800,19 @@ export function Soa() {
         );
       })}
       <T x={20} y={544} size={16} fill="var(--yellow)" mono>
-        YELLOW = GENENV AND UBC WORK, ATTRIBUTED
+        YELLOW = XUN LIU, GENENV AND UBC WORK, ATTRIBUTED
       </T>
       <g opacity={win(t, 0.6, 0.9)}>
         <line x1={1030} y1={260} x2={1084} y2={260} stroke={W6} strokeWidth={2.5} markerEnd="url(#fwArrow)" />
         <RoleBox x={1090} y={48} w={490} h={450} role="proposal" />
         <T x={1116} y={92} size={19} fill="var(--proposal)" weight={700} mono>
-          REMAINING GAP
+          OPEN RESEARCH PROBLEM
         </T>
-        <T x={1116} y={150} size={30} weight={600} lh={1.3}>
-          {wrap(REMAINING_GAP, 26).join('\n')}
+        <T x={1116} y={146} size={28} weight={600} lh={1.28}>
+          {wrap(REMAINING_GAP, 28).join('\n')}
         </T>
-        <T x={1116} y={370} size={19} fill={W6} lh={1.35}>
-          {wrap('Each system solves one or two links. None keeps the whole loop valid, and under the designer’s control, while the model changes.', 40).join('\n')}
+        <T x={1116} y={388} size={20} fill={W6} lh={1.35}>
+          {wrap('Across the systems reviewed, I did not find one workflow that preserves this continuity while keeping the designer in control.', 38).join('\n')}
         </T>
       </g>
     </Svg>

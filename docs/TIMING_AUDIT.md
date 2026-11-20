@@ -10,10 +10,10 @@ Source of truth: the speaker notes in `src/data/steps.ts` (25 steps). Pace 110 t
 | Background | 3 to 9 | 284 | 3:30 | 2:56 | 3:11 |
 | Previous research | 10 to 12 | 181 | 2:15 | 1:48 | 1:58 |
 | Research projects | 13 to 17 | 249 | 2:30 | 2:31 | 2:44 |
-| PhD directions | 18 to 23 | 372 | 4:15 | 3:41 | 4:01 |
+| PhD directions | 18 to 23 | 455 | 4:15 | 4:26 | 4:51 |
 | GenEnv | 24 | 52 | 0:40 | 0:31 | 0:34 |
 | Conversation | 25 | 43 | 0:25 | 0:26 | 0:29 |
-| **Total** | **25** | **1277** | **12:30 to 14:00** | **12:52** | **14:01** |
+| **Total** | **25** | **1360** | **12:30 to 14:00** | **13:37** | **14:51** |
 
 ## Per step
 
@@ -36,13 +36,13 @@ Source of truth: the speaker notes in `src/data/steps.ts` (25 steps). Pace 110 t
 | 15 | Research projects | Parametric Massing Generator | 50 | 6:57 |
 | 16 | Research projects | Vancouver View Corridor Massing | 50 | 7:29 |
 | 17 | Research projects | Environmental Massing Agents | 53 | 8:01 |
-| 18 | PhD directions | What already exists, and what does not | 62 | 8:34 |
-| 19 | PhD directions | AI interprets and co-ordinates. Verified tools calculate. Designers inspect, revise and decide. | 53 | 9:12 |
-| 20 | PhD directions | One program, three possible directions | 43 | 9:46 |
-| 21 | PhD directions | Verified Performance Co-Designer | 74 | 10:13 |
-| 22 | PhD directions | Evidence-Calibrated Climate Co-Designer | 68 | 10:58 |
-| 23 | PhD directions | Embodied Performance Reasoning Studio | 72 | 11:40 |
-| 24 | GenEnv | Where my path meets GenEnv | 52 | 12:24 |
-| 25 | Conversation | Thank you | 43 | 12:57 |
+| 18 | PhD directions | What already exists—and the missing link | 145 | 8:34 |
+| 19 | PhD directions | AI interprets and co-ordinates. Verified tools calculate. Designers inspect, revise and decide. | 53 | 10:00 |
+| 20 | PhD directions | One program, three possible directions | 43 | 10:33 |
+| 21 | PhD directions | Verified Performance Co-Designer | 74 | 11:01 |
+| 22 | PhD directions | Evidence-Calibrated Climate Co-Designer | 68 | 11:46 |
+| 23 | PhD directions | Embodied Performance Reasoning Studio | 72 | 12:28 |
+| 24 | GenEnv | Where my path meets GenEnv | 52 | 13:12 |
+| 25 | Conversation | Thank you | 43 | 13:45 |
 
 Rehearsal checkpoints (105 wpm): the presenter window (`P`) shows the same "start by" time for every step.

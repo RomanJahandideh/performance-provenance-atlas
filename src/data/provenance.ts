@@ -155,19 +155,22 @@ export const PROGRAM = 'Human-AI Co-Design Framework for Performance-Aware Const
 /**
  * State of the art, then the remaining gap. Only sources verified on
  * 2026-11-19 are shown (docs/NSERC_THREE_PROTOTYPE_DIRECTIONS_AUDIT.md §5).
- * Text-to-Park and CAD-Assistant could not be verified and are left out.
+ * Text-to-Park and CAD-Assistant could not be verified and are left out. The
+ * thermal-comfort / digital-twin row was removed on 2026-11-20: no specific
+ * verified source for it exists in the repository. It was replaced by Xun Liu's
+ * earlier environmental-feedback work at Roman's request (FluX not verified online).
  */
 export const STATE_OF_ART: readonly { what: string; refs: string; genenv?: boolean }[] = [
+  { what: 'Environmental processes as interactive design feedback', refs: 'FluX (2016) · The Third Simulation (Liu, 2020) · Reinventing Planting Design (Liu et al., 2024)', genenv: true },
   { what: 'Language to parametric operations through MCP', refs: 'Liu and Tian, NeurIPS 2025 · GenEnv rhino-gh-mcp · Jin et al., eSim 2026', genenv: true },
   { what: 'Specialist agents with simulation and a rationale log', refs: 'Lam, ArchSim, UBC M.Arch thesis 2026', genenv: true },
   { what: 'Text to CAD and structured CAD code', refs: 'Text2CAD, NeurIPS 2024 · AIDL, CGF 2025 · Multi-Agent CAD Code Generation, SIGGRAPH 2026' },
   { what: 'Agents that configure and debug building simulation', refs: 'Zhang et al., Energy and Buildings 2025' },
-  { what: 'Thermal-comfort optimisation and urban digital twins', refs: 'landscape and urban climate studies, 2024 to 2025' },
   { what: 'Bidirectional Grasshopper and VR', refs: 'Crolla and Sheikh, Virtual Reality 2025' },
   { what: 'Agency and reliance in human-AI co-creation', refs: 'Zhou et al. (OptiMuse), CHI 2024 · Moruzzi and Margarido, CHI EA 2024' },
 ];
 
-export const REMAINING_GAP = 'Human-governed continuity of verified performance evidence across changing models and tools.';
+export const REMAINING_GAP = 'Human-governed continuity of valid, traceable performance evidence across changing geometry, assumptions and tools.';
 
 /** The shared loop all three directions use. */
 export const LOOP: readonly { n: string; role: Role }[] = [

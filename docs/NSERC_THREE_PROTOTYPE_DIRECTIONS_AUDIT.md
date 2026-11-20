@@ -122,3 +122,39 @@ About 1,290 spoken words, 25 steps × 3 s. That is about 13:30 at 105 wpm.
 | Gap, principle, overview | 18 to 20 | 1:45 |
 | Three directions | 21 to 23 | 2:30 to 2:45 (45 to 50 s each) |
 | GenEnv and questions | 24 to 25 | 1:15 |
+
+## 8. Step 18 revision (2026-11-20)
+
+- **Gap claim softened.** Old: "Each system solves one or two links. None keeps the whole loop
+  valid…". New: "Across the systems reviewed, I did not find one workflow that preserves this
+  continuity while keeping the designer in control." Universal novelty claims ("no system does
+  this", "never studied") were avoided. They cannot be supported from a selected review, and an
+  interviewer could disprove them with one counter-example. The claim is now scoped to the
+  systems reviewed.
+- **Wording.** Kicker "State of the art → open research problem"; title "What already exists—and
+  the missing link"; the box heading is now "OPEN RESEARCH PROBLEM". The gap statement is now
+  "Human-governed continuity of valid, traceable performance evidence across changing geometry,
+  assumptions and tools." The speaker notes were replaced with Roman's two-paragraph script.
+- **Removed vague reference.** The row "Thermal-comfort optimisation and urban digital twins ·
+  landscape and urban climate studies, 2024 to 2025" was removed from the diagram. The
+  repository has no verified, specific source for it: the Digital Thermal Sandbox is an ongoing
+  GenEnv project, not a publication on thermal optimisation or digital twins. The candidate
+  papers named in the brief PDF were never verified here. Six rows remain; every visible
+  reference has a verified record in `citations.ts` and appears in the step 18 source drawer
+  (`scenes.ts`, `stateofart`).
+- **No citation records added or changed.**
+
+### Step 18 addendum (2026-11-20, Roman's request)
+
+- New first row (yellow, Xun Liu's work): "Environmental processes as interactive design
+  feedback · FluX (2016) · The Third Simulation (Liu, 2020) · Reinventing Planting Design (Liu et
+  al., 2024)". "Liu, Yang & Tian" was shortened to "Liu et al." so the line fits the row.
+- **Verified** from the publisher PDFs' first pages: Liu (2020), *JoDLA* 5, 413 to 421,
+  doi:10.14627/537690042; Liu, Yang and Tian (2024), *JoDLA* 9, 202 to 209,
+  doi:10.14627/537752020. The 2024 paper also names its Grasshopper interface "ECO GEN". Both
+  DOIs resolve but are not in Crossref.
+- **Not verified:** FluX (2016) and Archi-Agent (the XL Studio site did not resolve; not on
+  genenv.ai's rendered pages). FluX is in the drawer as "XL Studio research project (not a
+  peer-reviewed publication)", flagged as not independently verified. Archi-Agent appears only in
+  the speaker notes.
+- An XL Studio trajectory paragraph was added to the step 18 notes (now 145 words).

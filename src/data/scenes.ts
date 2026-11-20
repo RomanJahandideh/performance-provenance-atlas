@@ -39,7 +39,7 @@ export const SCENES: readonly Scene[] = [
   {
     id: 'stateofart',
     title: 'State of the art and the remaining gap',
-    citationIds: ['liu-tian-2025', 'genenv-ghmcp', 'jin-esim2026', 'lam-archsim', 'text2cad', 'aidl', 'mac-siggraph2026', 'eplus-agent', 'gh-vr', 'optimuse', 'moruzzi-chi2024'],
+    citationIds: ['liu-flux-2016', 'liu-third-simulation-2020', 'liu-planting-2024', 'liu-tian-2025', 'genenv-ghmcp', 'jin-esim2026', 'lam-archsim', 'text2cad', 'aidl', 'mac-siggraph2026', 'eplus-agent', 'gh-vr', 'optimuse', 'moruzzi-chi2024'],
     evidenceIds: [],
   },
   { id: 'synthesis', title: 'Research projects and the missing layer', citationIds: [], evidenceIds: ['zla-pipeline', 'pmg-geometry-method', 'vcm-gfa-recovery', 'vcm-placeholders', 'ema-h1-not-confirmed', 'ema-reliability', 'ema-limitations'] },
