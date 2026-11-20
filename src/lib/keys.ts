@@ -1,6 +1,7 @@
 import { getState, setState, closeAllPanels, toggleReducedMotion } from '../state/store';
 import { goToStep, nextStep, prevStep } from './stepper';
 import { STEPS } from '../data/steps';
+import { openPresenter } from './sync';
 
 function toggleFullscreen() {
   if (document.fullscreenElement) void document.exitFullscreen();
@@ -51,6 +52,14 @@ export function handleKey(e: KeyboardEvent): void {
     case 'c':
     case 'C':
       setState({ drawerOpen: !s.drawerOpen });
+      break;
+    case 'l':
+    case 'L':
+      setState({ legendOpen: !s.legendOpen });
+      break;
+    case 'p':
+    case 'P':
+      openPresenter();
       break;
     case 'm':
     case 'M':

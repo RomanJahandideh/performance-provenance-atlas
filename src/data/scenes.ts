@@ -1,12 +1,11 @@
 import type { Scene } from './types';
 
 /**
- * Map chapters. The 20 presentation steps (src/data/steps.ts) point at these;
- * vignettes draw only while their chapter is active.
+ * Source groups for the drawer (S). Each step in src/data/steps.ts names one.
  */
 export const SCENES: readonly Scene[] = [
-  { id: 'opening', title: 'Performance Provenance', citationIds: [], evidenceIds: [] },
-  { id: 'trajectory', title: 'Research Trajectory', citationIds: [], evidenceIds: [] },
+  { id: 'opening', title: 'Opening', citationIds: ['genenv-hacd', 'sala-liu'], evidenceIds: ['phd-provisional'] },
+  { id: 'trajectory', title: 'Background: making, form, environmental systems', citationIds: [], evidenceIds: [] },
   {
     id: 'foundation',
     title: 'Perception and Interactive Environments',
@@ -37,18 +36,24 @@ export const SCENES: readonly Scene[] = [
     citationIds: ['liu-tian-2025'],
     evidenceIds: ['ema-roles', 'ema-reference-grid', 'ema-search-setup', 'ema-h1-not-confirmed', 'ema-reliability', 'ema-h2-timber', 'ema-h3-floor-formula', 'ema-h4-pareto', 'ema-limitations'],
   },
-  { id: 'synthesis', title: 'One Connected Path', citationIds: [], evidenceIds: [] },
+  {
+    id: 'stateofart',
+    title: 'State of the art and the remaining gap',
+    citationIds: ['liu-tian-2025', 'genenv-ghmcp', 'jin-esim2026', 'lam-archsim', 'text2cad', 'aidl', 'mac-siggraph2026', 'eplus-agent', 'gh-vr', 'optimuse', 'moruzzi-chi2024'],
+    evidenceIds: [],
+  },
+  { id: 'synthesis', title: 'Research projects and the missing layer', citationIds: [], evidenceIds: ['zla-pipeline', 'pmg-geometry-method', 'vcm-gfa-recovery', 'vcm-placeholders', 'ema-h1-not-confirmed', 'ema-reliability', 'ema-limitations'] },
   {
     id: 'phd',
-    title: 'Proposed Direction: Performance Provenance',
-    citationIds: ['genenv-hacd', 'xu-chi2025', 'compositional-chi2025', 'earlyarchi-chi2026', 'energai-2025'],
-    evidenceIds: [],
+    title: 'Three possible directions within the Human-AI Co-Design program',
+    citationIds: ['ubc-nserc-2026', 'genenv-hacd', 'genenv-ghmcp', 'liu-tian-2025', 'jin-esim2026', 'lam-archsim', 'genenv-sandbox', 'gh-vr', 'eplus-agent'],
+    evidenceIds: ['phd-provisional', 'genenv-modes', 'vcm-trimmed', 'vcm-gfa-recovery', 'vcm-placeholders'],
   },
   {
     id: 'genenv',
     title: 'Why GenEnv',
-    citationIds: ['nserc-939', 'genenv-home', 'genenv-hacd', 'sala-liu', 'sala-dts', 'lacf-sandbox'],
-    evidenceIds: ['genenv-nserc', 'genenv-principle'],
+    citationIds: ['genenv-hacd', 'genenv-decoding', 'genenv-ghmcp', 'genenv-lexicalization', 'genenv-sandbox', 'genenv-openings', 'nserc-939', 'sala-liu', 'sala-dts'],
+    evidenceIds: ['genenv-nserc', 'genenv-phd-priority', 'genenv-principle', 'phd-provisional'],
   },
   { id: 'conversation', title: 'Conversation', citationIds: [], evidenceIds: [] },
 ] as const;

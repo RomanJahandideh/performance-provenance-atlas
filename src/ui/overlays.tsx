@@ -4,6 +4,7 @@ import { CITATIONS, cite } from '../data/citations';
 import { ev } from '../data/evidence';
 import { goToStep } from '../lib/stepper';
 import { setState, useAppState } from '../state/store';
+import { ROLE_STYLE } from '../data/provenance';
 
 /** ── Speaker notes (N) ──────────────────────────────────────────────────── */
 export function NotesDock() {
@@ -84,7 +85,7 @@ export function ChapterMap() {
   const stepIndex = useAppState((s) => s.stepIndex);
   if (!open) return null;
   return (
-    <div className="overlay-screen" role="dialog" aria-modal="true" aria-label="All 20 steps" onClick={() => setState({ chapterMapOpen: false })}>
+    <div className="overlay-screen" role="dialog" aria-modal="true" aria-label={`All ${STEPS.length} steps`} onClick={() => setState({ chapterMapOpen: false })}>
       <div className="overlay-card" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-head" style={{ padding: 0, border: 'none' }}>
           <span className="drawer-title">ALL {STEPS.length} STEPS</span>
@@ -118,14 +119,16 @@ export function HelpOverlay() {
   const open = useAppState((s) => s.helpOpen);
   if (!open) return null;
   const rows: [string, string][] = [
-    ['one scroll / swipe', 'one sheet, 20 sheets in total'],
+    ['one scroll / swipe', `one step, ${STEPS.length} in total`],
     ['↓ → Space PgDn', 'next step'],
     ['↑ ← Shift+Space PgUp', 'previous step'],
     ['Home / End', 'first / last step'],
     ['F', 'full screen'],
     ['N', 'speaker notes'],
     ['S or C', 'sources + evidence drawer'],
-    ['M', 'all 20 sheets'],
+    ['M', 'list of all steps'],
+    ['L', 'legend: colours and line styles'],
+    ['P', 'presenter window: notes, next step, target times'],
     ['R', 'restart from the opening'],
     ['X', 'reduced-motion toggle'],
     ['Esc', 'close any panel'],
@@ -142,6 +145,51 @@ export function HelpOverlay() {
         <table className="keys-table">
           <tbody>
             {rows.map(([k, v]) => (
+              <tr key={k}>
+                <td>{k}</td>
+                <td>{v}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/** ── Legend (L): what each colour and line style means ─────────────────── */
+export function Legend() {
+  const open = useAppState((s) => s.legendOpen);
+  if (!open) return null;
+  const status: [string, string][] = [
+    ['Published', 'solid block on a plinth'],
+    ['Accepted', 'lighter block on a plinth'],
+    ['Under revision', 'orange hatch, dashed outline'],
+    ['Verified implementation', 'wireframe with cyan control points'],
+    ['Proposed', 'dotted outline, proposal blue'],
+    ['GenEnv work', 'double outline, attributed, not mine'],
+  ];
+  return (
+    <div className="overlay-screen" role="dialog" aria-modal="true" aria-label="Legend" onClick={() => setState({ legendOpen: false })}>
+      <div className="overlay-card" style={{ maxWidth: 720 }} onClick={(e) => e.stopPropagation()}>
+        <div className="drawer-head" style={{ padding: 0, border: 'none' }}>
+          <span className="drawer-title">LEGEND</span>
+          <button className="hud-btn" onClick={() => setState({ legendOpen: false })}>
+            ESC ✕
+          </button>
+        </div>
+        <table className="keys-table">
+          <tbody>
+            {Object.values(ROLE_STYLE).map((r) => (
+              <tr key={r.name}>
+                <td>
+                  <span className="legend-swatch" style={{ background: r.colour }} />
+                  {r.name}
+                </td>
+                <td>{r.shape}</td>
+              </tr>
+            ))}
+            {status.map(([k, v]) => (
               <tr key={k}>
                 <td>{k}</td>
                 <td>{v}</td>

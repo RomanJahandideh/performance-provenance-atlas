@@ -1,5 +1,11 @@
 # Design Reference Audit
 
+> **Note (2026-11-16):** this document describes the earlier zooming map version. That engine
+> (`src/lib/scroll.ts`, `src/atlas/`, `StatusGeometry.tsx`) was removed when Roman found the zoom
+> blurry and parts cut off. The current deck is 25 composed steps; the map survives as the vector
+> research map on steps 1 and 19 (`src/data/atlas.ts`), and the colour and line roles are defined
+> in `src/data/provenance.ts` (`ROLE_STYLE`). See `README.md` and `docs/GENENV_REFOCUS_AUDIT.md`.
+
 What was studied from GenEnv's public language, what was adapted as shared *conventions of the
 discipline*, and what was deliberately **not** copied. All six genenv.ai pages were fetched on
 2026-11-13 (homepage, human-ai-co-design, decoding-urban-form, digital-thermal-sandbox,

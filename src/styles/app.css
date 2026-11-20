@@ -405,3 +405,23 @@ html[data-reduced='true'] .board { transition: none; }
   .tp-title { margin-bottom: 14px; }
   .tp-rule { margin-bottom: 14px; }
 }
+
+/* ── Presenter window (P): never shown on the shared screen ── */
+.presenter { position: fixed; inset: 0; overflow: auto; padding: 28px 36px; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+.pv-head, .pv-foot { display: flex; justify-content: space-between; gap: 24px; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--muted); }
+.pv-clock { color: var(--ink); }
+.pv-clock em { font-style: normal; margin-left: 6px; }
+.pv-clock .ok { color: var(--cyan); }
+.pv-clock .late { color: var(--orange); }
+.pv-clock .early { color: var(--yellow); }
+.pv-sections { display: flex; gap: 6px; margin: 22px 0 26px; }
+.pv-sec { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.pv-sec i { display: block; height: 5px; background: rgba(255, 255, 255, 0.15); }
+.pv-sec.is-done i { background: rgba(242, 207, 85, 0.55); }
+.pv-sec.is-active i { background: var(--yellow); }
+.pv-sec span { font-family: var(--font-mono); font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pv-sec.is-active span { color: var(--ink); }
+.presenter h1 { margin: 0 0 18px; font-family: var(--font-display); font-size: 30px; line-height: 1.15; }
+.pv-notes p { margin: 0 0 16px; font-size: 22px; line-height: 1.55; max-width: 62ch; }
+.pv-foot { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line-major); }
+.legend-swatch { display: inline-block; width: 12px; height: 12px; margin-right: 10px; vertical-align: -1px; }

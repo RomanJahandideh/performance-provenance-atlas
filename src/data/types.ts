@@ -84,7 +84,7 @@ export interface Scene {
   evidenceIds: string[];
 }
 
-export type Tone = 'yellow' | 'cyan' | 'orange' | 'coral' | 'red' | 'ink';
+export type Tone = 'yellow' | 'cyan' | 'orange' | 'coral' | 'red' | 'ink' | 'proposal';
 
 export type DiagramId =
   | 'site'
@@ -104,7 +104,23 @@ export type DiagramId =
   | 'provenance'
   | 'spheres'
   | 'colours'
-  | 'journey';
+  | 'journey'
+  | 'atlas-open'
+  | 'atlas-full'
+  | 'capability'
+  | 'roles'
+  | 'gap'
+  | 'architecture'
+  | 'scenario'
+  | 'rqmap'
+  | 'route'
+  | 'confluence'
+  | 'soa'
+  | 'loop'
+  | 'branches'
+  | 'dir1'
+  | 'dir2'
+  | 'dir3';
 
 /**
  * Slide compositions. Each is a fixed arrangement of horizontal bands and
@@ -138,8 +154,12 @@ export interface Slide {
   kicker?: string;
   title: string;
   lines?: string[];
-  /** Why the work is useful to designers, shown as a highlighted line. */
-  use?: string;
+  /** A highlighted line under the text, with its own small label. */
+  callout?: { label: string; text: string };
+  /** The shared five-part reading of each research project (question, approach, evidence, limit, lesson). */
+  project?: { problem: string; built: string; evidence: string; limit: string; lesson: string };
+  /** What the slide shows, for the generated script (not displayed). */
+  purpose?: string;
   facts?: Fact[];
   caveat?: string;
   links?: { label: string; url: string }[];

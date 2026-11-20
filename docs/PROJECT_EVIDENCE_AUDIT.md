@@ -94,3 +94,52 @@ Flagged:
 - 2026-11-16: Roman confirmed the Tabriz Art University landscape design competition second prize was in 2015 (portfolio p.5); the CV year 2013 is wrong.
 
 2026-11-16: Teaching assistant courses taken from romanjahandideh.com teaching section: IAT 313 Narrative and New Media, IAT 343 Animation, IAT 102 Graphic Design. Teaching photos copied from the site (Teaching/IAT3431.webp, IAT3131.webp). Unity workshop "last week" stated by Roman on 2026-11-16 (deck says November 2026). University name shown as "Tabriz Art University" at Roman's request.
+
+## 2026-11-16 GenEnv refocus: claim wording that changed
+
+- **GenEnv sources re-read 2026-11-16** (human-ai-co-design, decoding-urban-form, grasshopper-mcp,
+  computational-lexicalization, digital-thermal-sandbox, openings; SALA profile). New evidence
+  records `genenv-phd-priority`, `genenv-modes`, `phd-provisional`; new citations
+  `genenv-ghmcp`, `genenv-lexicalization`, `genenv-sandbox`, `genenv-openings`.
+- **Step 18** says Human-AI Co-Design "is recruiting a PhD student to lead its agentic framework
+  and verification protocols". Source wording: "prioritizing the recruitment of a PhD student to
+  lead the development of its agentic AI framework and verification protocols". Verified.
+- **Step 15** autonomy levels (Inspect, Suggest, Execute with approval, Author in a lexicon) are
+  Roman's own grouping, attributed on screen as building on Grasshopper MCP's five modes
+  (Inspect, Tune, Coach, Execute, Author) and Liu and Tian's three tiers. Not GenEnv's labels.
+- **Step 7** "66.3% (chance 25%)" and "3.90 s" unchanged from `iss-study1`, `iss-study2`. The
+  ambient-versus-numeric trust trade-off (`iss-tradeoff`) is now stated on screen. Notes say
+  "accepted for this month": ISS Companion '26 is 23 to 26 November 2026.
+- **Step 12** "four of five runs reached the target, against one of five": `ema-reliability`.
+  "Not faster" kept in red (`ema-h1-not-confirmed`). Limitations shortened on screen to
+  "Simplified solar, benchmark carbon, a wind proxy. Live LLM loop not run." Full wording stays in
+  the source drawer. No caveat removed.
+- **Step 11** keeps "Base elevation and slope are placeholders. The Grasshopper step is written,
+  not executed." next to the +39.5% result, and the corridor diagram now prints the placeholder
+  line in orange.
+- **Step 14** provenance record: the "Agent reading" link says "suggests fewer, larger floors".
+  This illustrates what the record would hold; it is not a logged AI output.
+- **Removed** the claim "Many of them were inspired by GenEnv's work; I was following your lab
+  closely" and the "132 participants across two peer-reviewed studies" sum.
+- **Needs Roman's confirmation:** the three TA courses as named on romanjahandideh.com
+  (IAT 313, IAT 343, IAT 102) against "interactive environments, modeling and animation"; "last
+  week I ran a Unity workshop" must still be true on the interview date; "after a school system
+  that pushed mathematics and physics early" (NODET, one clause).
+
+## 2026-11-19 background restore and positioning pass
+
+- Restored from `82a64a2` (facts unchanged): childhood photograph; Tabriz Art University, Bachelor
+  of Architecture, 2011 to 2016; Zangar Museum concept (three governments, about a century, three
+  angled forms), supervisor Prof. Parisa Hashempour, Best Dissertation 2016; foldable cabin,
+  Memar News national competition 2018, sixth prize; landscape design, Tabriz Art University
+  2015, second prize; Abstract Photo of City 2018, winner; ITU Master's, Landscape
+  Architecture, 2020 to 2024; Büyükada boards p109, p117, p122.
+- The "B.Arch" label now reads "Bachelor of Architecture". "Interschool design competitions" is
+  spoken only, with no counts.
+- NODET appears only as "my schooling pushed mathematics and science early". Years 2004 to 2011
+  (CV) are not shown and remain unconfirmed.
+- The recruitment statement was removed from every slide and note. It stays in the evidence
+  record `genenv-phd-priority`.
+- Every project caveat is unchanged and still attached on screen.
+- Still to confirm: GIS on the Büyükada board; whether the Virtual Landscape Lab was at ITU; TA
+  course names; the Unity workshop date relative to the interview; NODET years.

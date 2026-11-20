@@ -1,12 +1,13 @@
 import { useSyncExternalStore } from 'react';
 
 export interface AppState {
-  /** Current sheet, 0..19. */
+  /** Current step, 0 to STEPS.length - 1. */
   stepIndex: number;
   notesOpen: boolean;
   drawerOpen: boolean;
   chapterMapOpen: boolean;
   helpOpen: boolean;
+  legendOpen: boolean;
   /** null → follow the media query; true/false → manual override. */
   reducedMotionOverride: boolean | null;
 }
@@ -17,6 +18,7 @@ const initialState: AppState = {
   drawerOpen: false,
   chapterMapOpen: false,
   helpOpen: false,
+  legendOpen: false,
   reducedMotionOverride: null,
 };
 
@@ -59,9 +61,9 @@ export function toggleReducedMotion() {
 }
 
 export function closeAllPanels() {
-  setState({ notesOpen: false, drawerOpen: false, chapterMapOpen: false, helpOpen: false });
+  setState({ notesOpen: false, drawerOpen: false, chapterMapOpen: false, helpOpen: false, legendOpen: false });
 }
 
 export function anyPanelOpen(): boolean {
-  return state.notesOpen || state.drawerOpen || state.chapterMapOpen || state.helpOpen;
+  return state.notesOpen || state.drawerOpen || state.chapterMapOpen || state.helpOpen || state.legendOpen;
 }

@@ -12,8 +12,8 @@ How every piece of work is classified, drawn, and labelled. The drawing rules li
 | Zoning Literacy Assistant | ✔ | ✔ (pipeline + deterministic arithmetic; “not covered” case) | ✖ | ✖ | — | — | Single bylaw excerpt (R1-1 base provisions) |
 | Vancouver View Corridor Massing | ✔ | ✔ (clipping, floor counts, 3DM checks, rotation study) | ✖ | ✖ | — | — | **BASE_ELEV_M / SLOPE placeholders**; **GH final geometry step written, not executed** |
 | Environmental Massing Agents | ✔ | ✔ (evaluators, MCP server, NSGA-II, hypothesis tests; **H1 not confirmed**) | ✖ | ✖ | — | — | Solar simplified; carbon benchmarks, not LCA; wind proxy, not CFD; corridor placeholders; **live unscripted LLM loop not executed** |
-| Performance Provenance (PhD direction) | ✖ | ✖ | ✖ | ✖ | — | **Proposed — for discussion; not approved by Prof. Liu; studies & Ns provisional** | Conceptual inspector demo built from real VCM facts, labelled as such |
-| GenEnv projects (Human-AI Co-Design, Decoding Urban Form, Grasshopper MCP v2, Digital Thermal Sandbox) | external | external | external | external | — | — | **Attributed external territory — not Roman’s work** |
+| Traceable agentic co-design, with performance provenance as its verification layer (PhD direction) | ✖ | ✖ | ✖ | ✖ | — | **Proposed, for discussion; not approved by Prof. Liu; RQs, methods, conditions and pilot provisional** | The provenance record on step 14 uses real VCM figures; its agent and decision links show what a record would hold, not a logged session. The Vancouver scenario (step 16) is illustrative, not a running system. |
+| GenEnv projects (Human-AI Co-Design, Decoding Urban Form, Grasshopper MCP v2, Computational Lexicalization, Digital Thermal Sandbox) | external | external | external | external | — | — | **Attributed external territory — not Roman’s work** |
 
 Drawing enforcement: published/accepted → solid mass on plinth + DOI tick · under revision →
 orange-hatched translucent mass, open boundary · verified prototype → white wireframe with

@@ -60,3 +60,30 @@ campus steps or link this file from the closing step (see "Decisions" in the REA
 | `photos/landscape-unit1.jpg` | p. 130 (portfolio p. 117) | Unit 1: model, plan and storm-water section |
 | `photos/landscape-bioretention.jpg` | p. 127 (portfolio p. 114) | Bioretention sketch |
 | `photos/landscape-unit2.jpg` | p. 131 (portfolio p. 118) | Unit 2 board (exported, not used yet) |
+
+## Teaching photographs (Roman's own, from romanjahandideh.com, `Teaching/`)
+
+| File | Source | Shows |
+|---|---|---|
+| `photos/teach-iat343.jpg` | `Teaching/IAT3431.webp` | Roman teaching 3D modelling in Maya, IAT 343 (used on step 6) |
+| `photos/teach-iat313.jpg` | `Teaching/IAT3131.webp` | Roman working with students in an IAT 313 lab session (currently unused) |
+
+## Portfolio pages in active use (`public/assets/portfolio/`)
+
+Whole pages from `Architecture and Design Portfolio.pdf` (one 1299 × 866 image per page), shown
+uncropped. Reintroduced on 2026-11-19 for the restored background.
+
+| File | Step | Shows |
+|---|---|---|
+| `p018.jpg` | 5 | Zangar Museum concept: three periods, three forms |
+| `p019.jpg` | 5 | Zangar Museum night render |
+| `p023.jpg` | 6 | Zangar floor plans |
+| `p027.jpg` | 6 | Zangar section |
+| `p101.jpg` | 7 | Foldable disaster cabin (Memar News, 2018, sixth prize) |
+| `p105.jpg`, `p106.jpg` | 7 | "A Tunnel To Heaven", "The Ghost of Playground" (Abstract Photo of City, 2018, winner) |
+| `p109.jpg` | 9 | Büyükada topography analysis and roads |
+| `p117.jpg` | 9 | Büyükada water section |
+| `p122.jpg` | 9 | Büyükada, two connected units |
+
+Also back in use: `photos/childhood.jpg` (step 3), `photos/tabriz-2.jpg` (step 4),
+`photos/tabriz-1.jpg` and `photos/itu-2.jpg` (step 8). No assets were deleted.

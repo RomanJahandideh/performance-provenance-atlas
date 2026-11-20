@@ -13,6 +13,7 @@ const TONE: Record<string, string> = {
   coral: 'var(--coral)',
   red: 'var(--red)',
   ink: 'var(--ink)',
+  proposal: 'var(--proposal)',
 };
 
 const GAP = 22;
@@ -148,13 +149,35 @@ function Lines({ s, from = 0 }: { s: Slide; from?: number }) {
           {l}
         </p>
       ))}
-      {s.use && (
+      {s.callout && (
         <p className="line use" style={{ '--d': `${0.35 + (from + (s.lines?.length ?? 0)) * 0.12 + 0.1}s` } as CSSProperties}>
-          <span className="use-label">For designers</span>
-          {s.use}
+          <span className="use-label">{s.callout.label}</span>
+          {s.callout.text}
         </p>
       )}
+      {s.project && <Pattern p={s.project} />}
     </>
+  );
+}
+
+/** The shared five-part reading of each research project. */
+function Pattern({ p }: { p: NonNullable<Slide['project']> }) {
+  const rows: [string, string, string][] = [
+    ['Question', p.problem, ''],
+    ['Approach', p.built, ''],
+    ['Evidence', p.evidence, 'is-evidence'],
+    ['Limit', p.limit, 'is-limit'],
+    ['Carries forward', p.lesson, 'is-lesson'],
+  ];
+  return (
+    <dl className="pattern">
+      {rows.map(([k, v, c], i) => (
+        <div key={k} className={`pattern-row ${c}`} style={{ '--d': `${0.35 + i * 0.12}s` } as CSSProperties}>
+          <dt>{k}</dt>
+          <dd>{v}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
@@ -189,6 +212,8 @@ function SlideView({ s }: { s: Slide }) {
           <div className="body">
             <Lines s={s} from={4} />
           </div>
+          <Facts facts={s.facts} className="facts--col" />
+          <FitRow media={media} align="center" className="area-media" />
         </div>
       );
     case 'cover':
@@ -295,6 +320,7 @@ function SlideView({ s }: { s: Slide }) {
             <Lines s={s} />
             <Extras s={s} />
           </div>
+          <FitRow media={media} align="start" className="area-media" />
           <ol className="qs">
             {s.questions?.map((q, i) => (
               <li key={q} style={{ '--d': `${0.3 + i * 0.12}s` } as CSSProperties}>

@@ -1,5 +1,11 @@
 # Interaction Spec — Scroll Choreography
 
+> **Note (2026-11-16):** this document describes the earlier zooming map version. That engine
+> (`src/lib/scroll.ts`, `src/atlas/`, `StatusGeometry.tsx`) was removed when Roman found the zoom
+> blurry and parts cut off. The current deck is 25 composed steps; the map survives as the vector
+> research map on steps 1 and 19 (`src/data/atlas.ts`), and the colour and line roles are defined
+> in `src/data/provenance.ts` (`ROLE_STYLE`). See `README.md` and `docs/GENENV_REFOCUS_AUDIT.md`.
+
 The design rule after Roman's review: **the scroll tells the story**. No content is behind a
 click, no panel scrolls internally, no timer runs, and project details appear as large
 typography and live drawings — never as small boxed chips. Every motion demonstrates a

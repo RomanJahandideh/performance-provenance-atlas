@@ -1,15 +1,18 @@
 import { STEPS } from '../data/steps';
 import { getState, setState, anyPanelOpen } from '../state/store';
+import { onSync, send } from './sync';
 
 /**
- * Exactly 20 sheets. One wheel gesture, swipe, or key press = one sheet.
- * Each sheet animates its own panels on arrival, so nothing else is needed.
+ * One wheel gesture, swipe, or key press = one step (STEPS.length in total).
+ * Each slide animates its own drawing on arrival. Every step change is also
+ * sent to the presenter window (P), which can drive the deck back.
  */
 
 export function goToStep(index: number) {
   const i = Math.max(0, Math.min(STEPS.length - 1, index));
   if (i === getState().stepIndex && window.location.hash === `#step-${i + 1}`) return;
   setState({ stepIndex: i });
+  send({ type: 'step', index: i });
   const hash = `#step-${i + 1}`;
   if (window.location.hash !== hash) window.history.replaceState(null, '', hash);
 }
@@ -65,7 +68,13 @@ function onHashChange() {
   if (i !== null && i !== getState().stepIndex) goToStep(i);
 }
 
+let offSync: (() => void) | null = null;
+
 export function startStepper() {
+  offSync = onSync((m) => {
+    if (m.type === 'go') goToStep(m.index);
+    if (m.type === 'hello') send({ type: 'step', index: getState().stepIndex });
+  });
   window.addEventListener('wheel', onWheel, { passive: false });
   window.addEventListener('touchstart', onTouchStart, { passive: true });
   window.addEventListener('touchend', onTouchEnd, { passive: true });
@@ -74,6 +83,7 @@ export function startStepper() {
 }
 
 export function stopStepper() {
+  offSync?.();
   window.removeEventListener('wheel', onWheel);
   window.removeEventListener('touchstart', onTouchStart);
   window.removeEventListener('touchend', onTouchEnd);

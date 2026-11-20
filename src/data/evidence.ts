@@ -350,6 +350,32 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
     source: 'genenv.ai homepage (fetched 2026-11-13), quoted fragment.',
     presentationLabel: '“editable, traceable, open to human judgment”',
   },
+  {
+    id: 'genenv-phd-priority',
+    project: 'genenv',
+    claim: 'The Human-AI Co-Design program is prioritizing the recruitment of a PhD student to lead the development of its agentic AI framework and verification protocols. Current stage: the core agentic framework, connecting design and analysis tools, and verification methods for AI-generated proposals.',
+    status: 'external-funded',
+    source: 'genenv.ai/human-ai-co-design, fetched 2026-11-16.',
+    presentationLabel: 'PhD to lead agentic framework + verification',
+  },
+  {
+    id: 'genenv-modes',
+    project: 'genenv',
+    claim: 'Grasshopper MCP v2 treats AI autonomy as a design variable through five scenario modes: Inspect (read-only analysis), Tune (parameter changes), Coach (guided edits with explanations), Execute (running curated components and plugins), Author (building definitions from scratch).',
+    status: 'external-funded',
+    source: 'genenv.ai/grasshopper-mcp, fetched 2026-11-16.',
+    limitation: 'GenEnv tool, attributed. The four levels on the framework step are my own grouping that builds on it.',
+    presentationLabel: 'Inspect · Tune · Coach · Execute · Author',
+  },
+  {
+    id: 'phd-provisional',
+    project: 'phd',
+    claim: 'Three possible PhD directions within the Human-AI Co-Design program (Verified Performance Co-Designer; Evidence-Calibrated Climate Co-Designer; Embodied Performance Reasoning Studio) are proposals for discussion. None is built or tested; one would become the dissertation, chosen with a supervisor. Performance provenance is a supporting record, not the dissertation.',
+    status: 'proposed',
+    source: 'My proposal for this interview (src/data/provenance.ts).',
+    limitation: 'Not approved by Prof. Liu. No study, participant number, partner or integration exists yet.',
+    presentationLabel: 'PROPOSED · for discussion',
+  },
 ] as const;
 
 const index = new Map(EVIDENCE.map((e) => [e.id, e]));

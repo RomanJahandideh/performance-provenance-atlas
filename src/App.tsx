@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Deck } from './slides/Deck';
-import { ChapterMap, HelpOverlay, NotesDock, SourceDrawer } from './ui/overlays';
+import { ChapterMap, HelpOverlay, Legend, NotesDock, SourceDrawer } from './ui/overlays';
+import { PresenterView } from './ui/presenter';
+import { isPresenter } from './lib/sync';
 import { handleKey } from './lib/keys';
 import { startStepper, stopStepper } from './lib/stepper';
 import { prefersReducedMotion, subscribe } from './state/store';
@@ -19,6 +21,10 @@ function Preload() {
 }
 
 export default function App() {
+  return isPresenter ? <PresenterView /> : <Audience />;
+}
+
+function Audience() {
   useEffect(() => {
     window.addEventListener('keydown', handleKey);
     startStepper();
@@ -41,6 +47,7 @@ export default function App() {
       <SourceDrawer />
       <ChapterMap />
       <HelpOverlay />
+      <Legend />
       <Preload />
     </>
   );

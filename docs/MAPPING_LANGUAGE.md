@@ -1,5 +1,11 @@
 # Mapping Language
 
+> **Note (2026-11-16):** this document describes the earlier zooming map version. That engine
+> (`src/lib/scroll.ts`, `src/atlas/`, `StatusGeometry.tsx`) was removed when Roman found the zoom
+> blurry and parts cut off. The current deck is 25 composed steps; the map survives as the vector
+> research map on steps 1 and 19 (`src/data/atlas.ts`), and the colour and line roles are defined
+> in `src/data/provenance.ts` (`ROLE_STYLE`). See `README.md` and `docs/GENENV_REFOCUS_AUDIT.md`.
+
 The atlas is not decoration: position, height, line type, and colour all carry defined meaning.
 Geometry is derived from structured data (`src/data/*`), not hand-placed per scene (pinned world
 positions exist only to keep labels legible, and always respect the semantic bands).

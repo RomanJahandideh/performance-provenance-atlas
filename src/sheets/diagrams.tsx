@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import type { DiagramId } from '../data/types';
 import { useT, win } from './useT';
 import { iso, isoBoxFaces, pts } from './iso';
+import { Architecture, AtlasFull, AtlasOpen, Branches, Capability, Confluence, Dir1, Dir2, Dir3, FRAMEWORK_RATIO, Gap, Loop, ProvenanceChain, Roles, Route, RqMap, Scenario, Soa } from './framework';
 
 /*
  * Diagrams drawn in the GenEnv language: thin white linework on blue, yellow
@@ -55,7 +56,7 @@ function Site() {
   const plots = [
     { x: 0, y: 0, w: 150, d: 150, label: 'FOUNDATIONS', sub: 'Tabriz · Istanbul · SFU', h: 18, color: W },
     { x: 190, y: 0, w: 150, d: 150, label: 'PERCEPTION + BODY', sub: 'eCAADe · ISS · BioTerrarium', h: 34, color: C },
-    { x: 380, y: 0, w: 150, d: 150, label: 'FOUR PROTOTYPES', sub: 'rules → geometry → evidence', h: 50, color: C },
+    { x: 380, y: 0, w: 150, d: 150, label: 'RESEARCH PROJECTS', sub: 'rules → geometry → evidence', h: 50, color: C },
     { x: 570, y: 0, w: 150, d: 150, label: 'PROPOSED PHD', sub: 'performance provenance', h: 0, color: Y },
   ];
   const ox = 128;
@@ -251,27 +252,27 @@ function NotCovered() {
   return (
     <Svg vb="0 0 560 860">
       <g opacity={win(t, 0, 0.12)}>
-        <Box x={60} y={40} w={440} h={96} />
-        <Label x={80} y={74} size={13}>
+        <Box x={40} y={30} w={480} h={110} />
+        <Label x={60} y={60} size={17}>
           QUESTION
         </Label>
-        <Label x={80} y={110} size={17} fill={W}>
+        <Label x={60} y={94} size={22} fill={W}>
           How many storeys may a
         </Label>
-        <Label x={80} y={130} size={17} fill={W}>
+        <Label x={60} y={124} size={22} fill={W}>
           laneway house have?
         </Label>
       </g>
       <line x1={280} y1={140} x2={280} y2={190} stroke={Y} strokeWidth={2} markerEnd="url(#arY)" opacity={win(t, 0.12, 0.2)} />
       <g opacity={win(t, 0.15, 0.3)}>
-        <Box x={110} y={196} w={340} h={84} stroke={C} fill="rgba(112,215,206,0.08)" />
-        <Label x={280} y={228} anchor="middle" size={18} fill={C} weight={600}>
+        <Box x={60} y={192} w={440} h={92} stroke={C} fill="rgba(112,215,206,0.08)" />
+        <Label x={280} y={220} anchor="middle" size={18} fill={C} weight={600}>
           RETRIEVE
         </Label>
-        <Label x={280} y={256} anchor="middle" size={13}>
+        <Label x={280} y={246} anchor="middle" size={17}>
           laneway house: allowed,
         </Label>
-        <Label x={280} y={272} anchor="middle" size={13}>
+        <Label x={280} y={270} anchor="middle" size={17}>
           but no storey limit stated
         </Label>
       </g>
@@ -284,19 +285,22 @@ function NotCovered() {
       {['ANSWER', 'VERIFY'].map((s, i) => (
         <g key={s} opacity={0.5 * win(t, 0.4, 0.55)}>
           <Box x={110} y={360 + i * 110} w={340} h={84} stroke={W2} fill="none" dash="6 6" />
-          <Label x={280} y={408 + i * 110} anchor="middle" size={17} fill={W5}>
+          <Label x={280} y={408 + i * 110} anchor="middle" size={20} fill={W5}>
             {s}: not reached
           </Label>
         </g>
       ))}
       {/* stamp */}
       <g opacity={win(t, 0.62, 0.8)} transform={`translate(280,${700}) rotate(-5) scale(${0.9 + 0.1 * win(t, 0.62, 0.8)})`}>
-        <rect x={-210} y={-58} width={420} height={116} fill="rgba(232,146,74,0.12)" stroke={O} strokeWidth={3} />
-        <Label x={0} y={-6} anchor="middle" size={40} fill={O} weight={700}>
+        <rect x={-250} y={-70} width={500} height={140} fill="rgba(232,146,74,0.12)" stroke={O} strokeWidth={3} />
+        <Label x={0} y={-10} anchor="middle" size={42} fill={O} weight={700}>
           NOT COVERED
         </Label>
-        <Label x={0} y={32} anchor="middle" size={15} fill={W}>
-          “not covered by the provided source”
+        <Label x={0} y={30} anchor="middle" size={18} fill={W}>
+          “not covered by the
+        </Label>
+        <Label x={0} y={54} anchor="middle" size={18} fill={W}>
+          provided source”
         </Label>
       </g>
     </Svg>
@@ -433,7 +437,7 @@ function Envelope() {
   const plane = (a: { x: number; y: number }, b: { x: number; y: number }, label: string) => (
     <g>
       <polygon points={`${a.x},${a.y} ${b.x},${b.y} ${b.x},${b.y - FH * 3.2 * planes} ${a.x},${a.y - FH * 3.2 * planes}`} fill="rgba(112,215,206,0.07)" stroke={C} strokeWidth={1.1} strokeDasharray="8 6" />
-      <Label x={a.x - 8} y={a.y - FH * 3.2 * planes + 4} size={13} fill={C} anchor="end">
+      <Label x={a.x - 8} y={a.y - FH * 3.2 * planes + 4} size={21} fill={C} anchor="end">
         {label}
       </Label>
     </g>
@@ -458,17 +462,20 @@ function Envelope() {
         </g>
       </g>
       <g transform="translate(40,640)">
-        <Label x={0} y={0} size={13}>
+        <Label x={0} y={0} size={21}>
           FLOOR-SPACE RATIO
         </Label>
         <Label x={0} y={44} size={36} fill={third > 0.5 ? Y : W} weight={700}>
           {third > 0.5 ? '1.00' : '0.70'}
         </Label>
-        <Label x={130} y={44} size={18} fill={third > 0.5 ? Y : W5}>
-          {third > 0.5 ? 'rental condition → +1 storey' : 'base · two storeys'}
+        <Label x={110} y={42} size={20} fill={third > 0.5 ? Y : W5}>
+          {third > 0.5 ? 'rental → +1 storey' : 'base · two storeys'}
         </Label>
-        <Label x={0} y={96} size={13}>
-          SETBACKS, FOOTPRINT AND AREA ARE COMPUTED BY CODE
+        <Label x={0} y={96} size={19}>
+          SETBACKS, FOOTPRINT AND AREA
+        </Label>
+        <Label x={0} y={122} size={19}>
+          ARE COMPUTED BY CODE
         </Label>
       </g>
     </Svg>
@@ -546,20 +553,20 @@ function Corridor() {
       <line x1={40} y1={ground} x2={1120} y2={ground} stroke={W} strokeWidth={2} />
       <circle cx={gx0} cy={ground - 14} r={12} fill="none" stroke={Y} strokeWidth={2} />
       <circle cx={gx0} cy={ground - 14} r={4} fill={Y} />
-      <Label x={gx0 + 20} y={ground - 8} size={14} fill={Y}>
+      <Label x={gx0 + 20} y={ground - 8} size={21} fill={Y}>
         PROTECTED VIEWPOINT
       </Label>
       {/* sloped ceiling */}
       <line x1={gx0} y1={c0} x2={gx0 + (gx1 - gx0) * draw} y2={c0 + (c1 - c0) * draw} stroke={Y} strokeWidth={2.6} />
       <g opacity={win(t, 0.12, 0.2)} transform={`rotate(-25.9 ${gx0 + 90} ${ceilAt(gx0 + 90) - 16})`}>
-        <Label x={gx0 + 90} y={ceilAt(gx0 + 90) - 16} size={15} fill={Y}>
-          the protected view rises away from the viewpoint
+        <Label x={gx0 + 90} y={ceilAt(gx0 + 90) - 16} size={22} fill={Y}>
+          the view ceiling rises with distance
         </Label>
       </g>
       {/* flat cap line */}
       <g opacity={flat > 0 ? 1 - 0.6 * trim : 0}>
         <line x1={s0 - 20} y1={flatY} x2={s1 + 30} y2={flatY} stroke={W5} strokeWidth={2} strokeDasharray="12 8" />
-        <Label x={s1 + 40} y={flatY + 5} size={14} fill={W5}>
+        <Label x={s1 + 40} y={flatY + 5} size={21} fill={W5}>
           flat cap
         </Label>
       </g>
@@ -577,13 +584,13 @@ function Corridor() {
       })}
       {/* live counters */}
       <g transform="translate(90,90)">
-        <Label x={0} y={0} size={14}>
+        <Label x={0} y={0} size={21}>
           FLOORS
         </Label>
         <Label x={0} y={56} size={56} fill={trim > 0 ? C : W} weight={700}>
           {flat > 0 ? floors : '0'}
         </Label>
-        <Label x={190} y={0} size={14}>
+        <Label x={190} y={0} size={21}>
           FLOOR AREA
         </Label>
         <Label x={190} y={56} size={56} fill={trim > 0 ? C : W} weight={700}>
@@ -595,8 +602,11 @@ function Corridor() {
           +39.5% recovered
         </Label>
       </g>
-      <Label x={40} y={780} size={14}>
-        CORRIDOR SHAPE FROM CITY OF VANCOUVER OPEN DATA. BASE HEIGHT AND SLOPE ARE PLACEHOLDERS.
+      <Label x={40} y={772} size={21}>
+        CORRIDOR SHAPE: CITY OF VANCOUVER OPEN DATA.
+      </Label>
+      <Label x={40} y={806} size={21} fill={O}>
+        BASE HEIGHT AND SLOPE ARE PLACEHOLDERS.
       </Label>
     </Svg>
   );
@@ -677,14 +687,14 @@ function Agents() {
       <rect x={cx - 120} y={cy - 60} width={240} height={120} fill="rgb(17,52,124)" opacity={win(t, 0, 0.2)} />
       <g opacity={win(t, 0, 0.2)}>
         <rect x={cx - 120} y={cy - 60} width={240} height={120} fill="rgba(112,215,206,0.10)" stroke={C} strokeWidth={2} />
-        <Label x={cx} y={cy - 18} anchor="middle" size={14} fill={C}>
+        <Label x={cx} y={cy - 18} anchor="middle" size={20} fill={C}>
           DETERMINISTIC
         </Label>
-        <Label x={cx} y={cy + 6} anchor="middle" size={14} fill={C}>
+        <Label x={cx} y={cy + 6} anchor="middle" size={20} fill={C}>
           EVALUATORS
         </Label>
-        <Label x={cx} y={cy + 36} anchor="middle" size={13} fill={W5}>
-          where every score comes from
+        <Label x={cx} y={cy + 36} anchor="middle" size={16} fill={W5}>
+          scores come from here
         </Label>
       </g>
       {roles.map((ro, i) => {
@@ -694,17 +704,17 @@ function Agents() {
         const on = win(t, 0.15 + i * 0.1, 0.3 + i * 0.1);
         return (
           <g key={ro.n} opacity={on}>
-            <circle cx={x} cy={y} r={46} fill="rgba(13,40,96,0.95)" stroke={ro.c} strokeWidth={2} />
-            <Label x={x} y={y + 5} anchor="middle" size={ro.n.length > 8 ? 11 : 13} fill={ro.c} weight={600}>
+            <circle cx={x} cy={y} r={60} fill="rgba(13,40,96,0.95)" stroke={ro.c} strokeWidth={2} />
+            <Label x={x} y={y + 5} anchor="middle" size={ro.n.length > 8 ? 15 : 18} fill={ro.c} weight={600}>
               {ro.n}
             </Label>
-            <Label x={x} y={y + 70} anchor="middle" size={12}>
+            <Label x={x} y={y + 88} anchor="middle" size={17}>
               {ro.s}
             </Label>
           </g>
         );
       })}
-      <Label x={cx} y={820} anchor="middle" size={14} fill={W5}>
+      <Label x={cx} y={820} anchor="middle" size={20} fill={W5}>
         AGENTS READ THE SCORES. CODE CALCULATES THEM.
       </Label>
     </Svg>
@@ -739,25 +749,25 @@ function Seeds() {
     <Svg vb="0 0 560 860">
       <rect x={left} y={top} width={right - left} height={bottom - top} fill={FILL} stroke={W2} />
       <line x1={left} y1={target} x2={right} y2={target} stroke={Y} strokeWidth={2} strokeDasharray="10 7" />
-      <Label x={left} y={top - 14} size={13} fill={Y}>
-        TARGET: 95% OF THE BEST DESIGNS (DASHED LINE)
+      <Label x={left} y={top - 14} size={18} fill={Y}>
+        TARGET: 95% OF THE BEST (DASHED)
       </Label>
       {[0, 1, 2, 3, 4].map((i) => track(100 + i * 36, i < 4, i, C))}
       {[0, 1, 2, 3, 4].map((i) => track(320 + i * 36, i === 2, i, W5))}
-      <Label x={172} y={740} anchor="middle" size={17} fill={C} weight={600}>
-        NSGA-II · 4 of 5
+      <Label x={172} y={742} anchor="middle" size={22} fill={C} weight={600}>
+        NSGA-II 4/5
       </Label>
-      <Label x={392} y={740} anchor="middle" size={17} fill={W} weight={600}>
-        Random · 1 of 5
+      <Label x={392} y={742} anchor="middle" size={22} fill={W} weight={600}>
+        Random 1/5
       </Label>
-      <Label x={left} y={100} size={14}>
-        200 EVALUATIONS EACH · 1,080-DESIGN GRID
+      <Label x={left} y={100} size={18}>
+        200 EVALUATIONS · 1,080 DESIGNS
       </Label>
       <g opacity={win(t, 0.85, 1)}>
-        <Label x={left} y={800} size={15} fill={R} weight={600}>
+        <Label x={left} y={800} size={22} fill={R} weight={600}>
           Not faster,
         </Label>
-        <Label x={left + 120} y={800} size={15} fill={C} weight={600}>
+        <Label x={left} y={832} size={22} fill={C} weight={600}>
           but more reliable
         </Label>
       </g>
@@ -835,47 +845,6 @@ function Chain() {
       <Label x={x0 - 58} y={500} size={15} fill={W5}>
         EACH PROJECT ADDS ONE LINK. THE DESIGNER MAKES THE FINAL DECISION.
       </Label>
-    </Svg>
-  );
-}
-
-// ── 21 · Provenance record ──────────────────────────────────────────────────
-function Provenance() {
-  const t = useT(5200, 400);
-  const links = [
-    { n: 'Intent', v: 'recover usable floor area', c: Y },
-    { n: 'Rule', v: 'view corridor J1 ceiling', c: Y },
-    { n: 'Change', v: 'flat cap → per-floor trim', c: C },
-    { n: 'Calculation', v: 'tested clipping, in code', c: C },
-    { n: 'Result', v: '18 floors · +39.5% area', c: C },
-    { n: 'Uncertainty', v: 'elevations are placeholders', c: O },
-    { n: 'AI reading', v: 'recommends against the brief', c: W },
-    { n: 'Decision', v: 'accept · revise · reject', c: 'var(--coral)' },
-  ];
-  const lit = Math.min(links.length, Math.floor(t * links.length + 0.0001));
-  return (
-    <Svg vb="0 0 1160 860">
-      <line x1={110} y1={70} x2={110} y2={70 + 7 * 98} stroke={W2} strokeWidth={3} />
-      <line x1={110} y1={70} x2={110} y2={70 + 7 * 98 * Math.min(1, t * 1.05)} stroke={Y} strokeWidth={3} />
-      {links.map((l, i) => {
-        const on = i < lit || t >= 1;
-        const y = 70 + i * 98;
-        return (
-          <g key={l.n} opacity={on ? 1 : 0.25}>
-            <circle cx={110} cy={y} r={18} fill={on ? l.c : 'rgba(13,40,96,1)'} stroke={l.c} strokeWidth={2.4} />
-            <Label x={110} y={y + 5} anchor="middle" size={13} fill={on ? '#0d2860' : l.c} weight={700}>
-              {i + 1}
-            </Label>
-            <rect x={160} y={y - 34} width={900} height={68} fill={on ? 'rgba(255,255,255,0.06)' : 'none'} stroke={on ? W2 : 'none'} />
-            <Label x={184} y={y + 7} size={20} fill={l.c} weight={700}>
-              {l.n.toUpperCase()}
-            </Label>
-            <Label x={470} y={y + 7} size={20} fill={W}>
-              {l.v}
-            </Label>
-          </g>
-        );
-      })}
     </Svg>
   );
 }
@@ -1005,6 +974,7 @@ export const DIAGRAM_RATIO: Record<DiagramId, number> = {
   spheres: 1000 / 320,
   colours: 1000 / 440,
   journey: 1600 / 270,
+  ...FRAMEWORK_RATIO,
 };
 
 const MAP: Record<DiagramId, () => ReactElement> = {
@@ -1022,10 +992,26 @@ const MAP: Record<DiagramId, () => ReactElement> = {
   seeds: Seeds,
   pareto: Pareto,
   chain: Chain,
-  provenance: Provenance,
+  provenance: ProvenanceChain,
   spheres: Spheres,
   colours: Colours,
   journey: Journey,
+  'atlas-open': AtlasOpen,
+  'atlas-full': AtlasFull,
+  capability: Capability,
+  roles: Roles,
+  gap: Gap,
+  architecture: Architecture,
+  scenario: Scenario,
+  rqmap: RqMap,
+  route: Route,
+  confluence: Confluence,
+  soa: Soa,
+  loop: Loop,
+  branches: Branches,
+  dir1: Dir1,
+  dir2: Dir2,
+  dir3: Dir3,
 };
 
 export function Diagram({ id }: { id: DiagramId }) {

@@ -1,12 +1,9 @@
 # Presentation Controls
 
-The talk is **28 slides, one per scroll**, told as one story toward the Generative
-Environments Lab: making things as a child, NODET, architecture, landscape, SFU, current
-research, and why GenEnv. Nothing zooms; each scroll draws a new composed slide (long
-horizontal rules, image bands, cantilevered text planes), and a curtain with the chapter
-name sweeps across when the chapter changes. Images are never cropped or drawn larger than
-their own pixels, and figures from the papers are redrawn as vectors where the originals
-were low resolution. The bottom bar shows the chapters; click one to jump to it.
+The talk is **25 steps, one per scroll** (count and timing: `docs/TIMING_AUDIT.md`, generated
+from `src/data/steps.ts`). Each step is one composed slide; drawings play once on arrival, in
+causal order, and run the same forwards and backwards. Reduced motion shows the final state at
+once with the same information.
 
 | Input | Action |
 |---|---|
@@ -14,15 +11,17 @@ were low resolution. The bottom bar shows the chapters; click one to jump to it.
 | down, right, Space, PageDown | next step |
 | up, left, Shift+Space, PageUp | previous step |
 | Home / End | first / last step |
-| bottom bar | chapters; click one to jump |
+| bottom bar | sections; click one to jump |
 | `#step-N` in the URL | open at step N |
 | F | full screen |
-| N | speaker notes |
-| S or C | sources and evidence |
+| P | presenter window (notes, next step, target times); share only the deck window |
+| N | speaker notes on the deck screen (avoid while sharing) |
+| S or C | sources and evidence for this step |
+| L | legend: colours and line styles |
 | M | list of all steps |
 | R | restart |
 | X | reduced motion |
 | Esc | close any panel |
 
-Speaking time: about 11 to 12 minutes of notes (see PRESENTATION_SCRIPT.md), so the talk
-fits inside 20 minutes with pauses.
+In the presenter window: arrow keys move the deck; T restarts the clock. The clock starts on the
+first step change after the window opens.

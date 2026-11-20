@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/standalone.mjs",
+    "build": "tsc && node scripts/docs.mjs && vite build && node scripts/standalone.mjs",
+    "docs": "node scripts/docs.mjs",
+    "docs:check": "node scripts/docs.mjs --check",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
