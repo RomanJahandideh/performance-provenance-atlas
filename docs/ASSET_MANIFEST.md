@@ -87,3 +87,10 @@ uncropped. Reintroduced on 2026-11-19 for the restored background.
 
 Also back in use: `photos/childhood.jpg` (step 3), `photos/tabriz-2.jpg` (step 4),
 `photos/tabriz-1.jpg` and `photos/itu-2.jpg` (step 8). No assets were deleted.
+
+## Added 2026-11-20
+
+| File | Step | Source |
+|---|---|---|
+| `photos/mj-jar.jpg`, `photos/mj-rails.jpg`, `photos/mj-roots.jpg` | 10 | Roman's own Midjourney images, from his Instagram posts of August and September 2022 (resized to 1200 px) |
+| `photos/sfu-2.jpg` | 12 | Simon Fraser University-Surrey Campus Grand Hall 2024.jpg · Canmenwalker · CC BY 4.0 (now in use) |

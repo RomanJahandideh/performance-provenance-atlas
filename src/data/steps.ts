@@ -201,6 +201,28 @@ export const SLIDES: readonly Slide[] = [
       'On Büyükada, a steep island, rainwater runs straight down the streets. The design began from slope, roads and runoff, and became a system of collectors, cisterns and planted basins linked down the hill to shared storage. Design became a network of relationships I could represent and measure.',
     ],
   },
+  {
+    id: 'generative-images',
+    chapter: 'Background',
+    scene: 'trajectory',
+    layout: 'gallery',
+    kicker: 'Background · Generative images, 2022',
+    title: 'First experiments with generative AI',
+    lines: ['I used Midjourney to explore landscapes and atmospheres from text prompts. The images came quickly and looked convincing, but none carried a scale, a site or evidence a designer could check.'],
+    facts: [
+      { label: 'Tool', value: 'Midjourney' },
+      { label: 'Period', value: 'August to September 2022' },
+    ],
+    media: [
+      { src: 'assets/photos/mj-jar.jpg', caption: 'A landscape in a glass jar', alt: 'Midjourney image by Roman: a miniature landscape with towers and trees inside a glass jar.' },
+      { src: 'assets/photos/mj-rails.jpg', caption: 'Mist, moon and rails', alt: 'Midjourney image by Roman: a train on overgrown rails in a misty landscape under a full moon.' },
+      { src: 'assets/photos/mj-roots.jpg', caption: 'Roots as space', alt: 'Midjourney image by Roman: a hall whose floor and vaults are made of tangled roots.' },
+    ],
+    purpose: 'Three of Roman’s own Midjourney images from 2022: an exploratory use of generative AI for landscape and atmosphere, and the limit it exposed.',
+    notes: [
+      'During my master’s in Istanbul I also experimented with Midjourney, generating landscapes and atmospheres from text prompts. It was exciting how fast the images came, but they had no scale, no site and nothing I could verify. That limit is part of why I now study AI that stays connected to evidence.',
+    ],
+  },
 
   // ── Previous research ──────────────────────────────────────────────────────
   {
@@ -234,19 +256,21 @@ export const SLIDES: readonly Slide[] = [
     scene: 'trajectory',
     layout: 'band',
     kicker: 'Previous research · SFU, iViz Lab',
-    title: 'Learning to build and study systems',
-    lines: ['At SFU I learned to build and evaluate the system myself, from a design question to a working prototype, a study and a paper.'],
+    title: 'Learning how AI systems are built and run',
+    lines: ['To use AI in design responsibly, I needed to understand how AI systems are built and run, not only how to prompt them. That led me to SFU and the iViz Lab, which works on AI, while I kept building architectural systems and prototypes.'],
     facts: [
       { label: 'Degree', value: 'MSc, Interactive Arts and Technology' },
       { label: 'Teaching assistant', value: 'IAT 313 · IAT 343 · IAT 102' },
     ],
     media: [
       { diagram: 'capability', caption: 'One question, carried end to end' },
+      { src: 'assets/photos/sfu-2.jpg', caption: 'SFU Surrey', credit: 'Canmenwalker · CC BY 4.0', alt: 'The multi-storey atrium of the Simon Fraser University Surrey campus, with a timber roof structure.' },
       { src: 'assets/photos/teach-iat343.jpg', caption: 'Teaching Maya · IAT 343', alt: 'Roman teaching 3D modeling in Maya in front of a projected screen.' },
     ],
-    purpose: 'Capability chain from question to publication, with the tools that serve each link; one teaching photo.',
+    purpose: 'Why SFU: learning how AI systems are built and run. Capability chain from question to publication, the SFU Surrey atrium and one teaching photo.',
     notes: [
-      'At SFU, in Prof. Steve DiPaola’s iViz Lab, I learned to carry a question the whole way: a prototype in Unity and C#, a data pipeline in Python and JavaScript, then the study and the paper. I also teach as a TA in three SIAT courses, and last week ran a Unity workshop.',
+      'Midjourney showed me what AI could produce, but not how it works. To use AI responsibly in design, I needed to learn how these systems are built and run. That led me to SFU and Prof. Steve DiPaola’s iViz Lab, which works on AI. Alongside the lab, I kept building small architectural systems and prototypes.',
+      'There I learned to carry a question the whole way: a prototype in Unity and C#, a data pipeline in Python and JavaScript, then the study and the paper. I also teach as a TA in three SIAT courses, and last week ran a Unity workshop.',
     ],
   },
   {
