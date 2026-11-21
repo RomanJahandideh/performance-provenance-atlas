@@ -10,10 +10,10 @@ Source of truth: the speaker notes in `src/data/steps.ts` (26 steps). Pace 110 t
 | Background | 3 to 10 | 336 | 3:30 | 3:27 | 3:46 |
 | Previous research | 11 to 13 | 229 | 2:15 | 2:14 | 2:26 |
 | Research projects | 14 to 18 | 249 | 2:30 | 2:31 | 2:44 |
-| PhD directions | 19 to 24 | 455 | 4:15 | 4:26 | 4:51 |
+| PhD directions | 19 to 24 | 642 | 6:15 | 6:08 | 6:43 |
 | GenEnv | 25 | 52 | 0:40 | 0:31 | 0:34 |
-| Conversation | 26 | 43 | 0:25 | 0:26 | 0:29 |
-| **Total** | **26** | **1460** | **12:30 to 14:00** | **14:34** | **15:54** |
+| Conversation | 26 | 48 | 0:25 | 0:29 | 0:32 |
+| **Total** | **26** | **1652** | **12:30 to 14:00** | **16:19** | **17:49** |
 
 ## Per step
 
@@ -38,12 +38,12 @@ Source of truth: the speaker notes in `src/data/steps.ts` (26 steps). Pace 110 t
 | 17 | Research projects | Vancouver View Corridor Massing | 50 | 8:29 |
 | 18 | Research projects | Environmental Massing Agents | 53 | 9:01 |
 | 19 | PhD directions | What already exists—and the missing link | 145 | 9:34 |
-| 20 | PhD directions | AI interprets and co-ordinates. Verified tools calculate. Designers inspect, revise and decide. | 53 | 11:00 |
-| 21 | PhD directions | One program, three possible directions | 43 | 11:33 |
-| 22 | PhD directions | Verified Performance Co-Designer | 74 | 12:01 |
-| 23 | PhD directions | Evidence-Calibrated Climate Co-Designer | 68 | 12:46 |
-| 24 | PhD directions | Embodied Performance Reasoning Studio | 72 | 13:28 |
-| 25 | GenEnv | Where my path meets GenEnv | 52 | 14:12 |
-| 26 | Conversation | Thank you | 43 | 14:45 |
+| 20 | PhD directions | Between the designer’s intention and the final decision | 76 | 11:00 |
+| 21 | PhD directions | Performance EvidenceGraph Co‑Designer | 121 | 11:46 |
+| 22 | PhD directions | Negotiable‑Agency Performance Co‑Designer | 106 | 12:58 |
+| 23 | PhD directions | Multi‑Agent Performance Deliberation Studio | 126 | 14:02 |
+| 24 | PhD directions | Comparing the three directions | 68 | 15:17 |
+| 25 | GenEnv | Where my path meets GenEnv | 52 | 15:59 |
+| 26 | Conversation | Thank you | 48 | 16:32 |
 
 Rehearsal checkpoints (105 wpm): the presenter window (`P`) shows the same "start by" time for every step.

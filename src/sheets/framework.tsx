@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useT, win } from './useT';
-import { ARCHITECTURE, AUTONOMY, CONDITIONS, CONFLUENCE, DIRECTIONS, GAPS, LOOP, PROGRAM, PROVENANCE_LINKS, PROVENANCE_RECORD, REMAINING_GAP, RESEARCH_QUESTIONS, ROLE_STYLE, SCENARIO, STATE_OF_ART, type Role } from '../data/provenance';
+import { ARCHITECTURE, AUTONOMY, COMPARISON, CONDITIONS, CONFLUENCE, DIRECTIONS, GAPS, LOOP, PLATFORM, PLATFORM_START, PLATFORM_TOOLS, PROGRAM, PROVENANCE_LINKS, PROVENANCE_RECORD, REMAINING_GAP, RESEARCH_QUESTIONS, ROLE_STYLE, SCENARIO, STATE_OF_ART, type Role } from '../data/provenance';
 import { GENENV_TERRITORY, PHD_DISTRICTS, TERRITORIES } from '../data/atlas';
 import type { EvidenceStatus } from '../data/types';
 
@@ -863,7 +863,7 @@ export function Loop() {
   );
 }
 
-// ── One program, three possible directions ─────────────────────────────────
+// ── One program, three possible directions (kept for reuse; not on a step) ──
 export function Branches() {
   const t = useT(3000, 300);
   const ys = [20, 195, 370];
@@ -888,14 +888,11 @@ export function Branches() {
             <T x={656} y={y + 38} size={26} weight={700} fill="var(--proposal)">
               {`${d.n} · ${d.name}`}
             </T>
-            <T x={656} y={y + 70} size={20}>
-              {d.branch}
+            <T x={656} y={y + 72} size={20}>
+              {d.question}
             </T>
-            <T x={656} y={y + 104} size={16} fill={W6} mono>
-              {`CLOSEST GENENV WORK: ${d.closestGenEnv.toUpperCase()}`}
-            </T>
-            <T x={656} y={y + 130} size={16} fill={W6} mono>
-              {`MY EVIDENCE: ${d.myEvidence.toUpperCase()}`}
+            <T x={656} y={y + 110} size={16} fill={W6} mono>
+              {`EMPHASIS: ${d.emphasis.toUpperCase()}`}
             </T>
           </g>
         );
@@ -904,66 +901,153 @@ export function Branches() {
   );
 }
 
-// ── One direction: prototype tool chain, bounded test, questions, methods, contribution ──
-function DirectionView({ index }: { index: number }) {
-  const d = DIRECTIONS[index]!;
-  const t = useT(3600, 300);
-  const bw = 236;
-  const gap = 20;
-  const x0 = 20;
-  const y = 30;
-  const bh = 120;
-  const n = d.chain.length;
+const PROPOSED = 'PROPOSED PHD RESEARCH · NOT YET BUILT';
+
+/** A row of role boxes joined by arrows; `hl` boxes are drawn heavier. */
+function SystemRow({ items, x0, y, bw, bh, gap, t, label }: { items: readonly { n: string; sub: string; role: Role; key?: boolean }[]; x0: number; y: number; bw: number; bh: number; gap: number; t: number; label: number }) {
   return (
-    <Svg vb="0 0 1600 560" label={`${d.name}: prototype tool chain, bounded test, research questions, methods and contribution.`}>
-      {d.chain.map((c, i) => {
+    <>
+      {items.map((c, i) => {
         const x = x0 + i * (bw + gap);
-        const on = win(t, i * 0.07, i * 0.07 + 0.14);
+        const on = win(t, i * 0.06, i * 0.06 + 0.14);
         return (
           <g key={c.n} opacity={0.15 + 0.85 * on}>
-            {i < n - 1 && (
-              <line x1={x + bw + 2} y1={y + bh / 2} x2={x + bw + gap - 3} y2={y + bh / 2} stroke={W6} strokeWidth={2} markerEnd="url(#fwArrow)" markerStart={d.twoWay ? 'url(#fwArrow)' : undefined} />
-            )}
+            {i < items.length - 1 && <line x1={x + bw + 2} y1={y + bh / 2} x2={x + bw + gap - 3} y2={y + bh / 2} stroke={W6} strokeWidth={2} markerEnd="url(#fwArrow)" />}
+            {c.key && <rect x={x - 7} y={y - 7} width={bw + 14} height={bh + 14} fill="rgba(137,167,255,0.10)" stroke="var(--proposal)" strokeWidth={4} />}
             <RoleBox x={x} y={y} w={bw} h={bh} role={c.role} />
-            <T x={x + 16} y={y + 44} size={21} weight={600} lh={1.22}>
-              {wrap(c.n, 19).join('\n')}
+            <T x={x + 14} y={y + 34} size={label} weight={c.key ? 700 : 600} lh={1.2} fill={W}>
+              {wrap(c.n, Math.floor((bw - 28) / (label * 0.55))).join('\n')}
+            </T>
+            <T x={x + 14} y={y + bh - 16 - (wrap(c.sub, Math.floor((bw - 26) / 8.7)).length - 1) * 17.5} size={14} fill={W6} mono lh={1.25}>
+              {wrap(c.sub, Math.floor((bw - 26) / 8.7)).join('\n')}
             </T>
           </g>
         );
       })}
-      <T x={x0} y={y + bh + 42} size={18} fill={W6} mono>
-        {`PROTOTYPE · BOUNDED TEST: ${d.test.toUpperCase()}`}
+    </>
+  );
+}
+
+/** Return path from the last box to the first: the designer's revision loop. */
+function Feedback({ x1, x2, y, t, label }: { x1: number; x2: number; y: number; t: number; label: string }) {
+  return (
+    <g opacity={win(t, 0.5, 0.7)}>
+      <path d={`M${x2} ${y} C ${x2} ${y + 46}, ${x1} ${y + 46}, ${x1} ${y + 4}`} fill="none" stroke="var(--coral)" strokeWidth={2} strokeDasharray="6 6" markerEnd="url(#fwArrowC)" />
+      <rect x={(x1 + x2) / 2 - 190} y={y + 24} width={380} height={28} fill={BG} />
+      <T x={(x1 + x2) / 2} y={y + 44} size={15} fill="var(--coral)" anchor="middle" mono>
+        {label}
       </T>
-      <g opacity={win(t, 0.45, 0.65)}>
-        <T x={x0} y={250} size={17} fill={W6} mono>
-          RESEARCH QUESTIONS
-        </T>
-        {d.questions.map((q, i) => (
-          <T key={q} x={x0} y={284 + i * 80} size={20} lh={1.28}>
-            {wrap(`${i + 1}. ${q}`, 54).join('\n')}
-          </T>
-        ))}
-      </g>
-      <g opacity={win(t, 0.6, 0.8)}>
-        <T x={660} y={250} size={17} fill={W6} mono>
-          METHODS
-        </T>
-        {d.methods.map((m, i) => (
-          <g key={m}>
-            <rect x={660} y={272 + i * 58} width={10} height={10} fill={W6} />
-            <T x={682} y={283 + i * 58} size={20} lh={1.25}>
-              {wrap(m, 34).join('\n')}
+    </g>
+  );
+}
+
+// ── The shared doctoral platform ───────────────────────────────────────────
+export function Platform() {
+  const t = useT(3200, 300);
+  const bw = 176;
+  const gap = 21;
+  const x0 = 20;
+  const y = 60;
+  const bh = 150;
+  const tags: Record<number, string> = { 1: 'EVIDENCE GRAPH', 2: 'AGENCY CONTROLLER', 3: 'DELIBERATION' };
+  return (
+    <Svg vb="0 0 1600 520" label="The shared platform: designer intent, structured representation, AI planner, MCP tool routing, Rhino and Grasshopper, deterministic simulation, evidence and verification, comparison and revision interface.">
+      <T x={20} y={30} size={16} fill="var(--proposal)" weight={700} mono>
+        {PROPOSED}
+      </T>
+      <SystemRow items={PLATFORM} x0={x0} y={y} bw={bw} bh={bh} gap={gap} t={t} label={19} />
+      <Feedback x1={x0 + bw / 2} x2={x0 + 7 * (bw + gap) + bw / 2} y={y + bh} t={t} label="REVISE · APPROVE · ROLL BACK" />
+      {PLATFORM.map((p, i) =>
+        p.emph ? (
+          <g key={p.n} opacity={win(t, 0.6 + p.emph * 0.08, 0.75 + p.emph * 0.08)}>
+            <line x1={x0 + i * (bw + gap) + bw / 2} y1={y + bh + 62} x2={x0 + i * (bw + gap) + bw / 2} y2={y + bh + 92} stroke="var(--proposal)" strokeWidth={2} strokeDasharray="2 5" />
+            <circle cx={x0 + i * (bw + gap) + bw / 2} cy={y + bh + 112} r={18} fill="none" stroke="var(--proposal)" strokeWidth={2.4} />
+            <T x={x0 + i * (bw + gap) + bw / 2} y={y + bh + 119} size={19} weight={700} anchor="middle" fill="var(--proposal)">
+              {String(p.emph)}
+            </T>
+            <T x={x0 + i * (bw + gap) + bw / 2} y={y + bh + 156} size={14} anchor="middle" fill="var(--proposal)" mono>
+              {tags[p.emph]!}
             </T>
           </g>
-        ))}
+        ) : null,
+      )}
+      <g opacity={win(t, 0.8, 1)}>
+        <rect x={20} y={394} width={1560} height={1} fill={W3} />
+        <Glyph x={32} y={425} role="ai" s={18} />
+        <T x={52} y={432} size={20} weight={600}>
+          The language model interprets, plans, calls tools and explains. It does not calculate performance numbers.
+        </T>
+        <Glyph x={32} y={461} role="compute" s={18} />
+        <T x={52} y={468} size={20} fill={W6}>
+          {PLATFORM_START}
+        </T>
+        <T x={20} y={508} size={14} fill={W6} mono>
+          {PLATFORM_TOOLS}
+        </T>
+      </g>
+    </Svg>
+  );
+}
+
+// ── One direction: its system, what is new, how it would be evaluated ──────
+function DirectionView({ index }: { index: number }) {
+  const d = DIRECTIONS[index]!;
+  const t = useT(3600, 300);
+  const bw = 204;
+  const gap = 22;
+  const x0 = 20;
+  const y = 56;
+  const bh = 140;
+  return (
+    <Svg vb="0 0 1600 560" label={`${d.name}: proposed system, highlighted ${d.emphasis}, evaluation and contribution.`}>
+      <T x={20} y={28} size={16} fill="var(--proposal)" weight={700} mono>
+        {`${PROPOSED} · DIRECTION ${d.n} OF 3`}
+      </T>
+      <SystemRow items={d.system} x0={x0} y={y} bw={bw} bh={bh} gap={gap} t={t} label={20} />
+      <Feedback x1={x0 + bw / 2} x2={x0 + 6 * (bw + gap) + bw / 2} y={y + bh} t={t} label="REVISE · APPROVE · ROLL BACK" />
+      <g opacity={win(t, 0.45, 0.65)}>
+        <T x={20} y={286} size={17} fill="var(--proposal)" weight={700} mono>
+          {`WHAT IS NEW · ${d.emphasis.toUpperCase()}`}
+        </T>
+        {d.keyPoints.map((k, i) => {
+          const y = 306 + d.keyPoints.slice(0, i).reduce((a, p) => a + wrap(p, 44).length * 25.6 + 18, 0);
+          return (
+            <g key={k}>
+              <rect x={20} y={y} width={10} height={10} fill="var(--proposal)" />
+              <T x={42} y={y + 11} size={20} lh={1.28}>
+                {wrap(k, 44).join('\n')}
+              </T>
+            </g>
+          );
+        })}
+      </g>
+      <g opacity={win(t, 0.6, 0.8)}>
+        <T x={560} y={286} size={17} fill={W6} mono>
+          EVALUATION
+        </T>
+        <T x={560} y={320} size={16} fill="var(--cyan)" mono>
+          TECHNICAL
+        </T>
+        <T x={560} y={346} size={19} lh={1.28}>
+          {wrap(d.technical, 44).join('\n')}
+        </T>
+        <T x={560} y={440} size={16} fill="var(--coral)" mono>
+          WITH DESIGNERS
+        </T>
+        <T x={560} y={466} size={19} lh={1.28}>
+          {wrap(d.study, 44).join('\n')}
+        </T>
       </g>
       <g opacity={win(t, 0.75, 0.95)}>
-        <RoleBox x={1090} y={230} w={490} h={320} role="proposal" />
-        <T x={1114} y={268} size={17} fill="var(--proposal)" weight={700} mono>
+        <RoleBox x={1090} y={266} w={490} h={284} role="proposal" />
+        <T x={1112} y={302} size={17} fill="var(--proposal)" weight={700} mono>
           CONTRIBUTION
         </T>
-        <T x={1114} y={312} size={23} weight={600} lh={1.3}>
-          {wrap(d.contribution, 34).join('\n')}
+        <T x={1112} y={340} size={21} weight={600} lh={1.3}>
+          {wrap(d.contribution, 36).join('\n')}
+        </T>
+        <T x={1112} y={482} size={14} fill="var(--yellow)" mono lh={1.35}>
+          {wrap(`BUILDS ON: ${d.buildsOn}`, 50).join('\n')}
         </T>
       </g>
     </Svg>
@@ -973,6 +1057,50 @@ function DirectionView({ index }: { index: number }) {
 export const Dir1 = () => <DirectionView index={0} />;
 export const Dir2 = () => <DirectionView index={1} />;
 export const Dir3 = () => <DirectionView index={2} />;
+
+// ── The three directions compared ──────────────────────────────────────────
+export function Compare() {
+  const t = useT(2600, 300);
+  const cx = [20, 400, 800, 1200];
+  const cw = [370, 390, 390, 380];
+  const rowH = 52;
+  const y0 = 86;
+  return (
+    <Svg vb="0 0 1600 600" label="Comparison of the three possible directions across nine criteria.">
+      <rect x={cx[1]! - 10} y={14} width={cw[1]! + 4} height={y0 + COMPARISON.length * rowH - 6} fill="rgba(137,167,255,0.08)" stroke="var(--proposal)" strokeWidth={2.4} />
+      {DIRECTIONS.map((d, i) => (
+        <g key={d.n}>
+          <T x={cx[i + 1]!} y={44} size={16} fill="var(--proposal)" weight={700} mono>
+            {`DIRECTION ${d.n}`}
+          </T>
+          <T x={cx[i + 1]!} y={72} size={19} weight={700}>
+            {d.short}
+          </T>
+        </g>
+      ))}
+      {COMPARISON.map((r, i) => {
+        const y = y0 + i * rowH;
+        const on = win(t, i * 0.06, i * 0.06 + 0.2);
+        return (
+          <g key={r.criterion} opacity={0.15 + 0.85 * on}>
+            <rect x={20} y={y} width={1560} height={1} fill={W1} />
+            <T x={cx[0]!} y={y + 33} size={15} fill={W6} mono>
+              {r.criterion.toUpperCase()}
+            </T>
+            {r.cells.map((c, k) => (
+              <T key={k} x={cx[k + 1]!} y={y + 33} size={19} weight={i === COMPARISON.length - 1 && k === 0 ? 700 : 400} fill={i === COMPARISON.length - 1 && k === 0 ? 'var(--proposal)' : W}>
+                {c}
+              </T>
+            ))}
+          </g>
+        );
+      })}
+      <T x={20} y={y0 + COMPARISON.length * rowH + 22} size={14} fill={W6} mono>
+        ALTERNATIVES FOR DISCUSSION · ONE WOULD BECOME THE DISSERTATION · “FIT WITH PROGRAM” IS MY READING OF ITS PUBLIC TITLE
+      </T>
+    </Svg>
+  );
+}
 
 export const FRAMEWORK_RATIO = {
   'atlas-open': 1600 / 560,
@@ -988,6 +1116,8 @@ export const FRAMEWORK_RATIO = {
   soa: 1600 / 560,
   loop: 1600 / 430,
   branches: 1600 / 540,
+  platform: 1600 / 520,
+  compare: 1600 / 600,
   dir1: 1600 / 560,
   dir2: 1600 / 560,
   dir3: 1600 / 560,

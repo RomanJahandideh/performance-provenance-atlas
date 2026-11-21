@@ -46,7 +46,7 @@ export const SCENES: readonly Scene[] = [
   {
     id: 'phd',
     title: 'Three possible directions within the Human-AI Co-Design program',
-    citationIds: ['ubc-nserc-2026', 'genenv-hacd', 'genenv-ghmcp', 'liu-tian-2025', 'jin-esim2026', 'lam-archsim', 'genenv-sandbox', 'gh-vr', 'eplus-agent'],
+    citationIds: ['ubc-nserc-2026', 'genenv-home', 'genenv-openings', 'genenv-hacd', 'genenv-ghmcp', 'liu-tian-2025', 'lam-archsim', 'energyplus-mcp-2025', 'li-mcp-bem-2026', 'zhang-agent-schema-2025', 'eplus-agent', 'optimuse', 'maier-chi2026', 'req2cad-chi2026', 'jin-esim2026'],
     evidenceIds: ['phd-provisional', 'genenv-modes', 'vcm-trimmed', 'vcm-gfa-recovery', 'vcm-placeholders'],
   },
   {

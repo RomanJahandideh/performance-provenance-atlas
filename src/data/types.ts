@@ -118,6 +118,8 @@ export type DiagramId =
   | 'soa'
   | 'loop'
   | 'branches'
+  | 'platform'
+  | 'compare'
   | 'dir1'
   | 'dir2'
   | 'dir3';

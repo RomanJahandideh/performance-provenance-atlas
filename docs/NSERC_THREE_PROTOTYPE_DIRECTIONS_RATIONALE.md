@@ -1,3 +1,5 @@
+> **Superseded on 2026-11-20:** the three directions below were replaced by an evidence-aware co-designer, negotiable agency and multi-agent performance deliberation. See `PHD_DIRECTIONS_REVISION_2026-11-20.md`.
+
 # Three Possible Directions: Rationale
 
 Why the deck now ends with three possible directions within one program instead of one fixed

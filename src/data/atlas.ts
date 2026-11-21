@@ -71,7 +71,7 @@ export const TERRITORIES: readonly Territory[] = [
 ] as const;
 
 /** Inside the proposed territory, resolved on the closing step. */
-export const PHD_DISTRICTS = ['Contract', 'Climate', 'Embodied'] as const;
+export const PHD_DISTRICTS = ['Evidence', 'Agency', 'Deliberation'] as const;
 
 /** GenEnv's work, attributed and bounded separately (not Roman's projects). */
 export const GENENV_TERRITORY = {
