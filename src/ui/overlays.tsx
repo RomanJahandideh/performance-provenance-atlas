@@ -169,7 +169,7 @@ export function Legend() {
     ['Under revision', 'orange hatch, dashed outline'],
     ['Verified implementation', 'wireframe with cyan control points'],
     ['Proposed', 'dotted outline, proposal blue'],
-    ['GenEnv work', 'double outline, attributed, not mine'],
+    ['Field precedents', 'double outline, others’ work, not mine'],
   ];
   return (
     <div className="overlay-screen" role="dialog" aria-modal="true" aria-label="Legend" onClick={() => setState({ legendOpen: false })}>

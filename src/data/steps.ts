@@ -1,8 +1,8 @@
 import type { Slide, Step } from './types';
-import { DIRECTIONS, PROGRAM } from './provenance';
+import { DIRECTIONS } from './provenance';
 
 /**
- * The talk for Prof. Xun Liu (GenEnv, UBC SALA). It opens with Roman's present
+ * The talk for a PhD interview (Design, Technology and Society). It opens with Roman's present
  * research question, then follows the path that produced it: making, spatial
  * form at Tabriz, environmental systems at Istanbul, measured perception,
  * building and studying systems at SFU, exploratory computational-design
@@ -22,7 +22,7 @@ export const SECTIONS = [
   { name: 'Previous research', target: '2:15' },
   { name: 'Research projects', target: '2:30' },
   { name: 'PhD directions', target: '6:15' },
-  { name: 'GenEnv', target: '0:40' },
+  { name: 'Research fit', target: '0:40' },
   { name: 'Conversation', target: '0:25' },
 ] as const;
 
@@ -36,7 +36,7 @@ export const SLIDES: readonly Slide[] = [
     chapter: 'Opening',
     scene: 'opening',
     layout: 'title',
-    kicker: 'PhD interview · Generative Environments Lab · UBC SALA · Fall 2027',
+    kicker: 'PhD interview · Design, Technology and Society · Fall 2027',
     title: 'From environmental evidence to performance-aware co-design',
     lines: ['My work asks how AI can help designers explore built environments without losing the rules, performance evidence, editable geometry and human judgment that make a proposal accountable.'],
     facts: [
@@ -58,12 +58,12 @@ export const SLIDES: readonly Slide[] = [
     kicker: 'The question, and the route to it',
     title: 'A proposal is only useful if a designer can check it',
     lines: ['AI can generate convincing spatial proposals. Designers still need the rules, calculations, assumptions and decisions behind them to stay valid as the design changes.'],
-    facts: [{ label: 'GenEnv research program', value: PROGRAM, tone: 'proposal' }],
+    facts: [{ label: 'Research area', value: 'Human-AI co-design for performance-aware constructed environments', tone: 'proposal' }],
     media: [{ diagram: 'route', caption: 'Each stage, and what it carried forward' }],
-    purpose: 'The question and the GenEnv program, then the route from making to human-AI co-design with one capability carried from each stage.',
+    purpose: 'The question and the research area, then the route from making to human-AI co-design with one capability carried from each stage.',
     notes: [
       'AI can already produce convincing massing proposals. But a designer can only use one if they can see which rule it followed, how its performance was calculated, and what was assumed.',
-      'I will end with three possible directions within GenEnv’s Human-AI Co-Design program. First, the route that led me here.',
+      'I will end with three possible doctoral directions in human-AI co-design for performance-aware design. First, the route that led me here.',
     ],
   },
 
@@ -423,13 +423,12 @@ export const SLIDES: readonly Slide[] = [
     layout: 'band',
     kicker: 'State of the art → open research problem',
     title: 'What already exists—and the missing link',
-    lines: ['Existing systems can translate language into parametric operations, run performance analyses, and connect design models across tools. The remaining challenge is keeping the resulting evidence valid, traceable, and open to designer challenge as the model continues to change.'],
-    media: [{ diagram: 'soa', caption: 'Selected representative work, 2016 to 2026; Xun Liu, GenEnv and UBC work in yellow' }],
-    purpose: 'Selected existing capabilities with references, attributed Xun Liu, GenEnv and UBC work highlighted in yellow (starting with the earlier XL Studio environmental-feedback work), then a cautiously worded open research problem scoped to the systems reviewed.',
+    lines: ['Existing systems can translate design intentions into parametric operations, connect language models to professional design tools, and invoke environmental or building-performance analysis. The unresolved challenge is maintaining valid, traceable and contestable evidence while the design, assumptions and tools continue to change.'],
+    media: [{ diagram: 'soa', caption: 'Selected precedents, 2020 to 2026, grouped by research capability' }],
+    purpose: 'A neutral map of the field by capability, with works named by title and venue (full citations in the drawer), leading to a cautiously worded open research problem.',
     notes: [
-      'Before defining a direction, I reviewed recent work across computational design, building simulation and human–AI co-design. There is already strong research connecting language models to Grasshopper, generating CAD, running simulations and bringing parametric models into VR.',
-      'Reading the earlier XL Studio projects helped me see a longer trajectory in your work. FluX and The Third Simulation brought environmental processes into interactive design feedback; ECO GEN connected ecological data with generative design; and Archi-Agent connected natural-language intent with parametric operations. My proposed directions build on that trajectory by asking how performance evidence, uncertainty and design changes can remain traceable and under the designer’s control.',
-      'Across the systems I reviewed, however, I did not find one continuous, human-governed workflow that keeps performance evidence valid and traceable as geometry, assumptions and tool states change. That is the shared problem behind the three directions I will show next.',
+      'I arrived at these directions by looking across computational design, building-performance simulation and HCI. What I found interesting is that the individual capabilities increasingly exist: language connected to parametric operations, agents that configure and run energy simulation, structured text-to-CAD, mixed-initiative co-creation, and links between design environments.',
+      'But the connection between them is still fragile. Recent systems address individual parts of this workflow. Keeping performance evidence valid and traceable while geometry, assumptions and tools change, and leaving consequential decisions open to the designer, remains insufficiently resolved.',
     ],
   },
   {
@@ -439,12 +438,12 @@ export const SLIDES: readonly Slide[] = [
     layout: 'band',
     kicker: 'Proposed PhD research · one shared platform',
     title: 'Between the designer’s intention and the final decision',
-    lines: ['Three possible directions within Xun Liu’s NSERC program, built on one platform. The language model plans and explains; validated tools calculate.'],
+    lines: ['Three possible doctoral directions built on one shared platform for human-AI performance co-design. The language model interprets, plans and explains; validated tools calculate.'],
     media: [{ diagram: 'platform', caption: 'Shared doctoral platform; the numbers mark where each direction puts its weight' }],
     purpose: 'The shared pipeline from designer intent to the comparison and revision interface, the three emphases marked, the rule that the language model does not calculate, and a bounded first case.',
     notes: [
-      'What interests me is not asking an AI to generate a final building. I want to study the system between the designer’s intention and the final decision: how the AI translates an intention into editable geometry, calls the right analysis tools, brings the results back, and lets the designer understand and challenge what happened.',
-      'The model plans; validated tools calculate. I would start with one Vancouver site, Rhino and Grasshopper, and one or two performance domains.',
+      'The important research space is not only the generated form. It is the system between a designer’s intention and the final decision: how intentions become structured operations, how tools calculate performance, how evidence stays attached to the right model state, and how designers keep the ability to question and revise the result.',
+      'I do not want the language model to replace the performance engine or the designer. It interprets intention, coordinates tools and explains alternatives; validated software calculates. These are not three systems I am promising to build together, but three possible doctoral emphases on one shared foundation.',
     ],
   },
   {
@@ -457,11 +456,11 @@ export const SLIDES: readonly Slide[] = [
     lines: [DIRECTIONS[0]!.question],
     facts: [{ label: 'Working title', value: DIRECTIONS[0]!.workingTitle, tone: 'proposal' }],
     media: [{ diagram: 'dir1', caption: 'Proposed system with the evidence graph highlighted; evaluation; contribution' }],
-    purpose: 'Direction 1: the seven-part system with the evidence graph highlighted, what is new, technical benchmark and designer study, contribution and the work it builds on.',
+    purpose: 'Direction 1: the seven-part system with the evidence graph highlighted, what is new, technical benchmark and designer study, proposed contribution and its research foundation.',
     notes: [
-      'My strongest starting point is an evidence-aware co-designer. If the AI changes the geometry, the system should know which previous simulation results are no longer valid. It should not confidently explain an old result as if it still belongs to the current design.',
-      'So every performance claim would link to its geometry, parameters, weather file, tool version, settings and units. If a designer asks to make a courtyard more open but keep summer comfort, the AI proposes editable changes, the designer approves, Grasshopper updates, the analysis reruns, and the old result is marked stale with a reason.',
-      'I would test it first with a benchmark of edits, failed tool calls and stale results, then with designers, against an ordinary chat-and-simulation workflow.',
+      'The first direction is an evidence-aware co-designer, and it is my strongest starting point because it connects editable geometry, deterministic calculation, AI planning and the designer’s ability to verify and revise. If the AI changes the geometry, the system should know which previous simulation results are no longer valid, and not explain an old result as if it still belongs to the current design.',
+      'So every performance claim would link to its geometry, parameters, weather file, tool version, settings and units. If a designer asks to make a courtyard more open but keep summer comfort, the AI proposes editable changes, the designer approves, the model updates, the analysis reruns, and the old result is marked stale with a reason.',
+      'I would test it with a benchmark of edits, failed tool calls and stale results, then with designers, against an ordinary chat-and-simulation workflow.',
     ],
   },
   {
@@ -474,10 +473,10 @@ export const SLIDES: readonly Slide[] = [
     lines: [DIRECTIONS[1]!.question],
     facts: [{ label: 'Working title', value: DIRECTIONS[1]!.workingTitle, tone: 'proposal' }],
     media: [{ diagram: 'dir2', caption: 'Proposed system with the agency controller highlighted; evaluation; contribution' }],
-    purpose: 'Direction 2: the seven-part system with the agency controller highlighted, attribution to GenEnv’s Grasshopper MCP modes and ArchSim, three agency conditions, contribution.',
+    purpose: 'Direction 2: the seven-part system with the agency controller highlighted; permissions that shift with consequence, reversibility, confidence, evidence quality, stage and preference; three agency conditions; proposed contribution.',
     notes: [
       'The second direction asks when the AI should act and when it should stop and ask. I want the designer to be able to negotiate the AI’s role instead of giving it one fixed level of autonomy.',
-      'Your Grasshopper MCP already has modes like Inspect, Coach and Execute, so the modes themselves are not the contribution. The question is whether permissions can adjust to consequence, reversibility and the strength of the evidence. For example, the AI may explore shading depths freely but must ask before changing the footprint.',
+      'Fixed modes, from inspecting to executing, already exist in design tools, so the modes themselves are not the contribution. The question is whether permissions can shift with consequence, reversibility, confidence, evidence quality, design stage and the designer’s preference. For example, the AI may explore shading depths freely but must ask before changing the footprint.',
       'I would compare fixed low autonomy, fixed high autonomy and negotiated agency, on real models with real analysis.',
     ],
   },
@@ -491,10 +490,10 @@ export const SLIDES: readonly Slide[] = [
     lines: [DIRECTIONS[2]!.question],
     facts: [{ label: 'Working title', value: DIRECTIONS[2]!.workingTitle, tone: 'proposal' }],
     media: [{ diagram: 'dir3', caption: 'Proposed system with the deliberation interface highlighted; evaluation; contribution' }],
-    purpose: 'Direction 3: the seven-part system with the deliberation and conflict view highlighted, two bounded domains, three deliberation conditions, contribution beyond existing agent role division.',
+    purpose: 'Direction 3: the seven-part system with the deliberation and conflict view highlighted; what separates it from an ordinary multi-agent workflow; three deliberation conditions; proposed contribution.',
     notes: [
       'The third direction treats performance design as a real disagreement between priorities. Instead of hiding that disagreement inside one score, specialist agents would show their evidence and let the designer decide how the trade-off should shape the project.',
-      'Multi-agent modelling and simulation already exist, including ArchSim here at UBC, so more agents is not the point. I would start with two domains, for example daylight and energy. If the daylight agent wants a larger opening and the energy agent warns about cooling, the system shows both claims with their simulation results, generates bounded alternatives, and asks the designer how to weigh them.',
+      'Multi-agent design systems already exist, so more agents is not the point. Here every agent must call a deterministic tool and cite its result. I would start with two domains, for example daylight and energy. If the daylight agent wants a larger opening and the energy agent warns about cooling, the system shows both claims, links them to the opening size, generates bounded alternatives, and asks the designer how to weigh them.',
       'I would compare a single agent, hidden multi-agent agreement and visible deliberation. It is the most ambitious of the three, and the riskiest technically.',
     ],
   },
@@ -505,28 +504,28 @@ export const SLIDES: readonly Slide[] = [
     layout: 'band',
     kicker: 'Three alternatives · for discussion',
     title: 'Comparing the three directions',
-    lines: ['My strongest current starting point is Direction 1, but I would value your guidance on which direction most closely supports the funded program and the lab’s developing systems.'],
-    media: [{ diagram: 'compare', caption: 'Nine criteria; one direction would become the dissertation' }],
+    lines: ['My strongest current starting point is Direction 1, but I would value your perspective on which research question has the greatest doctoral potential and where a focused first system should begin.'],
+    media: [{ diagram: 'compare', caption: 'Nine criteria; three alternative dissertation emphases' }],
     purpose: 'Side-by-side comparison; Direction 1 marked as the current starting point without being chosen permanently.',
     notes: [
-      'Side by side: the first is about whether evidence stays valid, the second about who holds control, the third about competing objectives. All three use the same platform and Rhino and Grasshopper, and all three end with a human decision.',
-      'My strongest current starting point is Direction 1, but I would value your guidance on which direction most closely supports the funded program and the lab’s developing systems.',
+      'Side by side: the first is about whether evidence stays valid, the second about who holds control, the third about competing objectives. All three share one platform and end with a human decision.',
+      'My strongest current starting point is evidence continuity, but I am open to refining the question based on supervisory guidance, feasibility and the most valuable research gap.',
     ],
   },
 
-  // ── GenEnv ─────────────────────────────────────────────────────────────────
+  // ── Research fit ───────────────────────────────────────────────────────────
   {
     id: 'genenv',
-    chapter: 'GenEnv',
+    chapter: 'Research fit',
     scene: 'genenv',
     layout: 'band',
-    kicker: 'Why GenEnv',
-    title: 'Where my path meets GenEnv',
-    lines: ['My background has taken me from spatial design and environmental systems to HCI and AI-assisted design. GenEnv is where these strands can become one rigorous research direction.'],
-    media: [{ diagram: 'confluence', caption: 'What I start with, the shared question, what I hope to develop' }],
-    purpose: 'Convergence: starting point (design and systems; interactive systems and projects) into the shared question, then what Roman needs GenEnv to develop; the three directions as a small note.',
+    kicker: 'Research fit',
+    title: 'Where my research path converges',
+    lines: ['My path has moved from architecture and landscape systems to interactive environments, HCI and AI-assisted design. I now want to bring these areas together in one rigorous research direction focused on how designers and computational systems can reason through performance without hiding evidence or removing human judgment.'],
+    media: [{ diagram: 'confluence', caption: 'My starting point, the shared question, what I hope to develop' }],
+    purpose: 'Convergence: Roman’s starting point (design and systems; interactive systems and projects) into the shared question, then what he hopes to develop; the three directions as alternative starting positions.',
     notes: [
-      'I come with design judgment from architecture and landscape, GIS and systems thinking, interactive systems and HCI studies, and early research projects. What I need GenEnv for is deeper Rhino, Grasshopper and MCP integration, validated simulation, co-design theory and professional verification, so that one of these directions becomes a focused doctoral system.',
+      'I bring design judgment from architecture and landscape, GIS and systems thinking, VR and Unity development, HCI studies and early research projects. What I hope to develop is deeper Rhino and Grasshopper work, structured AI-to-tool communication, validated performance analysis and verification methods, so that one of these directions becomes a focused doctoral system.',
     ],
   },
 
@@ -543,14 +542,14 @@ export const SLIDES: readonly Slide[] = [
       { label: 'github.com/RomanJahandideh', url: 'https://github.com/RomanJahandideh' },
     ],
     questions: [
-      'Which emphasis would contribute most to the program and the lab’s developing systems: evidence, agency or deliberation?',
-      'Which performance tools, datasets and design cases are already available or planned within GenEnv?',
-      'Which first contribution would be most valuable to the lab: the benchmark and protocol, a validated domain prototype, or the human-AI study?',
+      'Which emphasis has the greatest doctoral potential: evidence, agency or deliberation?',
+      'Which performance tools, datasets and design cases would make the strongest first testbed?',
+      'Which first contribution would be most valuable: the benchmark and protocol, a validated domain prototype, or the human-AI study?',
     ],
     media: [{ diagram: 'atlas-full' }],
     purpose: 'Three questions beside the resolved research map.',
     notes: [
-      'Thank you. Three questions. Which of the three emphases, evidence, agency or deliberation, would contribute most to the program? Which tools, datasets and design cases does the lab already have? And which first contribution would be most valuable: the protocol, a validated prototype, or the study with designers?',
+      'Thank you. Three questions. Which of the three emphases, evidence, agency or deliberation, has the greatest doctoral potential? Which tools, datasets and design cases would make the strongest first testbed? And which first contribution would be most valuable: the protocol, a validated prototype, or the study with designers?',
     ],
   },
 ] as const;

@@ -138,39 +138,40 @@ export const GAPS = [
 export const FIRST_STUDY =
   'Begin with one bounded Vancouver case, connect a verified rule set and one or two performance checks to editable parametric geometry, and study how designers inspect and revise AI suggestions.';
 
-/** The GenEnv step: one shared question, Roman's starting point, what he hopes to develop. */
+/** The research-fit step: Roman's starting point, the shared question, what he hopes to develop. */
 export const CONFLUENCE = {
-  question: 'How can people and AI design constructed environments together while keeping rules, performance evidence, editable operations and human decisions visible?',
-  background: 'Architecture and landscape judgment · GIS and environmental systems',
-  projects: 'Unity, VR and interactive systems · HCI studies · early zoning, massing, verification and environmental-agent projects',
-  develop: 'Advanced Rhino, Grasshopper and MCP integration · validated performance simulation · human and AI co-design theory · professional verification protocols · one focused doctoral system',
-  developNote: 'Which direction, tools and first case to begin with would be shaped with the lab.',
+  question: 'How can people and AI design constructed environments together while keeping design rules, performance evidence, editable operations and consequential human decisions visible?',
+  background: 'Architecture and landscape-design judgment · GIS and environmental systems',
+  projects: 'Interactive environments and VR · Unity and system development · HCI experiments and user studies · early zoning, massing, verification and environmental-agent projects',
+  develop: 'Advanced Rhino and Grasshopper workflows · structured AI-to-tool communication · validated performance analysis · human-AI co-design theory · verification and provenance methods · one focused doctoral research system',
+  developNote: 'The final direction, analytical tools and first design case would be refined through doctoral supervision, technical feasibility testing and the strongest identified research gap.',
   noteLabel: 'THREE POSSIBLE DIRECTIONS · FOR DISCUSSION',
-  note: 'An evidence-aware co-designer, negotiable agency, or multi-agent performance deliberation, on one shared platform. One would become the dissertation, chosen with your guidance.',
+  note: 'These are alternative starting positions rather than three promised dissertations. I would value your guidance in identifying which one offers the strongest foundation for a focused doctoral contribution.',
 } as const;
 
-/** The program all three directions belong to (UBC NSERC Discovery announcement, 7 July 2026). */
+/** Program title from the UBC NSERC Discovery announcement (7 July 2026). Kept for the source record; not shown on any slide. */
 export const PROGRAM = 'Human-AI Co-Design Framework for Performance-Aware Constructed Environments';
 
 /**
- * State of the art, then the remaining gap. Only sources verified on
- * 2026-11-19 are shown (docs/NSERC_THREE_PROTOTYPE_DIRECTIONS_AUDIT.md §5).
- * Text-to-Park and CAD-Assistant could not be verified and are left out. The
- * thermal-comfort / digital-twin row was removed on 2026-11-20: no specific
- * verified source for it exists in the repository. It was replaced by Xun Liu's
- * earlier environmental-feedback work at Roman's request (FluX not verified online).
+ * State of the art, organised by research capability (revised 2026-11-20).
+ * The slide names works by title and venue; full authorship, DOIs and
+ * verification notes are in citations.ts and the step 19 source drawer.
+ * No row is coloured by institution. `edge` marks the least-resolved
+ * capability, which leads into the open research problem (yellow).
+ * FluX is not shown: it could not be verified.
  */
-export const STATE_OF_ART: readonly { what: string; refs: string; genenv?: boolean }[] = [
-  { what: 'Environmental processes as interactive design feedback', refs: 'FluX (2016) · The Third Simulation (Liu, 2020) · Reinventing Planting Design (Liu et al., 2024)', genenv: true },
-  { what: 'Language to parametric operations through MCP', refs: 'Liu and Tian, NeurIPS 2025 · GenEnv rhino-gh-mcp · Jin et al., eSim 2026', genenv: true },
-  { what: 'Specialist agents with simulation and a rationale log', refs: 'Lam, ArchSim, UBC M.Arch thesis 2026', genenv: true },
-  { what: 'Text to CAD and structured CAD code', refs: 'Text2CAD, NeurIPS 2024 · AIDL, CGF 2025 · Multi-Agent CAD Code Generation, SIGGRAPH 2026' },
-  { what: 'Agents that configure and debug building simulation', refs: 'Zhang et al., Energy and Buildings 2025' },
-  { what: 'Bidirectional Grasshopper and VR', refs: 'Crolla and Sheikh, Virtual Reality 2025' },
-  { what: 'Agency and reliance in human-AI co-creation', refs: 'Zhou et al. (OptiMuse), CHI 2024 · Moruzzi and Margarido, CHI EA 2024' },
+export const STATE_OF_ART: readonly { what: string; refs: string; edge?: boolean }[] = [
+  { what: 'Environmental processes as interactive design feedback', refs: 'The Third Simulation, JoDLA 2020 · Reinventing Planting Design, JoDLA 2024' },
+  { what: 'Natural language to structured parametric operations', refs: 'MCP-Driven Parametric Modeling, NeurIPS 2025 · LLM-MCP design, eSim 2026 · Req2CAD, CHI 2026' },
+  { what: 'Agentic modelling and deterministic simulation', refs: 'EnergyPlus-MCP, SoftwareX 2025 · MCP energy workflow, JBPS 2026 · agent schema, AutoCon 2025' },
+  { what: 'Structured text-to-CAD generation', refs: 'Text2CAD, NeurIPS 2024 · AIDL, CGF 2025 · Multi-Agent CAD Code Generation, SIGGRAPH 2026' },
+  { what: 'Mixed-initiative human-AI co-creation', refs: 'Nonlinear human-AI co-design, CHI 2024 · model-led vs human-led co-creation, CHI 2026' },
+  { what: 'Bidirectional interaction across design environments', refs: 'Grasshopper VR, Virtual Reality 2025' },
+  { what: 'Traceability, verification and appropriate human control', refs: 'partial: co-creativity framework, CHI EA 2024 · agentic model debugging, E&B 2025', edge: true },
 ];
 
-export const REMAINING_GAP = 'Human-governed continuity of valid, traceable performance evidence across changing geometry, assumptions and tools.';
+export const REMAINING_GAP = 'How can an AI-assisted design workflow preserve the continuity of valid performance evidence across changing geometry, assumptions and analytical tools, while leaving consequential decisions open to designer inspection, challenge and revision?';
+export const GAP_NOTE = 'Recent systems address individual parts of this workflow, but their integration into a continuously verifiable, designer-governed co-design process remains insufficiently resolved.';
 
 /** The shared loop all three directions use. */
 export const LOOP: readonly { n: string; role: Role }[] = [
@@ -185,13 +186,11 @@ export const LOOP: readonly { n: string; role: Role }[] = [
 export const PROVENANCE_RECORD = 'intention · source or goal · operation · tool and version · assumptions and units · result · uncertainty · designer response';
 
 /**
- * Three alternative doctoral directions within ONE program: Xun Liu's NSERC
- * Discovery project "Human-AI Co-Design Framework for Performance-Aware
- * Constructed Environments" (UBC Research, 7 July 2026). Only the title and
- * Discovery status are public; nothing here claims to follow the grant's
- * unpublished objectives. Each direction is a possible emphasis on one shared
- * platform; one would become the dissertation, chosen with Xun Liu.
- * Revised 2026-11-20 (docs/PHD_DIRECTIONS_REVISION_2026-11-20.md).
+ * Three alternative doctoral emphases on one shared platform for human-AI
+ * performance co-design. The visible copy is field-level and problem-driven;
+ * named authors and institutions appear only in the source drawer
+ * (docs/PHD_DIRECTIONS_NEUTRAL_REVISION_2026-11-20.md). One direction would be
+ * developed through supervised doctoral research.
  */
 
 /** The shared doctoral platform, left to right. `emph` marks where each direction puts its research weight. */
@@ -216,6 +215,8 @@ export interface Direction {
   workingTitle: string;
   /** The research emphasis highlighted in its diagram. */
   emphasis: string;
+  /** Optional reason shown in the diagram header. */
+  why?: string;
   /** Short name for the comparison table header. */
   short: string;
   /** One-line question shown on the slide. */
@@ -227,7 +228,8 @@ export interface Direction {
   technical: string;
   study: string;
   contribution: string;
-  buildsOn: string;
+  /** Field-level research foundation shown on the slide (citations live in the drawer). */
+  foundation: string;
   questions: string[];
   risk: string;
 }
@@ -239,6 +241,7 @@ export const DIRECTIONS: readonly Direction[] = [
     short: 'EvidenceGraph co-designer',
     workingTitle: 'Performance EvidenceGraph: A Traceable Human-AI Co-Design System for Early-Stage Constructed Environments',
     emphasis: 'Evidence graph',
+    why: 'STRONGEST START: JOINS GEOMETRY, CALCULATION, AI PLANNING, EVIDENCE AND REVISION',
     question: 'When the design changes, which performance results are still true?',
     system: [
       { n: 'Designer intent', sub: '“more open, keep comfort”', role: 'human' },
@@ -257,7 +260,7 @@ export const DIRECTIONS: readonly Direction[] = [
     technical: 'Benchmark of edit sequences: geometry, weather and setting changes, failed calls, missing data, wrong units, stale results',
     study: 'Chat-and-simulation workflow vs EvidenceGraph co-designer: error detection, reliance, control, workload',
     contribution: 'An evidence-aware co-design architecture in which verified performance dependencies constrain what the AI may claim',
-    buildsOn: 'Liu and Tian, NeurIPS 2025 · GenEnv Grasshopper MCP · EnergyPlus-MCP, SoftwareX 2025 · Req2CAD, CHI 2026',
+    foundation: 'Protocol-based parametric modelling · deterministic performance simulation · provenance-aware computing · human-AI co-design',
     questions: [
       'How can performance evidence remain valid and understandable during iterative human-AI design?',
       'How should an AI system detect and communicate stale, incomplete or contradictory performance evidence?',
@@ -276,21 +279,21 @@ export const DIRECTIONS: readonly Direction[] = [
     system: [
       { n: 'Designer sets permissions', sub: 'roles can change', role: 'human' },
       { n: 'Intent interpreter + critic', sub: 'suggests · critiques', role: 'ai' },
-      { n: 'Agency controller', sub: 'consequence · reversibility · evidence', role: 'proposal', key: true },
+      { n: 'Agency controller', sub: 'consequence · confidence · reversibility', role: 'proposal', key: true },
       { n: 'MCP → Grasshopper', sub: 'protected branches', role: 'operation' },
       { n: 'Validated simulation', sub: 'daylight or energy', role: 'compute' },
       { n: 'Interaction history', sub: 'why authority changed', role: 'source' },
       { n: 'Designer approves', sub: 'or restores a state', role: 'human' },
     ],
     keyPoints: [
-      'Inspect · suggest · coach · generate · execute · critique · compare',
-      'High-impact, low-confidence or hard-to-reverse actions need explicit approval',
-      'Permissions adjust to evidence quality, consequence, reversibility and design stage',
+      'Not one fixed level: inspect, suggest, coach, generate, execute, critique, compare',
+      'Permissions shift with consequence, reversibility, confidence, evidence quality, design stage and designer preference',
+      'Consequential or hard-to-reverse actions need explicit approval; every change can be rolled back',
     ],
     technical: 'Unsupported actions, correction frequency, rollback success, on real models with real analysis',
     study: 'Fixed low autonomy vs fixed high autonomy vs negotiated, evidence-aware agency',
     contribution: 'A built-environment model of negotiable agency, grounded in geometric consequences and verified performance evidence',
-    buildsOn: 'GenEnv Grasshopper MCP modes · ArchSim, Lam, UBC 2026 · Zhou et al., CHI 2024 · Maier et al., CHI 2026',
+    foundation: 'Mixed-initiative interaction · adjustable autonomy · consequence-aware tool use · appropriate human reliance',
     questions: [
       'How should agency be distributed between human and AI during different stages of performance-aware design?',
       'Can agency be adjusted using evidence quality, uncertainty, consequence and reversibility?',
@@ -316,14 +319,14 @@ export const DIRECTIONS: readonly Direction[] = [
       { n: 'Designer resolves', sub: 'combine · reject · keep options', role: 'human' },
     ],
     keyPoints: [
-      'Each agent cites its tool output, assumptions, variables and missing evidence',
-      'Conflicts are shown and linked to the design variable, not silently averaged',
-      'Alternative positions are preserved; the designer resolves the trade-off',
+      'Every agent calls a deterministic analysis tool and cites its output, assumptions and gaps',
+      'Disagreements stay visible and link to the affected design variables; nothing is silently averaged',
+      'The designer resolves each trade-off or preserves the alternatives side by side',
     ],
     technical: 'Unsupported claims, simulation consistency, trade-off coverage, reproducibility',
     study: 'Single agent vs hidden multi-agent agreement vs visible, evidence-grounded deliberation',
     contribution: 'Visible, evidence-grounded negotiation among performance specialists inside an editable professional design workflow',
-    buildsOn: 'ArchSim, Lam, UBC 2026 · Li et al., JBPS 2026 · Zhang et al., Automation in Construction 2025',
+    foundation: 'Multi-agent design systems · tool-grounded reasoning · multi-objective performance analysis · explainable trade-offs',
     questions: [
       'How can specialised AI agents deliberate over competing constructed-environment performance goals without hiding conflict?',
       'How should deterministic simulation evidence be represented and exchanged among agents?',
@@ -342,7 +345,7 @@ export const COMPARISON: readonly { criterion: string; cells: [string, string, s
   { criterion: 'Professional tools', cells: ['Rhino/Grasshopper + simulator', 'Rhino/Grasshopper + simulator', 'Rhino/Grasshopper + two simulators'] },
   { criterion: 'Human role', cells: ['Inspect evidence and decide', 'Define permissions, keep authorship', 'Set priorities, resolve trade-offs'] },
   { criterion: 'Main evaluation', cells: ['Technical benchmark + designer study', 'Three agency conditions', 'Three deliberation conditions'] },
-  { criterion: 'Fit with program (my reading)', cells: ['Very strong', 'Strong', 'Very strong'] },
+  { criterion: 'Coherence with the shared research problem', cells: ['Very strong', 'Strong', 'Very strong'] },
   { criterion: 'Technical risk', cells: ['Moderate', 'Moderate', 'High'] },
   { criterion: 'My strongest starting point', cells: ['Yes', 'Possible HCI emphasis', 'Ambitious, later-stage'] },
 ];

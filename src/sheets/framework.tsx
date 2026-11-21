@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useT, win } from './useT';
-import { ARCHITECTURE, AUTONOMY, COMPARISON, CONDITIONS, CONFLUENCE, DIRECTIONS, GAPS, LOOP, PLATFORM, PLATFORM_START, PLATFORM_TOOLS, PROGRAM, PROVENANCE_LINKS, PROVENANCE_RECORD, REMAINING_GAP, RESEARCH_QUESTIONS, ROLE_STYLE, SCENARIO, STATE_OF_ART, type Role } from '../data/provenance';
+import { ARCHITECTURE, AUTONOMY, COMPARISON, CONDITIONS, CONFLUENCE, DIRECTIONS, GAPS, LOOP, GAP_NOTE, PLATFORM, PLATFORM_START, PLATFORM_TOOLS, PROVENANCE_LINKS, PROVENANCE_RECORD, REMAINING_GAP, RESEARCH_QUESTIONS, ROLE_STYLE, SCENARIO, STATE_OF_ART, type Role } from '../data/provenance';
 import { GENENV_TERRITORY, PHD_DISTRICTS, TERRITORIES } from '../data/atlas';
 import type { EvidenceStatus } from '../data/types';
 
@@ -158,7 +158,7 @@ function Atlas({ full }: { full: boolean }) {
   const top = 110;
   const pts: [number, number][] = [];
   return (
-    <Svg vb="0 0 1600 560" label="Research map: my territories from form to computation, the proposed PhD territory, and GenEnv's attributed projects.">
+    <Svg vb="0 0 1600 560" label="Research map: my territories from form to computation, the proposed PhD territory, and selected precedents from the wider field.">
       <line x1={20} y1={ground} x2={1580} y2={ground} stroke={W3} strokeWidth={1.5} />
       {TERRITORIES.map((tr, i) => {
         const on = win(t, i * 0.12, i * 0.12 + 0.25);
@@ -230,7 +230,7 @@ function Atlas({ full }: { full: boolean }) {
           )}
         </g>
       )}
-      {/* GenEnv: separately bounded, attributed */}
+      {/* The wider field: separately bounded, others' work */}
       <g opacity={full ? 0.25 + 0.75 * win(t, 0.5, 0.9) : 0.35}>
         <rect x={980} y={ground + 50} width={580} height={150} fill="none" stroke={W6} strokeWidth={1.5} />
         <rect x={986} y={ground + 56} width={568} height={138} fill="none" stroke={W3} strokeWidth={1} />
@@ -708,8 +708,9 @@ export function Route() {
   );
 }
 
-// ── Where the path meets GenEnv: two routes, one shared question ────────────
+// ── Where the research path converges: two routes, one shared question ─────
 export function Confluence() {
+  const devLines = CONFLUENCE.develop.split(' · ').map((x) => `· ${x}`).flatMap((x) => wrap(x, 37));
   const t = useT(3200, 300);
   const bg = win(t, 0, 0.25);
   const pr = win(t, 0.1, 0.35);
@@ -750,20 +751,20 @@ export function Confluence() {
       </g>
       {/* provisional destination */}
       <g opacity={0.15 + 0.85 * dev}>
-        <RoleBox x={1180} y={40} w={400} h={380} role="proposal" />
+        <RoleBox x={1180} y={40} w={400} h={404} role="proposal" />
         <T x={1206} y={86} size={19} fill="var(--proposal)" weight={700} mono>
           WHAT I HOPE TO DEVELOP
         </T>
-        <T x={1206} y={130} size={20} lh={1.3}>
-          {CONFLUENCE.develop.split(' · ').map((x) => `· ${x}`).flatMap((x) => wrap(x, 33)).join('\n')}
+        <T x={1206} y={128} size={18} lh={1.3}>
+          {devLines.join('\n')}
         </T>
-        <T x={1206} y={352} size={18} fill={W6} lh={1.3}>
-          {wrap(CONFLUENCE.developNote, 37).join('\n')}
+        <T x={1206} y={128 + devLines.length * 23.4 + 22} size={16} fill={W6} lh={1.3}>
+          {wrap(CONFLUENCE.developNote, 43).join('\n')}
         </T>
       </g>
       {/* a possible first study: smallest, provisional */}
       <g opacity={note}>
-        <line x1={1380} y1={420} x2={1380} y2={462} stroke="var(--orange)" strokeWidth={1.6} strokeDasharray="4 5" />
+        <line x1={1380} y1={444} x2={1380} y2={466} stroke="var(--orange)" strokeWidth={1.6} strokeDasharray="4 5" />
         <T x={600} y={490} size={18} fill="var(--orange)" weight={700} mono>
           {CONFLUENCE.noteLabel}
         </T>
@@ -780,39 +781,39 @@ export function Soa() {
   const t = useT(3000, 300);
   const rowH = 66;
   return (
-    <Svg vb="0 0 1600 560" label="What already exists, with references, and the remaining gap.">
+    <Svg vb="0 0 1600 560" label="Selected precedents organised by research capability, leading to the open research problem.">
       <T x={20} y={28} size={18} fill={W6} mono>
-        ALREADY EXISTS
+        ALREADY EXISTS · BY CAPABILITY
       </T>
       {STATE_OF_ART.map((r, i) => {
         const y = 48 + i * rowH;
         const on = win(t, i * 0.08, i * 0.08 + 0.15);
         return (
           <g key={r.what} opacity={0.15 + 0.85 * on}>
-            <rect x={20} y={y} width={1000} height={rowH - 10} fill={r.genenv ? 'rgba(242,207,85,0.06)' : 'rgba(255,255,255,0.04)'} stroke={r.genenv ? 'var(--yellow)' : W3} strokeWidth={1.4} />
+            <rect x={20} y={y} width={1000} height={rowH - 10} fill={r.edge ? 'rgba(242,207,85,0.05)' : 'rgba(255,255,255,0.04)'} stroke={r.edge ? 'var(--yellow)' : W3} strokeWidth={1.4} strokeDasharray={r.edge ? '7 6' : undefined} />
             <T x={38} y={y + 25} size={21} weight={600}>
               {r.what}
             </T>
-            <T x={38} y={y + 47} size={16} fill={r.genenv ? 'var(--yellow)' : W6} mono>
+            <T x={38} y={y + 47} size={15} fill={r.edge ? 'var(--yellow)' : W6} mono>
               {r.refs}
             </T>
           </g>
         );
       })}
-      <T x={20} y={544} size={16} fill="var(--yellow)" mono>
-        YELLOW = XUN LIU, GENENV AND UBC WORK, ATTRIBUTED
+      <T x={20} y={544} size={15} fill={W6} mono>
+        SELECTED PRECEDENTS ACROSS COMPUTATIONAL DESIGN, HCI AND PERFORMANCE SIMULATION
       </T>
       <g opacity={win(t, 0.6, 0.9)}>
-        <line x1={1030} y1={260} x2={1084} y2={260} stroke={W6} strokeWidth={2.5} markerEnd="url(#fwArrow)" />
-        <RoleBox x={1090} y={48} w={490} h={450} role="proposal" />
-        <T x={1116} y={92} size={19} fill="var(--proposal)" weight={700} mono>
+        <path d="M1020 467 C 1050 467, 1050 300, 1084 300" fill="none" stroke="var(--yellow)" strokeWidth={2.5} markerEnd="url(#fwArrowY)" />
+        <rect x={1090} y={48} width={490} height={470} fill="rgba(242,207,85,0.05)" stroke="var(--yellow)" strokeWidth={2.2} strokeDasharray="9 7" />
+        <T x={1114} y={88} size={19} fill="var(--yellow)" weight={700} mono>
           OPEN RESEARCH PROBLEM
         </T>
-        <T x={1116} y={146} size={28} weight={600} lh={1.28}>
-          {wrap(REMAINING_GAP, 28).join('\n')}
+        <T x={1114} y={134} size={23} weight={600} lh={1.3}>
+          {wrap(REMAINING_GAP, 35).join('\n')}
         </T>
-        <T x={1116} y={388} size={20} fill={W6} lh={1.35}>
-          {wrap('Across the systems reviewed, I did not find one workflow that preserves this continuity while keeping the designer in control.', 38).join('\n')}
+        <T x={1114} y={392} size={18} fill={W6} lh={1.35}>
+          {wrap(GAP_NOTE, 44).join('\n')}
         </T>
       </g>
     </Svg>
@@ -868,14 +869,14 @@ export function Branches() {
   const t = useT(3000, 300);
   const ys = [20, 195, 370];
   return (
-    <Svg vb="0 0 1600 540" label="The NSERC program branching into three possible directions.">
+    <Svg vb="0 0 1600 540" label="One shared research problem branching into three possible directions.">
       <g opacity={win(t, 0, 0.2)}>
         <rect x={20} y={170} width={470} height={210} fill="rgba(242,207,85,0.07)" stroke="var(--yellow)" strokeWidth={3} />
         <T x={44} y={208} size={16} fill="var(--yellow)" mono>
-          GENENV · NSERC DISCOVERY 2026
+          ONE SHARED RESEARCH PROBLEM
         </T>
-        <T x={44} y={248} size={25} weight={700} lh={1.25}>
-          {wrap(PROGRAM, 28).join('\n')}
+        <T x={44} y={248} size={22} weight={700} lh={1.25}>
+          {wrap(GAP_NOTE, 34).join('\n')}
         </T>
       </g>
       {DIRECTIONS.map((d, i) => {
@@ -1003,6 +1004,11 @@ function DirectionView({ index }: { index: number }) {
       <T x={20} y={28} size={16} fill="var(--proposal)" weight={700} mono>
         {`${PROPOSED} · DIRECTION ${d.n} OF 3`}
       </T>
+      {d.why && (
+        <T x={1580} y={28} size={14} fill="var(--yellow)" anchor="end" mono>
+          {d.why}
+        </T>
+      )}
       <SystemRow items={d.system} x0={x0} y={y} bw={bw} bh={bh} gap={gap} t={t} label={20} />
       <Feedback x1={x0 + bw / 2} x2={x0 + 6 * (bw + gap) + bw / 2} y={y + bh} t={t} label="REVISE · APPROVE · ROLL BACK" />
       <g opacity={win(t, 0.45, 0.65)}>
@@ -1039,15 +1045,18 @@ function DirectionView({ index }: { index: number }) {
         </T>
       </g>
       <g opacity={win(t, 0.75, 0.95)}>
-        <RoleBox x={1090} y={266} w={490} h={284} role="proposal" />
-        <T x={1112} y={302} size={17} fill="var(--proposal)" weight={700} mono>
-          CONTRIBUTION
+        <rect x={1090} y={266} width={490} height={284} fill="rgba(242,207,85,0.05)" stroke="var(--yellow)" strokeWidth={2.2} strokeDasharray="9 7" />
+        <T x={1112} y={302} size={17} fill="var(--yellow)" weight={700} mono>
+          PROPOSED CONTRIBUTION
         </T>
         <T x={1112} y={340} size={21} weight={600} lh={1.3}>
           {wrap(d.contribution, 36).join('\n')}
         </T>
-        <T x={1112} y={482} size={14} fill="var(--yellow)" mono lh={1.35}>
-          {wrap(`BUILDS ON: ${d.buildsOn}`, 50).join('\n')}
+        <T x={1112} y={466} size={14} fill={W6} mono lh={1.35}>
+          RESEARCH FOUNDATION
+        </T>
+        <T x={1112} y={490} size={16} fill={W} lh={1.3}>
+          {wrap(d.foundation, 48).join('\n')}
         </T>
       </g>
     </Svg>
@@ -1096,7 +1105,7 @@ export function Compare() {
         );
       })}
       <T x={20} y={y0 + COMPARISON.length * rowH + 22} size={14} fill={W6} mono>
-        ALTERNATIVES FOR DISCUSSION · ONE WOULD BECOME THE DISSERTATION · “FIT WITH PROGRAM” IS MY READING OF ITS PUBLIC TITLE
+        THREE ALTERNATIVE DISSERTATION EMPHASES · ONE WOULD BE DEVELOPED THROUGH SUPERVISED DOCTORAL RESEARCH
       </T>
     </Svg>
   );

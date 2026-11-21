@@ -6,44 +6,44 @@ Source of truth: the speaker notes in `src/data/steps.ts` (26 steps). Pace 110 t
 
 | Section | Steps | Words | Target | At 110 wpm | At 100 wpm |
 |---|---|---:|---|---:|---:|
-| Opening | 1 to 2 | 96 | 1:10 | 0:58 | 1:04 |
+| Opening | 1 to 2 | 98 | 1:10 | 0:59 | 1:05 |
 | Background | 3 to 10 | 336 | 3:30 | 3:27 | 3:46 |
 | Previous research | 11 to 13 | 229 | 2:15 | 2:14 | 2:26 |
 | Research projects | 14 to 18 | 249 | 2:30 | 2:31 | 2:44 |
-| PhD directions | 19 to 24 | 642 | 6:15 | 6:08 | 6:43 |
-| GenEnv | 25 | 52 | 0:40 | 0:31 | 0:34 |
+| PhD directions | 19 to 24 | 628 | 6:15 | 6:01 | 6:35 |
+| Research fit | 25 | 53 | 0:40 | 0:32 | 0:35 |
 | Conversation | 26 | 48 | 0:25 | 0:29 | 0:32 |
-| **Total** | **26** | **1652** | **12:30 to 14:00** | **16:19** | **17:49** |
+| **Total** | **26** | **1641** | **12:30 to 14:00** | **16:13** | **17:43** |
 
 ## Per step
 
 | # | Section | Title | Words | Start by (105 wpm) |
 |---:|---|---|---:|---:|
 | 1 | Opening | From environmental evidence to performance-aware co-design | 46 | 0:00 |
-| 2 | Opening | A proposal is only useful if a designer can check it | 50 | 0:29 |
-| 3 | Background | I learn by making | 37 | 1:01 |
-| 4 | Background | From making things to designing places | 43 | 1:25 |
-| 5 | Background | Zangar Museum: history translated into space | 49 | 1:53 |
-| 6 | Background | From narrative to plan and section | 26 | 2:24 |
-| 7 | Background | Construction, framing and light | 40 | 2:41 |
-| 8 | Background | From objects to environmental systems | 42 | 3:07 |
-| 9 | Background | A water system, not an object | 47 | 3:34 |
-| 10 | Background | First experiments with generative AI | 52 | 4:04 |
-| 11 | Previous research | Designing depth in virtual landscapes | 54 | 4:37 |
-| 12 | Previous research | Learning how AI systems are built and run | 101 | 5:11 |
-| 13 | Previous research | How a representation shapes trust | 74 | 6:11 |
-| 14 | Research projects | AI interprets and proposes. Verified code computes. The designer judges. | 43 | 6:57 |
-| 15 | Research projects | Zoning Literacy Assistant | 53 | 7:24 |
-| 16 | Research projects | Parametric Massing Generator | 50 | 7:58 |
-| 17 | Research projects | Vancouver View Corridor Massing | 50 | 8:29 |
-| 18 | Research projects | Environmental Massing Agents | 53 | 9:01 |
-| 19 | PhD directions | What already exists—and the missing link | 145 | 9:34 |
-| 20 | PhD directions | Between the designer’s intention and the final decision | 76 | 11:00 |
-| 21 | PhD directions | Performance EvidenceGraph Co‑Designer | 121 | 11:46 |
-| 22 | PhD directions | Negotiable‑Agency Performance Co‑Designer | 106 | 12:58 |
-| 23 | PhD directions | Multi‑Agent Performance Deliberation Studio | 126 | 14:02 |
-| 24 | PhD directions | Comparing the three directions | 68 | 15:17 |
-| 25 | GenEnv | Where my path meets GenEnv | 52 | 15:59 |
-| 26 | Conversation | Thank you | 48 | 16:32 |
+| 2 | Opening | A proposal is only useful if a designer can check it | 52 | 0:29 |
+| 3 | Background | I learn by making | 37 | 1:02 |
+| 4 | Background | From making things to designing places | 43 | 1:26 |
+| 5 | Background | Zangar Museum: history translated into space | 49 | 1:54 |
+| 6 | Background | From narrative to plan and section | 26 | 2:25 |
+| 7 | Background | Construction, framing and light | 40 | 2:43 |
+| 8 | Background | From objects to environmental systems | 42 | 3:08 |
+| 9 | Background | A water system, not an object | 47 | 3:35 |
+| 10 | Background | First experiments with generative AI | 52 | 4:05 |
+| 11 | Previous research | Designing depth in virtual landscapes | 54 | 4:38 |
+| 12 | Previous research | Learning how AI systems are built and run | 101 | 5:12 |
+| 13 | Previous research | How a representation shapes trust | 74 | 6:13 |
+| 14 | Research projects | AI interprets and proposes. Verified code computes. The designer judges. | 43 | 6:58 |
+| 15 | Research projects | Zoning Literacy Assistant | 53 | 7:25 |
+| 16 | Research projects | Parametric Massing Generator | 50 | 7:59 |
+| 17 | Research projects | Vancouver View Corridor Massing | 50 | 8:30 |
+| 18 | Research projects | Environmental Massing Agents | 53 | 9:02 |
+| 19 | PhD directions | What already exists—and the missing link | 85 | 9:35 |
+| 20 | PhD directions | Between the designer’s intention and the final decision | 98 | 10:27 |
+| 21 | PhD directions | Performance EvidenceGraph Co‑Designer | 142 | 11:26 |
+| 22 | PhD directions | Negotiable‑Agency Performance Co‑Designer | 109 | 12:50 |
+| 23 | PhD directions | Multi‑Agent Performance Deliberation Studio | 134 | 13:55 |
+| 24 | PhD directions | Comparing the three directions | 60 | 15:15 |
+| 25 | Research fit | Where my research path converges | 53 | 15:52 |
+| 26 | Conversation | Thank you | 48 | 16:25 |
 
 Rehearsal checkpoints (105 wpm): the presenter window (`P`) shows the same "start by" time for every step.

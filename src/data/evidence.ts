@@ -370,10 +370,10 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'phd-provisional',
     project: 'phd',
-    claim: 'Three possible PhD directions within the Human-AI Co-Design program (Verified Performance Co-Designer; Evidence-Calibrated Climate Co-Designer; Embodied Performance Reasoning Studio) are proposals for discussion. None is built or tested; one would become the dissertation, chosen with a supervisor. Performance provenance is a supporting record, not the dissertation.',
+    claim: 'Three possible doctoral directions on one shared platform for human-AI performance co-design (Performance EvidenceGraph Co-Designer; Negotiable-Agency Performance Co-Designer; Multi-Agent Performance Deliberation Studio) are proposals for discussion. None is built or tested; one would be developed through supervised doctoral research.',
     status: 'proposed',
     source: 'My proposal for this interview (src/data/provenance.ts).',
-    limitation: 'Not approved by Prof. Liu. No study, participant number, partner or integration exists yet.',
+    limitation: 'Not approved by any supervisor. No study, participant number, partner or integration exists yet.',
     presentationLabel: 'PROPOSED · for discussion',
   },
 ] as const;

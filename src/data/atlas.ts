@@ -73,8 +73,8 @@ export const TERRITORIES: readonly Territory[] = [
 /** Inside the proposed territory, resolved on the closing step. */
 export const PHD_DISTRICTS = ['Evidence', 'Agency', 'Deliberation'] as const;
 
-/** GenEnv's work, attributed and bounded separately (not Roman's projects). */
+/** The wider field, bounded separately from Roman's projects (others' work, cited in the source drawer). */
 export const GENENV_TERRITORY = {
-  label: 'GenEnv projects · attributed, not my work',
-  projects: ['Human-AI Co-Design', 'Decoding Urban Form', 'Grasshopper MCP', 'Computational Lexicalization', 'Digital Thermal Sandbox'],
+  label: 'Related field · selected precedents, not my work',
+  projects: ['Language to parametric operations', 'Agentic simulation', 'Text-to-CAD', 'Mixed-initiative co-creation', 'Bidirectional design environments'],
 } as const;
