@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import { prefersReducedMotion } from '../state/store';
 
 /** Progress 0 → 1 played once when the sheet mounts (ease-out cubic). */
-export function useT(duration = 2600, delay = 450): number {
+export function useT(requested = 2600, requestedDelay = 450): number {
+  // Essential content must be readable within about half a second of arrival,
+  // including deep links and reloads, so every timeline is capped.
+  const duration = Math.min(requested, 850);
+  const delay = Math.min(requestedDelay, 80);
   const [t, setT] = useState(() => (prefersReducedMotion() ? 1 : 0));
   useEffect(() => {
     if (prefersReducedMotion()) {

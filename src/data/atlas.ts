@@ -21,7 +21,7 @@ export interface Territory {
 export const TERRITORIES: readonly Territory[] = [
   {
     id: 'form',
-    name: 'Form',
+    name: 'Spatial design',
     sub: 'Tabriz',
     x: 40,
     w: 150,
@@ -29,7 +29,7 @@ export const TERRITORIES: readonly Territory[] = [
   },
   {
     id: 'systems',
-    name: 'Systems',
+    name: 'Environmental systems',
     sub: 'Istanbul',
     x: 210,
     w: 150,
@@ -37,7 +37,7 @@ export const TERRITORIES: readonly Territory[] = [
   },
   {
     id: 'perception',
-    name: 'People and representation',
+    name: 'Perception and interactive systems',
     sub: 'eCAADe · ISS · BioTerrarium',
     x: 380,
     w: 250,
@@ -49,7 +49,7 @@ export const TERRITORIES: readonly Territory[] = [
   },
   {
     id: 'prototypes',
-    name: 'Research projects',
+    name: 'Computational design',
     sub: 'rules · geometry · constraint · critique',
     x: 650,
     w: 300,
@@ -62,8 +62,8 @@ export const TERRITORIES: readonly Territory[] = [
   },
   {
     id: 'phd',
-    name: 'Proposed PhD',
-    sub: 'three possible directions · for discussion',
+    name: 'Possible PhD research',
+    sub: 'three directions for discussion',
     x: 980,
     w: 580,
     parcels: [],

@@ -1,10 +1,21 @@
 import { sceneById } from '../data/scenes';
-import { STEPS } from '../data/steps';
+import { SLIDES, STEPS } from '../data/steps';
 import { CITATIONS, cite } from '../data/citations';
 import { ev } from '../data/evidence';
 import { goToStep } from '../lib/stepper';
 import { setState, useAppState } from '../state/store';
 import { ROLE_STYLE } from '../data/provenance';
+
+/** Presenter cue: recommended time, what to demonstrate, what to skip. */
+export function Cue({ c }: { c: { sec: number; demo: string; skip: string } }) {
+  return (
+    <dl className="cue">
+      <div><dt>TIME</dt><dd>{`${Math.floor(c.sec / 60)}:${String(c.sec % 60).padStart(2, '0')}`}</dd></div>
+      <div><dt>SHOW</dt><dd>{c.demo}</dd></div>
+      <div><dt>SKIP</dt><dd>{c.skip}</dd></div>
+    </dl>
+  );
+}
 
 /** ── Speaker notes (N) ──────────────────────────────────────────────────── */
 export function NotesDock() {
@@ -20,6 +31,7 @@ export function NotesDock() {
       {step.notes.map((p, i) => (
         <p key={i}>{p}</p>
       ))}
+      {SLIDES[stepIndex]?.cue && <Cue c={SLIDES[stepIndex]!.cue!} />}
       <p className="notes-meta">NEXT → {next ? `${stepIndex + 2} · ${next.title ?? next.id}` : 'END'}</p>
     </aside>
   );

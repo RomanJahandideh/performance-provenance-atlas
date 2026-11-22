@@ -68,9 +68,9 @@ function FitRow({ media, align = 'start', className = '' }: { media: Media[]; al
           const w = stacked ? colW : Math.floor(ratios[i]! * rowH);
           const h = stacked ? Math.floor(colW / ratios[i]!) : rowH;
           return (
-            <figure key={(m.src ?? m.diagram ?? '') + i} className={`fig ${m.diagram ? 'fig--vector' : ''}`} style={{ width: w, '--d': `${0.25 + i * 0.14}s` } as CSSProperties}>
+            <figure key={(m.src ?? m.diagram ?? '') + i} className={`fig ${m.diagram ? 'fig--vector' : ''}`} style={{ width: w, '--d': `${0.1 + i * 0.06}s` } as CSSProperties}>
               <div className="fig-media" style={{ height: h }}>
-                {m.diagram ? <Diagram id={m.diagram} /> : <img src={m.src} alt={m.alt ?? ''} draggable={false} />}
+                {m.diagram ? <Diagram id={m.diagram} /> : <img src={m.src} alt={m.alt ?? ''} width={m.src ? IMG[m.src]?.[0] : undefined} height={m.src ? IMG[m.src]?.[1] : undefined} decoding="async" draggable={false} />}
               </div>
               {(m.caption || m.credit) && (
                 <figcaption>
@@ -85,33 +85,18 @@ function FitRow({ media, align = 'start', className = '' }: { media: Media[]; al
   );
 }
 
-/** Counts a number up from zero; other values render as written. */
+const preloaded = new Set<string>();
+function preload(src: string) {
+  if (preloaded.has(src)) return;
+  preloaded.add(src);
+  const im = new Image();
+  im.decoding = 'async';
+  im.src = src;
+}
+
+/** Renders a value exactly as written: verified numbers are never animated from zero. */
 function CountUp({ value }: { value: string }) {
-  const m = /^(\d[\d,]*\.?\d*)(\D*)$/.exec(value);
-  const target = m ? Number(m[1]!.replace(/,/g, '')) : NaN;
-  const decimals = m && m[1]!.includes('.') ? m[1]!.split('.')[1]!.length : 0;
-  const reduced = typeof document !== 'undefined' && document.documentElement.dataset.reduced === 'true';
-  const [v, setV] = useState(m && !reduced ? 0 : target);
-  useEffect(() => {
-    if (!m || reduced) return;
-    let raf = 0;
-    const t0 = performance.now() + 450;
-    const tick = (t: number) => {
-      const k = Math.min(1, Math.max(0, (t - t0) / 1100));
-      setV(target * (1 - Math.pow(1 - k, 3)));
-      if (k < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
-  if (!m) return <>{value}</>;
-  return (
-    <>
-      {v.toFixed(decimals)}
-      {m[2]}
-    </>
-  );
+  return <>{value}</>;
 }
 
 function Facts({ facts, className = '' }: { facts?: Fact[]; className?: string }) {
@@ -119,7 +104,7 @@ function Facts({ facts, className = '' }: { facts?: Fact[]; className?: string }
   return (
     <dl className={`facts ${className}`}>
       {facts.map((f, i) => (
-        <div key={f.label} className="fact" style={{ '--d': `${0.5 + i * 0.1}s` } as CSSProperties}>
+        <div key={f.label} className="fact" style={{ '--d': `${0.12 + i * 0.05}s` } as CSSProperties}>
           <dt>{f.label}</dt>
           <dd style={{ color: TONE[f.tone ?? 'ink'] }}>
             <CountUp value={f.value} />
@@ -145,12 +130,12 @@ function Lines({ s, from = 0 }: { s: Slide; from?: number }) {
   return (
     <>
       {s.lines?.map((l, i) => (
-        <p key={i} className="line" style={{ '--d': `${0.35 + (from + i) * 0.12}s` } as CSSProperties}>
+        <p key={i} className="line" style={{ '--d': `${0.1 + (from + i) * 0.05}s` } as CSSProperties}>
           {l}
         </p>
       ))}
       {s.callout && (
-        <p className="line use" style={{ '--d': `${0.35 + (from + (s.lines?.length ?? 0)) * 0.12 + 0.1}s` } as CSSProperties}>
+        <p className="line use" style={{ '--d': `${0.1 + (from + (s.lines?.length ?? 0)) * 0.05 + 0.05}s` } as CSSProperties}>
           <span className="use-label">{s.callout.label}</span>
           {s.callout.text}
         </p>
@@ -172,7 +157,7 @@ function Pattern({ p }: { p: NonNullable<Slide['project']> }) {
   return (
     <dl className="pattern">
       {rows.map(([k, v, c], i) => (
-        <div key={k} className={`pattern-row ${c}`} style={{ '--d': `${0.35 + i * 0.12}s` } as CSSProperties}>
+        <div key={k} className={`pattern-row ${c}`} style={{ '--d': `${0.1 + i * 0.05}s` } as CSSProperties}>
           <dt>{k}</dt>
           <dd>{v}</dd>
         </div>
@@ -302,7 +287,7 @@ function SlideView({ s }: { s: Slide }) {
           <Rule className="rule--bleed" />
           <div className="cols" style={{ gridTemplateColumns: `repeat(${s.columns?.length ?? 3}, minmax(0, 1fr))` }}>
             {s.columns?.map((c, i) => (
-              <section key={c.head} className="col" style={{ '--d': `${0.4 + i * 0.14}s` } as CSSProperties}>
+              <section key={c.head} className="col" style={{ '--d': `${0.1 + i * 0.06}s` } as CSSProperties}>
                 <p className="col-head">{c.head}</p>
                 <h2>{c.title}</h2>
                 <p>{c.text}</p>
@@ -323,7 +308,7 @@ function SlideView({ s }: { s: Slide }) {
           <FitRow media={media} align="start" className="area-media" />
           <ol className="qs">
             {s.questions?.map((q, i) => (
-              <li key={q} style={{ '--d': `${0.3 + i * 0.12}s` } as CSSProperties}>
+              <li key={q} style={{ '--d': `${0.1 + i * 0.05}s` } as CSSProperties}>
                 <span className="q-n">{i + 1}</span>
                 <span className="q-t">{q}</span>
               </li>
@@ -350,6 +335,16 @@ export function Deck() {
     return () => window.clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
+
+  // Preload the neighbouring steps' images now, and every other image once the
+  // deck is idle, so the talk keeps working if the network drops mid-interview.
+  useEffect(() => {
+    for (const k of [idx - 1, idx + 1]) for (const m of SLIDES[k]?.media ?? []) if (m.src) preload(m.src);
+  }, [idx]);
+  useEffect(() => {
+    const t = window.setTimeout(() => SLIDES.forEach((sl) => sl.media?.forEach((m) => m.src && preload(m.src))), 2500);
+    return () => window.clearTimeout(t);
+  }, []);
 
   const prev = view.prev !== null ? SLIDES[view.prev] : undefined;
   const chapterChanged = !!prev && prev.chapter !== slide.chapter;

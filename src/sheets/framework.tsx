@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useT, win } from './useT';
-import { ARCHITECTURE, AUTONOMY, COMPARISON, CONDITIONS, CONFLUENCE, DIRECTIONS, GAPS, LOOP, GAP_NOTE, PLATFORM, PLATFORM_START, PLATFORM_TOOLS, PROVENANCE_LINKS, PROVENANCE_RECORD, REMAINING_GAP, RESEARCH_QUESTIONS, ROLE_STYLE, SCENARIO, STATE_OF_ART, type Role } from '../data/provenance';
+import { ARCHITECTURE, AUTONOMY, CONDITIONS, CONFLUENCE, DIRECTIONS, GAPS, LOOP, GAP_NOTE, PLATFORM, PLATFORM_START, PLATFORM_TOOLS, PROVENANCE_LINKS, PROVENANCE_RECORD, REMAINING_GAP, RESEARCH_QUESTIONS, ROLE_STYLE, SCENARIO, STATE_OF_ART, type Role } from '../data/provenance';
 import { GENENV_TERRITORY, PHD_DISTRICTS, TERRITORIES } from '../data/atlas';
 import type { EvidenceStatus } from '../data/types';
 
@@ -610,12 +610,12 @@ export function RqMap() {
 export function Route() {
   const t = useT(3000, 300);
   const stages = [
-    { n: 'Making', p: 'childhood', c: 'learning by building and testing' },
-    { n: 'Form', p: 'Tabriz · architecture', c: 'spatial and narrative judgment' },
-    { n: 'Systems', p: 'Istanbul · landscape', c: 'terrain, water and scale' },
-    { n: 'Evidence', p: 'eCAADe · perception', c: 'measuring how people read space' },
-    { n: 'Computation', p: 'SFU · HCI · projects', c: 'building and studying systems' },
-    { n: 'Human-AI co-design', p: 'proposed · 3 directions', c: 'performance evidence kept valid' },
+    { n: 'Spatial design', p: 'Tabriz · architecture', c: 'space, narrative, form' },
+    { n: 'Environmental systems', p: 'Istanbul · landscape', c: 'terrain, water, ecology' },
+    { n: 'Human perception', p: 'eCAADe · VR', c: 'how people read space' },
+    { n: 'Interactive systems', p: 'SFU · HCI', c: 'build and evaluate' },
+    { n: 'Computational design', p: '4 research projects', c: 'rules, geometry, agents' },
+    { n: 'Possible PhD research', p: '3 directions to discuss', c: 'performance-aware co-design' },
   ];
   const x0 = 130;
   const dx = 268;
@@ -690,15 +690,15 @@ export function Route() {
         const last = i === stages.length - 1;
         return (
           <g key={st.n} opacity={0.15 + 0.85 * on}>
-            {glyph(i, x)}
+            {glyph([1, 2, 3, 0, 4, 5][i]!, x)}
             {last ? <path d={`M${x} ${ly - 11} l11 11 l-11 11 l-11 -11 z`} fill="var(--coral)" /> : <circle cx={x} cy={ly} r={9} fill="var(--yellow)" />}
-            <T x={x} y={ly + 50} size={25} anchor="middle" weight={700} fill={last ? 'var(--proposal)' : W}>
-              {st.n}
+            <T x={x} y={ly + 46} size={21} anchor="middle" weight={700} fill={last ? 'var(--proposal)' : W} lh={1.15}>
+              {wrap(st.n, 13).join('\n')}
             </T>
-            <T x={x} y={ly + 78} size={16} anchor="middle" fill={W6} mono>
+            <T x={x} y={ly + 100} size={15} anchor="middle" fill={W6} mono>
               {st.p.toUpperCase()}
             </T>
-            <T x={x} y={ly + 112} size={19} anchor="middle" fill={last ? 'var(--proposal)' : 'var(--cyan)'} lh={1.25}>
+            <T x={x} y={ly + 130} size={18} anchor="middle" fill={last ? 'var(--proposal)' : 'var(--cyan)'} lh={1.25}>
               {wrap(st.c, 20).join('\n')}
             </T>
           </g>
@@ -710,67 +710,50 @@ export function Route() {
 
 // ── Where the research path converges: two routes, one shared question ─────
 export function Confluence() {
-  const devLines = CONFLUENCE.develop.split(' · ').map((x) => `· ${x}`).flatMap((x) => wrap(x, 37));
-  const t = useT(3200, 300);
-  const bg = win(t, 0, 0.25);
-  const pr = win(t, 0.1, 0.35);
-  const q = win(t, 0.35, 0.6);
-  const dev = win(t, 0.6, 0.85);
-  const note = win(t, 0.8, 1);
+  const t = useT(800, 60);
+  const col1 = win(t, 0, 0.35);
+  const q = win(t, 0.25, 0.6);
+  const col3 = win(t, 0.5, 0.9);
+  const list = (items: readonly string[], x: number, y0: number, max: number) => {
+    let y = y0;
+    return items.map((it) => {
+      const ls = wrap(it, max);
+      const node = (
+        <g key={it}>
+          <rect x={x} y={y - 13} width={9} height={9} fill={W6} />
+          <T x={x + 22} y={y} size={22} lh={1.25}>
+            {ls.join('\n')}
+          </T>
+        </g>
+      );
+      y += ls.length * 27.5 + 14;
+      return node;
+    });
+  };
   return (
-    <Svg vb="0 0 1600 600" label="Two routes, from design and environmental systems and from HCI and research projects, meet in a shared question and continue to a provisional PhD direction.">
-      <T x={30} y={34} size={19} fill={W6} mono>
-        MY STARTING POINT
-      </T>
-      {/* origin A: design and environmental systems */}
-      <g opacity={0.15 + 0.85 * bg}>
-        <RoleBox x={30} y={56} w={420} h={130} role="operation" />
-        <T x={52} y={104} size={22} lh={1.3}>
-          {wrap(CONFLUENCE.background, 34).join('\n')}
+    <Svg vb="0 0 1600 560" label="Research fit: what I bring, the shared research question, and what I hope to develop.">
+      <g opacity={col1}>
+        <T x={20} y={34} size={19} fill={W6} weight={700} mono>
+          WHAT I BRING
         </T>
-        <path d="M450 121 C 520 121, 520 230, 600 230" fill="none" stroke={W} strokeWidth={2.5} />
+        {list(CONFLUENCE.bring, 20, 82, 34)}
       </g>
-      {/* origin B: HCI studies and research projects */}
-      <g opacity={0.15 + 0.85 * pr}>
-        <RoleBox x={30} y={226} w={420} h={170} role="compute" />
-        <T x={52} y={268} size={21} lh={1.3}>
-          {wrap(CONFLUENCE.projects, 35).join('\n')}
+      <g opacity={q}>
+        <path d="M478 270 L 556 270" stroke={W6} strokeWidth={2.4} markerEnd="url(#fwArrow)" />
+        <rect x={566} y={20} width={468} height={520} fill="rgba(242,207,85,0.08)" stroke="var(--yellow)" strokeWidth={3} />
+        <T x={596} y={66} size={19} fill="var(--yellow)" weight={700} mono>
+          THE SHARED QUESTION
         </T>
-        <path d="M450 311 C 520 311, 520 240, 600 240" fill="none" stroke="var(--cyan)" strokeWidth={2.5} />
+        <T x={596} y={124} size={28} weight={600} lh={1.3}>
+          {wrap(CONFLUENCE.question, 26).join('\n')}
+        </T>
+        <path d="M1044 270 L 1112 270" stroke={W6} strokeWidth={2.4} markerEnd="url(#fwArrow)" />
       </g>
-      {/* the shared question: largest */}
-      <g opacity={0.15 + 0.85 * q}>
-        <rect x={600} y={40} width={500} height={380} fill="rgba(242,207,85,0.08)" stroke="var(--yellow)" strokeWidth={3} />
-        <T x={630} y={86} size={20} fill="var(--yellow)" weight={700} mono>
-          A SHARED QUESTION
-        </T>
-        <T x={630} y={140} size={29} weight={600} lh={1.3}>
-          {wrap(CONFLUENCE.question, 27).join('\n')}
-        </T>
-        <line x1={1100} y1={235} x2={1176} y2={235} stroke="var(--proposal)" strokeWidth={3} strokeDasharray="3 8" strokeLinecap="round" />
-      </g>
-      {/* provisional destination */}
-      <g opacity={0.15 + 0.85 * dev}>
-        <RoleBox x={1180} y={40} w={400} h={404} role="proposal" />
-        <T x={1206} y={86} size={19} fill="var(--proposal)" weight={700} mono>
+      <g opacity={col3}>
+        <T x={1122} y={34} size={19} fill="var(--proposal)" weight={700} mono>
           WHAT I HOPE TO DEVELOP
         </T>
-        <T x={1206} y={128} size={18} lh={1.3}>
-          {devLines.join('\n')}
-        </T>
-        <T x={1206} y={128 + devLines.length * 23.4 + 22} size={16} fill={W6} lh={1.3}>
-          {wrap(CONFLUENCE.developNote, 43).join('\n')}
-        </T>
-      </g>
-      {/* a possible first study: smallest, provisional */}
-      <g opacity={note}>
-        <line x1={1380} y1={444} x2={1380} y2={466} stroke="var(--orange)" strokeWidth={1.6} strokeDasharray="4 5" />
-        <T x={600} y={490} size={18} fill="var(--orange)" weight={700} mono>
-          {CONFLUENCE.noteLabel}
-        </T>
-        <T x={600} y={526} size={20} fill={W} lh={1.32}>
-          {wrap(CONFLUENCE.note, 88).join('\n')}
-        </T>
+        {list(CONFLUENCE.develop, 1122, 82, 34)}
       </g>
     </Svg>
   );
@@ -1067,49 +1050,6 @@ export const Dir1 = () => <DirectionView index={0} />;
 export const Dir2 = () => <DirectionView index={1} />;
 export const Dir3 = () => <DirectionView index={2} />;
 
-// ── The three directions compared ──────────────────────────────────────────
-export function Compare() {
-  const t = useT(2600, 300);
-  const cx = [20, 400, 800, 1200];
-  const cw = [370, 390, 390, 380];
-  const rowH = 52;
-  const y0 = 86;
-  return (
-    <Svg vb="0 0 1600 600" label="Comparison of the three possible directions across nine criteria.">
-      <rect x={cx[1]! - 10} y={14} width={cw[1]! + 4} height={y0 + COMPARISON.length * rowH - 6} fill="rgba(137,167,255,0.08)" stroke="var(--proposal)" strokeWidth={2.4} />
-      {DIRECTIONS.map((d, i) => (
-        <g key={d.n}>
-          <T x={cx[i + 1]!} y={44} size={16} fill="var(--proposal)" weight={700} mono>
-            {`DIRECTION ${d.n}`}
-          </T>
-          <T x={cx[i + 1]!} y={72} size={19} weight={700}>
-            {d.short}
-          </T>
-        </g>
-      ))}
-      {COMPARISON.map((r, i) => {
-        const y = y0 + i * rowH;
-        const on = win(t, i * 0.06, i * 0.06 + 0.2);
-        return (
-          <g key={r.criterion} opacity={0.15 + 0.85 * on}>
-            <rect x={20} y={y} width={1560} height={1} fill={W1} />
-            <T x={cx[0]!} y={y + 33} size={15} fill={W6} mono>
-              {r.criterion.toUpperCase()}
-            </T>
-            {r.cells.map((c, k) => (
-              <T key={k} x={cx[k + 1]!} y={y + 33} size={19} weight={i === COMPARISON.length - 1 && k === 0 ? 700 : 400} fill={i === COMPARISON.length - 1 && k === 0 ? 'var(--proposal)' : W}>
-                {c}
-              </T>
-            ))}
-          </g>
-        );
-      })}
-      <T x={20} y={y0 + COMPARISON.length * rowH + 22} size={14} fill={W6} mono>
-        THREE ALTERNATIVE DISSERTATION EMPHASES · ONE WOULD BE DEVELOPED THROUGH SUPERVISED DOCTORAL RESEARCH
-      </T>
-    </Svg>
-  );
-}
 
 export const FRAMEWORK_RATIO = {
   'atlas-open': 1600 / 560,
@@ -1121,12 +1061,11 @@ export const FRAMEWORK_RATIO = {
   scenario: 1600 / 440,
   rqmap: 1600 / 600,
   route: 1600 / 370,
-  confluence: 1600 / 600,
+  confluence: 1600 / 560,
   soa: 1600 / 560,
   loop: 1600 / 430,
   branches: 1600 / 540,
   platform: 1600 / 520,
-  compare: 1600 / 600,
   dir1: 1600 / 560,
   dir2: 1600 / 560,
   dir3: 1600 / 560,

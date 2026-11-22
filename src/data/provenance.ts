@@ -138,15 +138,25 @@ export const GAPS = [
 export const FIRST_STUDY =
   'Begin with one bounded Vancouver case, connect a verified rule set and one or two performance checks to editable parametric geometry, and study how designers inspect and revise AI suggestions.';
 
-/** The research-fit step: Roman's starting point, the shared question, what he hopes to develop. */
+/** The research-fit step: what Roman brings, the shared question, what he hopes to develop. */
 export const CONFLUENCE = {
-  question: 'How can people and AI design constructed environments together while keeping design rules, performance evidence, editable operations and consequential human decisions visible?',
-  background: 'Architecture and landscape-design judgment · GIS and environmental systems',
-  projects: 'Interactive environments and VR · Unity and system development · HCI experiments and user studies · early zoning, massing, verification and environmental-agent projects',
-  develop: 'Advanced Rhino and Grasshopper workflows · structured AI-to-tool communication · validated performance analysis · human-AI co-design theory · verification and provenance methods · one focused doctoral research system',
-  developNote: 'The final direction, analytical tools and first design case would be refined through doctoral supervision, technical feasibility testing and the strongest identified research gap.',
-  noteLabel: 'THREE POSSIBLE DIRECTIONS · FOR DISCUSSION',
-  note: 'These are alternative starting positions rather than three promised dissertations. I would value your guidance in identifying which one offers the strongest foundation for a focused doctoral contribution.',
+  bring: [
+    'Architecture and landscape-design judgment',
+    'Environmental and spatial analysis',
+    'Interactive 3D environments',
+    'Unity and system development',
+    'HCI experiments and user studies',
+    'Early zoning, massing, verification and environmental-agent projects',
+  ],
+  question: 'How can people and AI design constructed environments together while keeping design rules, performance evidence, editable operations, uncertainty and consequential human decisions visible?',
+  develop: [
+    'Advanced Rhino and Grasshopper workflows',
+    'Structured AI-to-tool communication',
+    'Validated performance analysis',
+    'Human-AI co-design methods',
+    'Verification and provenance mechanisms',
+    'One focused doctoral research system',
+  ],
 } as const;
 
 /** Program title from the UBC NSERC Discovery announcement (7 July 2026). Kept for the source record; not shown on any slide. */
@@ -335,17 +345,4 @@ export const DIRECTIONS: readonly Direction[] = [
     ],
     risk: 'High',
   },
-];
-
-/** The comparison step. Column 1 is Roman's strongest current starting point; none is chosen permanently. */
-export const COMPARISON: readonly { criterion: string; cells: [string, string, string] }[] = [
-  { criterion: 'Central issue', cells: ['Valid performance evidence', 'Distribution of human and AI control', 'Competing performance objectives'] },
-  { criterion: 'Main prototype', cells: ['Evidence-aware co-designer', 'Mixed-initiative co-designer', 'Multi-agent deliberation studio'] },
-  { criterion: 'AI role', cells: ['Plan, modify, verify, explain', 'Acts within negotiated permissions', 'Coordinate and debate specialist advice'] },
-  { criterion: 'Professional tools', cells: ['Rhino/Grasshopper + simulator', 'Rhino/Grasshopper + simulator', 'Rhino/Grasshopper + two simulators'] },
-  { criterion: 'Human role', cells: ['Inspect evidence and decide', 'Define permissions, keep authorship', 'Set priorities, resolve trade-offs'] },
-  { criterion: 'Main evaluation', cells: ['Technical benchmark + designer study', 'Three agency conditions', 'Three deliberation conditions'] },
-  { criterion: 'Coherence with the shared research problem', cells: ['Very strong', 'Strong', 'Very strong'] },
-  { criterion: 'Technical risk', cells: ['Moderate', 'Moderate', 'High'] },
-  { criterion: 'My strongest starting point', cells: ['Yes', 'Possible HCI emphasis', 'Ambitious, later-stage'] },
 ];

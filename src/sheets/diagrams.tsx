@@ -3,7 +3,8 @@ import type { DiagramId } from '../data/types';
 import { useT, win } from './useT';
 import { iso, isoBoxFaces, pts } from './iso';
 import { Agenda, BRANCH_RATIO, Externality, Living, RedTeam } from './branches';
-import { Architecture, AtlasFull, AtlasOpen, Branches, Capability, Compare, Confluence, Dir1, Dir2, Dir3, FRAMEWORK_RATIO, Gap, Loop, Platform, ProvenanceChain, Roles, Route, RqMap, Scenario, Soa } from './framework';
+import { PmgFlow, PROJECT_RATIO, ZlaFlow } from './projects';
+import { Architecture, AtlasFull, AtlasOpen, Branches, Capability, Confluence, Dir1, Dir2, Dir3, FRAMEWORK_RATIO, Gap, Loop, Platform, ProvenanceChain, Roles, Route, RqMap, Scenario, Soa } from './framework';
 
 /*
  * Diagrams drawn in the GenEnv language: thin white linework on blue, yellow
@@ -547,8 +548,6 @@ function Corridor() {
   const flatY = ceilAt(s0);
   const strips = 10;
   const sw = (s1 - s0) / strips;
-  const floors = Math.round(10 + 8 * trim);
-  const area = Math.round(18360 + (25608 - 18360) * trim);
   return (
     <Svg vb="0 0 1160 860">
       <line x1={40} y1={ground} x2={1120} y2={ground} stroke={W} strokeWidth={2} />
@@ -589,13 +588,13 @@ function Corridor() {
           FLOORS
         </Label>
         <Label x={0} y={56} size={56} fill={trim > 0 ? C : W} weight={700}>
-          {flat > 0 ? floors : '0'}
+          {String(trim > 0.5 ? 18 : 10)}
         </Label>
         <Label x={190} y={0} size={21}>
           FLOOR AREA
         </Label>
         <Label x={190} y={56} size={56} fill={trim > 0 ? C : W} weight={700}>
-          {flat > 0 ? `${area.toLocaleString()} m²` : '0 m²'}
+          {trim > 0.5 ? '25,608 m²' : '18,360 m²'}
         </Label>
       </g>
       <g opacity={win(t, 0.86, 1)} transform="translate(90,230)">
@@ -977,6 +976,7 @@ export const DIAGRAM_RATIO: Record<DiagramId, number> = {
   journey: 1600 / 270,
   ...FRAMEWORK_RATIO,
   ...BRANCH_RATIO,
+  ...PROJECT_RATIO,
 };
 
 const MAP: Record<DiagramId, () => ReactElement> = {
@@ -1012,8 +1012,9 @@ const MAP: Record<DiagramId, () => ReactElement> = {
   loop: Loop,
   branches: Branches,
   platform: Platform,
-  compare: Compare,
   agenda: Agenda,
+  zlaflow: ZlaFlow,
+  pmgflow: PmgFlow,
   redteam: RedTeam,
   externality: Externality,
   living: Living,

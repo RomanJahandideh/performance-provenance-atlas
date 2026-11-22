@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CHAPTERS, SECTIONS, SLIDES, START_AT, STEPS, noteWords } from '../data/steps';
+import { Cue } from './overlays';
 import { onSync, send } from '../lib/sync';
 
 const fmt = (sec: number) => {
@@ -83,6 +84,7 @@ export function PresenterView() {
         })}
       </div>
       <h1>{step.title}</h1>
+      {slide.cue && <Cue c={slide.cue} />}
       <div className="pv-notes">
         {step.notes.map((p, i) => (
           <p key={i}>{p}</p>

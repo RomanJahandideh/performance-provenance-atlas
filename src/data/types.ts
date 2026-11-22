@@ -119,8 +119,9 @@ export type DiagramId =
   | 'loop'
   | 'branches'
   | 'platform'
-  | 'compare'
   | 'agenda'
+  | 'zlaflow'
+  | 'pmgflow'
   | 'redteam'
   | 'externality'
   | 'living'
@@ -174,6 +175,8 @@ export interface Slide {
   questions?: string[];
   /** Spoken notes (N key). Defaults to the on-screen lines. */
   notes?: string[];
+  /** Presenter cue: recommended time in seconds (including any demonstration), what to show, what to skip. */
+  cue?: { sec: number; demo: string; skip: string };
 }
 
 /** One scroll position. */
