@@ -236,3 +236,8 @@
   .caveat { font-size: 13.5px; }
   .links { margin-top: 12px; }
 }
+
+/* ── interactive diagram controls (future-research section) ── */
+.dg-btn { cursor: pointer; outline: none; }
+.dg-btn .dg-ring { opacity: 0; transition: opacity 200ms ease; }
+.dg-btn:focus-visible .dg-ring { opacity: 1; }

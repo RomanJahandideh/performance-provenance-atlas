@@ -23,14 +23,14 @@ import type { EvidenceStatus } from '../data/types';
  * agent → tool action, uncertainty → decision, version → provenance.
  */
 
-const W = 'rgba(255,255,255,0.92)';
-const W6 = 'rgba(255,255,255,0.62)';
-const W3 = 'rgba(255,255,255,0.3)';
-const W1 = 'rgba(255,255,255,0.12)';
-const BG = 'rgb(16,49,118)';
-const col = (r: Role) => ROLE_STYLE[r].colour;
+export const W = 'rgba(255,255,255,0.92)';
+export const W6 = 'rgba(255,255,255,0.62)';
+export const W3 = 'rgba(255,255,255,0.3)';
+export const W1 = 'rgba(255,255,255,0.12)';
+export const BG = 'rgb(16,49,118)';
+export const col = (r: Role) => ROLE_STYLE[r].colour;
 
-function wrap(text: string, max: number): string[] {
+export function wrap(text: string, max: number): string[] {
   const out: string[] = [];
   let line = '';
   for (const w of text.split(' ')) {
@@ -43,7 +43,7 @@ function wrap(text: string, max: number): string[] {
   return out;
 }
 
-function T({ x, y, children, size = 20, fill = W, anchor = 'start', weight = 400, mono = false, lh = 1.3 }: { x: number; y: number; children: string; size?: number; fill?: string; anchor?: 'start' | 'middle' | 'end'; weight?: number; mono?: boolean; lh?: number }) {
+export function T({ x, y, children, size = 20, fill = W, anchor = 'start', weight = 400, mono = false, lh = 1.3 }: { x: number; y: number; children: string; size?: number; fill?: string; anchor?: 'start' | 'middle' | 'end'; weight?: number; mono?: boolean; lh?: number }) {
   const parts = children.split('\n');
   return (
     <text x={x} y={y} fontSize={size} fill={fill} textAnchor={anchor} fontWeight={weight} className={mono ? 'dg-mono' : 'dg-sans'}>
@@ -56,7 +56,7 @@ function T({ x, y, children, size = 20, fill = W, anchor = 'start', weight = 400
   );
 }
 
-function Svg({ vb, children, label }: { vb: string; children: ReactNode; label: string }) {
+export function Svg({ vb, children, label }: { vb: string; children: ReactNode; label: string }) {
   return (
     <svg viewBox={vb} className="dg" preserveAspectRatio="xMidYMid meet" role="img" aria-label={label}>
       <defs>
@@ -79,7 +79,7 @@ function Svg({ vb, children, label }: { vb: string; children: ReactNode; label: 
 }
 
 /** A box drawn in its role's geometry. */
-function RoleBox({ x, y, w, h, role, on = 1 }: { x: number; y: number; w: number; h: number; role: Role; on?: number }) {
+export function RoleBox({ x, y, w, h, role, on = 1 }: { x: number; y: number; w: number; h: number; role: Role; on?: number }) {
   const c = col(role);
   const common = { x, y, width: w, height: h, opacity: on };
   if (role === 'ai') return <rect {...common} rx={18} fill="rgba(200,185,255,0.08)" stroke={c} strokeWidth={2.2} strokeDasharray="9 7" />;
@@ -102,7 +102,7 @@ function RoleBox({ x, y, w, h, role, on = 1 }: { x: number; y: number; w: number
 }
 
 /** Small role glyph for legends and markers. */
-function Glyph({ x, y, role, s = 22 }: { x: number; y: number; role: Role; s?: number }) {
+export function Glyph({ x, y, role, s = 22 }: { x: number; y: number; role: Role; s?: number }) {
   const c = col(role);
   if (role === 'human') return <path d={`M${x} ${y - s / 2} l${s / 2} ${s / 2} l${-s / 2} ${s / 2} l${-s / 2} ${-s / 2} z`} fill={c} />;
   if (role === 'ai') return <rect x={x - s / 2} y={y - s / 2} width={s} height={s} rx={s / 3} fill="none" stroke={c} strokeWidth={2.4} strokeDasharray="4 3" />;

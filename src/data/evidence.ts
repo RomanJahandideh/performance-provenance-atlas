@@ -370,7 +370,7 @@ export const EVIDENCE: readonly EvidenceRecord[] = [
   {
     id: 'phd-provisional',
     project: 'phd',
-    claim: 'Three possible doctoral directions on one shared platform for human-AI performance co-design (Performance EvidenceGraph Co-Designer; Negotiable-Agency Performance Co-Designer; Multi-Agent Performance Deliberation Studio) are proposals for discussion. None is built or tested; one would be developed through supervised doctoral research.',
+    claim: 'Three possible doctoral directions on one shared platform for human-AI performance co-design (AI Design Red-Team; Neighbourhood Externality Co-Designer; Living Environment Co-Designer) are proposals for discussion. None is built or tested; one would be developed through supervised doctoral research.',
     status: 'proposed',
     source: 'My proposal for this interview (src/data/provenance.ts).',
     limitation: 'Not approved by any supervisor. No study, participant number, partner or integration exists yet.',

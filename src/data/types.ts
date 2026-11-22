@@ -120,6 +120,10 @@ export type DiagramId =
   | 'branches'
   | 'platform'
   | 'compare'
+  | 'agenda'
+  | 'redteam'
+  | 'externality'
+  | 'living'
   | 'dir1'
   | 'dir2'
   | 'dir3';

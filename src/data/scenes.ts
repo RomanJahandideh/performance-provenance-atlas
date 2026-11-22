@@ -45,8 +45,8 @@ export const SCENES: readonly Scene[] = [
   { id: 'synthesis', title: 'Research projects and the missing layer', citationIds: [], evidenceIds: ['zla-pipeline', 'pmg-geometry-method', 'vcm-gfa-recovery', 'vcm-placeholders', 'ema-h1-not-confirmed', 'ema-reliability', 'ema-limitations'] },
   {
     id: 'phd',
-    title: 'Three possible doctoral directions on one shared platform',
-    citationIds: ['ubc-nserc-2026', 'genenv-home', 'genenv-openings', 'genenv-hacd', 'genenv-ghmcp', 'liu-tian-2025', 'lam-archsim', 'energyplus-mcp-2025', 'li-mcp-bem-2026', 'zhang-agent-schema-2025', 'eplus-agent', 'optimuse', 'maier-chi2026', 'req2cad-chi2026', 'jin-esim2026'],
+    title: 'One research agenda, three possible branches (proposed)',
+    citationIds: ['ubc-nserc-2026', 'genenv-home', 'genenv-openings', 'genenv-hacd', 'genenv-ghmcp', 'liu-tian-2025', 'jin-esim2026', 'liu-third-simulation-2020', 'liu-planting-2024', 'lam-archsim', 'energyplus-mcp-2025', 'li-mcp-bem-2026', 'zhang-agent-schema-2025', 'eplus-agent', 'req2cad-chi2026', 'text2cad', 'aidl', 'mac-siggraph2026', 'optimuse', 'maier-chi2026', 'moruzzi-chi2024', 'gh-vr'],
     evidenceIds: ['phd-provisional', 'genenv-modes', 'vcm-trimmed', 'vcm-gfa-recovery', 'vcm-placeholders'],
   },
   {

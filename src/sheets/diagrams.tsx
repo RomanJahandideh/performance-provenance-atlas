@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import type { DiagramId } from '../data/types';
 import { useT, win } from './useT';
 import { iso, isoBoxFaces, pts } from './iso';
+import { Agenda, BRANCH_RATIO, Externality, Living, RedTeam } from './branches';
 import { Architecture, AtlasFull, AtlasOpen, Branches, Capability, Compare, Confluence, Dir1, Dir2, Dir3, FRAMEWORK_RATIO, Gap, Loop, Platform, ProvenanceChain, Roles, Route, RqMap, Scenario, Soa } from './framework';
 
 /*
@@ -975,6 +976,7 @@ export const DIAGRAM_RATIO: Record<DiagramId, number> = {
   colours: 1000 / 440,
   journey: 1600 / 270,
   ...FRAMEWORK_RATIO,
+  ...BRANCH_RATIO,
 };
 
 const MAP: Record<DiagramId, () => ReactElement> = {
@@ -1011,6 +1013,10 @@ const MAP: Record<DiagramId, () => ReactElement> = {
   branches: Branches,
   platform: Platform,
   compare: Compare,
+  agenda: Agenda,
+  redteam: RedTeam,
+  externality: Externality,
+  living: Living,
   dir1: Dir1,
   dir2: Dir2,
   dir3: Dir3,
