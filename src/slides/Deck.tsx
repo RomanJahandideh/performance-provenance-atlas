@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from
 import type { Fact, Media, Slide } from '../data/types';
 import { CHAPTERS, SLIDES } from '../data/steps';
 import { IMG } from '../data/media';
+import { apaEntry, parenCite } from '../data/citations';
 import { setState, useAppState } from '../state/store';
 import { goToStep } from '../lib/stepper';
 import { Diagram, DIAGRAM_RATIO } from '../sheets/diagrams';
@@ -166,9 +167,21 @@ function Pattern({ p }: { p: NonNullable<Slide['project']> }) {
   );
 }
 
+/** In-slide citations, APA 7 parenthetical: (Khan et al., 2024; Liu & Tian, 2025). */
+function Cites({ s }: { s: Slide }) {
+  if (!s.refs?.length) return null;
+  return (
+    <p className="cites">{parenCite(s.refs, s.refsSee)}</p>
+  );
+}
+
+/** All works cited on the slides, alphabetical by first author. */
+const CITED_IDS: readonly string[] = [...new Set(SLIDES.flatMap((sl) => sl.refs ?? []))].sort((x, y) => apaEntry(x).sortKey.localeCompare(apaEntry(y).sortKey));
+
 function Extras({ s }: { s: Slide }) {
   return (
     <>
+      <Cites s={s} />
       {s.caveat && <p className="caveat">{s.caveat}</p>}
       {s.links && (
         <p className="links">
@@ -297,6 +310,29 @@ function SlideView({ s }: { s: Slide }) {
           </div>
         </div>
       );
+    case 'references':
+      return (
+        <div className="slide l-references">
+          <div className="text">
+            <Head s={s} />
+          </div>
+          <ol className="refs">
+            {CITED_IDS.map((id) => {
+              const e = apaEntry(id);
+              return (
+                <li key={id}>
+                  {e.authors} ({e.year}). {e.title}. <em>{e.venue}</em>.{' '}
+                  {e.link && (
+                    <a href={e.link} target="_blank" rel="noopener noreferrer">
+                      {e.link.includes('doi.org') ? e.link.replace(/^https?:\/\//, '') : new URL(e.link).hostname}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      );
     case 'questions':
       return (
         <div className="slide l-questions">
@@ -306,14 +342,16 @@ function SlideView({ s }: { s: Slide }) {
             <Extras s={s} />
           </div>
           <FitRow media={media} align="start" className="area-media" />
+          {!!s.questions?.length && (
           <ol className="qs">
-            {s.questions?.map((q, i) => (
+            {s.questions.map((q, i) => (
               <li key={q} style={{ '--d': `${0.1 + i * 0.05}s` } as CSSProperties}>
                 <span className="q-n">{i + 1}</span>
                 <span className="q-t">{q}</span>
               </li>
             ))}
           </ol>
+          )}
         </div>
       );
   }

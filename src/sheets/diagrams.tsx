@@ -4,6 +4,7 @@ import { useT, win } from './useT';
 import { iso, isoBoxFaces, pts } from './iso';
 import { Agenda, BRANCH_RATIO, Externality, Living, RedTeam } from './branches';
 import { PmgFlow, PROJECT_RATIO, ZlaFlow } from './projects';
+import { Colophon, COLOPHON_RATIO } from './colophon';
 import { Architecture, AtlasFull, AtlasOpen, Branches, Capability, Confluence, Dir1, Dir2, Dir3, FRAMEWORK_RATIO, Gap, Loop, Platform, ProvenanceChain, Roles, Route, RqMap, Scenario, Soa } from './framework';
 
 /*
@@ -977,6 +978,7 @@ export const DIAGRAM_RATIO: Record<DiagramId, number> = {
   ...FRAMEWORK_RATIO,
   ...BRANCH_RATIO,
   ...PROJECT_RATIO,
+  ...COLOPHON_RATIO,
 };
 
 const MAP: Record<DiagramId, () => ReactElement> = {
@@ -1013,6 +1015,7 @@ const MAP: Record<DiagramId, () => ReactElement> = {
   branches: Branches,
   platform: Platform,
   agenda: Agenda,
+  colophon: Colophon,
   zlaflow: ZlaFlow,
   pmgflow: PmgFlow,
   redteam: RedTeam,

@@ -393,3 +393,33 @@ export function cite(id: string): Citation {
   if (!c) throw new Error(`Unknown citation id: ${id}`);
   return c;
 }
+
+/** Authors split into "Surname, I." parts. */
+function authorParts(authors: string): string[] {
+  return authors.split(/\.,\s+/).map((a, k, all) => (k < all.length - 1 ? `${a}.` : a.replace(/\.?$/, '.'))).filter(Boolean);
+}
+
+/** APA 7 in-text form: Liu (2020) / Liu & Tian (2025) / Khan et al. (2024), as "Surname, Year". */
+export function shortCite(id: string): string {
+  const c = CITATIONS.find((x) => x.id === id);
+  if (!c) return id;
+  const s = authorParts(c.authors).map((a) => a.split(',')[0]!.trim());
+  const who = s.length === 1 ? s[0] : s.length === 2 ? `${s[0]} & ${s[1]}` : `${s[0]} et al.`;
+  return `${who}, ${c.year}`;
+}
+
+/** APA 7 parenthetical citation: works in alphabetical order, separated by semicolons. */
+export function parenCite(ids: readonly string[], see = false): string {
+  const items = [...ids].map(shortCite).sort((a, b) => a.localeCompare(b));
+  return `(${see ? 'see ' : ''}${items.join('; ')})`;
+}
+
+/** APA 7 reference-list entry, in parts so the source title can be italicised. */
+export function apaEntry(id: string): { authors: string; year: string; title: string; venue: string; link?: string; sortKey: string } {
+  const c = CITATIONS.find((x) => x.id === id);
+  if (!c) return { authors: id, year: '', title: '', venue: '', sortKey: id };
+  const parts = authorParts(c.authors);
+  const authors = parts.length === 1 ? parts[0]! : parts.length === 2 ? `${parts[0]}, & ${parts[1]}` : `${parts.slice(0, -1).join(', ')}, & ${parts[parts.length - 1]}`;
+  const link = c.doi ? `https://doi.org/${c.doi}` : c.url || undefined;
+  return { authors, year: c.year, title: c.title.replace(/[.]$/, ''), venue: c.venue, link, sortKey: `${authors} ${c.year}` };
+}

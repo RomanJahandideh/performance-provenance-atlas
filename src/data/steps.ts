@@ -18,12 +18,13 @@ import { AGENDA } from './branches';
 /** Timing sections, in order, with their targets (docs/TIMING_AUDIT.md). */
 export const SECTIONS = [
   { name: 'Opening', target: '1:30' },
-  { name: 'Background', target: '4:00' },
-  { name: 'Previous research', target: '3:00' },
-  { name: 'Research projects', target: '5:00' },
-  { name: 'PhD directions', target: '4:30' },
+  { name: 'Background', target: '4:08' },
+  { name: 'Previous research', target: '3:50' },
+  { name: 'Research projects', target: '4:20' },
+  { name: 'PhD directions', target: '4:10' },
   { name: 'Research fit', target: '0:50' },
-  { name: 'Conversation', target: '1:10' },
+  { name: 'Conversation', target: '1:12' },
+  { name: 'References', target: '0:00' },
 ] as const;
 
 /** Delivery pace used for every timing figure. */
@@ -59,10 +60,10 @@ export const SLIDES: readonly Slide[] = [
     kicker: 'The question, and the route to it',
     title: 'A proposal is only useful if a designer can check it',
     lines: ['AI can generate convincing spatial proposals. Designers still need the rules, calculations, assumptions and decisions behind them to stay valid as the design changes.'],
-    facts: [{ label: 'Research area', value: 'Human-AI co-design for performance-aware constructed environments', tone: 'proposal' }],
     media: [{ diagram: 'route', caption: 'Each stage, and what it carried forward' }],
     purpose: 'The question and the research area, then the route from making to human-AI co-design with one capability carried from each stage.',
     cue: { sec: 50, demo: 'Follow the route left to right in one gesture.', skip: 'Explaining each stage; the next steps do that.' },
+    refs: ['liu-tian-2025', 'text2cad', 'aidl', 'moruzzi-chi2024'],
     notes: [
       'AI can already produce convincing spatial proposals. But a designer can only use one if they can see which rule it followed, how its performance was calculated, and what was assumed.',
       'The route that led me here runs from spatial design to environmental systems, human perception, interactive systems and computational design. I will show four research projects, then three possible directions for discussion.',
@@ -79,11 +80,12 @@ export const SLIDES: readonly Slide[] = [
     kicker: 'Background · Making',
     title: 'I learn by making',
     lines: ['Build something, inspect how it works, test where it fails, and revise it.'],
+    facts: [{ label: 'School', value: 'NODET, National Organization for Development of Exceptional Talents' }],
     media: [{ src: 'assets/photos/childhood.jpg', caption: 'Already taking things apart', alt: 'Roman as a child in a kitchen, opening a drawer to see what is inside.' }],
-    purpose: 'One childhood photograph and one idea: making as a way of understanding.',
-    cue: { sec: 22, demo: 'None.', skip: 'Childhood details beyond the research habit.' },
+    purpose: 'One childhood photograph, NODET schooling, and one idea: making as a way of understanding.',
+    cue: { sec: 30, demo: 'None.', skip: 'Childhood details beyond the research habit.' },
     notes: [
-      'I learn by making. As a child I took things apart to see how they worked, and that became a research habit I still use: build something, inspect how it works, test where it fails, and revise it.',
+      'I learn by making. As a child I took things apart to see how they worked. I then studied at NODET, the national schools for exceptional talents, where mathematics and science came early. That became a research habit I still use: build something, inspect how it works, test where it fails, and revise it.',
     ],
 
   },
@@ -209,6 +211,8 @@ export const SLIDES: readonly Slide[] = [
     ],
     purpose: 'Analysis, water section and connected units: from site reading to a connected system.',
     cue: { sec: 35, demo: 'Trace the water down the slope with the pointer, left image to right.', skip: 'Cistern sizing.' },
+    refs: ['liu-third-simulation-2020'],
+    refsSee: true,
     notes: [
       'On Büyükada, a steep island, rainwater runs straight down the streets. The design began from slope, roads and runoff, and became a system of collectors, cisterns and planted basins linked down the hill to shared storage. Design became a network of relationships I could represent and measure.',
     ],
@@ -232,6 +236,8 @@ export const SLIDES: readonly Slide[] = [
     ],
     purpose: 'Three of Roman’s own Midjourney images from 2022: an exploratory use of generative AI for landscape and atmosphere, and the limit it exposed.',
     cue: { sec: 35, demo: 'None.', skip: 'Prompts and tool settings; this is not the PhD direction.' },
+    refs: ['liu-planting-2024'],
+    refsSee: true,
     notes: [
       'During my master’s in Istanbul I also experimented with Midjourney, generating landscapes and atmospheres from text prompts. The images appeared quickly and looked convincing, but they carried no reliable site, scale, rule set, editable operation or evidence I could inspect.',
       'Image generation is not my PhD direction. That limit is why I became interested in accountable, tool-connected human-AI co-design.',
@@ -248,7 +254,7 @@ export const SLIDES: readonly Slide[] = [
     kicker: 'Toward better VR design tools',
     title: 'Designing depth in virtual landscapes',
     lines: ['Question: do colour and transparency change perceived depth in VR?', 'At high transparency, cool and dark colours looked nearer. How space is represented affects how space is judged.'],
-    callout: { label: 'For a designer’s toolset', text: 'Guidance inside a VR design tool, so a landscape reads at the depth the designer intends.' },
+    callout: { label: 'For a designer’s toolset', text: 'VR tool guidance so a landscape reads at the intended depth.' },
     facts: [
       { label: 'Participants', value: '60' },
       { label: 'Judgments each', value: '264' },
@@ -262,6 +268,7 @@ export const SLIDES: readonly Slide[] = [
     ],
     purpose: 'Study design redrawn as vectors: four transparency levels, twelve colour conditions.',
     cue: { sec: 65, demo: 'Point to the transparency levels, then the reversal.', skip: 'Statistical method unless asked.' },
+    refs: ['ecaade2023'],
     notes: [
       'In the Virtual Landscape Lab with Dr. Ikhwan Kim, I studied a problem designers face in VR: depth does not always read as intended. Sixty people each made 264 depth judgments across four transparency levels and twelve colour conditions. At high transparency the usual rule reversed.',
       'The study taught me that a design interface is not neutral. Its representation can influence human judgment, so future AI-assisted tools must be evaluated not only for accuracy but also for how designers understand and use their outputs.',
@@ -287,6 +294,7 @@ export const SLIDES: readonly Slide[] = [
     ],
     purpose: 'From spatial design to interactive-system research: the capability chain from question to publication, the SFU Surrey atrium and one teaching photo.',
     cue: { sec: 55, demo: 'Follow the chain from question to publication.', skip: 'Course numbers.' },
+    refs: ['ecaade2023', 'iss2026'],
     notes: [
       'Midjourney showed me what a generative system could produce, but not how to build or evaluate one. At SFU, in Prof. Steve DiPaola’s iViz Lab, I learned to carry a question the whole way: interactive 3D systems in Unity and C#, data pipelines in Python and JavaScript, sensing and interfaces, then experimental design, user studies, statistical and qualitative analysis, and the paper.',
       'An AI course there deepened my interest in responsible human-AI systems. I also teach as a TA in three SIAT courses, and last week ran a Unity workshop.',
@@ -314,11 +322,34 @@ export const SLIDES: readonly Slide[] = [
     ],
     purpose: 'Halo states and BioTerrarium zones; the trust trade-off as the headline, statuses kept small.',
     cue: { sec: 60, demo: 'Point to what was accepted and what is under revision.', skip: 'Statistics; keep to built, measured, accepted, under revision.' },
+    refs: ['iss2026'],
     notes: [
       'Two physiological-computing studies. For ISS I built a body-worn sensing interface: a remote teammate’s heart rate appeared as a halo instead of numbers. People read it above chance and teams helped each other faster, but they trusted plain numbers more. That paper is accepted.',
       'BioTerrarium explores an environment that changes with a person’s state; its results are provisional and the manuscript is under revision. Together they taught me that a representation shapes understanding, support and trust, which matters for any AI design tool.',
     ],
 
+  },
+  {
+    id: 'methods',
+    chapter: 'Previous research',
+    scene: 'foundation',
+    layout: 'columns',
+    kicker: 'Previous research · Human-centred methods',
+    title: 'How I study people and systems',
+    lines: ['Across my research I study how people perceive, interpret and act on representations, using controlled experiments, physiological sensing, validated questionnaires and interviews.'],
+    columns: [
+      { head: 'eCAADe 2023 · published', title: 'Controlled VR experiment', text: '60 participants; within-subject design (4 transparency × 6 hues × 2 luminance); 264 forced-choice pairwise comparisons each; Oculus Quest 2, Unreal Engine.' },
+      { head: 'ISS 2026 · accepted', title: 'Lab studies with live sensing', text: 'Recognition study (36 participants) tested against chance; team study (12 three-person teams) with live Apple Watch heart rate, comparing cue conditions on support time.' },
+      { head: 'BioTerrarium · under revision', title: 'Mixed methods', text: 'Counterbalanced within-subjects study (24 participants): heart rate and HRV, PANAS, Flow Short Scale, Mindful Attention Awareness Scale, and interviews.' },
+      { head: 'Computational projects', title: 'Hypotheses stated first', text: 'Research questions and falsifiable hypotheses written before running; deterministic benchmarks and unit tests; results reported even when a hypothesis was not confirmed.' },
+    ],
+    refs: ['ecaade2023', 'iss2026'],
+    purpose: 'Four columns: the methods behind each study and project, with status kept small and honest.',
+    cue: { sec: 50, demo: 'Point across the four columns, left to right.', skip: 'Statistical details unless asked.' },
+    notes: [
+      'Across these studies I have used a range of human-centred methods: a controlled within-subject experiment in VR with sixty participants, lab studies with live physiological sensing and teams, and a mixed-methods study combining heart rate, validated questionnaires and interviews.',
+      'In my computational projects I state the research questions and hypotheses before running anything, and I report results even when a hypothesis is not confirmed. These are the methods I would bring to studying how designers work with AI.',
+    ],
   },
 
   // ── Research projects ──────────────────────────────────────────────────────
@@ -342,7 +373,7 @@ export const SLIDES: readonly Slide[] = [
     ],
     media: [{ diagram: 'zlaflow', caption: 'Keys 1 · 2: answered or not covered' }],
     purpose: 'Opens the four research projects. The retrieve, answer, verify pipeline with two cases: answered from a cited clause, and “not covered” when the bylaw is silent.',
-    cue: { sec: 75, demo: 'Press 1 (answered from a clause), then 2 (not covered).', skip: 'Prompt design.' },
+    cue: { sec: 65, demo: 'Press 1 (answered from a clause), then 2 (not covered).', skip: 'Prompt design.' },
     notes: [
       'I built four computational-design projects to investigate how regulations, editable geometry, spatial constraints, simulations and AI agents might work together.',
       'The first is about regulation. The assistant retrieves the relevant clause, answers only from it, and verifies the answer. Asked the front setback, it quotes the clause; code computes the buildable footprint. Asked how many storeys a laneway house may have, it reports “not covered” and stops. It uses ten clauses of one zone and is not planning advice.',
@@ -359,9 +390,9 @@ export const SLIDES: readonly Slide[] = [
     project: {
       problem: 'Can rules read by AI stay editable once they become geometry?',
       built: 'AI extracts eight rules with their source phrases; code builds the envelope.',
-      evidence: 'Change one value, the rental condition, and every dependent part updates: FSR 0.70 to 1.00.',
+      evidence: 'One value, the rental condition, updates every dependent part: FSR 0.70 to 1.00.',
       limit: 'A research prototype, not code-compliance software.',
-      lesson: 'AI output should be symbolic and editable, not a finished model.',
+      lesson: 'AI output should stay symbolic and editable.',
     },
     links: [
       { label: 'Live system', url: 'https://romanjahandideh.github.io/parametric-massing-generator/' },
@@ -369,7 +400,9 @@ export const SLIDES: readonly Slide[] = [
     ],
     media: [{ diagram: 'pmgflow', caption: 'Phrase, rule, parameter, geometry · keys 1 · 2' }],
     purpose: 'The bylaw phrase, the extracted rule, the editable parameter and the geometry, linked: the rental condition moves FSR from 0.70 to 1.00 and the worked example from one floor to two.',
-    cue: { sec: 75, demo: 'Press 1, then 2: FSR 0.70 to 1.00, one floor to two.', skip: 'Every setback value.' },
+    cue: { sec: 65, demo: 'Press 1, then 2: FSR 0.70 to 1.00, one floor to two.', skip: 'Every setback value.' },
+    refs: ['req2cad-chi2026', 'liu-tian-2025'],
+    refsSee: true,
     notes: [
       'Second, geometry. The AI does not return a finished image. It extracts traceable parameters, each with its source phrase, and code builds the envelope from them.',
       'Here the rental condition moves the floor space ratio from 0.70 to 1.00, and the worked example grows from one floor to two. It is a research prototype, not code-compliance software.',
@@ -393,7 +426,7 @@ export const SLIDES: readonly Slide[] = [
     links: [{ label: 'GitHub', url: 'https://github.com/RomanJahandideh/vancouver-view-corridor-massing' }],
     media: [{ diagram: 'corridor', caption: 'Flat cap against floor-by-floor trim' }],
     purpose: 'Section: the sloped view ceiling, the flat cap, then floor-by-floor trimming with live counts.',
-    cue: { sec: 75, demo: 'Let the section play: sloped limit, flat cap, floor-by-floor trim.', skip: 'Geodetic processing; the rotation study unless asked.' },
+    cue: { sec: 65, demo: 'Let the section play: sloped limit, flat cap, floor-by-floor trim.', skip: 'Geodetic processing; the rotation study unless asked.' },
     notes: [
       'Third, a spatial constraint. Protected views in Vancouver are sloped, but quick checks use a flat cap. Using the City’s open corridor data, clipping floor by floor gives 18 floors instead of 10 and 39.5 percent more floor area in the documented test case.',
       'The geometry exports to Rhino, but the base elevation and slope are placeholders, and the Grasshopper step is written but not executed. The method and its assumptions must travel with the result.',
@@ -409,9 +442,9 @@ export const SLIDES: readonly Slide[] = [
     title: 'Environmental Massing Agents',
     project: {
       problem: 'Does directed, critique-driven search beat blind sampling?',
-      built: 'Generator, critic and orchestrator agents; deterministic solar, carbon, wind and floor-area evaluators.',
+      built: 'Generator, critic and orchestrator agents over deterministic evaluators.',
       evidence: 'Not faster, but more reliable: directed search (NSGA-II, standing in for the agent loop) hit the target in 4/5 runs, random in 1/5.',
-      limit: 'Simplified solar, benchmark carbon, a wind proxy. The live LLM loop was not run.',
+      limit: 'Simplified solar, benchmark carbon, a wind proxy; live LLM loop not run.',
       lesson: 'Agents interpret and critique; evaluators calculate.',
     },
     links: [{ label: 'GitHub', url: 'https://github.com/RomanJahandideh/environmental-massing-agents' }],
@@ -420,7 +453,9 @@ export const SLIDES: readonly Slide[] = [
       { diagram: 'seeds', caption: 'Two searches' },
     ],
     purpose: 'Agent roles around one evaluator box; search runs against the target, with “not faster” in red.',
-    cue: { sec: 75, demo: 'Point from each agent to the evaluator it reads; end on the result.', skip: 'Hypervolume definition unless asked.' },
+    cue: { sec: 65, demo: 'Point from each agent to the evaluator it reads; end on the result.', skip: 'Hypervolume definition unless asked.' },
+    refs: ['jin-esim2026', 'liu-tian-2025'],
+    refsSee: true,
     notes: [
       'Fourth, performance critique, the project closest to this research area. A generator agent proposes massing, four critic agents interpret it, and an orchestrator directs the next round, but deterministic evaluators calculate every score.',
       'I expected directed search to be faster. It was not, but it was more reliable: four of five runs reached the target against one of five. The evaluators are simplified, carbon is a benchmark, wind is a proxy, and the live language-model loop was not run.',
@@ -439,7 +474,9 @@ export const SLIDES: readonly Slide[] = [
     lines: [AGENDA, 'Carefully developed possibilities, not commitments; their novelty would be confirmed through a formal prior-art review.'],
     media: [{ diagram: 'agenda', caption: 'Branches are possibilities, not a ranking · each opens its own step' }],
     purpose: 'The shared problem as one trail (intention, tools, simulation, evidence, judgment) branching into three proposed directions shown as map layers: design risk, neighbourhood, time. Hover, Tab or keys 1 to 3 reveal each; Enter or click opens it.',
-    cue: { sec: 50, demo: 'Hover or press 1, 2, 3 on the branches; do not open them here.', skip: 'Weighing the branches against each other; they are not ranked.' },
+    cue: { sec: 45, demo: 'Hover or press 1, 2, 3 on the branches; do not open them here.', skip: 'Weighing the branches against each other; they are not ranked.' },
+    refs: ['liu-tian-2025', 'energyplus-mcp-2025', 'li-mcp-bem-2026', 'optimuse', 'maier-chi2026'],
+    refsSee: true,
     notes: [
       'I arrived at these directions by looking across computational design, building-performance simulation and HCI. The capabilities increasingly exist, but the connection between design intention, professional tools, simulation, verified evidence and human judgment is still fragile.',
       'The principle is simple: AI suggests, simulation calculates, people decide. These are three possible ways into that one agenda, not three commitments, and their novelty would need a formal prior-art review.',
@@ -455,7 +492,9 @@ export const SLIDES: readonly Slide[] = [
     lines: ['Simulations test the scenarios designers think to try. A red team searches for plausible ones they did not, then repairs verified weaknesses while protecting design intent.'],
     media: [{ diagram: 'redteam', caption: 'Evaluated against designer-selected scenario testing · expert review · design studies · interviews' }],
     purpose: 'Risk discovery: an apparently successful plaza, AI-proposed stress scenarios, a simulated weakness, protected intentions and a minimal repair, with illustrative before and after bars. Keys 1 to 3 switch original, failure and repair; 4 to 7 pick a scenario.',
-    cue: { sec: 75, demo: 'Press 1, 2, 3: problem, proposed system, designer decides.', skip: 'Simulation engine names.' },
+    cue: { sec: 70, demo: 'Press 1, 2, 3: problem, proposed system, designer decides.', skip: 'Simulation engine names.' },
+    refs: ['eplus-agent', 'li-mcp-bem-2026', 'moruzzi-chi2024'],
+    refsSee: true,
     notes: [
       'The first is an AI Design Red-Team. Simulations usually test the scenarios a designer already knows to try; a design can still fail under combinations nobody chose, like a heatwave during an evening event.',
       'The AI proposes plausible stress scenarios, and the simulation, not the language model, calculates what happens. If a weakness is verified, the AI proposes the smallest repair that protects what the designer marked: the trees, the view axis, the seating, the library access. The designer then accepts, revises or rejects it.',
@@ -472,7 +511,9 @@ export const SLIDES: readonly Slide[] = [
     lines: ['Improving one parcel can move shadow, heat, glare, wind or runoff onto its neighbours. This system makes those effects visible so people can negotiate them.'],
     media: [{ diagram: 'externality', caption: 'Evaluated by parcel-only vs neighbourhood-level design · realistic sites · stakeholder workshops' }],
     purpose: 'Six illustrative parcels; effects crossing boundaries for two AI alternatives and an AI-suggested compromise; a ledger of gains and burdens; human deliberation as the last stage. Keys 1 to 3 switch alternatives; 4 to 8 toggle layers.',
-    cue: { sec: 75, demo: 'Press 1, 2, 3; optionally switch a layer off with 4 to 8.', skip: 'Parcel numbers; they are illustrative.' },
+    cue: { sec: 70, demo: 'Press 1, 2, 3; optionally switch a layer off with 4 to 8.', skip: 'Parcel numbers; they are illustrative.' },
+    refs: ['jin-esim2026', 'liu-tian-2025'],
+    refsSee: true,
     notes: [
       'The second works at the scale of the neighbourhood. Most tools evaluate one parcel at a time, but a design can move shadow, heat, glare, wind or runoff onto its neighbours.',
       'This system would simulate those effects across boundaries, show where priorities conflict, and let AI suggest alternatives, like stepped massing with a green roof. It shows trade-offs; it does not calculate fairness. People decide.',
@@ -489,7 +530,9 @@ export const SLIDES: readonly Slide[] = [
     lines: ['Trees grow, materials weather, use changes and climate shifts. Instead of one optimal design, the system proposes an adaptive pathway with thresholds and intervention points.'],
     media: [{ diagram: 'living', caption: 'Evaluated by static vs adaptive pathways · long-term cases · expert review · sensitivity analysis' }],
     purpose: 'An illustrative courtyard section across forty years beside an illustrative heat-stress chart: threshold, intervention point, static design vs adaptive pathway, widening uncertainty. Keys 1 to 5 move in time; 6 and 7 switch static and adaptive.',
-    cue: { sec: 70, demo: 'Press 1, 3, 4, 5 through time; 6 then 7 for static versus adaptive.', skip: 'Curve values; they are illustrative.' },
+    cue: { sec: 65, demo: 'Press 1, 3, 4, 5 through time; 6 then 7 for static versus adaptive.', skip: 'Curve values; they are illustrative.' },
+    refs: ['liu-third-simulation-2020', 'liu-planting-2024'],
+    refsSee: true,
     notes: [
       'The third is about time. Trees grow, materials weather, use changes and the climate shifts, so a design that works today may not in twenty years.',
       'Instead of one optimal design, the system would propose an adaptive pathway: when performance may cross a limit the designer chooses, what to monitor, and when to act. Here the threshold arrives before the canopy matures, so the pathway adds temporary shade and permeable paving. The widening band is uncertainty: it prepares for change rather than predicting it.',
@@ -509,8 +552,10 @@ export const SLIDES: readonly Slide[] = [
     media: [{ diagram: 'confluence', caption: 'What I bring, the shared question, what I hope to develop' }],
     purpose: 'Convergence: Roman’s starting point (design and systems; interactive systems and projects) into the shared question, then what he hopes to develop; the three directions as alternative starting positions.',
     cue: { sec: 50, demo: 'Let the three parts appear; rest on the shared question.', skip: 'Listing every skill.' },
+    refs: ['gh-vr', 'optimuse', 'maier-chi2026'],
+    refsSee: true,
     notes: [
-      'I began by designing physical spaces, learned to understand landscape as an environmental system, studied how people perceive virtual space, learned to build and evaluate interactive systems, and then developed AI-assisted computational-design projects. These now converge in performance-aware human-AI co-design.',
+      'I began by designing physical spaces, learned to understand landscape as an environmental system, studied how people perceive virtual space, learned to build and evaluate interactive systems, and then developed AI-assisted computational-design projects. These now converge in one question: how people and AI can design together while keeping evidence and judgment visible.',
       'What I hope to develop is deeper Rhino and Grasshopper work, structured AI-to-tool communication, validated performance analysis and verification methods, in one focused doctoral system.',
     ],
 
@@ -528,18 +573,37 @@ export const SLIDES: readonly Slide[] = [
       { label: 'romanjahandideh.com', url: 'https://romanjahandideh.com' },
       { label: 'github.com/RomanJahandideh', url: 'https://github.com/RomanJahandideh' },
     ],
-    questions: [
-      'Which current GenEnv research problem could provide the strongest starting point for a focused first-year study?',
-      'Which professional design tool, performance model, and design case would make that study most useful to the lab?',
-      'Where do you think my background could contribute most immediately while I continue developing the technical depth required for the PhD?',
-    ],
     media: [{ diagram: 'atlas-full' }],
-    purpose: 'Three questions beside the resolved research map.',
-    cue: { sec: 70, demo: 'Stop on the questions and listen.', skip: 'Summarising the talk again.' },
+    purpose: 'Thank you, links, and the resolved research map; the conversation is spoken, not on screen.',
+    cue: { sec: 72, demo: 'Stop here and invite the conversation; listen.', skip: 'Summarising the talk again.' },
     notes: [
-      'Thank you. I would value your guidance on where to begin: which current research problem could be the strongest starting point for a first-year study, which tool, performance model and design case would make it most useful, and where my background could contribute first.',
+      'Thank you. I would value your guidance on where to begin.',
     ],
 
+  },
+  {
+    id: 'references',
+    chapter: 'References',
+    scene: 'phd',
+    layout: 'references',
+    kicker: 'References',
+    title: 'Works cited',
+    purpose: 'Every work cited on the slides, in APA style, generated from the citations.',
+    cue: { sec: 0, demo: 'Only if asked; leave the conversation slide up.', skip: 'Reading the list.' },
+    notes: [],
+  },
+  {
+    id: 'colophon',
+    chapter: 'References',
+    scene: 'conversation',
+    layout: 'band',
+    kicker: 'Behind this presentation',
+    title: 'Every claim can be traced',
+    lines: ['This talk follows its own argument: each number links to an evidence record and its source, and each citation to a published paper. Press S on any slide to see them; click a square to jump to that step.'],
+    media: [{ diagram: 'colophon', caption: 'The talk as a traceable map · click any step' }],
+    purpose: 'A closing map of the whole talk: every step as a square, with what it cites and what it lets you do, built from the presentation data itself.',
+    cue: { sec: 0, demo: 'Only if there is time or interest; click a square to revisit a step.', skip: 'Explaining the code.' },
+    notes: [],
   },
 ] as const;
 

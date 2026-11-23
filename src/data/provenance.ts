@@ -148,7 +148,7 @@ export const CONFLUENCE = {
     'HCI experiments and user studies',
     'Early zoning, massing, verification and environmental-agent projects',
   ],
-  question: 'How can people and AI design constructed environments together while keeping design rules, performance evidence, editable operations, uncertainty and consequential human decisions visible?',
+  question: 'How can people and AI design places together while keeping design rules, performance evidence, editable operations, uncertainty and consequential human decisions visible?',
   develop: [
     'Advanced Rhino and Grasshopper workflows',
     'Structured AI-to-tool communication',

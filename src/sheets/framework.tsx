@@ -615,7 +615,7 @@ export function Route() {
     { n: 'Human perception', p: 'eCAADe · VR', c: 'how people read space' },
     { n: 'Interactive systems', p: 'SFU · HCI', c: 'build and evaluate' },
     { n: 'Computational design', p: '4 research projects', c: 'rules, geometry, agents' },
-    { n: 'Possible PhD research', p: '3 directions to discuss', c: 'performance-aware co-design' },
+    { n: 'Possible PhD research', p: '3 directions to discuss', c: 'evidence kept with the design' },
   ];
   const x0 = 130;
   const dx = 268;

@@ -120,6 +120,7 @@ export type DiagramId =
   | 'branches'
   | 'platform'
   | 'agenda'
+  | 'colophon'
   | 'zlaflow'
   | 'pmgflow'
   | 'redteam'
@@ -133,7 +134,7 @@ export type DiagramId =
  * Slide compositions. Each is a fixed arrangement of horizontal bands and
  * planes; media are always shown whole, never cropped or upscaled.
  */
-export type LayoutId = 'title' | 'cover' |'cantilever' | 'statement' | 'band' | 'gallery' | 'figure' | 'figure-left' | 'columns' | 'questions';
+export type LayoutId = 'title' | 'cover' |'cantilever' | 'statement' | 'band' | 'gallery' | 'figure' | 'figure-left' | 'columns' | 'questions' | 'references';
 
 /** One image or vector diagram on a slide. */
 export interface Media {
@@ -175,6 +176,9 @@ export interface Slide {
   questions?: string[];
   /** Spoken notes (N key). Defaults to the on-screen lines. */
   notes?: string[];
+  /** In-slide citations (ids in citations.ts), shown author-date; `refsSee` prefixes "see" for related, not supporting, work. */
+  refs?: string[];
+  refsSee?: boolean;
   /** Presenter cue: recommended time in seconds (including any demonstration), what to show, what to skip. */
   cue?: { sec: number; demo: string; skip: string };
 }

@@ -9,7 +9,7 @@ import type { Role } from './provenance';
  */
 
 export const AGENDA =
-  'Developing performance-aware human-AI co-design systems that connect design intentions, professional design tools, environmental simulations, verified evidence and human judgment.';
+  'Human-AI design systems that keep design intentions, professional design tools, environmental simulation, verified evidence and human judgment connected.';
 
 export const PRINCIPLE = 'AI suggests. Simulation calculates. People decide.';
 
