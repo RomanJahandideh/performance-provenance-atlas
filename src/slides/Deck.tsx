@@ -360,7 +360,6 @@ function SlideView({ s }: { s: Slide }) {
 /** The whole talk: top bar, the current slide with its transitions, chapter navigation. */
 export function Deck() {
   const stepIndex = useAppState((s) => s.stepIndex);
-  const notesOpen = useAppState((s) => s.notesOpen);
   const drawerOpen = useAppState((s) => s.drawerOpen);
   const idx = Math.min(Math.max(stepIndex, 0), SLIDES.length - 1);
   const slide = SLIDES[idx]!;
@@ -393,9 +392,6 @@ export function Deck() {
       <header className="deck-top">
         <span className="brand">Roman Jahandideh</span>
         <nav className="top-nav">
-          <button aria-pressed={notesOpen} onClick={() => setState({ notesOpen: !notesOpen })}>
-            Notes
-          </button>
           <button aria-pressed={drawerOpen} onClick={() => setState({ drawerOpen: !drawerOpen })}>
             Sources
           </button>

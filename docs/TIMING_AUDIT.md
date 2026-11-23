@@ -45,6 +45,6 @@ Source of truth: `src/data/steps.ts` (26 steps). "Planned" is the presenter cue 
 | 23 | Research fit | Where my research path converges | 77 | 0:50 | 17:58 |
 | 24 | Conversation | Thank you | 11 | 1:12 | 18:48 |
 | 25 | References | Works cited | 0 | 0:00 | 20:00 |
-| 26 | References | Every claim can be traced | 0 | 0:00 | 20:03 |
+| 26 | References | Thank you for your time, your questions, and the conversation ahead | 0 | 0:00 | 20:03 |
 
 Rehearsal checkpoints: the presenter window (`P`) shows the same "start by" time and the cue (time, show, skip) for every step.

@@ -244,8 +244,8 @@ Thank you. I would value your guidance on where to begin.
 
 > **Show:** Only if asked; leave the conversation slide up. **Skip:** Reading the list.
 
-## 26 · References · Every claim can be traced
+## 26 · References · Thank you for your time, your questions, and the conversation ahead
 
-*0 words · planned 0:00 · start by 20:03 · on screen: A closing map of the whole talk: every step as a square, with what it cites and what it lets you do, built from the presentation data itself.*
+*0 words · planned 0:00 · start by 20:03 · on screen: A warm closing page after the references.*
 
-> **Show:** Only if there is time or interest; click a square to revisit a step. **Skip:** Explaining the code.
+> **Show:** Leave this up at the very end. **Skip:** Nothing to explain.
