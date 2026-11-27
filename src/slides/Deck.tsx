@@ -395,8 +395,8 @@ export function Deck() {
         <span className="brand">Roman Jahandideh</span>
         <nav className="top-nav">
           {systemFor(slide.id) && (
-            <button aria-pressed={systemOpen} onClick={() => setState({ systemOpen: !systemOpen })}>
-              System diagram
+            <button className="sys-btn" aria-pressed={systemOpen} onClick={() => setState({ systemOpen: !systemOpen })}>
+              ◳ View system diagram (D)
             </button>
           )}
           <button aria-pressed={drawerOpen} onClick={() => setState({ drawerOpen: !drawerOpen })}>

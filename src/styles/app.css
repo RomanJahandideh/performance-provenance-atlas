@@ -446,3 +446,8 @@ html[data-reduced='true'] .board { transition: none; }
 .sf-svg { width: 100%; height: auto; max-height: calc(96vh - 130px); min-height: 0; flex: 1 1 auto; }
 .sf-caption { margin: 6px 0 2px; font-size: 14px; line-height: 1.4; text-align: center; }
 .sf-notes { margin: 0; font-size: 12px; color: #6b6b6b; text-align: center; line-height: 1.4; }
+
+/* the system-diagram button: obvious, not hidden in the header text */
+.top-nav .sys-btn { background: var(--yellow); color: #0f2d6b; padding: 9px 16px; font-weight: 700; letter-spacing: 0.1em; border-radius: 2px; box-shadow: 0 0 0 0 rgba(242, 207, 85, 0.6); animation: sysPulse 2.4s ease-out 2; }
+.top-nav .sys-btn:hover { filter: brightness(1.08); }
+@keyframes sysPulse { 0% { box-shadow: 0 0 0 0 rgba(242, 207, 85, 0.6); } 100% { box-shadow: 0 0 0 14px rgba(242, 207, 85, 0); } }
