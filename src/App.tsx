@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Deck } from './slides/Deck';
 import { ChapterMap, HelpOverlay, Legend, NotesDock, SourceDrawer } from './ui/overlays';
+import { SystemFigureOverlay } from './ui/systemFigure';
 import { PresenterView } from './ui/presenter';
 import { isPresenter } from './lib/sync';
 import { handleKey } from './lib/keys';
@@ -48,6 +49,7 @@ function Audience() {
       <ChapterMap />
       <HelpOverlay />
       <Legend />
+      <SystemFigureOverlay />
       <Preload />
     </>
   );

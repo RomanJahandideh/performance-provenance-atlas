@@ -8,6 +8,8 @@ export interface AppState {
   chapterMapOpen: boolean;
   helpOpen: boolean;
   legendOpen: boolean;
+  /** System-workflow figure for the current step (D). */
+  systemOpen: boolean;
   /** null → follow the media query; true/false → manual override. */
   reducedMotionOverride: boolean | null;
 }
@@ -19,6 +21,7 @@ const initialState: AppState = {
   chapterMapOpen: false,
   helpOpen: false,
   legendOpen: false,
+  systemOpen: false,
   reducedMotionOverride: null,
 };
 
@@ -61,9 +64,9 @@ export function toggleReducedMotion() {
 }
 
 export function closeAllPanels() {
-  setState({ notesOpen: false, drawerOpen: false, chapterMapOpen: false, helpOpen: false, legendOpen: false });
+  setState({ notesOpen: false, drawerOpen: false, chapterMapOpen: false, helpOpen: false, legendOpen: false, systemOpen: false });
 }
 
 export function anyPanelOpen(): boolean {
-  return state.notesOpen || state.drawerOpen || state.chapterMapOpen || state.helpOpen || state.legendOpen;
+  return state.notesOpen || state.drawerOpen || state.chapterMapOpen || state.helpOpen || state.legendOpen || state.systemOpen;
 }

@@ -53,6 +53,10 @@ export function handleKey(e: KeyboardEvent): void {
     case 'C':
       setState({ drawerOpen: !s.drawerOpen });
       break;
+    case 'd':
+    case 'D':
+      setState({ systemOpen: !s.systemOpen });
+      break;
     case 'l':
     case 'L':
       setState({ legendOpen: !s.legendOpen });
