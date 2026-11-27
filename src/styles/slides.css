@@ -298,3 +298,18 @@
 .sys-page .sf-notes { color: var(--ink-dim); }
 .sys-page .sf-status--built { color: var(--cyan); }
 .sys-page .sf-status--proposed { color: var(--proposal); }
+
+/* ── system diagrams: hover interaction ── */
+.sf-svg .sf-hov { transform-box: fill-box; transform-origin: center; transition: transform 220ms ease, opacity 220ms ease, filter 220ms ease; cursor: default; }
+.sf-svg .sf-hov rect, .sf-svg .sf-hov path, .sf-svg .sf-hov ellipse, .sf-svg .sf-hov circle, .sf-svg .sf-hov line { transition: stroke 220ms ease, stroke-width 220ms ease, fill 220ms ease; }
+.sf-svg .sf-hov text { transition: fill 220ms ease; }
+.sf-svg:hover .sf-hov { opacity: 0.45; }
+.sf-svg .sf-hov:hover { opacity: 1; transform: scale(1.07); filter: drop-shadow(0 0 10px rgba(242, 207, 85, 0.55)); }
+.sf-svg .sf-hov:hover rect, .sf-svg .sf-hov:hover path, .sf-svg .sf-hov:hover ellipse, .sf-svg .sf-hov:hover circle, .sf-svg .sf-hov:hover line { stroke: var(--yellow); stroke-width: 2.4; }
+.sf-svg .sf-hov:hover text { fill: #fff; }
+.sf-svg .sf-reg rect { transition: stroke 220ms ease, fill 220ms ease; }
+.sf-svg .sf-reg:hover > rect { stroke: rgba(242, 207, 85, 0.85); fill: rgba(242, 207, 85, 0.03); }
+.sf-svg:hover .sf-flow { stroke-dasharray: 7 5; animation: sfFlow 0.9s linear infinite; stroke: var(--yellow); }
+@keyframes sfFlow { to { stroke-dashoffset: -24; } }
+html[data-reduced='true'] .sf-svg .sf-hov:hover { transform: none; }
+html[data-reduced='true'] .sf-svg:hover .sf-flow { animation: none; }

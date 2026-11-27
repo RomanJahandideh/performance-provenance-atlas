@@ -59,7 +59,7 @@ function Box({ x, y, w, h, b, fill = PANEL, stroke = LINE, size = 13, dashed }: 
   const y0 = y + h / 2 - total / 2 + size * 0.85;
   const d = dashed ?? b.dashed;
   return (
-    <g>
+    <g className="sf-hov">
       <rect x={x} y={y} width={w} height={h} rx={4} fill={fill} stroke={stroke} strokeWidth={1.2} strokeDasharray={d ? '5 4' : undefined} />
       <Txt x={x + w / 2} y={y0} size={size} weight={600} lines={label} lh={1.2} />
       {sub.length > 0 && <Txt x={x + w / 2} y={y0 + label.length * size * 1.2} size={11} fill={MID} lines={sub} lh={1.2} />}
@@ -69,7 +69,7 @@ function Box({ x, y, w, h, b, fill = PANEL, stroke = LINE, size = 13, dashed }: 
 
 function Region({ x, y, w, h, title, fill = 'none', stroke = 'rgba(255,255,255,0.3)' }: { x: number; y: number; w: number; h: number; title: string; fill?: string; stroke?: string }) {
   return (
-    <g>
+    <g className="sf-reg">
       <rect x={x} y={y} width={w} height={h} fill={fill} stroke={stroke} strokeWidth={1.1} strokeDasharray="2 3" />
       <Txt x={x + w / 2} y={y + 16} size={11} fill={MID} lines={wrap(title, Math.floor(w / 6.2))} lh={1.2} />
     </g>
@@ -77,7 +77,7 @@ function Region({ x, y, w, h, title, fill = 'none', stroke = 'rgba(255,255,255,0
 }
 
 function Arrow({ d, dashed }: { d: string; dashed?: boolean }) {
-  return <path d={d} fill="none" stroke={INK} strokeWidth={1.2} strokeDasharray={dashed ? '3 3' : undefined} markerEnd="url(#sfArrow)" />;
+  return <path className="sf-flow" d={d} fill="none" stroke={INK} strokeWidth={1.2} strokeDasharray={dashed ? '3 3' : undefined} markerEnd="url(#sfArrow)" />;
 }
 
 /** Small drawings for component cards and the model, in the paper's grey tones. */
@@ -203,12 +203,12 @@ function Figure({ s }: { s: SystemSpec }) {
       </defs>
 
       {/* feedback loop from the output back to the designer */}
-      <path d="M1380 735 H1392 V22 H96 V40" fill="none" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" />
+      <path className="sf-flow" d="M1380 735 H1392 V22 H96 V40" fill="none" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" />
       <rect x={560} y={12} width={280} height={20} fill={DARK} />
       <Txt x={700} y={27} size={12} fill={MID} lines={[s.feedback]} />
 
       {/* designer and prompt cloud */}
-      <g stroke={CORAL} strokeWidth={1.6} fill="none">
+      <g className="sf-hov" stroke={CORAL} strokeWidth={1.6} fill="none">
         <circle cx={96} cy={56} r={9} />
         <line x1={96} y1={65} x2={96} y2={92} />
         <line x1={80} y1={74} x2={112} y2={74} />
@@ -216,8 +216,10 @@ function Figure({ s }: { s: SystemSpec }) {
         <line x1={96} y1={92} x2={108} y2={110} />
       </g>
       <Txt x={96} y={128} size={11} fill={MID} lines={['Designer']} />
+      <g className="sf-hov">
       <path d="M150 70 C 140 40, 190 26, 215 40 C 235 18, 300 18, 320 40 C 360 30, 395 55, 380 82 C 400 108, 350 130, 320 118 C 300 140, 230 140, 215 120 C 180 132, 140 110, 150 70 z" fill="rgba(255,255,255,0.04)" stroke={LINE} strokeWidth={1.2} />
       <Txt x={268} y={78 - (prompt.length - 1) * 8} size={13} fill={RED} lines={prompt} lh={1.25} />
+      </g>
 
       {/* input */}
       <Arrow d="M96 136 V196" />
@@ -230,22 +232,22 @@ function Figure({ s }: { s: SystemSpec }) {
       {L.agents.map((a, i) => (
         <Box key={a.label} x={48} y={366 + i * (ah + 8)} w={268} h={ah} b={a} fill={BLUE} stroke={AI} size={n > 4 ? 12 : 13} dashed={a.dashed ?? L.dashed} />
       ))}
-      <path d={`M182 ${366 + n * (ah + 8)} V650`} stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
+      <path className="sf-flow" d={`M182 ${366 + n * (ah + 8)} V650`} stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
       <Box x={48} y={656} w={268} h={64} b={L.llm} fill={BLUE} stroke={AI} size={13} dashed={L.llm.dashed ?? L.dashed} />
       <Txt x={182} y={748} size={14} weight={700} fill={AI} lines={[L.brand]} />
 
       {/* bridge */}
-      <path d="M342 520 H368" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
+      <path className="sf-flow" d="M342 520 H368" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
       <Region x={370} y={436} w={250} h={150} title={s.bridge.title} fill={PINK} stroke="var(--yellow)" />
       <Box x={384} y={478} w={102} h={86} b={s.bridge.a} size={11} />
-      <path d="M488 521 H506" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
+      <path className="sf-flow" d="M488 521 H506" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
       <Box x={508} y={478} w={102} h={86} b={s.bridge.b} size={11} />
       <Arrow d="M620 521 H650 V163 H895" />
 
       {/* tool environment */}
       <Region x={640} y={60} w={740} h={600} title={s.right.title} />
       {s.right.commands.map((c, i) => (
-        <g key={c}>
+        <g key={c} className="sf-hov">
           <rect x={662} y={92 + i * 38} width={214} height={28} rx={14} fill="rgba(200,185,255,0.08)" stroke={AI} strokeDasharray="4 3" />
           <Txt x={769} y={111 + i * 38} size={11} fill={RED} mono lines={[c.length > 30 ? c.slice(0, 29) + '…' : c]} />
           <path d={`M876 ${106 + i * 38} H895`} stroke={INK} strokeDasharray="2 3" />
@@ -253,9 +255,9 @@ function Figure({ s }: { s: SystemSpec }) {
       ))}
       <rect x={898} y={88} width={176} height={96} fill="rgba(112,215,206,0.10)" stroke={CYAN} />
       <Box x={912} y={102} w={148} h={68} b={s.right.core} stroke={CYAN} size={12} />
-      <path d="M986 184 V208" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
+      <path className="sf-flow" d="M986 184 V208" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
       {/* knowledge store cylinder */}
-      <g>
+      <g className="sf-hov">
         <path d="M906 222 V292 A80 14 0 0 0 1066 292 V222" fill="rgba(242,207,85,0.10)" stroke="var(--yellow)" />
         <ellipse cx={986} cy={222} rx={80} ry={14} fill={DARK} stroke="var(--yellow)" />
         <Txt x={986} y={256} size={12} weight={700} fill={INK} lines={wrap(s.right.store, 22)} lh={1.2} />
@@ -264,20 +266,20 @@ function Figure({ s }: { s: SystemSpec }) {
       <Txt x={1265} y={104} size={11} fill={MID} lines={[s.right.canvas]} />
       <rect x={1180} y={112} width={170} height={110} fill={PANEL} stroke={LINE} />
       {[[1196, 128], [1240, 128], [1196, 176], [1240, 176], [1290, 152]].map(([x, y], k) => (
-        <g key={k}>
+        <g key={k} className="sf-hov">
           <rect x={x} y={y} width={34} height={22} fill="rgba(112,215,206,0.12)" stroke={CYAN} />
         </g>
       ))}
       <path d="M1230 139 H1240 M1230 187 H1240 M1274 139 L1290 160 M1274 187 L1290 166" stroke={CYAN} />
-      <path d="M1066 250 H1150 V170 H1178" fill="none" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
+      <path className="sf-flow" d="M1066 250 H1150 V170 H1178" fill="none" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" markerStart="url(#sfArrow)" />
       {/* component repository */}
       <rect x={662} y={330} width={596} height={208} fill={PANEL} stroke={LINE} />
       <Txt x={960} y={350} size={11} fill={MID} mono lines={['COMPONENTS']} />
-      <path d="M986 306 V328" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" />
+      <path className="sf-flow" d="M986 306 V328" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" />
       {s.right.cards.map((c, i) => {
         const x = 680 + i * 194;
         return (
-          <g key={c.title}>
+          <g key={c.title} className="sf-hov">
             <rect x={x} y={362} width={176} height={162} rx={4} fill={DARK} stroke={c.dashed ? 'rgb(137,167,255)' : CYAN} strokeDasharray={c.dashed ? '3 6' : undefined} />
             <Txt x={x + 12} y={384} size={12} weight={700} anchor="start" lines={wrap(c.title, 22)} />
             {c.lines.map((l, k) => (
@@ -289,10 +291,12 @@ function Figure({ s }: { s: SystemSpec }) {
         );
       })}
       {/* model */}
-      <ThumbArt t={s.right.modelThumb} x={700} y={560} w={300} h={84} />
+      <g className="sf-hov">
+        <ThumbArt t={s.right.modelThumb} x={700} y={560} w={300} h={84} />
+      </g>
       <Arrow d="M1010 602 H1148" />
       <Box x={1150} y={578} w={190} h={48} b={{ label: s.right.model }} stroke={CYAN} size={12} />
-      <path d="M1265 222 V576" fill="none" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" />
+      <path className="sf-flow" d="M1265 222 V576" fill="none" stroke={INK} strokeWidth={1.2} markerEnd="url(#sfArrow)" />
       <Arrow d="M1320 626 V706" dashed />
 
       {/* output */}
@@ -300,7 +304,7 @@ function Figure({ s }: { s: SystemSpec }) {
       <Box x={1104} y={710} w={252} h={60} b={{ label: s.output }} fill="rgba(244,123,92,0.10)" stroke={CORAL} size={12} />
 
       {s.status === 'proposed' && (
-        <g>
+        <g className="sf-hov">
           <rect x={360} y={640} width={290} height={40} fill="rgba(137,167,255,0.08)" stroke="rgb(137,167,255)" strokeDasharray="3 6" />
           <Txt x={505} y={665} size={12} weight={700} fill="rgb(137,167,255)" mono lines={['PROPOSED · NOT YET BUILT']} />
         </g>
