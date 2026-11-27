@@ -283,3 +283,18 @@
   .l-references .refs { font-size: 11.5px; line-height: 1.3; }
   .l-references .refs li { margin-bottom: 4px; }
 }
+
+/* ── system-diagram pages ── */
+.slide.l-system { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); row-gap: 12px; }
+.l-system .head { grid-column: 1 / -1; }
+.l-system .title { font-size: clamp(24px, 2vw, 38px); }
+.sys-page { grid-column: 1 / -1; min-height: 0; background: transparent; color: var(--ink); display: flex; flex-direction: column; padding: 0; }
+.sys-page .sf-svg { flex: 1 1 auto; min-height: 0; width: 100%; height: 100%; max-height: none; }
+.sys-page .sf-caption { font-size: clamp(11px, 0.85vw, 14px); margin: 4px 0 0; }
+.sys-page .sf-notes { font-size: clamp(10px, 0.7vw, 12px); }
+.sf-credit { font-size: 11px; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.06em; }
+.is-entering .sys-page { animation: sFade 0.35s var(--ease) both; animation-delay: calc(var(--base) + 0.08s); }
+.sys-page .sf-caption { color: var(--ink); }
+.sys-page .sf-notes { color: var(--ink-dim); }
+.sys-page .sf-status--built { color: var(--cyan); }
+.sys-page .sf-status--proposed { color: var(--proposal); }

@@ -20,10 +20,10 @@ export const SECTIONS = [
   { name: 'Opening', target: '1:30' },
   { name: 'Background', target: '4:08' },
   { name: 'Previous research', target: '3:50' },
-  { name: 'Research projects', target: '4:20' },
-  { name: 'PhD directions', target: '4:10' },
+  { name: 'Research projects', target: '4:28' },
+  { name: 'PhD directions', target: '4:18' },
   { name: 'Research fit', target: '0:50' },
-  { name: 'Conversation', target: '1:12' },
+  { name: 'Conversation', target: '1:01' },
   { name: 'References', target: '0:00' },
 ] as const;
 
@@ -373,12 +373,24 @@ export const SLIDES: readonly Slide[] = [
     ],
     media: [{ diagram: 'zlaflow', caption: 'Keys 1 · 2: answered or not covered' }],
     purpose: 'Opens the four research projects. The retrieve, answer, verify pipeline with two cases: answered from a cited clause, and “not covered” when the bylaw is silent.',
-    cue: { sec: 65, demo: 'Press 1 (answered from a clause), then 2 (not covered).', skip: 'Prompt design.' },
+    cue: { sec: 55, demo: 'Press 1 (answered from a clause), then 2 (not covered).', skip: 'Prompt design.' },
     notes: [
       'I built four computational-design projects to investigate how regulations, editable geometry, spatial constraints, simulations and AI agents might work together.',
       'The first is about regulation. The assistant retrieves the relevant clause, answers only from it, and verifies the answer. Asked the front setback, it quotes the clause; code computes the buildable footprint. Asked how many storeys a laneway house may have, it reports “not covered” and stops. It uses ten clauses of one zone and is not planning advice.',
     ],
 
+  },
+  {
+    id: 'zla-system',
+    chapter: 'Research projects',
+    scene: 'zla',
+    layout: 'system',
+    system: 'zla',
+    kicker: 'Project 1 · System diagram',
+    title: 'Zoning Literacy Assistant: how it works',
+    purpose: 'System-workflow diagram in the style of Liu & Tian (2025, Fig. 1): designer, input, language-model layer, bridge, tool environment, model, output and feedback loop.',
+    cue: { sec: 12, demo: 'Pause on the diagram; point from the designer, through the model layer, to the output.', skip: 'Reading every box.' },
+    notes: ['Here is the same system as a workflow: from the designer’s request, through the model layer and the tool environment, to the output and back to the designer.'],
   },
   {
     id: 'pmg',
@@ -400,7 +412,7 @@ export const SLIDES: readonly Slide[] = [
     ],
     media: [{ diagram: 'pmgflow', caption: 'Phrase, rule, parameter, geometry · keys 1 · 2' }],
     purpose: 'The bylaw phrase, the extracted rule, the editable parameter and the geometry, linked: the rental condition moves FSR from 0.70 to 1.00 and the worked example from one floor to two.',
-    cue: { sec: 65, demo: 'Press 1, then 2: FSR 0.70 to 1.00, one floor to two.', skip: 'Every setback value.' },
+    cue: { sec: 55, demo: 'Press 1, then 2: FSR 0.70 to 1.00, one floor to two.', skip: 'Every setback value.' },
     refs: ['req2cad-chi2026', 'liu-tian-2025'],
     refsSee: true,
     notes: [
@@ -408,6 +420,18 @@ export const SLIDES: readonly Slide[] = [
       'Here the rental condition moves the floor space ratio from 0.70 to 1.00, and the worked example grows from one floor to two. It is a research prototype, not code-compliance software.',
     ],
 
+  },
+  {
+    id: 'pmg-system',
+    chapter: 'Research projects',
+    scene: 'pmg',
+    layout: 'system',
+    system: 'pmg',
+    kicker: 'Project 2 · System diagram',
+    title: 'Parametric Massing Generator: how it works',
+    purpose: 'System-workflow diagram in the style of Liu & Tian (2025, Fig. 1): designer, input, language-model layer, bridge, tool environment, model, output and feedback loop.',
+    cue: { sec: 12, demo: 'Pause on the diagram; point from the designer, through the model layer, to the output.', skip: 'Reading every box.' },
+    notes: ['Here is the same system as a workflow: from the designer’s request, through the model layer and the tool environment, to the output and back to the designer.'],
   },
   {
     id: 'vcm',
@@ -426,12 +450,24 @@ export const SLIDES: readonly Slide[] = [
     links: [{ label: 'GitHub', url: 'https://github.com/RomanJahandideh/vancouver-view-corridor-massing' }],
     media: [{ diagram: 'corridor', caption: 'Flat cap against floor-by-floor trim' }],
     purpose: 'Section: the sloped view ceiling, the flat cap, then floor-by-floor trimming with live counts.',
-    cue: { sec: 65, demo: 'Let the section play: sloped limit, flat cap, floor-by-floor trim.', skip: 'Geodetic processing; the rotation study unless asked.' },
+    cue: { sec: 55, demo: 'Let the section play: sloped limit, flat cap, floor-by-floor trim.', skip: 'Geodetic processing; the rotation study unless asked.' },
     notes: [
       'Third, a spatial constraint. Protected views in Vancouver are sloped, but quick checks use a flat cap. Using the City’s open corridor data, clipping floor by floor gives 18 floors instead of 10 and 39.5 percent more floor area in the documented test case.',
       'The geometry exports to Rhino, but the base elevation and slope are placeholders, and the Grasshopper step is written but not executed. The method and its assumptions must travel with the result.',
     ],
 
+  },
+  {
+    id: 'vcm-system',
+    chapter: 'Research projects',
+    scene: 'vcm',
+    layout: 'system',
+    system: 'vcm',
+    kicker: 'Project 3 · System diagram',
+    title: 'Vancouver View Corridor Massing: how it works',
+    purpose: 'System-workflow diagram in the style of Liu & Tian (2025, Fig. 1): designer, input, language-model layer, bridge, tool environment, model, output and feedback loop.',
+    cue: { sec: 12, demo: 'Pause on the diagram; point from the designer, through the model layer, to the output.', skip: 'Reading every box.' },
+    notes: ['Here is the same system as a workflow: from the designer’s request, through the model layer and the tool environment, to the output and back to the designer.'],
   },
   {
     id: 'ema',
@@ -453,7 +489,7 @@ export const SLIDES: readonly Slide[] = [
       { diagram: 'seeds', caption: 'Two searches' },
     ],
     purpose: 'Agent roles around one evaluator box; search runs against the target, with “not faster” in red.',
-    cue: { sec: 65, demo: 'Point from each agent to the evaluator it reads; end on the result.', skip: 'Hypervolume definition unless asked.' },
+    cue: { sec: 55, demo: 'Point from each agent to the evaluator it reads; end on the result.', skip: 'Hypervolume definition unless asked.' },
     refs: ['jin-esim2026', 'liu-tian-2025'],
     refsSee: true,
     notes: [
@@ -461,6 +497,18 @@ export const SLIDES: readonly Slide[] = [
       'I expected directed search to be faster. It was not, but it was more reliable: four of five runs reached the target against one of five. The evaluators are simplified, carbon is a benchmark, wind is a proxy, and the live language-model loop was not run.',
     ],
 
+  },
+  {
+    id: 'ema-system',
+    chapter: 'Research projects',
+    scene: 'ema',
+    layout: 'system',
+    system: 'ema',
+    kicker: 'Project 4 · System diagram',
+    title: 'Environmental Massing Agents: how it works',
+    purpose: 'System-workflow diagram in the style of Liu & Tian (2025, Fig. 1): designer, input, language-model layer, bridge, tool environment, model, output and feedback loop.',
+    cue: { sec: 12, demo: 'Pause on the diagram; point from the designer, through the model layer, to the output.', skip: 'Reading every box.' },
+    notes: ['Here is the same system as a workflow: from the designer’s request, through the model layer and the tool environment, to the output and back to the designer.'],
   },
 
   // ── Directions ─────────────────────────────────────────────────────────────
@@ -474,7 +522,7 @@ export const SLIDES: readonly Slide[] = [
     lines: [AGENDA, 'Carefully developed possibilities, not commitments; their novelty would be confirmed through a formal prior-art review.'],
     media: [{ diagram: 'agenda', caption: 'Branches are possibilities, not a ranking · each opens its own step' }],
     purpose: 'The shared problem as one trail (intention, tools, simulation, evidence, judgment) branching into three proposed directions shown as map layers: design risk, neighbourhood, time. Hover, Tab or keys 1 to 3 reveal each; Enter or click opens it.',
-    cue: { sec: 45, demo: 'Hover or press 1, 2, 3 on the branches; do not open them here.', skip: 'Weighing the branches against each other; they are not ranked.' },
+    cue: { sec: 40, demo: 'Hover or press 1, 2, 3 on the branches; do not open them here.', skip: 'Weighing the branches against each other; they are not ranked.' },
     refs: ['liu-tian-2025', 'energyplus-mcp-2025', 'li-mcp-bem-2026', 'optimuse', 'maier-chi2026'],
     refsSee: true,
     notes: [
@@ -492,7 +540,7 @@ export const SLIDES: readonly Slide[] = [
     lines: ['Simulations test the scenarios designers think to try. A red team searches for plausible ones they did not, then repairs verified weaknesses while protecting design intent.'],
     media: [{ diagram: 'redteam', caption: 'Evaluated against designer-selected scenario testing · expert review · design studies · interviews' }],
     purpose: 'Risk discovery: an apparently successful plaza, AI-proposed stress scenarios, a simulated weakness, protected intentions and a minimal repair, with illustrative before and after bars. Keys 1 to 3 switch original, failure and repair; 4 to 7 pick a scenario.',
-    cue: { sec: 70, demo: 'Press 1, 2, 3: problem, proposed system, designer decides.', skip: 'Simulation engine names.' },
+    cue: { sec: 62, demo: 'Press 1, 2, 3: problem, proposed system, designer decides.', skip: 'Simulation engine names.' },
     refs: ['eplus-agent', 'li-mcp-bem-2026', 'moruzzi-chi2024'],
     refsSee: true,
     notes: [
@@ -500,6 +548,18 @@ export const SLIDES: readonly Slide[] = [
       'The AI proposes plausible stress scenarios, and the simulation, not the language model, calculates what happens. If a weakness is verified, the AI proposes the smallest repair that protects what the designer marked: the trees, the view axis, the seating, the library access. The designer then accepts, revises or rejects it.',
       'I would compare it with ordinary scenario testing, through expert review and design studies.',
     ],
+  },
+  {
+    id: 'redteam-system',
+    chapter: 'PhD directions',
+    scene: 'phd',
+    layout: 'system',
+    system: 'redteam',
+    kicker: 'Proposed direction · System diagram',
+    title: 'AI Design Red-Team: proposed system',
+    purpose: 'System-workflow diagram in the style of Liu & Tian (2025, Fig. 1): designer, input, language-model layer, bridge, tool environment, model, output and feedback loop.',
+    cue: { sec: 12, demo: 'Pause on the diagram; point from the designer, through the model layer, to the output.', skip: 'Reading every box.' },
+    notes: ['Here is the same system as a workflow: from the designer’s request, through the model layer and the tool environment, to the output and back to the designer.'],
   },
   {
     id: 'externality',
@@ -511,7 +571,7 @@ export const SLIDES: readonly Slide[] = [
     lines: ['Improving one parcel can move shadow, heat, glare, wind or runoff onto its neighbours. This system makes those effects visible so people can negotiate them.'],
     media: [{ diagram: 'externality', caption: 'Evaluated by parcel-only vs neighbourhood-level design · realistic sites · stakeholder workshops' }],
     purpose: 'Six illustrative parcels; effects crossing boundaries for two AI alternatives and an AI-suggested compromise; a ledger of gains and burdens; human deliberation as the last stage. Keys 1 to 3 switch alternatives; 4 to 8 toggle layers.',
-    cue: { sec: 70, demo: 'Press 1, 2, 3; optionally switch a layer off with 4 to 8.', skip: 'Parcel numbers; they are illustrative.' },
+    cue: { sec: 62, demo: 'Press 1, 2, 3; optionally switch a layer off with 4 to 8.', skip: 'Parcel numbers; they are illustrative.' },
     refs: ['jin-esim2026', 'liu-tian-2025'],
     refsSee: true,
     notes: [
@@ -519,6 +579,18 @@ export const SLIDES: readonly Slide[] = [
       'This system would simulate those effects across boundaries, show where priorities conflict, and let AI suggest alternatives, like stepped massing with a green roof. It shows trade-offs; it does not calculate fairness. People decide.',
       'I would compare parcel-only and neighbourhood-level design on realistic sites, and in workshops with designers, planners or community members.',
     ],
+  },
+  {
+    id: 'externality-system',
+    chapter: 'PhD directions',
+    scene: 'phd',
+    layout: 'system',
+    system: 'externality',
+    kicker: 'Proposed direction · System diagram',
+    title: 'Neighbourhood Externality Co‑Designer: proposed system',
+    purpose: 'System-workflow diagram in the style of Liu & Tian (2025, Fig. 1): designer, input, language-model layer, bridge, tool environment, model, output and feedback loop.',
+    cue: { sec: 12, demo: 'Pause on the diagram; point from the designer, through the model layer, to the output.', skip: 'Reading every box.' },
+    notes: ['Here is the same system as a workflow: from the designer’s request, through the model layer and the tool environment, to the output and back to the designer.'],
   },
   {
     id: 'living',
@@ -530,7 +602,7 @@ export const SLIDES: readonly Slide[] = [
     lines: ['Trees grow, materials weather, use changes and climate shifts. Instead of one optimal design, the system proposes an adaptive pathway with thresholds and intervention points.'],
     media: [{ diagram: 'living', caption: 'Evaluated by static vs adaptive pathways · long-term cases · expert review · sensitivity analysis' }],
     purpose: 'An illustrative courtyard section across forty years beside an illustrative heat-stress chart: threshold, intervention point, static design vs adaptive pathway, widening uncertainty. Keys 1 to 5 move in time; 6 and 7 switch static and adaptive.',
-    cue: { sec: 65, demo: 'Press 1, 3, 4, 5 through time; 6 then 7 for static versus adaptive.', skip: 'Curve values; they are illustrative.' },
+    cue: { sec: 58, demo: 'Press 1, 3, 4, 5 through time; 6 then 7 for static versus adaptive.', skip: 'Curve values; they are illustrative.' },
     refs: ['liu-third-simulation-2020', 'liu-planting-2024'],
     refsSee: true,
     notes: [
@@ -538,6 +610,18 @@ export const SLIDES: readonly Slide[] = [
       'Instead of one optimal design, the system would propose an adaptive pathway: when performance may cross a limit the designer chooses, what to monitor, and when to act. Here the threshold arrives before the canopy matures, so the pathway adds temporary shade and permeable paving. The widening band is uncertainty: it prepares for change rather than predicting it.',
       'I would compare static and adaptive design on long-term cases, with sensitivity analysis.',
     ],
+  },
+  {
+    id: 'living-system',
+    chapter: 'PhD directions',
+    scene: 'phd',
+    layout: 'system',
+    system: 'living',
+    kicker: 'Proposed direction · System diagram',
+    title: 'Living Environment Co‑Designer: proposed system',
+    purpose: 'System-workflow diagram in the style of Liu & Tian (2025, Fig. 1): designer, input, language-model layer, bridge, tool environment, model, output and feedback loop.',
+    cue: { sec: 12, demo: 'Pause on the diagram; point from the designer, through the model layer, to the output.', skip: 'Reading every box.' },
+    notes: ['Here is the same system as a workflow: from the designer’s request, through the model layer and the tool environment, to the output and back to the designer.'],
   },
 
   // ── Research fit ───────────────────────────────────────────────────────────
@@ -575,7 +659,7 @@ export const SLIDES: readonly Slide[] = [
     ],
     media: [{ diagram: 'atlas-full' }],
     purpose: 'Thank you, links, and the resolved research map; the conversation is spoken, not on screen.',
-    cue: { sec: 72, demo: 'Stop here and invite the conversation; listen.', skip: 'Summarising the talk again.' },
+    cue: { sec: 61, demo: 'Stop here and invite the conversation; listen.', skip: 'Summarising the talk again.' },
     notes: [
       'Thank you. I would value your guidance on where to begin.',
     ],

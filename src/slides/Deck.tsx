@@ -3,7 +3,7 @@ import type { Fact, Media, Slide } from '../data/types';
 import { CHAPTERS, SLIDES } from '../data/steps';
 import { IMG } from '../data/media';
 import { apaEntry, parenCite } from '../data/citations';
-import { systemFor } from '../data/systems';
+import { SystemPage } from '../ui/systemFigure';
 import { setState, useAppState } from '../state/store';
 import { goToStep } from '../lib/stepper';
 import { Diagram, DIAGRAM_RATIO } from '../sheets/diagrams';
@@ -311,6 +311,13 @@ function SlideView({ s }: { s: Slide }) {
           </div>
         </div>
       );
+    case 'system':
+      return (
+        <div className="slide l-system">
+          <Head s={s} />
+          <SystemPage id={s.system ?? ''} />
+        </div>
+      );
     case 'references':
       return (
         <div className="slide l-references">
@@ -362,7 +369,6 @@ function SlideView({ s }: { s: Slide }) {
 export function Deck() {
   const stepIndex = useAppState((s) => s.stepIndex);
   const drawerOpen = useAppState((s) => s.drawerOpen);
-  const systemOpen = useAppState((s) => s.systemOpen);
   const idx = Math.min(Math.max(stepIndex, 0), SLIDES.length - 1);
   const slide = SLIDES[idx]!;
 
@@ -394,11 +400,6 @@ export function Deck() {
       <header className="deck-top">
         <span className="brand">Roman Jahandideh</span>
         <nav className="top-nav">
-          {systemFor(slide.id) && (
-            <button className="sys-btn" aria-pressed={systemOpen} onClick={() => setState({ systemOpen: !systemOpen })}>
-              ◳ View system diagram (D)
-            </button>
-          )}
           <button aria-pressed={drawerOpen} onClick={() => setState({ drawerOpen: !drawerOpen })}>
             Sources
           </button>

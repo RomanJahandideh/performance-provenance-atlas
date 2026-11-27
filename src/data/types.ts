@@ -134,7 +134,7 @@ export type DiagramId =
  * Slide compositions. Each is a fixed arrangement of horizontal bands and
  * planes; media are always shown whole, never cropped or upscaled.
  */
-export type LayoutId = 'title' | 'cover' |'cantilever' | 'statement' | 'band' | 'gallery' | 'figure' | 'figure-left' | 'columns' | 'questions' | 'references';
+export type LayoutId = 'title' | 'cover' |'cantilever' | 'statement' | 'band' | 'gallery' | 'figure' | 'figure-left' | 'columns' | 'questions' | 'references' | 'system';
 
 /** One image or vector diagram on a slide. */
 export interface Media {
@@ -179,6 +179,8 @@ export interface Slide {
   /** In-slide citations (ids in citations.ts), shown author-date; `refsSee` prefixes "see" for related, not supporting, work. */
   refs?: string[];
   refsSee?: boolean;
+  /** For layout 'system': the step id whose system diagram this page shows. */
+  system?: string;
   /** Presenter cue: recommended time in seconds (including any demonstration), what to show, what to skip. */
   cue?: { sec: number; demo: string; skip: string };
 }

@@ -142,7 +142,6 @@ export function HelpOverlay() {
     ['S or C', 'sources + evidence drawer'],
     ['M', 'list of all steps'],
     ['L', 'legend: colours and line styles'],
-    ['D', 'system diagram (projects and directions)'],
     ['P', 'presenter window: notes, next step, target times'],
     ['R', 'restart from the opening'],
     ['X', 'reduced-motion toggle'],
